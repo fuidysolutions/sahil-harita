@@ -65,3 +65,7 @@ Sprint 4: Ortak venue focus / action router (`src/app/venueRuntime.js`).
 `window.ALGE_VENUE_RUNTIME.focusVenueById(id)` -> harita odağı + turkuaz aktif marker
 + data-driven kart (Yol Tarifi / Detay / Menü) + `alge:venue-focused` eventi.
 `alge:ad-action` (openVenue) artık gerçek focus'a bağlı. Tek seçili mekan gösterilir.
+Sprint 5: Search gerçek data'ya bağlandı (`src/app/searchRuntime.js`).
+Üst arama hapı + alt bar "Ara" yeni search sheet'i açar; boş query'de genel trendler
++ popüler aramalar, query'de venue/searchIndex/kampanya/etkinlik eşleşmesi
+(tr normalize, kök eşleşme). Sonuç tıklaması focusVenueById'e gider.

@@ -200,7 +200,14 @@ function focusVenueById(venueId, options = {}) {
 
 const getActiveVenue = () => activeVenue;
 
-window.ALGE_VENUE_RUNTIME = { focusVenueById, getActiveVenue };
+/* search sonuç kartındaki Menü butonu için: focus + menü sheet'i */
+function openVenueMenu(venueId) {
+  const venue = focusVenueById(venueId, { source: "search-menu" });
+  if (venue) openMenuSheet(venue);
+  return venue;
+}
+
+window.ALGE_VENUE_RUNTIME = { focusVenueById, getActiveVenue, openVenueMenu };
 
 /* ---- alge:ad-action -> venue focus ---- */
 window.addEventListener("alge:ad-action", (event) => {
