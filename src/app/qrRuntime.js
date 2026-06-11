@@ -33,7 +33,7 @@ window.dispatchEvent(new CustomEvent("alge:qr-ready", { detail: { activeQrPoint,
 /* ---- stiller (index.html'e CSS eklememek için buradan enjekte) ---- */
 const style = document.createElement("style");
 style.textContent = `
-.alge-you-are-here{position:fixed;z-index:30;transform:translate(-50%,-50%);pointer-events:none;
+.alge-you-are-here{position:fixed;z-index:28;transform:translate(-50%,-50%);pointer-events:none;
   display:flex;flex-direction:column;align-items:center;}
 .alge-you-are-here__dot{width:14px;height:14px;border-radius:999px;background:#ef233c;
   border:2px solid #fff;box-shadow:0 0 0 8px rgba(239,35,60,.18);animation:algePulse 1.8s ease-out infinite;}

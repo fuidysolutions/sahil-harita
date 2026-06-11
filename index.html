@@ -331,12 +331,31 @@
   .vrating .cnt{color:#5b6f82;font-size:13px;}
   .vdesc{font-size:clamp(13.5px,1.3vw,15.5px);line-height:1.66;color:#2c3d4e;max-width:44ch;}
   .vright{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0;
+    min-height:0;overflow:hidden;
     padding-left:clamp(20px,3.5vw,44px);}
   .vdish{width:clamp(150px,22vw,240px);aspect-ratio:1;border-radius:50%;
     box-shadow:0 26px 55px rgba(10,20,35,.38);margin-bottom:18px;}
   .vfname{font-size:clamp(17px,1.8vw,21px);font-weight:700;}
   .vfprice{font-size:clamp(15px,1.6vw,18px);font-weight:700;color:#0e5d72;margin:4px 0 8px;}
   .vfdesc{font-size:clamp(12px,1.2vw,13.5px);line-height:1.55;color:#3a4d60;max-width:40ch;}
+  /* Sprint 8.5: detay ekranı içi menü */
+  #vcat{display:none;font-size:clamp(12px,1.3vw,14px);font-weight:700;color:#0e5d72;margin:-6px 0 12px;}
+  .vright.menumode{align-items:stretch;text-align:left;}
+  #vmenuinline{display:none;flex:1;min-height:0;overflow-y:auto;width:100%;padding-right:8px;}
+  #vmenuinline .vchips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;}
+  #vmenuinline .vchips span{font-size:clamp(10px,1.1vw,11.5px);font-weight:700;padding:4px 10px;border-radius:999px;
+    background:rgba(14,93,114,.12);color:#0e5d72;}
+  #vmenuinline .vmetal{font-size:clamp(11.5px,1.2vw,13px);color:#3a4d60;margin-bottom:4px;}
+  #vmenuinline .vmetal b{color:#15212e;}
+  #vmenuinline .vmsec{font-size:clamp(10px,1.1vw,11.5px);font-weight:800;letter-spacing:.08em;color:#0e5d72;margin:12px 0 6px;}
+  #vmenuinline .vmitem{margin-bottom:6px;}
+  #vmenuinline .vmitem b{font-size:clamp(12px,1.3vw,13.5px);color:#15212e;display:block;}
+  #vmenuinline .vmitem span{font-size:clamp(10.5px,1.1vw,12px);color:#5a6b7c;line-height:1.35;}
+  #vmenuinline .vmgor{margin:10px 0 4px;padding:9px 18px;border-radius:999px;border:none;cursor:pointer;
+    background:#15212e;color:#fff;font-weight:700;font-size:12.5px;font-family:inherit;}
+  #menup li.msec{list-style:none;font-weight:800;letter-spacing:.06em;color:#0e5d72;margin:14px 0 6px;}
+  #menup li.mitem{list-style:none;margin-bottom:6px;}
+  #menup li.mitem span{color:#5a6b7c;font-size:.92em;}
   .pill{margin-top:auto;padding:13px 26px;border-radius:999px;border:none;cursor:pointer;
     background:#15212e;color:#fff;font-size:13.5px;font-weight:600;
     box-shadow:0 10px 26px rgba(10,20,35,.3);}
@@ -505,6 +524,7 @@ window.addEventListener('error',function(e){
       <img class="vlogo" alt="">
       <h2></h2>
       <div class="vrating"><b></b><span class="stars"></span><span class="cnt"></span></div>
+      <div id="vcat"></div>
       <p class="vdesc"></p>
       <button class="pill" id="vroute">Nasıl Giderim</button>
     </div>
@@ -516,6 +536,7 @@ window.addEventListener('error',function(e){
         <p class="vfdesc"></p>
         <button class="pill" id="vmenu">Menüyü Gör</button>
       </div>
+      <div id="vmenuinline"></div>
     </div>
   </div>
 </div>
@@ -4518,23 +4539,70 @@ function fillCard(v){
     rt.querySelector('.stars').textContent='★★★★★'.slice(0,full)+'☆☆☆☆☆'.slice(0,5-full);
     rt.querySelector('.cnt').textContent='('+v.reviews+' değerlendirme)';
   }else rt.style.display='none';
+  const vcat=document.getElementById('vcat');
+  if(vcat){ vcat.textContent=v.cat||''; vcat.style.display=v.cat?'block':'none'; }
   vcard.querySelector('.vdesc').textContent=v.desc;
+
   const right=vcard.querySelector('.vright');
-  if(v.feat){
-    right.style.display='';
-    vcard.querySelector('.vdish').src=v.feat.img;
+  const dish=vcard.querySelector('.vdish'), featEl=vcard.querySelector('.vfeat');
+  const hasFeat=!!v.feat;
+  if(hasFeat){
+    dish.style.display=''; featEl.style.display='';
+    dish.src=v.feat.img;
     vcard.querySelector('.vfname').textContent=v.feat.name;
     vcard.querySelector('.vfprice').textContent=v.feat.price;
     vcard.querySelector('.vfdesc').textContent=v.feat.desc;
-  }else right.style.display='none';
-  // tam menü panelini hazırla
+  }else{ dish.style.display='none'; featEl.style.display='none'; }
+
+  /* Sprint 8.5: tam menü (obje) -> sağ kolonda section/item listesi */
+  const mObj=(v.menu && !Array.isArray(v.menu))?v.menu:null;
+  const mwrap=document.getElementById('vmenuinline');
+  if(mObj){
+    let html='';
+    if(v.features&&v.features.length)
+      html+='<div class="vchips">'+v.features.map(f=>'<span>'+f+'</span>').join('')+'</div>';
+    if(v.featuredProduct) html+='<div class="vmetal"><b>Öne çıkan:</b> '+v.featuredProduct+'</div>';
+    if(v.campaign) html+='<div class="vmetal"><b>Kampanya:</b> '+v.campaign+'</div>';
+    if(mObj.topItems&&mObj.topItems.length)
+      html+='<div class="vmsec">MENÜDEN ÖNE ÇIKANLAR</div><div class="vchips">'+
+        mObj.topItems.slice(0,6).map(t=>'<span>'+t+'</span>').join('')+'</div>';
+    html+='<button class="vmgor" id="vmenu2" type="button">Menüyü Gör</button>';
+    (mObj.sections||[]).forEach(sec=>{
+      html+='<div class="vmsec">'+sec.title+'</div>';
+      (sec.items||[]).forEach(it=>{
+        html+='<div class="vmitem"><b>'+it.name+'</b>'+(it.description?'<span>'+it.description+'</span>':'')+'</div>';
+      });
+    });
+    mwrap.innerHTML=html; mwrap.style.display='block';
+    right.classList.add('menumode'); right.style.display='';
+  }else{
+    mwrap.innerHTML=''; mwrap.style.display='none';
+    right.classList.remove('menumode');
+    right.style.display=hasFeat?'':'none';
+  }
+
+  // tam menü panelini hazırla (section'lı veya düz kategori listesi)
   const mp=document.getElementById('menup');
   mp.querySelector('h3').textContent=v.name+' — Menü';
   const ul=mp.querySelector('ul');
   ul.innerHTML='';
-  (v.menu||[]).forEach(c=>{const li=document.createElement('li');li.textContent=c;ul.appendChild(li);});
+  if(mObj&&mObj.sections&&mObj.sections.length){
+    mObj.sections.forEach(sec=>{
+      const lh=document.createElement('li'); lh.className='msec'; lh.textContent=sec.title; ul.appendChild(lh);
+      (sec.items||[]).forEach(it=>{
+        const li=document.createElement('li'); li.className='mitem';
+        const b=document.createElement('b'); b.textContent=it.name; li.appendChild(b);
+        if(it.description){ const sp=document.createElement('span'); sp.textContent=' — '+it.description; li.appendChild(sp); }
+        ul.appendChild(li);
+      });
+    });
+  }else{
+    const cats=Array.isArray(v.menu)?v.menu:((mObj&&mObj.categories)||[]);
+    cats.forEach(c=>{const li=document.createElement('li');li.textContent=c;ul.appendChild(li);});
+  }
 }
 document.getElementById('vmenu').addEventListener('click',()=>document.getElementById('menup').classList.add('open'));
+document.addEventListener('click',e=>{ if(e.target&&e.target.id==='vmenu2') document.getElementById('menup').classList.add('open'); });
 document.getElementById('vroute').addEventListener('click',()=>{
   const v=window.__ALGE_FLY_ACTIVE || VENUES[activeVenue];
   const dest=encodeURIComponent(v.maps || (v.name+' Sahil Yaşam Merkezi Antalya'));

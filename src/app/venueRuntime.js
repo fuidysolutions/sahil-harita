@@ -13,7 +13,7 @@ let activeVenue = null;
 /* ---- stiller (yalnız aktif mekan marker'ı) ---- */
 const style = document.createElement("style");
 style.textContent = `
-.alge-venue-marker{position:fixed;z-index:45;transform:translate(-50%,-50%);pointer-events:none;
+.alge-venue-marker{position:fixed;z-index:29;transform:translate(-50%,-50%);pointer-events:none;
   display:none;flex-direction:column;align-items:center;}
 .alge-venue-marker__dot{width:14px;height:14px;border-radius:999px;background:#35e0f2;
   border:2px solid #fff;box-shadow:0 0 0 8px rgba(53,224,242,.20);}
@@ -76,7 +76,12 @@ function focusVenueById(venueId, options = {}) {
     u, v,
     desc: venue.card.detail,
     maps: venue.directions?.query,
-    menu: venue.menu?.categories || []
+    // TAM menü yapısı (Sprint 8.5): detay ekranı section/item'ları gösterir
+    menu: venue.menu || { categories: [], topItems: [], sections: [] },
+    featuredProduct: venue.card?.featuredProduct,
+    campaign: venue.card?.campaign,
+    features: venue.card?.features || [],
+    priceLevel: venue.priceLevel
   }) || false;
 
   if (!flew && window.__ALGE3D?.setMobileTourNearX) {

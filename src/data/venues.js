@@ -47,42 +47,223 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "mado-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "mado-sec-1",
+          "title": "Dondurma",
           "items": [
             {
-              "id": "mado-item-1",
-              "name": "kesme dondurma",
-              "keywords": [
+              "id": "mado-sec-1-item-1",
+              "name": "Kesme Dondurma",
+              "description": "Keçi sütlü Maraş usulü.",
+              "tags": [
                 "dondurma"
               ]
             },
             {
-              "id": "mado-item-2",
-              "name": "künefe",
-              "keywords": [
-                "künefe"
+              "id": "mado-sec-1-item-2",
+              "name": "Külahta İki Top",
+              "description": "Günün çeşitleri.",
+              "tags": [
+                "dondurma"
               ]
             },
             {
-              "id": "mado-item-3",
-              "name": "serpme kahvaltı",
-              "keywords": [
-                "kahvaltı"
+              "id": "mado-sec-1-item-3",
+              "name": "Çikolatalı Dondurma",
+              "description": "Belçika çikolatalı.",
+              "tags": [
+                "dondurma"
               ]
             },
             {
-              "id": "mado-item-4",
-              "name": "baklava",
-              "keywords": [
-                "baklava"
+              "id": "mado-sec-1-item-4",
+              "name": "Meyveli Sorbe",
+              "description": "Süt içermez.",
+              "tags": [
+                "dondurma"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mado-sec-2",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "mado-sec-2-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
               ]
             },
             {
-              "id": "mado-item-5",
-              "name": "Türk kahvesi",
-              "keywords": [
-                "türk kahvesi"
+              "id": "mado-sec-2-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "mado-sec-2-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "mado-sec-2-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "mado-sec-2-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mado-sec-3",
+          "title": "Kahvaltı",
+          "items": [
+            {
+              "id": "mado-sec-3-item-1",
+              "name": "Serpme Kahvaltı",
+              "description": "Zengin köy kahvaltısı, sınırsız çay.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "mado-sec-3-item-2",
+              "name": "Menemen",
+              "description": "Bol domatesli.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "mado-sec-3-item-3",
+              "name": "Avokado Tost",
+              "description": "Ekşi maya üstü avokado.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "mado-sec-3-item-4",
+              "name": "Omlet Çeşitleri",
+              "description": "Sade, kaşarlı, mantarlı.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "mado-sec-3-item-5",
+              "name": "Simit Tabağı",
+              "description": "Simit, beyaz peynir, domates.",
+              "tags": [
+                "kahvalti"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mado-sec-4",
+          "title": "Ana Yemek",
+          "items": [
+            {
+              "id": "mado-sec-4-item-1",
+              "name": "Izgara Köfte",
+              "description": "El yapımı.",
+              "tags": [
+                "ana yemek"
+              ]
+            },
+            {
+              "id": "mado-sec-4-item-2",
+              "name": "Antrikot",
+              "description": "Tereyağlı.",
+              "tags": [
+                "ana yemek"
+              ]
+            },
+            {
+              "id": "mado-sec-4-item-3",
+              "name": "Tavuk Şiş",
+              "description": "Marine edilmiş.",
+              "tags": [
+                "ana yemek"
+              ]
+            },
+            {
+              "id": "mado-sec-4-item-4",
+              "name": "Günün Yemeği",
+              "description": "Şefin önerisi.",
+              "tags": [
+                "ana yemek"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mado-sec-5",
+          "title": "Kahveler",
+          "items": [
+            {
+              "id": "mado-sec-5-item-1",
+              "name": "Türk Kahvesi",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "mado-sec-5-item-2",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "mado-sec-5-item-3",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "mado-sec-5-item-4",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "mado-sec-5-item-5",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "mado-sec-5-item-6",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "kahveler"
               ]
             }
           ]
@@ -166,39 +347,178 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "irish-pub-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "irish-pub-sec-1",
+          "title": "Biralar",
           "items": [
             {
-              "id": "irish-pub-item-1",
-              "name": "fıçı bira",
-              "keywords": [
-                "bira"
+              "id": "irish-pub-sec-1-item-1",
+              "name": "Fıçı Bira",
+              "description": "Soğuk, taze fıçı.",
+              "tags": [
+                "biralar"
               ]
             },
             {
-              "id": "irish-pub-item-2",
-              "name": "fish & chips",
-              "keywords": [
-                "fish and chips"
+              "id": "irish-pub-sec-1-item-2",
+              "name": "Yerli Şişe Bira",
+              "description": "Klasik seçki.",
+              "tags": [
+                "biralar"
               ]
             },
             {
-              "id": "irish-pub-item-3",
-              "name": "kokteyl",
-              "keywords": [
-                "kokteyl"
+              "id": "irish-pub-sec-1-item-3",
+              "name": "İthal Bira",
+              "description": "Dönemsel ithal etiketler.",
+              "tags": [
+                "biralar"
               ]
             },
             {
-              "id": "irish-pub-item-4",
-              "name": "burger",
-              "keywords": []
+              "id": "irish-pub-sec-1-item-4",
+              "name": "Alkolsüz Bira",
+              "description": "Alkolsüz alternatif.",
+              "tags": [
+                "biralar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "irish-pub-sec-2",
+          "title": "Kokteyller",
+          "items": [
+            {
+              "id": "irish-pub-sec-2-item-1",
+              "name": "Kokteyl",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kokteyller"
+              ]
             },
             {
-              "id": "irish-pub-item-5",
-              "name": "çıtır tavuk",
-              "keywords": []
+              "id": "irish-pub-sec-2-item-2",
+              "name": "Mojito",
+              "description": "Nane ve lime ile.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "irish-pub-sec-2-item-3",
+              "name": "Aperol Spritz",
+              "description": "Gün batımı klasiği.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "irish-pub-sec-2-item-4",
+              "name": "Gin Tonic",
+              "description": "Aromatik bitkilerle.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "irish-pub-sec-2-item-5",
+              "name": "Margarita",
+              "description": "Tuz kenarlı klasik.",
+              "tags": [
+                "kokteyller"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "irish-pub-sec-3",
+          "title": "Pub Atıştırmalıkları",
+          "items": [
+            {
+              "id": "irish-pub-sec-3-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "pub atistirmaliklari"
+              ]
+            },
+            {
+              "id": "irish-pub-sec-3-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "pub atistirmaliklari"
+              ]
+            },
+            {
+              "id": "irish-pub-sec-3-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "pub atistirmaliklari"
+              ]
+            },
+            {
+              "id": "irish-pub-sec-3-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "pub atistirmaliklari"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "irish-pub-sec-4",
+          "title": "Burgerler",
+          "items": [
+            {
+              "id": "irish-pub-sec-4-item-1",
+              "name": "Burger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "irish-pub-sec-4-item-2",
+              "name": "Cheeseburger",
+              "description": "Cheddar'lı klasik.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "irish-pub-sec-4-item-3",
+              "name": "Double Burger",
+              "description": "Çift köfte, yoğun lezzet.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "irish-pub-sec-4-item-4",
+              "name": "Tavuk Burger",
+              "description": "Çıtır tavuklu.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "irish-pub-sec-4-item-5",
+              "name": "House Burger",
+              "description": "Mekanın imza burgeri.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "irish-pub-sec-4-item-6",
+              "name": "Mini Burger Tabağı",
+              "description": "Üçlü tadım seti.",
+              "tags": [
+                "burgerler"
+              ]
             }
           ]
         }
@@ -279,40 +599,194 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "the-beaver-cafe-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "the-beaver-cafe-sec-1",
+          "title": "Espresso Bazlı Kahveler",
           "items": [
             {
-              "id": "the-beaver-cafe-item-1",
-              "name": "flat white",
-              "keywords": []
+              "id": "the-beaver-cafe-sec-1-item-1",
+              "name": "Filtre Kahve",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "espresso bazli kahveler"
+              ]
             },
             {
-              "id": "the-beaver-cafe-item-2",
-              "name": "filtre kahve",
-              "keywords": [
-                "kahve",
+              "id": "the-beaver-cafe-sec-1-item-2",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "espresso bazli kahveler"
+              ]
+            },
+            {
+              "id": "the-beaver-cafe-sec-1-item-3",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "espresso bazli kahveler"
+              ]
+            },
+            {
+              "id": "the-beaver-cafe-sec-1-item-4",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "espresso bazli kahveler"
+              ]
+            },
+            {
+              "id": "the-beaver-cafe-sec-1-item-5",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "espresso bazli kahveler"
+              ]
+            },
+            {
+              "id": "the-beaver-cafe-sec-1-item-6",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "espresso bazli kahveler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the-beaver-cafe-sec-2",
+          "title": "Filtre Kahve",
+          "items": [
+            {
+              "id": "the-beaver-cafe-sec-2-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
                 "filtre kahve"
               ]
             },
             {
-              "id": "the-beaver-cafe-item-3",
-              "name": "latte",
-              "keywords": [
-                "latte"
+              "id": "the-beaver-cafe-sec-2-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "filtre kahve"
               ]
             },
             {
-              "id": "the-beaver-cafe-item-4",
-              "name": "cheesecake",
-              "keywords": [
-                "cheesecake"
+              "id": "the-beaver-cafe-sec-2-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "filtre kahve"
               ]
             },
             {
-              "id": "the-beaver-cafe-item-5",
-              "name": "limonata",
-              "keywords": []
+              "id": "the-beaver-cafe-sec-2-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "the-beaver-cafe-sec-2-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "filtre kahve"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the-beaver-cafe-sec-3",
+          "title": "Soğuk İçecekler",
+          "items": [
+            {
+              "id": "the-beaver-cafe-sec-3-item-1",
+              "name": "Iced Latte",
+              "description": "Buz üstüne süt ve espresso.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "the-beaver-cafe-sec-3-item-2",
+              "name": "Iced Americano",
+              "description": "Buzlu sade kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "the-beaver-cafe-sec-3-item-3",
+              "name": "Cold Brew",
+              "description": "12 saat soğuk demleme.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "the-beaver-cafe-sec-3-item-4",
+              "name": "Frozen",
+              "description": "Meyveli buz karışımı.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "the-beaver-cafe-sec-3-item-5",
+              "name": "Iced Mocha",
+              "description": "Çikolatalı soğuk kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the-beaver-cafe-sec-4",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "the-beaver-cafe-sec-4-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "the-beaver-cafe-sec-4-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "the-beaver-cafe-sec-4-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "the-beaver-cafe-sec-4-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "the-beaver-cafe-sec-4-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
             }
           ]
         }
@@ -393,39 +867,168 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "big-bubble-tea-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "big-bubble-tea-sec-1",
+          "title": "Sütlü Bubble Tea",
           "items": [
             {
-              "id": "big-bubble-tea-item-1",
-              "name": "taro bubble tea",
-              "keywords": [
-                "bubble tea"
+              "id": "big-bubble-tea-sec-1-item-1",
+              "name": "Taro Bubble Tea",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "sutlu bubble tea"
               ]
             },
             {
-              "id": "big-bubble-tea-item-2",
-              "name": "mango çayı",
-              "keywords": [
-                "çay"
+              "id": "big-bubble-tea-sec-1-item-2",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "sutlu bubble tea"
               ]
             },
             {
-              "id": "big-bubble-tea-item-3",
-              "name": "çilekli smoothie",
-              "keywords": [
+              "id": "big-bubble-tea-sec-1-item-3",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "sutlu bubble tea"
+              ]
+            },
+            {
+              "id": "big-bubble-tea-sec-1-item-4",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "sutlu bubble tea"
+              ]
+            },
+            {
+              "id": "big-bubble-tea-sec-1-item-5",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "sutlu bubble tea"
+              ]
+            },
+            {
+              "id": "big-bubble-tea-sec-1-item-6",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "sutlu bubble tea"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "big-bubble-tea-sec-2",
+          "title": "Meyveli Çaylar",
+          "items": [
+            {
+              "id": "big-bubble-tea-sec-2-item-1",
+              "name": "Çay",
+              "description": "Demleme.",
+              "tags": [
+                "meyveli caylar"
+              ]
+            },
+            {
+              "id": "big-bubble-tea-sec-2-item-2",
+              "name": "Bitki Çayı",
+              "description": "Ihlamur, adaçayı, kuşburnu.",
+              "tags": [
+                "meyveli caylar"
+              ]
+            },
+            {
+              "id": "big-bubble-tea-sec-2-item-3",
+              "name": "Türk Kahvesi",
+              "description": "Közde.",
+              "tags": [
+                "meyveli caylar"
+              ]
+            },
+            {
+              "id": "big-bubble-tea-sec-2-item-4",
+              "name": "Sahlep",
+              "description": "Tarçınlı.",
+              "tags": [
+                "meyveli caylar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "big-bubble-tea-sec-3",
+          "title": "Smoothie",
+          "items": [
+            {
+              "id": "big-bubble-tea-sec-3-item-1",
+              "name": "Mango Çayı",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
                 "smoothie"
               ]
             },
             {
-              "id": "big-bubble-tea-item-4",
-              "name": "matcha latte",
-              "keywords": []
+              "id": "big-bubble-tea-sec-3-item-2",
+              "name": "Çilekli Smoothie",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "smoothie"
+              ]
             },
             {
-              "id": "big-bubble-tea-item-5",
-              "name": "milkshake",
-              "keywords": [
+              "id": "big-bubble-tea-sec-3-item-3",
+              "name": "Matcha Latte",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "smoothie"
+              ]
+            },
+            {
+              "id": "big-bubble-tea-sec-3-item-4",
+              "name": "Milkshake",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "smoothie"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "big-bubble-tea-sec-4",
+          "title": "Milkshake",
+          "items": [
+            {
+              "id": "big-bubble-tea-sec-4-item-1",
+              "name": "Günün Önerisi",
+              "description": "Sorunuz.",
+              "tags": [
+                "milkshake"
+              ]
+            },
+            {
+              "id": "big-bubble-tea-sec-4-item-2",
+              "name": "Mevsim Seçkisi",
+              "description": "Dönemsel.",
+              "tags": [
+                "milkshake"
+              ]
+            },
+            {
+              "id": "big-bubble-tea-sec-4-item-3",
+              "name": "Paylaşımlık Tabak",
+              "description": "2-3 kişilik.",
+              "tags": [
+                "milkshake"
+              ]
+            },
+            {
+              "id": "big-bubble-tea-sec-4-item-4",
+              "name": "Ev Yapımı Limonata",
+              "description": "Naneli.",
+              "tags": [
                 "milkshake"
               ]
             }
@@ -506,39 +1109,140 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "magnolia-shop-coffee-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "magnolia-shop-coffee-sec-1",
+          "title": "Kahveler",
           "items": [
             {
-              "id": "magnolia-shop-coffee-item-1",
-              "name": "latte",
-              "keywords": [
-                "latte"
+              "id": "magnolia-shop-coffee-sec-1-item-1",
+              "name": "Filtre Kahve",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kahveler"
               ]
             },
             {
-              "id": "magnolia-shop-coffee-item-2",
-              "name": "iced americano",
-              "keywords": [
-                "iced kahve"
+              "id": "magnolia-shop-coffee-sec-1-item-2",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "kahveler"
               ]
             },
             {
-              "id": "magnolia-shop-coffee-item-3",
-              "name": "filtre kahve",
-              "keywords": [
-                "kahve"
+              "id": "magnolia-shop-coffee-sec-1-item-3",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "kahveler"
               ]
             },
             {
-              "id": "magnolia-shop-coffee-item-4",
-              "name": "kurabiye",
-              "keywords": []
+              "id": "magnolia-shop-coffee-sec-1-item-4",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "kahveler"
+              ]
             },
             {
-              "id": "magnolia-shop-coffee-item-5",
-              "name": "brownie",
-              "keywords": []
+              "id": "magnolia-shop-coffee-sec-1-item-5",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "magnolia-shop-coffee-sec-1-item-6",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "kahveler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "magnolia-shop-coffee-sec-2",
+          "title": "Soğuk İçecekler",
+          "items": [
+            {
+              "id": "magnolia-shop-coffee-sec-2-item-1",
+              "name": "Iced Latte",
+              "description": "Buz üstüne süt ve espresso.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "magnolia-shop-coffee-sec-2-item-2",
+              "name": "Iced Americano",
+              "description": "Buzlu sade kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "magnolia-shop-coffee-sec-2-item-3",
+              "name": "Cold Brew",
+              "description": "12 saat soğuk demleme.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "magnolia-shop-coffee-sec-2-item-4",
+              "name": "Frozen",
+              "description": "Meyveli buz karışımı.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "magnolia-shop-coffee-sec-2-item-5",
+              "name": "Iced Mocha",
+              "description": "Çikolatalı soğuk kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "magnolia-shop-coffee-sec-3",
+          "title": "Atıştırmalık",
+          "items": [
+            {
+              "id": "magnolia-shop-coffee-sec-3-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "atistirmalik"
+              ]
+            },
+            {
+              "id": "magnolia-shop-coffee-sec-3-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "atistirmalik"
+              ]
+            },
+            {
+              "id": "magnolia-shop-coffee-sec-3-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "atistirmalik"
+              ]
+            },
+            {
+              "id": "magnolia-shop-coffee-sec-3-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "atistirmalik"
+              ]
             }
           ]
         }
@@ -618,36 +1322,169 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "danilos-pizza-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "danilos-pizza-sec-1",
+          "title": "Pizzalar",
           "items": [
             {
-              "id": "danilos-pizza-item-1",
-              "name": "margherita",
-              "keywords": []
-            },
-            {
-              "id": "danilos-pizza-item-2",
-              "name": "quattro formaggi",
-              "keywords": []
-            },
-            {
-              "id": "danilos-pizza-item-3",
-              "name": "penne arrabiata",
-              "keywords": []
-            },
-            {
-              "id": "danilos-pizza-item-4",
-              "name": "sezar salata",
-              "keywords": [
-                "salata"
+              "id": "danilos-pizza-sec-1-item-1",
+              "name": "Margherita",
+              "description": "Domates, mozzarella, fesleğen.",
+              "tags": [
+                "pizzalar"
               ]
             },
             {
-              "id": "danilos-pizza-item-5",
-              "name": "tiramisu",
-              "keywords": [
-                "tiramisu"
+              "id": "danilos-pizza-sec-1-item-2",
+              "name": "Quattro Formaggi",
+              "description": "Dört peynirli.",
+              "tags": [
+                "pizzalar"
+              ]
+            },
+            {
+              "id": "danilos-pizza-sec-1-item-3",
+              "name": "Sucuklu Pizza",
+              "description": "Yerli dokunuş.",
+              "tags": [
+                "pizzalar"
+              ]
+            },
+            {
+              "id": "danilos-pizza-sec-1-item-4",
+              "name": "Vejetaryen Pizza",
+              "description": "Mevsim sebzeli.",
+              "tags": [
+                "pizzalar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "danilos-pizza-sec-2",
+          "title": "Makarnalar",
+          "items": [
+            {
+              "id": "danilos-pizza-sec-2-item-1",
+              "name": "Penne Arrabiata",
+              "description": "Acılı domates soslu.",
+              "tags": [
+                "makarnalar"
+              ]
+            },
+            {
+              "id": "danilos-pizza-sec-2-item-2",
+              "name": "Fettuccine Alfredo",
+              "description": "Kremalı.",
+              "tags": [
+                "makarnalar"
+              ]
+            },
+            {
+              "id": "danilos-pizza-sec-2-item-3",
+              "name": "Bolonez",
+              "description": "Kıymalı klasik.",
+              "tags": [
+                "makarnalar"
+              ]
+            },
+            {
+              "id": "danilos-pizza-sec-2-item-4",
+              "name": "Pesto Makarna",
+              "description": "Fesleğen soslu.",
+              "tags": [
+                "makarnalar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "danilos-pizza-sec-3",
+          "title": "Salatalar",
+          "items": [
+            {
+              "id": "danilos-pizza-sec-3-item-1",
+              "name": "Sezar Salata",
+              "description": "Izgara tavuklu.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "danilos-pizza-sec-3-item-2",
+              "name": "Tavuklu Uzun Tabak",
+              "description": "İmza salata.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "danilos-pizza-sec-3-item-3",
+              "name": "Ton Balıklı Salata",
+              "description": "Protein deposu.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "danilos-pizza-sec-3-item-4",
+              "name": "Protein Bowl",
+              "description": "Kinoa ve tavukla.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "danilos-pizza-sec-3-item-5",
+              "name": "Wrap Çeşitleri",
+              "description": "Tavuklu / sebzeli.",
+              "tags": [
+                "salatalar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "danilos-pizza-sec-4",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "danilos-pizza-sec-4-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "danilos-pizza-sec-4-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "danilos-pizza-sec-4-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "danilos-pizza-sec-4-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "danilos-pizza-sec-4-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
               ]
             }
           ]
@@ -728,39 +1565,178 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "dospresso-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "dospresso-sec-1",
+          "title": "Sıcak Kahveler",
           "items": [
             {
-              "id": "dospresso-item-1",
-              "name": "iced latte",
-              "keywords": [
-                "iced latte"
+              "id": "dospresso-sec-1-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "sicak kahveler"
               ]
             },
             {
-              "id": "dospresso-item-2",
-              "name": "caramel macchiato",
-              "keywords": []
+              "id": "dospresso-sec-1-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "sicak kahveler"
+              ]
             },
             {
-              "id": "dospresso-item-3",
-              "name": "frozen",
-              "keywords": [
+              "id": "dospresso-sec-1-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "sicak kahveler"
+              ]
+            },
+            {
+              "id": "dospresso-sec-1-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "sicak kahveler"
+              ]
+            },
+            {
+              "id": "dospresso-sec-1-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "sicak kahveler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dospresso-sec-2",
+          "title": "Soğuk Kahveler",
+          "items": [
+            {
+              "id": "dospresso-sec-2-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            },
+            {
+              "id": "dospresso-sec-2-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            },
+            {
+              "id": "dospresso-sec-2-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            },
+            {
+              "id": "dospresso-sec-2-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            },
+            {
+              "id": "dospresso-sec-2-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dospresso-sec-3",
+          "title": "Frozen",
+          "items": [
+            {
+              "id": "dospresso-sec-3-item-1",
+              "name": "Iced Latte",
+              "description": "Buz üstüne süt ve espresso.",
+              "tags": [
                 "frozen"
               ]
             },
             {
-              "id": "dospresso-item-4",
-              "name": "americano",
-              "keywords": [
-                "americano"
+              "id": "dospresso-sec-3-item-2",
+              "name": "Iced Americano",
+              "description": "Buzlu sade kahve.",
+              "tags": [
+                "frozen"
               ]
             },
             {
-              "id": "dospresso-item-5",
-              "name": "cookie",
-              "keywords": []
+              "id": "dospresso-sec-3-item-3",
+              "name": "Cold Brew",
+              "description": "12 saat soğuk demleme.",
+              "tags": [
+                "frozen"
+              ]
+            },
+            {
+              "id": "dospresso-sec-3-item-4",
+              "name": "Frozen",
+              "description": "Meyveli buz karışımı.",
+              "tags": [
+                "frozen"
+              ]
+            },
+            {
+              "id": "dospresso-sec-3-item-5",
+              "name": "Iced Mocha",
+              "description": "Çikolatalı soğuk kahve.",
+              "tags": [
+                "frozen"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dospresso-sec-4",
+          "title": "Atıştırmalık",
+          "items": [
+            {
+              "id": "dospresso-sec-4-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "atistirmalik"
+              ]
+            },
+            {
+              "id": "dospresso-sec-4-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "atistirmalik"
+              ]
+            },
+            {
+              "id": "dospresso-sec-4-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "atistirmalik"
+              ]
+            },
+            {
+              "id": "dospresso-sec-4-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "atistirmalik"
+              ]
             }
           ]
         }
@@ -840,40 +1816,186 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "roberts-coffee-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "roberts-coffee-sec-1",
+          "title": "Kahveler",
           "items": [
             {
-              "id": "roberts-coffee-item-1",
-              "name": "gelato",
-              "keywords": [
+              "id": "roberts-coffee-sec-1-item-1",
+              "name": "Filtre Kahve",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "roberts-coffee-sec-1-item-2",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "roberts-coffee-sec-1-item-3",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "roberts-coffee-sec-1-item-4",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "roberts-coffee-sec-1-item-5",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "roberts-coffee-sec-1-item-6",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "kahveler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "roberts-coffee-sec-2",
+          "title": "Gelato",
+          "items": [
+            {
+              "id": "roberts-coffee-sec-2-item-1",
+              "name": "Gelato",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
                 "gelato"
               ]
             },
             {
-              "id": "roberts-coffee-item-2",
-              "name": "latte",
-              "keywords": [
-                "latte"
+              "id": "roberts-coffee-sec-2-item-2",
+              "name": "Kesme Dondurma",
+              "description": "Keçi sütlü Maraş usulü.",
+              "tags": [
+                "gelato"
               ]
             },
             {
-              "id": "roberts-coffee-item-3",
-              "name": "filtre kahve",
-              "keywords": [
-                "kahve",
-                "filtre kahve"
+              "id": "roberts-coffee-sec-2-item-3",
+              "name": "Külahta İki Top",
+              "description": "Günün çeşitleri.",
+              "tags": [
+                "gelato"
               ]
             },
             {
-              "id": "roberts-coffee-item-4",
-              "name": "cheesecake",
-              "keywords": []
+              "id": "roberts-coffee-sec-2-item-4",
+              "name": "Çikolatalı Dondurma",
+              "description": "Belçika çikolatalı.",
+              "tags": [
+                "gelato"
+              ]
             },
             {
-              "id": "roberts-coffee-item-5",
-              "name": "panini",
-              "keywords": []
+              "id": "roberts-coffee-sec-2-item-5",
+              "name": "Meyveli Sorbe",
+              "description": "Süt içermez.",
+              "tags": [
+                "gelato"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "roberts-coffee-sec-3",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "roberts-coffee-sec-3-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "roberts-coffee-sec-3-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "roberts-coffee-sec-3-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "roberts-coffee-sec-3-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "roberts-coffee-sec-3-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "roberts-coffee-sec-4",
+          "title": "Sandviçler",
+          "items": [
+            {
+              "id": "roberts-coffee-sec-4-item-1",
+              "name": "Tavuklu Sub",
+              "description": "Taze malzemelerle.",
+              "tags": [
+                "sandvicler"
+              ]
+            },
+            {
+              "id": "roberts-coffee-sec-4-item-2",
+              "name": "Ton Balıklı Sub",
+              "description": "Hafif.",
+              "tags": [
+                "sandvicler"
+              ]
+            },
+            {
+              "id": "roberts-coffee-sec-4-item-3",
+              "name": "Köfteli Sub",
+              "description": "Marinara soslu.",
+              "tags": [
+                "sandvicler"
+              ]
+            },
+            {
+              "id": "roberts-coffee-sec-4-item-4",
+              "name": "Sebzeli Sub",
+              "description": "Vejetaryen.",
+              "tags": [
+                "sandvicler"
+              ]
             }
           ]
         }
@@ -955,36 +2077,177 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "bragi-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "bragi-sec-1",
+          "title": "Burgerler",
           "items": [
             {
-              "id": "bragi-item-1",
-              "name": "bragi burger",
-              "keywords": [
-                "burger"
+              "id": "bragi-sec-1-item-1",
+              "name": "Bragi Burger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "burgerler"
               ]
             },
             {
-              "id": "bragi-item-2",
-              "name": "antrikot",
-              "keywords": []
+              "id": "bragi-sec-1-item-2",
+              "name": "Cheeseburger",
+              "description": "Cheddar'lı klasik.",
+              "tags": [
+                "burgerler"
+              ]
             },
             {
-              "id": "bragi-item-3",
-              "name": "çıtır tavuk",
-              "keywords": []
+              "id": "bragi-sec-1-item-3",
+              "name": "Double Burger",
+              "description": "Çift köfte, yoğun lezzet.",
+              "tags": [
+                "burgerler"
+              ]
             },
             {
-              "id": "bragi-item-4",
-              "name": "patates",
-              "keywords": []
+              "id": "bragi-sec-1-item-4",
+              "name": "Tavuk Burger",
+              "description": "Çıtır tavuklu.",
+              "tags": [
+                "burgerler"
+              ]
             },
             {
-              "id": "bragi-item-5",
-              "name": "kokteyl",
-              "keywords": [
-                "kokteyl"
+              "id": "bragi-sec-1-item-5",
+              "name": "House Burger",
+              "description": "Mekanın imza burgeri.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "bragi-sec-1-item-6",
+              "name": "Mini Burger Tabağı",
+              "description": "Üçlü tadım seti.",
+              "tags": [
+                "burgerler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bragi-sec-2",
+          "title": "Steakler",
+          "items": [
+            {
+              "id": "bragi-sec-2-item-1",
+              "name": "Antrikot",
+              "description": "Dry-aged, ızgara.",
+              "tags": [
+                "steakler"
+              ]
+            },
+            {
+              "id": "bragi-sec-2-item-2",
+              "name": "Bonfile",
+              "description": "Tereyağında.",
+              "tags": [
+                "steakler"
+              ]
+            },
+            {
+              "id": "bragi-sec-2-item-3",
+              "name": "T-Bone",
+              "description": "Paylaşımlık.",
+              "tags": [
+                "steakler"
+              ]
+            },
+            {
+              "id": "bragi-sec-2-item-4",
+              "name": "Kasap Köfte",
+              "description": "Izgara, közlenmiş sebzeyle.",
+              "tags": [
+                "steakler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bragi-sec-3",
+          "title": "Başlangıçlar",
+          "items": [
+            {
+              "id": "bragi-sec-3-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "baslangiclar"
+              ]
+            },
+            {
+              "id": "bragi-sec-3-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "baslangiclar"
+              ]
+            },
+            {
+              "id": "bragi-sec-3-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "baslangiclar"
+              ]
+            },
+            {
+              "id": "bragi-sec-3-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "baslangiclar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bragi-sec-4",
+          "title": "Kokteyller",
+          "items": [
+            {
+              "id": "bragi-sec-4-item-1",
+              "name": "Kokteyl",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "bragi-sec-4-item-2",
+              "name": "Mojito",
+              "description": "Nane ve lime ile.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "bragi-sec-4-item-3",
+              "name": "Aperol Spritz",
+              "description": "Gün batımı klasiği.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "bragi-sec-4-item-4",
+              "name": "Gin Tonic",
+              "description": "Aromatik bitkilerle.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "bragi-sec-4-item-5",
+              "name": "Margarita",
+              "description": "Tuz kenarlı klasik.",
+              "tags": [
+                "kokteyller"
               ]
             }
           ]
@@ -1065,43 +2328,178 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "tezgah-burger-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "tezgah-burger-sec-1",
+          "title": "Burgerler",
           "items": [
             {
-              "id": "tezgah-burger-item-1",
-              "name": "kaburgalı burger",
-              "keywords": [
-                "burger"
+              "id": "tezgah-burger-sec-1-item-1",
+              "name": "Çıtır Tavuk Burger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "burgerler"
               ]
             },
             {
-              "id": "tezgah-burger-item-2",
-              "name": "cheeseburger",
-              "keywords": [
-                "burger",
-                "cheeseburger"
+              "id": "tezgah-burger-sec-1-item-2",
+              "name": "Kaburgalı Burger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "burgerler"
               ]
             },
             {
-              "id": "tezgah-burger-item-3",
-              "name": "çıtır tavuk burger",
-              "keywords": [
-                "burger",
+              "id": "tezgah-burger-sec-1-item-3",
+              "name": "Cheeseburger",
+              "description": "Cheddar'lı klasik.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "tezgah-burger-sec-1-item-4",
+              "name": "Double Burger",
+              "description": "Çift köfte, yoğun lezzet.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "tezgah-burger-sec-1-item-5",
+              "name": "Tavuk Burger",
+              "description": "Çıtır tavuklu.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "tezgah-burger-sec-1-item-6",
+              "name": "House Burger",
+              "description": "Mekanın imza burgeri.",
+              "tags": [
+                "burgerler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tezgah-burger-sec-2",
+          "title": "Tavuk Burger",
+          "items": [
+            {
+              "id": "tezgah-burger-sec-2-item-1",
+              "name": "Cheeseburger",
+              "description": "Cheddar'lı klasik.",
+              "tags": [
                 "tavuk burger"
               ]
             },
             {
-              "id": "tezgah-burger-item-4",
-              "name": "churros patates",
-              "keywords": [
-                "patates"
+              "id": "tezgah-burger-sec-2-item-2",
+              "name": "Double Burger",
+              "description": "Çift köfte, yoğun lezzet.",
+              "tags": [
+                "tavuk burger"
               ]
             },
             {
-              "id": "tezgah-burger-item-5",
-              "name": "milkshake",
-              "keywords": []
+              "id": "tezgah-burger-sec-2-item-3",
+              "name": "Tavuk Burger",
+              "description": "Çıtır tavuklu.",
+              "tags": [
+                "tavuk burger"
+              ]
+            },
+            {
+              "id": "tezgah-burger-sec-2-item-4",
+              "name": "House Burger",
+              "description": "Mekanın imza burgeri.",
+              "tags": [
+                "tavuk burger"
+              ]
+            },
+            {
+              "id": "tezgah-burger-sec-2-item-5",
+              "name": "Mini Burger Tabağı",
+              "description": "Üçlü tadım seti.",
+              "tags": [
+                "tavuk burger"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tezgah-burger-sec-3",
+          "title": "Yan Ürünler",
+          "items": [
+            {
+              "id": "tezgah-burger-sec-3-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "tezgah-burger-sec-3-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "tezgah-burger-sec-3-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "tezgah-burger-sec-3-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "yan urunler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tezgah-burger-sec-4",
+          "title": "İçecekler",
+          "items": [
+            {
+              "id": "tezgah-burger-sec-4-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "tezgah-burger-sec-4-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "tezgah-burger-sec-4-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "tezgah-burger-sec-4-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
+              ]
             }
           ]
         }
@@ -1181,40 +2579,194 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "colombia-coffee-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "colombia-coffee-sec-1",
+          "title": "Filtre Kahveler",
           "items": [
             {
-              "id": "colombia-coffee-item-1",
-              "name": "filtre kahve",
-              "keywords": [
-                "kahve",
-                "filtre kahve"
+              "id": "colombia-coffee-sec-1-item-1",
+              "name": "Filtre Kahve",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "filtre kahveler"
               ]
             },
             {
-              "id": "colombia-coffee-item-2",
-              "name": "latte",
-              "keywords": [
-                "latte"
+              "id": "colombia-coffee-sec-1-item-2",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "filtre kahveler"
               ]
             },
             {
-              "id": "colombia-coffee-item-3",
-              "name": "iced americano",
-              "keywords": [
-                "iced kahve"
+              "id": "colombia-coffee-sec-1-item-3",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "filtre kahveler"
               ]
             },
             {
-              "id": "colombia-coffee-item-4",
-              "name": "brownie",
-              "keywords": []
+              "id": "colombia-coffee-sec-1-item-4",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "filtre kahveler"
+              ]
             },
             {
-              "id": "colombia-coffee-item-5",
-              "name": "cheesecake",
-              "keywords": []
+              "id": "colombia-coffee-sec-1-item-5",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "filtre kahveler"
+              ]
+            },
+            {
+              "id": "colombia-coffee-sec-1-item-6",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "filtre kahveler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "colombia-coffee-sec-2",
+          "title": "Espresso Bazlı",
+          "items": [
+            {
+              "id": "colombia-coffee-sec-2-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "colombia-coffee-sec-2-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "colombia-coffee-sec-2-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "colombia-coffee-sec-2-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "colombia-coffee-sec-2-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "espresso bazli"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "colombia-coffee-sec-3",
+          "title": "Soğuk İçecekler",
+          "items": [
+            {
+              "id": "colombia-coffee-sec-3-item-1",
+              "name": "Iced Latte",
+              "description": "Buz üstüne süt ve espresso.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "colombia-coffee-sec-3-item-2",
+              "name": "Iced Americano",
+              "description": "Buzlu sade kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "colombia-coffee-sec-3-item-3",
+              "name": "Cold Brew",
+              "description": "12 saat soğuk demleme.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "colombia-coffee-sec-3-item-4",
+              "name": "Frozen",
+              "description": "Meyveli buz karışımı.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "colombia-coffee-sec-3-item-5",
+              "name": "Iced Mocha",
+              "description": "Çikolatalı soğuk kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "colombia-coffee-sec-4",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "colombia-coffee-sec-4-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "colombia-coffee-sec-4-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "colombia-coffee-sec-4-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "colombia-coffee-sec-4-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "colombia-coffee-sec-4-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
             }
           ]
         }
@@ -1294,44 +2846,223 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "yemen-kahvesi-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "yemen-kahvesi-sec-1",
+          "title": "Türk Kahveleri",
           "items": [
             {
-              "id": "yemen-kahvesi-item-1",
-              "name": "közde Türk kahvesi",
-              "keywords": [
-                "türk kahvesi",
-                "kahve"
+              "id": "yemen-kahvesi-sec-1-item-1",
+              "name": "Damla Sakızlı Kahve",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "turk kahveleri"
               ]
             },
             {
-              "id": "yemen-kahvesi-item-2",
-              "name": "dibek kahvesi",
-              "keywords": [
-                "kahve",
-                "dibek"
+              "id": "yemen-kahvesi-sec-1-item-2",
+              "name": "Dibek Kahvesi",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "turk kahveleri"
               ]
             },
             {
-              "id": "yemen-kahvesi-item-3",
-              "name": "damla sakızlı kahve",
-              "keywords": [
-                "kahve"
+              "id": "yemen-kahvesi-sec-1-item-3",
+              "name": "Közde Türk Kahvesi",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "turk kahveleri"
               ]
             },
             {
-              "id": "yemen-kahvesi-item-4",
-              "name": "waffle",
-              "keywords": [
+              "id": "yemen-kahvesi-sec-1-item-4",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "turk kahveleri"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-1-item-5",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "turk kahveleri"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-1-item-6",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "turk kahveleri"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "yemen-kahvesi-sec-2",
+          "title": "Dünya Kahveleri",
+          "items": [
+            {
+              "id": "yemen-kahvesi-sec-2-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "dunya kahveleri"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-2-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "dunya kahveleri"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-2-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "dunya kahveleri"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-2-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "dunya kahveleri"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-2-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "dunya kahveleri"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "yemen-kahvesi-sec-3",
+          "title": "Waffle",
+          "items": [
+            {
+              "id": "yemen-kahvesi-sec-3-item-1",
+              "name": "Waffle",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
                 "waffle"
               ]
             },
             {
-              "id": "yemen-kahvesi-item-5",
-              "name": "nargile",
-              "keywords": [
+              "id": "yemen-kahvesi-sec-3-item-2",
+              "name": "Nargile",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "waffle"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-3-item-3",
+              "name": "Günün Önerisi",
+              "description": "Sorunuz.",
+              "tags": [
+                "waffle"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-3-item-4",
+              "name": "Mevsim Seçkisi",
+              "description": "Dönemsel.",
+              "tags": [
+                "waffle"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "yemen-kahvesi-sec-4",
+          "title": "Nargile",
+          "items": [
+            {
+              "id": "yemen-kahvesi-sec-4-item-1",
+              "name": "Meyveli Nargile",
+              "description": "Günün harmanı.",
+              "tags": [
                 "nargile"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-4-item-2",
+              "name": "Nane Nargile",
+              "description": "Ferahlatıcı.",
+              "tags": [
+                "nargile"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-4-item-3",
+              "name": "Çift Elma",
+              "description": "Klasik.",
+              "tags": [
+                "nargile"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-4-item-4",
+              "name": "Kavun Nargile",
+              "description": "Yazlık seçim.",
+              "tags": [
+                "nargile"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "yemen-kahvesi-sec-5",
+          "title": "Soğuk İçecekler",
+          "items": [
+            {
+              "id": "yemen-kahvesi-sec-5-item-1",
+              "name": "Iced Latte",
+              "description": "Buz üstüne süt ve espresso.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-5-item-2",
+              "name": "Iced Americano",
+              "description": "Buzlu sade kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-5-item-3",
+              "name": "Cold Brew",
+              "description": "12 saat soğuk demleme.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-5-item-4",
+              "name": "Frozen",
+              "description": "Meyveli buz karışımı.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "yemen-kahvesi-sec-5-item-5",
+              "name": "Iced Mocha",
+              "description": "Çikolatalı soğuk kahve.",
+              "tags": [
+                "soguk icecekler"
               ]
             }
           ]
@@ -1413,37 +3144,162 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "bahane-lounge-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "bahane-lounge-sec-1",
+          "title": "Nargile",
           "items": [
             {
-              "id": "bahane-lounge-item-1",
-              "name": "meyveli nargile",
-              "keywords": [
+              "id": "bahane-lounge-sec-1-item-1",
+              "name": "Meyveli Nargile",
+              "description": "Günün harmanı.",
+              "tags": [
                 "nargile"
               ]
             },
             {
-              "id": "bahane-lounge-item-2",
-              "name": "çay",
-              "keywords": [
-                "çay"
+              "id": "bahane-lounge-sec-1-item-2",
+              "name": "Nane Nargile",
+              "description": "Ferahlatıcı.",
+              "tags": [
+                "nargile"
               ]
             },
             {
-              "id": "bahane-lounge-item-3",
-              "name": "türk kahvesi",
-              "keywords": []
+              "id": "bahane-lounge-sec-1-item-3",
+              "name": "Çift Elma",
+              "description": "Klasik.",
+              "tags": [
+                "nargile"
+              ]
             },
             {
-              "id": "bahane-lounge-item-4",
-              "name": "limonata",
-              "keywords": []
+              "id": "bahane-lounge-sec-1-item-4",
+              "name": "Kavun Nargile",
+              "description": "Yazlık seçim.",
+              "tags": [
+                "nargile"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bahane-lounge-sec-2",
+          "title": "Sıcak İçecekler",
+          "items": [
+            {
+              "id": "bahane-lounge-sec-2-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "sicak icecekler"
+              ]
             },
             {
-              "id": "bahane-lounge-item-5",
-              "name": "çerez tabağı",
-              "keywords": []
+              "id": "bahane-lounge-sec-2-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "sicak icecekler"
+              ]
+            },
+            {
+              "id": "bahane-lounge-sec-2-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "sicak icecekler"
+              ]
+            },
+            {
+              "id": "bahane-lounge-sec-2-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "sicak icecekler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bahane-lounge-sec-3",
+          "title": "Soğuk İçecekler",
+          "items": [
+            {
+              "id": "bahane-lounge-sec-3-item-1",
+              "name": "Iced Latte",
+              "description": "Buz üstüne süt ve espresso.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "bahane-lounge-sec-3-item-2",
+              "name": "Iced Americano",
+              "description": "Buzlu sade kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "bahane-lounge-sec-3-item-3",
+              "name": "Cold Brew",
+              "description": "12 saat soğuk demleme.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "bahane-lounge-sec-3-item-4",
+              "name": "Frozen",
+              "description": "Meyveli buz karışımı.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "bahane-lounge-sec-3-item-5",
+              "name": "Iced Mocha",
+              "description": "Çikolatalı soğuk kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bahane-lounge-sec-4",
+          "title": "Atıştırmalık",
+          "items": [
+            {
+              "id": "bahane-lounge-sec-4-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "atistirmalik"
+              ]
+            },
+            {
+              "id": "bahane-lounge-sec-4-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "atistirmalik"
+              ]
+            },
+            {
+              "id": "bahane-lounge-sec-4-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "atistirmalik"
+              ]
+            },
+            {
+              "id": "bahane-lounge-sec-4-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "atistirmalik"
+              ]
             }
           ]
         }
@@ -1522,42 +3378,194 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "espressolab-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "espressolab-sec-1",
+          "title": "Espresso Bazlı",
           "items": [
             {
-              "id": "espressolab-item-1",
-              "name": "filtre kahve",
-              "keywords": [
-                "kahve",
+              "id": "espressolab-sec-1-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "espressolab-sec-1-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "espressolab-sec-1-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "espressolab-sec-1-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "espressolab-sec-1-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "espresso bazli"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "espressolab-sec-2",
+          "title": "Filtre Kahve",
+          "items": [
+            {
+              "id": "espressolab-sec-2-item-1",
+              "name": "Filtre Kahve",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
                 "filtre kahve"
               ]
             },
             {
-              "id": "espressolab-item-2",
-              "name": "latte",
-              "keywords": [
-                "latte"
+              "id": "espressolab-sec-2-item-2",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "filtre kahve"
               ]
             },
             {
-              "id": "espressolab-item-3",
-              "name": "iced americano",
-              "keywords": [
-                "iced americano"
+              "id": "espressolab-sec-2-item-3",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "filtre kahve"
               ]
             },
             {
-              "id": "espressolab-item-4",
-              "name": "izmir bombası",
-              "keywords": [
-                "izmir bombası"
+              "id": "espressolab-sec-2-item-4",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "filtre kahve"
               ]
             },
             {
-              "id": "espressolab-item-5",
-              "name": "cookie",
-              "keywords": []
+              "id": "espressolab-sec-2-item-5",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "espressolab-sec-2-item-6",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "filtre kahve"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "espressolab-sec-3",
+          "title": "Soğuk İçecekler",
+          "items": [
+            {
+              "id": "espressolab-sec-3-item-1",
+              "name": "Iced Latte",
+              "description": "Buz üstüne süt ve espresso.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "espressolab-sec-3-item-2",
+              "name": "Iced Americano",
+              "description": "Buzlu sade kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "espressolab-sec-3-item-3",
+              "name": "Cold Brew",
+              "description": "12 saat soğuk demleme.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "espressolab-sec-3-item-4",
+              "name": "Frozen",
+              "description": "Meyveli buz karışımı.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "espressolab-sec-3-item-5",
+              "name": "Iced Mocha",
+              "description": "Çikolatalı soğuk kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "espressolab-sec-4",
+          "title": "Tatlı & Atıştırmalık",
+          "items": [
+            {
+              "id": "espressolab-sec-4-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatli atistirmalik"
+              ]
+            },
+            {
+              "id": "espressolab-sec-4-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatli atistirmalik"
+              ]
+            },
+            {
+              "id": "espressolab-sec-4-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatli atistirmalik"
+              ]
+            },
+            {
+              "id": "espressolab-sec-4-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatli atistirmalik"
+              ]
+            },
+            {
+              "id": "espressolab-sec-4-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatli atistirmalik"
+              ]
             }
           ]
         }
@@ -1639,44 +3647,239 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "maydonoz-doner-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "maydonoz-doner-sec-1",
+          "title": "Et Döner",
           "items": [
             {
-              "id": "maydonoz-doner-item-1",
-              "name": "et dürüm",
-              "keywords": [
-                "dürüm",
-                "et döner"
+              "id": "maydonoz-doner-sec-1-item-1",
+              "name": "Et Dürüm",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "et doner"
               ]
             },
             {
-              "id": "maydonoz-doner-item-2",
-              "name": "tavuk dürüm",
-              "keywords": [
-                "dürüm",
-                "tavuk döner"
+              "id": "maydonoz-doner-sec-1-item-2",
+              "name": "Et Döner Dürüm",
+              "description": "Lavaşta közlenmiş et döner.",
+              "tags": [
+                "et doner"
               ]
             },
             {
-              "id": "maydonoz-doner-item-3",
-              "name": "porsiyon döner",
-              "keywords": [
-                "döner"
+              "id": "maydonoz-doner-sec-1-item-3",
+              "name": "Tavuk Döner Dürüm",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "et doner"
               ]
             },
             {
-              "id": "maydonoz-doner-item-4",
-              "name": "pilav üstü döner",
-              "keywords": [
-                "döner"
+              "id": "maydonoz-doner-sec-1-item-4",
+              "name": "Porsiyon Döner",
+              "description": "Pilav ve közlenmiş biberle.",
+              "tags": [
+                "et doner"
               ]
             },
             {
-              "id": "maydonoz-doner-item-5",
-              "name": "ayran",
-              "keywords": [
-                "ayran"
+              "id": "maydonoz-doner-sec-1-item-5",
+              "name": "Pilav Üstü Döner",
+              "description": "Doyurucu klasik.",
+              "tags": [
+                "et doner"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-1-item-6",
+              "name": "Zurna Dürüm",
+              "description": "Büyük boy.",
+              "tags": [
+                "et doner"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "maydonoz-doner-sec-2",
+          "title": "Tavuk Döner",
+          "items": [
+            {
+              "id": "maydonoz-doner-sec-2-item-1",
+              "name": "Tavuk Dürüm",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "tavuk doner"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-2-item-2",
+              "name": "Et Döner Dürüm",
+              "description": "Lavaşta közlenmiş et döner.",
+              "tags": [
+                "tavuk doner"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-2-item-3",
+              "name": "Tavuk Döner Dürüm",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "tavuk doner"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-2-item-4",
+              "name": "Porsiyon Döner",
+              "description": "Pilav ve közlenmiş biberle.",
+              "tags": [
+                "tavuk doner"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-2-item-5",
+              "name": "Pilav Üstü Döner",
+              "description": "Doyurucu klasik.",
+              "tags": [
+                "tavuk doner"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-2-item-6",
+              "name": "Zurna Dürüm",
+              "description": "Büyük boy.",
+              "tags": [
+                "tavuk doner"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "maydonoz-doner-sec-3",
+          "title": "Dürümler",
+          "items": [
+            {
+              "id": "maydonoz-doner-sec-3-item-1",
+              "name": "Et Döner Dürüm",
+              "description": "Lavaşta közlenmiş et döner.",
+              "tags": [
+                "durumler"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-3-item-2",
+              "name": "Tavuk Döner Dürüm",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "durumler"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-3-item-3",
+              "name": "Porsiyon Döner",
+              "description": "Pilav ve közlenmiş biberle.",
+              "tags": [
+                "durumler"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-3-item-4",
+              "name": "Pilav Üstü Döner",
+              "description": "Doyurucu klasik.",
+              "tags": [
+                "durumler"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-3-item-5",
+              "name": "Zurna Dürüm",
+              "description": "Büyük boy.",
+              "tags": [
+                "durumler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "maydonoz-doner-sec-4",
+          "title": "Porsiyonlar",
+          "items": [
+            {
+              "id": "maydonoz-doner-sec-4-item-1",
+              "name": "Porsiyon Döner",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "porsiyonlar"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-4-item-2",
+              "name": "Izgara Köfte",
+              "description": "El yapımı.",
+              "tags": [
+                "porsiyonlar"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-4-item-3",
+              "name": "Antrikot",
+              "description": "Tereyağlı.",
+              "tags": [
+                "porsiyonlar"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-4-item-4",
+              "name": "Tavuk Şiş",
+              "description": "Marine edilmiş.",
+              "tags": [
+                "porsiyonlar"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-4-item-5",
+              "name": "Günün Yemeği",
+              "description": "Şefin önerisi.",
+              "tags": [
+                "porsiyonlar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "maydonoz-doner-sec-5",
+          "title": "İçecekler",
+          "items": [
+            {
+              "id": "maydonoz-doner-sec-5-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-5-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-5-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "maydonoz-doner-sec-5-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
               ]
             }
           ]
@@ -1758,40 +3961,207 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "hamlet-market-01-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "hamlet-market-01-sec-1",
+          "title": "İçecekler",
           "items": [
             {
-              "id": "hamlet-market-01-item-1",
-              "name": "su",
-              "keywords": [
-                "su"
+              "id": "hamlet-market-01-sec-1-item-1",
+              "name": "Soğuk İçecek",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "icecekler"
               ]
             },
             {
-              "id": "hamlet-market-01-item-2",
-              "name": "soğuk içecek",
-              "keywords": [
-                "içecek"
+              "id": "hamlet-market-01-sec-1-item-2",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
               ]
             },
             {
-              "id": "hamlet-market-01-item-3",
-              "name": "dondurma",
-              "keywords": [
+              "id": "hamlet-market-01-sec-1-item-3",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "hamlet-market-01-sec-1-item-4",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "hamlet-market-01-sec-1-item-5",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hamlet-market-01-sec-2",
+          "title": "Atıştırmalıklar",
+          "items": [
+            {
+              "id": "hamlet-market-01-sec-2-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            },
+            {
+              "id": "hamlet-market-01-sec-2-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            },
+            {
+              "id": "hamlet-market-01-sec-2-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            },
+            {
+              "id": "hamlet-market-01-sec-2-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hamlet-market-01-sec-3",
+          "title": "Dondurma",
+          "items": [
+            {
+              "id": "hamlet-market-01-sec-3-item-1",
+              "name": "Dondurma",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
                 "dondurma"
               ]
             },
             {
-              "id": "hamlet-market-01-item-4",
-              "name": "cips",
-              "keywords": []
+              "id": "hamlet-market-01-sec-3-item-2",
+              "name": "Kesme Dondurma",
+              "description": "Keçi sütlü Maraş usulü.",
+              "tags": [
+                "dondurma"
+              ]
             },
             {
-              "id": "hamlet-market-01-item-5",
-              "name": "güneş kremi",
-              "keywords": [
-                "güneş kremi"
+              "id": "hamlet-market-01-sec-3-item-3",
+              "name": "Külahta İki Top",
+              "description": "Günün çeşitleri.",
+              "tags": [
+                "dondurma"
+              ]
+            },
+            {
+              "id": "hamlet-market-01-sec-3-item-4",
+              "name": "Çikolatalı Dondurma",
+              "description": "Belçika çikolatalı.",
+              "tags": [
+                "dondurma"
+              ]
+            },
+            {
+              "id": "hamlet-market-01-sec-3-item-5",
+              "name": "Meyveli Sorbe",
+              "description": "Süt içermez.",
+              "tags": [
+                "dondurma"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hamlet-market-01-sec-4",
+          "title": "Plaj Ürünleri",
+          "items": [
+            {
+              "id": "hamlet-market-01-sec-4-item-1",
+              "name": "Güneş Kremi",
+              "description": "SPF 30/50.",
+              "tags": [
+                "plaj urunleri"
+              ]
+            },
+            {
+              "id": "hamlet-market-01-sec-4-item-2",
+              "name": "After-Sun",
+              "description": "Güneş sonrası bakım.",
+              "tags": [
+                "plaj urunleri"
+              ]
+            },
+            {
+              "id": "hamlet-market-01-sec-4-item-3",
+              "name": "Plaj Topu",
+              "description": "Şişme.",
+              "tags": [
+                "plaj urunleri"
+              ]
+            },
+            {
+              "id": "hamlet-market-01-sec-4-item-4",
+              "name": "Terlik",
+              "description": "Çeşitli numaralar.",
+              "tags": [
+                "plaj urunleri"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hamlet-market-01-sec-5",
+          "title": "Temel Gıda",
+          "items": [
+            {
+              "id": "hamlet-market-01-sec-5-item-1",
+              "name": "Ekmek",
+              "description": "Günlük.",
+              "tags": [
+                "temel gida"
+              ]
+            },
+            {
+              "id": "hamlet-market-01-sec-5-item-2",
+              "name": "Süt",
+              "description": "Soğuk dolap.",
+              "tags": [
+                "temel gida"
+              ]
+            },
+            {
+              "id": "hamlet-market-01-sec-5-item-3",
+              "name": "Yumurta",
+              "description": "10'lu.",
+              "tags": [
+                "temel gida"
+              ]
+            },
+            {
+              "id": "hamlet-market-01-sec-5-item-4",
+              "name": "Konserve",
+              "description": "Çeşitli.",
+              "tags": [
+                "temel gida"
               ]
             }
           ]
@@ -1872,40 +4242,162 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "doyuyo-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "doyuyo-sec-1",
+          "title": "Tostlar",
           "items": [
             {
-              "id": "doyuyo-item-1",
-              "name": "ayvalık tostu",
-              "keywords": [
-                "tost",
-                "ayvalık tostu"
+              "id": "doyuyo-sec-1-item-1",
+              "name": "Ayvalık Tostu",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "tostlar"
               ]
             },
             {
-              "id": "doyuyo-item-2",
-              "name": "karışık tost",
-              "keywords": [
-                "tost"
+              "id": "doyuyo-sec-1-item-2",
+              "name": "Karışık Tost",
+              "description": "Kaşar ve sucuklu.",
+              "tags": [
+                "tostlar"
               ]
             },
             {
-              "id": "doyuyo-item-3",
-              "name": "kumru",
-              "keywords": [
-                "kumru"
+              "id": "doyuyo-sec-1-item-3",
+              "name": "Kaşarlı Tost",
+              "description": "Klasik.",
+              "tags": [
+                "tostlar"
               ]
             },
             {
-              "id": "doyuyo-item-4",
-              "name": "patates",
-              "keywords": []
+              "id": "doyuyo-sec-1-item-4",
+              "name": "Kumru",
+              "description": "İzmir usulü.",
+              "tags": [
+                "tostlar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "doyuyo-sec-2",
+          "title": "Sandviçler",
+          "items": [
+            {
+              "id": "doyuyo-sec-2-item-1",
+              "name": "Tavuklu Sub",
+              "description": "Taze malzemelerle.",
+              "tags": [
+                "sandvicler"
+              ]
             },
             {
-              "id": "doyuyo-item-5",
-              "name": "ayran",
-              "keywords": []
+              "id": "doyuyo-sec-2-item-2",
+              "name": "Ton Balıklı Sub",
+              "description": "Hafif.",
+              "tags": [
+                "sandvicler"
+              ]
+            },
+            {
+              "id": "doyuyo-sec-2-item-3",
+              "name": "Köfteli Sub",
+              "description": "Marinara soslu.",
+              "tags": [
+                "sandvicler"
+              ]
+            },
+            {
+              "id": "doyuyo-sec-2-item-4",
+              "name": "Sebzeli Sub",
+              "description": "Vejetaryen.",
+              "tags": [
+                "sandvicler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "doyuyo-sec-3",
+          "title": "Patates",
+          "items": [
+            {
+              "id": "doyuyo-sec-3-item-1",
+              "name": "Patates",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "patates"
+              ]
+            },
+            {
+              "id": "doyuyo-sec-3-item-2",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "patates"
+              ]
+            },
+            {
+              "id": "doyuyo-sec-3-item-3",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "patates"
+              ]
+            },
+            {
+              "id": "doyuyo-sec-3-item-4",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "patates"
+              ]
+            },
+            {
+              "id": "doyuyo-sec-3-item-5",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "patates"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "doyuyo-sec-4",
+          "title": "İçecekler",
+          "items": [
+            {
+              "id": "doyuyo-sec-4-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "doyuyo-sec-4-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "doyuyo-sec-4-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "doyuyo-sec-4-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
+              ]
             }
           ]
         }
@@ -1986,43 +4478,215 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "hd-iskender-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "hd-iskender-sec-1",
+          "title": "İskender Çeşitleri",
           "items": [
             {
-              "id": "hd-iskender-item-1",
-              "name": "klasik iskender",
-              "keywords": [
-                "iskender"
+              "id": "hd-iskender-sec-1-item-1",
+              "name": "Klasik İskender",
+              "description": "Tereyağı sosuyla.",
+              "tags": [
+                "iskender cesitleri"
               ]
             },
             {
-              "id": "hd-iskender-item-2",
-              "name": "kaşarlı iskender",
-              "keywords": [
-                "iskender"
+              "id": "hd-iskender-sec-1-item-2",
+              "name": "Kaşarlı İskender",
+              "description": "Bol kaşarlı.",
+              "tags": [
+                "iskender cesitleri"
               ]
             },
             {
-              "id": "hd-iskender-item-3",
-              "name": "et döner",
-              "keywords": [
-                "döner",
-                "et"
+              "id": "hd-iskender-sec-1-item-3",
+              "name": "Yoğurtlu Et",
+              "description": "Közlenmiş biberle.",
+              "tags": [
+                "iskender cesitleri"
               ]
             },
             {
-              "id": "hd-iskender-item-4",
-              "name": "pide",
-              "keywords": [
-                "pide"
+              "id": "hd-iskender-sec-1-item-4",
+              "name": "Porsiyon Et Döner",
+              "description": "Sade servis.",
+              "tags": [
+                "iskender cesitleri"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hd-iskender-sec-2",
+          "title": "Döner",
+          "items": [
+            {
+              "id": "hd-iskender-sec-2-item-1",
+              "name": "Et Döner",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "doner"
               ]
             },
             {
-              "id": "hd-iskender-item-5",
-              "name": "künefe",
-              "keywords": [
-                "künefe"
+              "id": "hd-iskender-sec-2-item-2",
+              "name": "Et Döner Dürüm",
+              "description": "Lavaşta közlenmiş et döner.",
+              "tags": [
+                "doner"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-2-item-3",
+              "name": "Tavuk Döner Dürüm",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "doner"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-2-item-4",
+              "name": "Porsiyon Döner",
+              "description": "Pilav ve közlenmiş biberle.",
+              "tags": [
+                "doner"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-2-item-5",
+              "name": "Pilav Üstü Döner",
+              "description": "Doyurucu klasik.",
+              "tags": [
+                "doner"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-2-item-6",
+              "name": "Zurna Dürüm",
+              "description": "Büyük boy.",
+              "tags": [
+                "doner"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hd-iskender-sec-3",
+          "title": "Pideler",
+          "items": [
+            {
+              "id": "hd-iskender-sec-3-item-1",
+              "name": "Kıymalı Pide",
+              "description": "Taş fırından.",
+              "tags": [
+                "pideler"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-3-item-2",
+              "name": "Kuşbaşılı Kaşarlı Pide",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "pideler"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-3-item-3",
+              "name": "Kaşarlı Pide",
+              "description": "Tereyağlı.",
+              "tags": [
+                "pideler"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-3-item-4",
+              "name": "Lahmacun",
+              "description": "İnce hamur, acılı/acısız.",
+              "tags": [
+                "pideler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hd-iskender-sec-4",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "hd-iskender-sec-4-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-4-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-4-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-4-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-4-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hd-iskender-sec-5",
+          "title": "İçecekler",
+          "items": [
+            {
+              "id": "hd-iskender-sec-5-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-5-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-5-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "hd-iskender-sec-5-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
               ]
             }
           ]
@@ -2104,43 +4768,232 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "tavuk-dunyasi-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "tavuk-dunyasi-sec-1",
+          "title": "Izgara Tavuk",
           "items": [
             {
-              "id": "tavuk-dunyasi-item-1",
-              "name": "special tavuk",
-              "keywords": [
-                "tavuk"
+              "id": "tavuk-dunyasi-sec-1-item-1",
+              "name": "Tavuk Dürüm",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "izgara tavuk"
               ]
             },
             {
-              "id": "tavuk-dunyasi-item-2",
-              "name": "köri soslu tavuk",
-              "keywords": [
-                "tavuk"
+              "id": "tavuk-dunyasi-sec-1-item-2",
+              "name": "Köri Soslu Tavuk",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "izgara tavuk"
               ]
             },
             {
-              "id": "tavuk-dunyasi-item-3",
-              "name": "tavuk dürüm",
-              "keywords": [
-                "tavuk",
-                "ızgara tavuk",
-                "dürüm"
+              "id": "tavuk-dunyasi-sec-1-item-3",
+              "name": "Special Tavuk",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "izgara tavuk"
               ]
             },
             {
-              "id": "tavuk-dunyasi-item-4",
-              "name": "sezar salata",
-              "keywords": [
-                "salata"
+              "id": "tavuk-dunyasi-sec-1-item-4",
+              "name": "Izgara Köfte",
+              "description": "El yapımı.",
+              "tags": [
+                "izgara tavuk"
               ]
             },
             {
-              "id": "tavuk-dunyasi-item-5",
-              "name": "sufle",
-              "keywords": []
+              "id": "tavuk-dunyasi-sec-1-item-5",
+              "name": "Antrikot",
+              "description": "Tereyağlı.",
+              "tags": [
+                "izgara tavuk"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-1-item-6",
+              "name": "Tavuk Şiş",
+              "description": "Marine edilmiş.",
+              "tags": [
+                "izgara tavuk"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tavuk-dunyasi-sec-2",
+          "title": "Soslu Tavuklar",
+          "items": [
+            {
+              "id": "tavuk-dunyasi-sec-2-item-1",
+              "name": "Çıtır Tavuk",
+              "description": "Baharatlı kaplama.",
+              "tags": [
+                "soslu tavuklar"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-2-item-2",
+              "name": "Izgara Tavuk",
+              "description": "Marine edilmiş.",
+              "tags": [
+                "soslu tavuklar"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-2-item-3",
+              "name": "Kanat",
+              "description": "Acılı soslu.",
+              "tags": [
+                "soslu tavuklar"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-2-item-4",
+              "name": "Köri Soslu Tavuk",
+              "description": "Pilav eşliğinde.",
+              "tags": [
+                "soslu tavuklar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tavuk-dunyasi-sec-3",
+          "title": "Dürümler",
+          "items": [
+            {
+              "id": "tavuk-dunyasi-sec-3-item-1",
+              "name": "Et Döner Dürüm",
+              "description": "Lavaşta közlenmiş et döner.",
+              "tags": [
+                "durumler"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-3-item-2",
+              "name": "Tavuk Döner Dürüm",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "durumler"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-3-item-3",
+              "name": "Porsiyon Döner",
+              "description": "Pilav ve közlenmiş biberle.",
+              "tags": [
+                "durumler"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-3-item-4",
+              "name": "Pilav Üstü Döner",
+              "description": "Doyurucu klasik.",
+              "tags": [
+                "durumler"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-3-item-5",
+              "name": "Zurna Dürüm",
+              "description": "Büyük boy.",
+              "tags": [
+                "durumler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tavuk-dunyasi-sec-4",
+          "title": "Salatalar",
+          "items": [
+            {
+              "id": "tavuk-dunyasi-sec-4-item-1",
+              "name": "Sezar Salata",
+              "description": "Izgara tavuklu.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-4-item-2",
+              "name": "Tavuklu Uzun Tabak",
+              "description": "İmza salata.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-4-item-3",
+              "name": "Ton Balıklı Salata",
+              "description": "Protein deposu.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-4-item-4",
+              "name": "Protein Bowl",
+              "description": "Kinoa ve tavukla.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-4-item-5",
+              "name": "Wrap Çeşitleri",
+              "description": "Tavuklu / sebzeli.",
+              "tags": [
+                "salatalar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tavuk-dunyasi-sec-5",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "tavuk-dunyasi-sec-5-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-5-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-5-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-5-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "tavuk-dunyasi-sec-5-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
             }
           ]
         }
@@ -2221,43 +5074,170 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "okuz-burger-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "okuz-burger-sec-1",
+          "title": "Burgerler",
           "items": [
             {
-              "id": "okuz-burger-item-1",
-              "name": "öküz burger",
-              "keywords": [
-                "burger"
+              "id": "okuz-burger-sec-1-item-1",
+              "name": "Kasap Köfte Burger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "burgerler"
               ]
             },
             {
-              "id": "okuz-burger-item-2",
-              "name": "double cheeseburger",
-              "keywords": [
-                "burger",
-                "double burger"
+              "id": "okuz-burger-sec-1-item-2",
+              "name": "Double Cheeseburger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "burgerler"
               ]
             },
             {
-              "id": "okuz-burger-item-3",
-              "name": "kasap köfte burger",
-              "keywords": [
-                "burger",
-                "köfte"
+              "id": "okuz-burger-sec-1-item-3",
+              "name": "Öküz Burger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "burgerler"
               ]
             },
             {
-              "id": "okuz-burger-item-4",
-              "name": "patates",
-              "keywords": [
-                "patates"
+              "id": "okuz-burger-sec-1-item-4",
+              "name": "Cheeseburger",
+              "description": "Cheddar'lı klasik.",
+              "tags": [
+                "burgerler"
               ]
             },
             {
-              "id": "okuz-burger-item-5",
-              "name": "limonata",
-              "keywords": []
+              "id": "okuz-burger-sec-1-item-5",
+              "name": "Double Burger",
+              "description": "Çift köfte, yoğun lezzet.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "okuz-burger-sec-1-item-6",
+              "name": "Tavuk Burger",
+              "description": "Çıtır tavuklu.",
+              "tags": [
+                "burgerler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "okuz-burger-sec-2",
+          "title": "Et Menüleri",
+          "items": [
+            {
+              "id": "okuz-burger-sec-2-item-1",
+              "name": "Antrikot",
+              "description": "Dry-aged, ızgara.",
+              "tags": [
+                "et menuleri"
+              ]
+            },
+            {
+              "id": "okuz-burger-sec-2-item-2",
+              "name": "Bonfile",
+              "description": "Tereyağında.",
+              "tags": [
+                "et menuleri"
+              ]
+            },
+            {
+              "id": "okuz-burger-sec-2-item-3",
+              "name": "T-Bone",
+              "description": "Paylaşımlık.",
+              "tags": [
+                "et menuleri"
+              ]
+            },
+            {
+              "id": "okuz-burger-sec-2-item-4",
+              "name": "Kasap Köfte",
+              "description": "Izgara, közlenmiş sebzeyle.",
+              "tags": [
+                "et menuleri"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "okuz-burger-sec-3",
+          "title": "Yan Ürünler",
+          "items": [
+            {
+              "id": "okuz-burger-sec-3-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "okuz-burger-sec-3-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "okuz-burger-sec-3-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "okuz-burger-sec-3-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "yan urunler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "okuz-burger-sec-4",
+          "title": "İçecekler",
+          "items": [
+            {
+              "id": "okuz-burger-sec-4-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "okuz-burger-sec-4-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "okuz-burger-sec-4-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "okuz-burger-sec-4-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
+              ]
             }
           ]
         }
@@ -2338,41 +5318,170 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "galata-cikolatacisi-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "galata-cikolatacisi-sec-1",
+          "title": "Çikolatalar",
           "items": [
             {
-              "id": "galata-cikolatacisi-item-1",
-              "name": "tablet çikolata",
-              "keywords": [
-                "çikolata"
+              "id": "galata-cikolatacisi-sec-1-item-1",
+              "name": "Tablet Çikolata",
+              "description": "El yapımı.",
+              "tags": [
+                "cikolatalar"
               ]
             },
             {
-              "id": "galata-cikolatacisi-item-2",
-              "name": "sıcak çikolata",
-              "keywords": [
-                "çikolata",
-                "sıcak çikolata"
+              "id": "galata-cikolatacisi-sec-1-item-2",
+              "name": "Truf Kutusu",
+              "description": "Karışık.",
+              "tags": [
+                "cikolatalar"
               ]
             },
             {
-              "id": "galata-cikolatacisi-item-3",
-              "name": "çikolatalı dondurma",
-              "keywords": [
-                "çikolata",
+              "id": "galata-cikolatacisi-sec-1-item-3",
+              "name": "Sıcak Çikolata",
+              "description": "Yoğun, gerçek çikolatayla.",
+              "tags": [
+                "cikolatalar"
+              ]
+            },
+            {
+              "id": "galata-cikolatacisi-sec-1-item-4",
+              "name": "Çikolatalı Dondurma",
+              "description": "Günlük üretim.",
+              "tags": [
+                "cikolatalar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galata-cikolatacisi-sec-2",
+          "title": "Sıcak İçecekler",
+          "items": [
+            {
+              "id": "galata-cikolatacisi-sec-2-item-1",
+              "name": "Sıcak Çikolata",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "sicak icecekler"
+              ]
+            },
+            {
+              "id": "galata-cikolatacisi-sec-2-item-2",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "sicak icecekler"
+              ]
+            },
+            {
+              "id": "galata-cikolatacisi-sec-2-item-3",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "sicak icecekler"
+              ]
+            },
+            {
+              "id": "galata-cikolatacisi-sec-2-item-4",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "sicak icecekler"
+              ]
+            },
+            {
+              "id": "galata-cikolatacisi-sec-2-item-5",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "sicak icecekler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galata-cikolatacisi-sec-3",
+          "title": "Dondurma",
+          "items": [
+            {
+              "id": "galata-cikolatacisi-sec-3-item-1",
+              "name": "Kesme Dondurma",
+              "description": "Keçi sütlü Maraş usulü.",
+              "tags": [
                 "dondurma"
               ]
             },
             {
-              "id": "galata-cikolatacisi-item-4",
-              "name": "truf",
-              "keywords": []
+              "id": "galata-cikolatacisi-sec-3-item-2",
+              "name": "Külahta İki Top",
+              "description": "Günün çeşitleri.",
+              "tags": [
+                "dondurma"
+              ]
             },
             {
-              "id": "galata-cikolatacisi-item-5",
-              "name": "brownie",
-              "keywords": []
+              "id": "galata-cikolatacisi-sec-3-item-3",
+              "name": "Çikolatalı Dondurma",
+              "description": "Belçika çikolatalı.",
+              "tags": [
+                "dondurma"
+              ]
+            },
+            {
+              "id": "galata-cikolatacisi-sec-3-item-4",
+              "name": "Meyveli Sorbe",
+              "description": "Süt içermez.",
+              "tags": [
+                "dondurma"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galata-cikolatacisi-sec-4",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "galata-cikolatacisi-sec-4-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "galata-cikolatacisi-sec-4-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "galata-cikolatacisi-sec-4-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "galata-cikolatacisi-sec-4-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "galata-cikolatacisi-sec-4-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
             }
           ]
         }
@@ -2453,39 +5562,208 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "watsons-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "watsons-sec-1",
+          "title": "Cilt Bakımı",
           "items": [
             {
-              "id": "watsons-item-1",
-              "name": "güneş kremi",
-              "keywords": [
-                "güneş kremi"
+              "id": "watsons-sec-1-item-1",
+              "name": "Nemlendirici",
+              "description": "Yüz ve vücut.",
+              "tags": [
+                "cilt bakimi"
               ]
             },
             {
-              "id": "watsons-item-2",
-              "name": "nemlendirici",
-              "keywords": []
-            },
-            {
-              "id": "watsons-item-3",
-              "name": "şampuan",
-              "keywords": [
-                "şampuan"
+              "id": "watsons-sec-1-item-2",
+              "name": "Yüz Temizleme Jeli",
+              "description": "Tüm cilt tipleri.",
+              "tags": [
+                "cilt bakimi"
               ]
             },
             {
-              "id": "watsons-item-4",
-              "name": "makyaj ürünleri",
-              "keywords": [
+              "id": "watsons-sec-1-item-3",
+              "name": "Maske Çeşitleri",
+              "description": "Kağıt / kil.",
+              "tags": [
+                "cilt bakimi"
+              ]
+            },
+            {
+              "id": "watsons-sec-1-item-4",
+              "name": "Serum",
+              "description": "C vitaminli.",
+              "tags": [
+                "cilt bakimi"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "watsons-sec-2",
+          "title": "Makyaj",
+          "items": [
+            {
+              "id": "watsons-sec-2-item-1",
+              "name": "Makyaj Ürünleri",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
                 "makyaj"
               ]
             },
             {
-              "id": "watsons-item-5",
-              "name": "after-sun",
-              "keywords": []
+              "id": "watsons-sec-2-item-2",
+              "name": "Maskara",
+              "description": "Suya dayanıklı.",
+              "tags": [
+                "makyaj"
+              ]
+            },
+            {
+              "id": "watsons-sec-2-item-3",
+              "name": "Ruj",
+              "description": "Yaz tonları.",
+              "tags": [
+                "makyaj"
+              ]
+            },
+            {
+              "id": "watsons-sec-2-item-4",
+              "name": "Fondöten",
+              "description": "Hafif dokulu.",
+              "tags": [
+                "makyaj"
+              ]
+            },
+            {
+              "id": "watsons-sec-2-item-5",
+              "name": "BB Krem",
+              "description": "SPF'li.",
+              "tags": [
+                "makyaj"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "watsons-sec-3",
+          "title": "Güneş Ürünleri",
+          "items": [
+            {
+              "id": "watsons-sec-3-item-1",
+              "name": "Güneş Kremi",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "gunes urunleri"
+              ]
+            },
+            {
+              "id": "watsons-sec-3-item-2",
+              "name": "Güneş Kremi SPF50",
+              "description": "Yüksek koruma.",
+              "tags": [
+                "gunes urunleri"
+              ]
+            },
+            {
+              "id": "watsons-sec-3-item-3",
+              "name": "Güneş Spreyi",
+              "description": "Pratik uygulama.",
+              "tags": [
+                "gunes urunleri"
+              ]
+            },
+            {
+              "id": "watsons-sec-3-item-4",
+              "name": "After-Sun Losyon",
+              "description": "Yatıştırıcı.",
+              "tags": [
+                "gunes urunleri"
+              ]
+            },
+            {
+              "id": "watsons-sec-3-item-5",
+              "name": "Bronzlaştırıcı Yağ",
+              "description": "SPF'li seçenekler.",
+              "tags": [
+                "gunes urunleri"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "watsons-sec-4",
+          "title": "Kişisel Bakım",
+          "items": [
+            {
+              "id": "watsons-sec-4-item-1",
+              "name": "Şampuan",
+              "description": "Çeşitli tipler.",
+              "tags": [
+                "kisisel bakim"
+              ]
+            },
+            {
+              "id": "watsons-sec-4-item-2",
+              "name": "Duş Jeli",
+              "description": "Ferahlatıcı.",
+              "tags": [
+                "kisisel bakim"
+              ]
+            },
+            {
+              "id": "watsons-sec-4-item-3",
+              "name": "Diş Macunu",
+              "description": "Seyahat boyu mevcut.",
+              "tags": [
+                "kisisel bakim"
+              ]
+            },
+            {
+              "id": "watsons-sec-4-item-4",
+              "name": "Deodorant",
+              "description": "Çeşitli.",
+              "tags": [
+                "kisisel bakim"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "watsons-sec-5",
+          "title": "Vitamin",
+          "items": [
+            {
+              "id": "watsons-sec-5-item-1",
+              "name": "Multivitamin",
+              "description": "Günlük destek.",
+              "tags": [
+                "vitamin"
+              ]
+            },
+            {
+              "id": "watsons-sec-5-item-2",
+              "name": "C Vitamini",
+              "description": "Efervesan.",
+              "tags": [
+                "vitamin"
+              ]
+            },
+            {
+              "id": "watsons-sec-5-item-3",
+              "name": "Magnezyum",
+              "description": "Tablet.",
+              "tags": [
+                "vitamin"
+              ]
+            },
+            {
+              "id": "watsons-sec-5-item-4",
+              "name": "Güneş Sonrası Elektrolit",
+              "description": "Toz içecek.",
+              "tags": [
+                "vitamin"
+              ]
             }
           ]
         }
@@ -2567,41 +5845,191 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "decathlon-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "decathlon-sec-1",
+          "title": "Yüzme",
           "items": [
             {
-              "id": "decathlon-item-1",
-              "name": "deniz gözlüğü",
-              "keywords": [
-                "deniz gözlüğü"
+              "id": "decathlon-sec-1-item-1",
+              "name": "Deniz Gözlüğü",
+              "description": "Buğu önleyicili.",
+              "tags": [
+                "yuzme"
               ]
             },
             {
-              "id": "decathlon-item-2",
-              "name": "mayo",
-              "keywords": [
-                "mayo"
+              "id": "decathlon-sec-1-item-2",
+              "name": "Mayo",
+              "description": "Kadın / erkek / çocuk.",
+              "tags": [
+                "yuzme"
               ]
             },
             {
-              "id": "decathlon-item-3",
-              "name": "şnorkel set",
-              "keywords": [
-                "şnorkel"
+              "id": "decathlon-sec-1-item-3",
+              "name": "Bone",
+              "description": "Silikon.",
+              "tags": [
+                "yuzme"
               ]
             },
             {
-              "id": "decathlon-item-4",
-              "name": "plaj raketi",
-              "keywords": []
+              "id": "decathlon-sec-1-item-4",
+              "name": "Şnorkel Set",
+              "description": "Maske + şnorkel.",
+              "tags": [
+                "yuzme"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "decathlon-sec-2",
+          "title": "Fitness",
+          "items": [
+            {
+              "id": "decathlon-sec-2-item-1",
+              "name": "Koşu Ayakkabısı",
+              "description": "Hafif taban.",
+              "tags": [
+                "fitness"
+              ]
             },
             {
-              "id": "decathlon-item-5",
-              "name": "spor ayakkabı",
-              "keywords": [
-                "spor",
-                "spor ayakkabı"
+              "id": "decathlon-sec-2-item-2",
+              "name": "Spor Tişört",
+              "description": "Nefes alan kumaş.",
+              "tags": [
+                "fitness"
+              ]
+            },
+            {
+              "id": "decathlon-sec-2-item-3",
+              "name": "Tayt",
+              "description": "Esnek.",
+              "tags": [
+                "fitness"
+              ]
+            },
+            {
+              "id": "decathlon-sec-2-item-4",
+              "name": "Yoga Matı",
+              "description": "Kaymaz.",
+              "tags": [
+                "fitness"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "decathlon-sec-3",
+          "title": "Koşu",
+          "items": [
+            {
+              "id": "decathlon-sec-3-item-1",
+              "name": "Koşu Ayakkabısı",
+              "description": "Hafif taban.",
+              "tags": [
+                "kosu"
+              ]
+            },
+            {
+              "id": "decathlon-sec-3-item-2",
+              "name": "Spor Tişört",
+              "description": "Nefes alan kumaş.",
+              "tags": [
+                "kosu"
+              ]
+            },
+            {
+              "id": "decathlon-sec-3-item-3",
+              "name": "Tayt",
+              "description": "Esnek.",
+              "tags": [
+                "kosu"
+              ]
+            },
+            {
+              "id": "decathlon-sec-3-item-4",
+              "name": "Yoga Matı",
+              "description": "Kaymaz.",
+              "tags": [
+                "kosu"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "decathlon-sec-4",
+          "title": "Kamp",
+          "items": [
+            {
+              "id": "decathlon-sec-4-item-1",
+              "name": "Çadır",
+              "description": "2-4 kişilik.",
+              "tags": [
+                "kamp"
+              ]
+            },
+            {
+              "id": "decathlon-sec-4-item-2",
+              "name": "Kamp Sandalyesi",
+              "description": "Katlanır.",
+              "tags": [
+                "kamp"
+              ]
+            },
+            {
+              "id": "decathlon-sec-4-item-3",
+              "name": "Termos",
+              "description": "Paslanmaz.",
+              "tags": [
+                "kamp"
+              ]
+            },
+            {
+              "id": "decathlon-sec-4-item-4",
+              "name": "El Feneri",
+              "description": "Şarjlı.",
+              "tags": [
+                "kamp"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "decathlon-sec-5",
+          "title": "Bisiklet",
+          "items": [
+            {
+              "id": "decathlon-sec-5-item-1",
+              "name": "Şehir Bisikleti",
+              "description": "Konfor odaklı.",
+              "tags": [
+                "bisiklet"
+              ]
+            },
+            {
+              "id": "decathlon-sec-5-item-2",
+              "name": "Kask",
+              "description": "Ayarlanabilir.",
+              "tags": [
+                "bisiklet"
+              ]
+            },
+            {
+              "id": "decathlon-sec-5-item-3",
+              "name": "Bisiklet Işığı",
+              "description": "USB şarjlı.",
+              "tags": [
+                "bisiklet"
+              ]
+            },
+            {
+              "id": "decathlon-sec-5-item-4",
+              "name": "Matara",
+              "description": "750 ml.",
+              "tags": [
+                "bisiklet"
               ]
             }
           ]
@@ -2684,43 +6112,208 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "pidem-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "pidem-sec-1",
+          "title": "Pideler",
           "items": [
             {
-              "id": "pidem-item-1",
-              "name": "kuşbaşılı pide",
-              "keywords": [
-                "pide"
+              "id": "pidem-sec-1-item-1",
+              "name": "Kıymalı Pide",
+              "description": "Taş fırından.",
+              "tags": [
+                "pideler"
               ]
             },
             {
-              "id": "pidem-item-2",
-              "name": "kıymalı pide",
-              "keywords": [
-                "pide",
-                "kıymalı"
+              "id": "pidem-sec-1-item-2",
+              "name": "Kuşbaşılı Kaşarlı Pide",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "pideler"
               ]
             },
             {
-              "id": "pidem-item-3",
-              "name": "kaşarlı pide",
-              "keywords": [
-                "pide",
-                "kaşarlı"
+              "id": "pidem-sec-1-item-3",
+              "name": "Kaşarlı Pide",
+              "description": "Tereyağlı.",
+              "tags": [
+                "pideler"
               ]
             },
             {
-              "id": "pidem-item-4",
-              "name": "lahmacun",
-              "keywords": [
+              "id": "pidem-sec-1-item-4",
+              "name": "Lahmacun",
+              "description": "İnce hamur, acılı/acısız.",
+              "tags": [
+                "pideler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pidem-sec-2",
+          "title": "Lahmacun",
+          "items": [
+            {
+              "id": "pidem-sec-2-item-1",
+              "name": "Kıymalı Pide",
+              "description": "Taş fırından.",
+              "tags": [
                 "lahmacun"
               ]
             },
             {
-              "id": "pidem-item-5",
-              "name": "künefe",
-              "keywords": []
+              "id": "pidem-sec-2-item-2",
+              "name": "Kuşbaşılı Kaşarlı Pide",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "lahmacun"
+              ]
+            },
+            {
+              "id": "pidem-sec-2-item-3",
+              "name": "Kaşarlı Pide",
+              "description": "Tereyağlı.",
+              "tags": [
+                "lahmacun"
+              ]
+            },
+            {
+              "id": "pidem-sec-2-item-4",
+              "name": "Lahmacun",
+              "description": "İnce hamur, acılı/acısız.",
+              "tags": [
+                "lahmacun"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pidem-sec-3",
+          "title": "Salatalar",
+          "items": [
+            {
+              "id": "pidem-sec-3-item-1",
+              "name": "Sezar Salata",
+              "description": "Izgara tavuklu.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "pidem-sec-3-item-2",
+              "name": "Tavuklu Uzun Tabak",
+              "description": "İmza salata.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "pidem-sec-3-item-3",
+              "name": "Ton Balıklı Salata",
+              "description": "Protein deposu.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "pidem-sec-3-item-4",
+              "name": "Protein Bowl",
+              "description": "Kinoa ve tavukla.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "pidem-sec-3-item-5",
+              "name": "Wrap Çeşitleri",
+              "description": "Tavuklu / sebzeli.",
+              "tags": [
+                "salatalar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pidem-sec-4",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "pidem-sec-4-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "pidem-sec-4-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "pidem-sec-4-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "pidem-sec-4-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "pidem-sec-4-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pidem-sec-5",
+          "title": "İçecekler",
+          "items": [
+            {
+              "id": "pidem-sec-5-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "pidem-sec-5-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "pidem-sec-5-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "pidem-sec-5-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
+              ]
             }
           ]
         }
@@ -2801,39 +6394,232 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "starbucks-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "starbucks-sec-1",
+          "title": "Espresso Bazlı",
           "items": [
             {
-              "id": "starbucks-item-1",
-              "name": "latte",
-              "keywords": [
-                "latte"
+              "id": "starbucks-sec-1-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "espresso bazli"
               ]
             },
             {
-              "id": "starbucks-item-2",
-              "name": "caramel frappuccino",
-              "keywords": [
+              "id": "starbucks-sec-1-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "starbucks-sec-1-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "starbucks-sec-1-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "starbucks-sec-1-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "espresso bazli"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "starbucks-sec-2",
+          "title": "Filtre Kahve",
+          "items": [
+            {
+              "id": "starbucks-sec-2-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "starbucks-sec-2-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "starbucks-sec-2-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "starbucks-sec-2-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "starbucks-sec-2-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "filtre kahve"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "starbucks-sec-3",
+          "title": "Frappuccino",
+          "items": [
+            {
+              "id": "starbucks-sec-3-item-1",
+              "name": "Caramel Frappuccino",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
                 "frappuccino"
               ]
             },
             {
-              "id": "starbucks-item-3",
-              "name": "cold brew",
-              "keywords": [
-                "cold brew"
+              "id": "starbucks-sec-3-item-2",
+              "name": "Iced Latte",
+              "description": "Buz üstüne süt ve espresso.",
+              "tags": [
+                "frappuccino"
               ]
             },
             {
-              "id": "starbucks-item-4",
-              "name": "americano",
-              "keywords": []
+              "id": "starbucks-sec-3-item-3",
+              "name": "Iced Americano",
+              "description": "Buzlu sade kahve.",
+              "tags": [
+                "frappuccino"
+              ]
             },
             {
-              "id": "starbucks-item-5",
-              "name": "cheesecake",
-              "keywords": []
+              "id": "starbucks-sec-3-item-4",
+              "name": "Cold Brew",
+              "description": "12 saat soğuk demleme.",
+              "tags": [
+                "frappuccino"
+              ]
+            },
+            {
+              "id": "starbucks-sec-3-item-5",
+              "name": "Frozen",
+              "description": "Meyveli buz karışımı.",
+              "tags": [
+                "frappuccino"
+              ]
+            },
+            {
+              "id": "starbucks-sec-3-item-6",
+              "name": "Iced Mocha",
+              "description": "Çikolatalı soğuk kahve.",
+              "tags": [
+                "frappuccino"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "starbucks-sec-4",
+          "title": "Çaylar",
+          "items": [
+            {
+              "id": "starbucks-sec-4-item-1",
+              "name": "Çay",
+              "description": "Demleme.",
+              "tags": [
+                "caylar"
+              ]
+            },
+            {
+              "id": "starbucks-sec-4-item-2",
+              "name": "Bitki Çayı",
+              "description": "Ihlamur, adaçayı, kuşburnu.",
+              "tags": [
+                "caylar"
+              ]
+            },
+            {
+              "id": "starbucks-sec-4-item-3",
+              "name": "Türk Kahvesi",
+              "description": "Közde.",
+              "tags": [
+                "caylar"
+              ]
+            },
+            {
+              "id": "starbucks-sec-4-item-4",
+              "name": "Sahlep",
+              "description": "Tarçınlı.",
+              "tags": [
+                "caylar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "starbucks-sec-5",
+          "title": "Tatlı & Sandviç",
+          "items": [
+            {
+              "id": "starbucks-sec-5-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatli sandvic"
+              ]
+            },
+            {
+              "id": "starbucks-sec-5-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatli sandvic"
+              ]
+            },
+            {
+              "id": "starbucks-sec-5-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatli sandvic"
+              ]
+            },
+            {
+              "id": "starbucks-sec-5-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatli sandvic"
+              ]
+            },
+            {
+              "id": "starbucks-sec-5-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatli sandvic"
+              ]
             }
           ]
         }
@@ -2914,41 +6700,240 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "gloria-jeans-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "gloria-jeans-sec-1",
+          "title": "Espresso Bazlı",
           "items": [
             {
-              "id": "gloria-jeans-item-1",
-              "name": "latte",
-              "keywords": [
-                "latte"
+              "id": "gloria-jeans-sec-1-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "espresso bazli"
               ]
             },
             {
-              "id": "gloria-jeans-item-2",
-              "name": "chiller",
-              "keywords": [
+              "id": "gloria-jeans-sec-1-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-1-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-1-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-1-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "espresso bazli"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gloria-jeans-sec-2",
+          "title": "Chiller",
+          "items": [
+            {
+              "id": "gloria-jeans-sec-2-item-1",
+              "name": "Chiller",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
                 "chiller"
               ]
             },
             {
-              "id": "gloria-jeans-item-3",
-              "name": "filtre kahve",
-              "keywords": [
-                "kahve"
+              "id": "gloria-jeans-sec-2-item-2",
+              "name": "Iced Latte",
+              "description": "Buz üstüne süt ve espresso.",
+              "tags": [
+                "chiller"
               ]
             },
             {
-              "id": "gloria-jeans-item-4",
-              "name": "mocha",
-              "keywords": [
-                "mocha"
+              "id": "gloria-jeans-sec-2-item-3",
+              "name": "Iced Americano",
+              "description": "Buzlu sade kahve.",
+              "tags": [
+                "chiller"
               ]
             },
             {
-              "id": "gloria-jeans-item-5",
-              "name": "cheesecake",
-              "keywords": []
+              "id": "gloria-jeans-sec-2-item-4",
+              "name": "Cold Brew",
+              "description": "12 saat soğuk demleme.",
+              "tags": [
+                "chiller"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-2-item-5",
+              "name": "Frozen",
+              "description": "Meyveli buz karışımı.",
+              "tags": [
+                "chiller"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-2-item-6",
+              "name": "Iced Mocha",
+              "description": "Çikolatalı soğuk kahve.",
+              "tags": [
+                "chiller"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gloria-jeans-sec-3",
+          "title": "Filtre Kahve",
+          "items": [
+            {
+              "id": "gloria-jeans-sec-3-item-1",
+              "name": "Filtre Kahve",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-3-item-2",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-3-item-3",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-3-item-4",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-3-item-5",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-3-item-6",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "filtre kahve"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gloria-jeans-sec-4",
+          "title": "Çaylar",
+          "items": [
+            {
+              "id": "gloria-jeans-sec-4-item-1",
+              "name": "Çay",
+              "description": "Demleme.",
+              "tags": [
+                "caylar"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-4-item-2",
+              "name": "Bitki Çayı",
+              "description": "Ihlamur, adaçayı, kuşburnu.",
+              "tags": [
+                "caylar"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-4-item-3",
+              "name": "Türk Kahvesi",
+              "description": "Közde.",
+              "tags": [
+                "caylar"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-4-item-4",
+              "name": "Sahlep",
+              "description": "Tarçınlı.",
+              "tags": [
+                "caylar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gloria-jeans-sec-5",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "gloria-jeans-sec-5-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-5-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-5-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-5-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "gloria-jeans-sec-5-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
             }
           ]
         }
@@ -3028,41 +7013,232 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "green-salads-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "green-salads-sec-1",
+          "title": "Salatalar",
           "items": [
             {
-              "id": "green-salads-item-1",
-              "name": "tavuklu salata",
-              "keywords": [
-                "salata"
+              "id": "green-salads-sec-1-item-1",
+              "name": "Tavuklu Salata",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "salatalar"
               ]
             },
             {
-              "id": "green-salads-item-2",
-              "name": "ton balıklı salata",
-              "keywords": [
-                "salata"
+              "id": "green-salads-sec-1-item-2",
+              "name": "Sezar Salata",
+              "description": "Izgara tavuklu.",
+              "tags": [
+                "salatalar"
               ]
             },
             {
-              "id": "green-salads-item-3",
-              "name": "protein bowl",
-              "keywords": [
-                "bowl"
+              "id": "green-salads-sec-1-item-3",
+              "name": "Tavuklu Uzun Tabak",
+              "description": "İmza salata.",
+              "tags": [
+                "salatalar"
               ]
             },
             {
-              "id": "green-salads-item-4",
-              "name": "wrap",
-              "keywords": [
-                "wrap"
+              "id": "green-salads-sec-1-item-4",
+              "name": "Ton Balıklı Salata",
+              "description": "Protein deposu.",
+              "tags": [
+                "salatalar"
               ]
             },
             {
-              "id": "green-salads-item-5",
-              "name": "taze portakal suyu",
-              "keywords": []
+              "id": "green-salads-sec-1-item-5",
+              "name": "Protein Bowl",
+              "description": "Kinoa ve tavukla.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "green-salads-sec-1-item-6",
+              "name": "Wrap Çeşitleri",
+              "description": "Tavuklu / sebzeli.",
+              "tags": [
+                "salatalar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "green-salads-sec-2",
+          "title": "Bowllar",
+          "items": [
+            {
+              "id": "green-salads-sec-2-item-1",
+              "name": "Sezar Salata",
+              "description": "Izgara tavuklu.",
+              "tags": [
+                "bowllar"
+              ]
+            },
+            {
+              "id": "green-salads-sec-2-item-2",
+              "name": "Tavuklu Uzun Tabak",
+              "description": "İmza salata.",
+              "tags": [
+                "bowllar"
+              ]
+            },
+            {
+              "id": "green-salads-sec-2-item-3",
+              "name": "Ton Balıklı Salata",
+              "description": "Protein deposu.",
+              "tags": [
+                "bowllar"
+              ]
+            },
+            {
+              "id": "green-salads-sec-2-item-4",
+              "name": "Protein Bowl",
+              "description": "Kinoa ve tavukla.",
+              "tags": [
+                "bowllar"
+              ]
+            },
+            {
+              "id": "green-salads-sec-2-item-5",
+              "name": "Wrap Çeşitleri",
+              "description": "Tavuklu / sebzeli.",
+              "tags": [
+                "bowllar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "green-salads-sec-3",
+          "title": "Wrapler",
+          "items": [
+            {
+              "id": "green-salads-sec-3-item-1",
+              "name": "Sezar Salata",
+              "description": "Izgara tavuklu.",
+              "tags": [
+                "wrapler"
+              ]
+            },
+            {
+              "id": "green-salads-sec-3-item-2",
+              "name": "Tavuklu Uzun Tabak",
+              "description": "İmza salata.",
+              "tags": [
+                "wrapler"
+              ]
+            },
+            {
+              "id": "green-salads-sec-3-item-3",
+              "name": "Ton Balıklı Salata",
+              "description": "Protein deposu.",
+              "tags": [
+                "wrapler"
+              ]
+            },
+            {
+              "id": "green-salads-sec-3-item-4",
+              "name": "Protein Bowl",
+              "description": "Kinoa ve tavukla.",
+              "tags": [
+                "wrapler"
+              ]
+            },
+            {
+              "id": "green-salads-sec-3-item-5",
+              "name": "Wrap Çeşitleri",
+              "description": "Tavuklu / sebzeli.",
+              "tags": [
+                "wrapler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "green-salads-sec-4",
+          "title": "Taze İçecekler",
+          "items": [
+            {
+              "id": "green-salads-sec-4-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "taze icecekler"
+              ]
+            },
+            {
+              "id": "green-salads-sec-4-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "taze icecekler"
+              ]
+            },
+            {
+              "id": "green-salads-sec-4-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "taze icecekler"
+              ]
+            },
+            {
+              "id": "green-salads-sec-4-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "taze icecekler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "green-salads-sec-5",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "green-salads-sec-5-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "green-salads-sec-5-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "green-salads-sec-5-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "green-salads-sec-5-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "green-salads-sec-5-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
             }
           ]
         }
@@ -3144,39 +7320,224 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "la-rocca-cafe-bistro-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "la-rocca-cafe-bistro-sec-1",
+          "title": "Pizzalar",
           "items": [
             {
-              "id": "la-rocca-cafe-bistro-item-1",
-              "name": "odun fırını pizza",
-              "keywords": [
-                "pizza"
+              "id": "la-rocca-cafe-bistro-sec-1-item-1",
+              "name": "Odun Fırını Pizza",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "pizzalar"
               ]
             },
             {
-              "id": "la-rocca-cafe-bistro-item-2",
-              "name": "antrikot",
-              "keywords": []
-            },
-            {
-              "id": "la-rocca-cafe-bistro-item-3",
-              "name": "serpme kahvaltı",
-              "keywords": [
-                "kahvaltı"
+              "id": "la-rocca-cafe-bistro-sec-1-item-2",
+              "name": "Margherita",
+              "description": "Domates, mozzarella, fesleğen.",
+              "tags": [
+                "pizzalar"
               ]
             },
             {
-              "id": "la-rocca-cafe-bistro-item-4",
-              "name": "makarna",
-              "keywords": [
-                "makarna"
+              "id": "la-rocca-cafe-bistro-sec-1-item-3",
+              "name": "Quattro Formaggi",
+              "description": "Dört peynirli.",
+              "tags": [
+                "pizzalar"
               ]
             },
             {
-              "id": "la-rocca-cafe-bistro-item-5",
-              "name": "kokteyl",
-              "keywords": []
+              "id": "la-rocca-cafe-bistro-sec-1-item-4",
+              "name": "Sucuklu Pizza",
+              "description": "Yerli dokunuş.",
+              "tags": [
+                "pizzalar"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-1-item-5",
+              "name": "Vejetaryen Pizza",
+              "description": "Mevsim sebzeli.",
+              "tags": [
+                "pizzalar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "la-rocca-cafe-bistro-sec-2",
+          "title": "Steakler",
+          "items": [
+            {
+              "id": "la-rocca-cafe-bistro-sec-2-item-1",
+              "name": "Antrikot",
+              "description": "Dry-aged, ızgara.",
+              "tags": [
+                "steakler"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-2-item-2",
+              "name": "Bonfile",
+              "description": "Tereyağında.",
+              "tags": [
+                "steakler"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-2-item-3",
+              "name": "T-Bone",
+              "description": "Paylaşımlık.",
+              "tags": [
+                "steakler"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-2-item-4",
+              "name": "Kasap Köfte",
+              "description": "Izgara, közlenmiş sebzeyle.",
+              "tags": [
+                "steakler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "la-rocca-cafe-bistro-sec-3",
+          "title": "Kahvaltı",
+          "items": [
+            {
+              "id": "la-rocca-cafe-bistro-sec-3-item-1",
+              "name": "Serpme Kahvaltı",
+              "description": "Zengin köy kahvaltısı, sınırsız çay.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-3-item-2",
+              "name": "Menemen",
+              "description": "Bol domatesli.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-3-item-3",
+              "name": "Avokado Tost",
+              "description": "Ekşi maya üstü avokado.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-3-item-4",
+              "name": "Omlet Çeşitleri",
+              "description": "Sade, kaşarlı, mantarlı.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-3-item-5",
+              "name": "Simit Tabağı",
+              "description": "Simit, beyaz peynir, domates.",
+              "tags": [
+                "kahvalti"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "la-rocca-cafe-bistro-sec-4",
+          "title": "Makarnalar",
+          "items": [
+            {
+              "id": "la-rocca-cafe-bistro-sec-4-item-1",
+              "name": "Makarna",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "makarnalar"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-4-item-2",
+              "name": "Penne Arrabiata",
+              "description": "Acılı domates soslu.",
+              "tags": [
+                "makarnalar"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-4-item-3",
+              "name": "Fettuccine Alfredo",
+              "description": "Kremalı.",
+              "tags": [
+                "makarnalar"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-4-item-4",
+              "name": "Bolonez",
+              "description": "Kıymalı klasik.",
+              "tags": [
+                "makarnalar"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-4-item-5",
+              "name": "Pesto Makarna",
+              "description": "Fesleğen soslu.",
+              "tags": [
+                "makarnalar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "la-rocca-cafe-bistro-sec-5",
+          "title": "Kokteyller",
+          "items": [
+            {
+              "id": "la-rocca-cafe-bistro-sec-5-item-1",
+              "name": "Kokteyl",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-5-item-2",
+              "name": "Mojito",
+              "description": "Nane ve lime ile.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-5-item-3",
+              "name": "Aperol Spritz",
+              "description": "Gün batımı klasiği.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-5-item-4",
+              "name": "Gin Tonic",
+              "description": "Aromatik bitkilerle.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "la-rocca-cafe-bistro-sec-5-item-5",
+              "name": "Margarita",
+              "description": "Tuz kenarlı klasik.",
+              "tags": [
+                "kokteyller"
+              ]
             }
           ]
         }
@@ -3256,38 +7617,140 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "coffees-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "coffees-sec-1",
+          "title": "Kahveler",
           "items": [
             {
-              "id": "coffees-item-1",
-              "name": "filtre kahve",
-              "keywords": [
-                "kahve",
-                "filtre kahve"
+              "id": "coffees-sec-1-item-1",
+              "name": "Filtre Kahve",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kahveler"
               ]
             },
             {
-              "id": "coffees-item-2",
-              "name": "latte",
-              "keywords": [
-                "latte"
+              "id": "coffees-sec-1-item-2",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "kahveler"
               ]
             },
             {
-              "id": "coffees-item-3",
-              "name": "iced americano",
-              "keywords": []
+              "id": "coffees-sec-1-item-3",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "kahveler"
+              ]
             },
             {
-              "id": "coffees-item-4",
-              "name": "sandviç",
-              "keywords": []
+              "id": "coffees-sec-1-item-4",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "kahveler"
+              ]
             },
             {
-              "id": "coffees-item-5",
-              "name": "cookie",
-              "keywords": []
+              "id": "coffees-sec-1-item-5",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "coffees-sec-1-item-6",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "kahveler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "coffees-sec-2",
+          "title": "Soğuk İçecekler",
+          "items": [
+            {
+              "id": "coffees-sec-2-item-1",
+              "name": "Iced Latte",
+              "description": "Buz üstüne süt ve espresso.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "coffees-sec-2-item-2",
+              "name": "Iced Americano",
+              "description": "Buzlu sade kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "coffees-sec-2-item-3",
+              "name": "Cold Brew",
+              "description": "12 saat soğuk demleme.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "coffees-sec-2-item-4",
+              "name": "Frozen",
+              "description": "Meyveli buz karışımı.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "coffees-sec-2-item-5",
+              "name": "Iced Mocha",
+              "description": "Çikolatalı soğuk kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "coffees-sec-3",
+          "title": "Atıştırmalıklar",
+          "items": [
+            {
+              "id": "coffees-sec-3-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            },
+            {
+              "id": "coffees-sec-3-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            },
+            {
+              "id": "coffees-sec-3-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            },
+            {
+              "id": "coffees-sec-3-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "atistirmaliklar"
+              ]
             }
           ]
         }
@@ -3367,39 +7830,186 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "mackbear-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "mackbear-sec-1",
+          "title": "Espresso Bazlı",
           "items": [
             {
-              "id": "mackbear-item-1",
-              "name": "latte",
-              "keywords": [
-                "latte"
+              "id": "mackbear-sec-1-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "espresso bazli"
               ]
             },
             {
-              "id": "mackbear-item-2",
-              "name": "iced mocha",
-              "keywords": [
-                "iced mocha"
+              "id": "mackbear-sec-1-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "espresso bazli"
               ]
             },
             {
-              "id": "mackbear-item-3",
-              "name": "frozen",
-              "keywords": [
+              "id": "mackbear-sec-1-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "mackbear-sec-1-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "espresso bazli"
+              ]
+            },
+            {
+              "id": "mackbear-sec-1-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "espresso bazli"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mackbear-sec-2",
+          "title": "Soğuk Kahveler",
+          "items": [
+            {
+              "id": "mackbear-sec-2-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            },
+            {
+              "id": "mackbear-sec-2-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            },
+            {
+              "id": "mackbear-sec-2-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            },
+            {
+              "id": "mackbear-sec-2-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            },
+            {
+              "id": "mackbear-sec-2-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mackbear-sec-3",
+          "title": "Frozen",
+          "items": [
+            {
+              "id": "mackbear-sec-3-item-1",
+              "name": "Iced Latte",
+              "description": "Buz üstüne süt ve espresso.",
+              "tags": [
                 "frozen"
               ]
             },
             {
-              "id": "mackbear-item-4",
-              "name": "americano",
-              "keywords": []
+              "id": "mackbear-sec-3-item-2",
+              "name": "Iced Americano",
+              "description": "Buzlu sade kahve.",
+              "tags": [
+                "frozen"
+              ]
             },
             {
-              "id": "mackbear-item-5",
-              "name": "san sebastian",
-              "keywords": []
+              "id": "mackbear-sec-3-item-3",
+              "name": "Cold Brew",
+              "description": "12 saat soğuk demleme.",
+              "tags": [
+                "frozen"
+              ]
+            },
+            {
+              "id": "mackbear-sec-3-item-4",
+              "name": "Frozen",
+              "description": "Meyveli buz karışımı.",
+              "tags": [
+                "frozen"
+              ]
+            },
+            {
+              "id": "mackbear-sec-3-item-5",
+              "name": "Iced Mocha",
+              "description": "Çikolatalı soğuk kahve.",
+              "tags": [
+                "frozen"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mackbear-sec-4",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "mackbear-sec-4-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "mackbear-sec-4-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "mackbear-sec-4-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "mackbear-sec-4-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "mackbear-sec-4-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
             }
           ]
         }
@@ -3479,39 +8089,200 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "yotto-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "yotto-sec-1",
+          "title": "Sushi",
           "items": [
             {
-              "id": "yotto-item-1",
-              "name": "california roll",
-              "keywords": []
-            },
-            {
-              "id": "yotto-item-2",
-              "name": "somonlu sushi set",
-              "keywords": [
+              "id": "yotto-sec-1-item-1",
+              "name": "California Roll",
+              "description": "8'li roll.",
+              "tags": [
                 "sushi"
               ]
             },
             {
-              "id": "yotto-item-3",
-              "name": "tavuklu wok",
-              "keywords": [
+              "id": "yotto-sec-1-item-2",
+              "name": "Somonlu Sushi Set",
+              "description": "Günlük somonla.",
+              "tags": [
+                "sushi"
+              ]
+            },
+            {
+              "id": "yotto-sec-1-item-3",
+              "name": "Nigiri Tabağı",
+              "description": "Karışık seçki.",
+              "tags": [
+                "sushi"
+              ]
+            },
+            {
+              "id": "yotto-sec-1-item-4",
+              "name": "Gyoza",
+              "description": "Buharda, soya sosla.",
+              "tags": [
+                "sushi"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "yotto-sec-2",
+          "title": "Wok",
+          "items": [
+            {
+              "id": "yotto-sec-2-item-1",
+              "name": "Tavuklu Wok",
+              "description": "Sebzeli, teriyaki soslu.",
+              "tags": [
                 "wok"
               ]
             },
             {
-              "id": "yotto-item-4",
-              "name": "noodle",
-              "keywords": [
+              "id": "yotto-sec-2-item-2",
+              "name": "Sebzeli Noodle",
+              "description": "Acı soslu seçenekli.",
+              "tags": [
+                "wok"
+              ]
+            },
+            {
+              "id": "yotto-sec-2-item-3",
+              "name": "Dana Wok",
+              "description": "Körili.",
+              "tags": [
+                "wok"
+              ]
+            },
+            {
+              "id": "yotto-sec-2-item-4",
+              "name": "Pad Thai",
+              "description": "Fıstıklı klasik.",
+              "tags": [
+                "wok"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "yotto-sec-3",
+          "title": "Noodle",
+          "items": [
+            {
+              "id": "yotto-sec-3-item-1",
+              "name": "Noodle",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
                 "noodle"
               ]
             },
             {
-              "id": "yotto-item-5",
-              "name": "gyoza",
-              "keywords": []
+              "id": "yotto-sec-3-item-2",
+              "name": "Tavuklu Wok",
+              "description": "Sebzeli, teriyaki soslu.",
+              "tags": [
+                "noodle"
+              ]
+            },
+            {
+              "id": "yotto-sec-3-item-3",
+              "name": "Sebzeli Noodle",
+              "description": "Acı soslu seçenekli.",
+              "tags": [
+                "noodle"
+              ]
+            },
+            {
+              "id": "yotto-sec-3-item-4",
+              "name": "Dana Wok",
+              "description": "Körili.",
+              "tags": [
+                "noodle"
+              ]
+            },
+            {
+              "id": "yotto-sec-3-item-5",
+              "name": "Pad Thai",
+              "description": "Fıstıklı klasik.",
+              "tags": [
+                "noodle"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "yotto-sec-4",
+          "title": "Başlangıçlar",
+          "items": [
+            {
+              "id": "yotto-sec-4-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "baslangiclar"
+              ]
+            },
+            {
+              "id": "yotto-sec-4-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "baslangiclar"
+              ]
+            },
+            {
+              "id": "yotto-sec-4-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "baslangiclar"
+              ]
+            },
+            {
+              "id": "yotto-sec-4-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "baslangiclar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "yotto-sec-5",
+          "title": "İçecekler",
+          "items": [
+            {
+              "id": "yotto-sec-5-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "yotto-sec-5-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "yotto-sec-5-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "yotto-sec-5-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
+              ]
             }
           ]
         }
@@ -3593,42 +8364,231 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "ozsut-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "ozsut-sec-1",
+          "title": "Sütlü Tatlılar",
           "items": [
             {
-              "id": "ozsut-item-1",
-              "name": "kazandibi",
-              "keywords": [
-                "kazandibi"
+              "id": "ozsut-sec-1-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "sutlu tatlilar"
               ]
             },
             {
-              "id": "ozsut-item-2",
-              "name": "cheesecake",
-              "keywords": [
+              "id": "ozsut-sec-1-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "sutlu tatlilar"
+              ]
+            },
+            {
+              "id": "ozsut-sec-1-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "sutlu tatlilar"
+              ]
+            },
+            {
+              "id": "ozsut-sec-1-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "sutlu tatlilar"
+              ]
+            },
+            {
+              "id": "ozsut-sec-1-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "sutlu tatlilar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ozsut-sec-2",
+          "title": "Cheesecake",
+          "items": [
+            {
+              "id": "ozsut-sec-2-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
                 "cheesecake"
               ]
             },
             {
-              "id": "ozsut-item-3",
-              "name": "profiterol",
-              "keywords": [
-                "profiterol"
+              "id": "ozsut-sec-2-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "cheesecake"
               ]
             },
             {
-              "id": "ozsut-item-4",
-              "name": "dondurma",
-              "keywords": [
+              "id": "ozsut-sec-2-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "cheesecake"
+              ]
+            },
+            {
+              "id": "ozsut-sec-2-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "cheesecake"
+              ]
+            },
+            {
+              "id": "ozsut-sec-2-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "cheesecake"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ozsut-sec-3",
+          "title": "Dondurma",
+          "items": [
+            {
+              "id": "ozsut-sec-3-item-1",
+              "name": "Dondurma",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
                 "dondurma"
               ]
             },
             {
-              "id": "ozsut-item-5",
-              "name": "serpme kahvaltı",
-              "keywords": [
-                "kahvaltı"
+              "id": "ozsut-sec-3-item-2",
+              "name": "Kesme Dondurma",
+              "description": "Keçi sütlü Maraş usulü.",
+              "tags": [
+                "dondurma"
+              ]
+            },
+            {
+              "id": "ozsut-sec-3-item-3",
+              "name": "Külahta İki Top",
+              "description": "Günün çeşitleri.",
+              "tags": [
+                "dondurma"
+              ]
+            },
+            {
+              "id": "ozsut-sec-3-item-4",
+              "name": "Çikolatalı Dondurma",
+              "description": "Belçika çikolatalı.",
+              "tags": [
+                "dondurma"
+              ]
+            },
+            {
+              "id": "ozsut-sec-3-item-5",
+              "name": "Meyveli Sorbe",
+              "description": "Süt içermez.",
+              "tags": [
+                "dondurma"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ozsut-sec-4",
+          "title": "Kahvaltı",
+          "items": [
+            {
+              "id": "ozsut-sec-4-item-1",
+              "name": "Serpme Kahvaltı",
+              "description": "Zengin köy kahvaltısı, sınırsız çay.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "ozsut-sec-4-item-2",
+              "name": "Menemen",
+              "description": "Bol domatesli.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "ozsut-sec-4-item-3",
+              "name": "Avokado Tost",
+              "description": "Ekşi maya üstü avokado.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "ozsut-sec-4-item-4",
+              "name": "Omlet Çeşitleri",
+              "description": "Sade, kaşarlı, mantarlı.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "ozsut-sec-4-item-5",
+              "name": "Simit Tabağı",
+              "description": "Simit, beyaz peynir, domates.",
+              "tags": [
+                "kahvalti"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ozsut-sec-5",
+          "title": "Kahveler",
+          "items": [
+            {
+              "id": "ozsut-sec-5-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "ozsut-sec-5-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "ozsut-sec-5-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "ozsut-sec-5-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "ozsut-sec-5-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "kahveler"
               ]
             }
           ]
@@ -3711,41 +8671,239 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "varuna-gezgin-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "varuna-gezgin-sec-1",
+          "title": "Kahveler",
           "items": [
             {
-              "id": "varuna-gezgin-item-1",
-              "name": "dünya kahveleri",
-              "keywords": [
-                "kahve",
-                "dünya mutfağı"
+              "id": "varuna-gezgin-sec-1-item-1",
+              "name": "Dünya Kahveleri",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kahveler"
               ]
             },
             {
-              "id": "varuna-gezgin-item-2",
-              "name": "burger",
-              "keywords": [
-                "burger"
+              "id": "varuna-gezgin-sec-1-item-2",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "kahveler"
               ]
             },
             {
-              "id": "varuna-gezgin-item-3",
-              "name": "makarna",
-              "keywords": []
-            },
-            {
-              "id": "varuna-gezgin-item-4",
-              "name": "kokteyl",
-              "keywords": [
-                "kokteyl"
+              "id": "varuna-gezgin-sec-1-item-3",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "kahveler"
               ]
             },
             {
-              "id": "varuna-gezgin-item-5",
-              "name": "waffle",
-              "keywords": [
-                "waffle"
+              "id": "varuna-gezgin-sec-1-item-4",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-1-item-5",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-1-item-6",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "kahveler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "varuna-gezgin-sec-2",
+          "title": "Dünya Mutfağı",
+          "items": [
+            {
+              "id": "varuna-gezgin-sec-2-item-1",
+              "name": "Dünya Kahveleri Seçkisi",
+              "description": "Origin çekirdekler.",
+              "tags": [
+                "dunya mutfagi"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-2-item-2",
+              "name": "Meksika Tabağı",
+              "description": "Fajita ve dip soslar.",
+              "tags": [
+                "dunya mutfagi"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-2-item-3",
+              "name": "Asya Noodle",
+              "description": "Sebzeli.",
+              "tags": [
+                "dunya mutfagi"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-2-item-4",
+              "name": "Akdeniz Mezeleri",
+              "description": "Paylaşımlık.",
+              "tags": [
+                "dunya mutfagi"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "varuna-gezgin-sec-3",
+          "title": "Burgerler",
+          "items": [
+            {
+              "id": "varuna-gezgin-sec-3-item-1",
+              "name": "Burger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-3-item-2",
+              "name": "Cheeseburger",
+              "description": "Cheddar'lı klasik.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-3-item-3",
+              "name": "Double Burger",
+              "description": "Çift köfte, yoğun lezzet.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-3-item-4",
+              "name": "Tavuk Burger",
+              "description": "Çıtır tavuklu.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-3-item-5",
+              "name": "House Burger",
+              "description": "Mekanın imza burgeri.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-3-item-6",
+              "name": "Mini Burger Tabağı",
+              "description": "Üçlü tadım seti.",
+              "tags": [
+                "burgerler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "varuna-gezgin-sec-4",
+          "title": "Kokteyller",
+          "items": [
+            {
+              "id": "varuna-gezgin-sec-4-item-1",
+              "name": "Kokteyl",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-4-item-2",
+              "name": "Mojito",
+              "description": "Nane ve lime ile.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-4-item-3",
+              "name": "Aperol Spritz",
+              "description": "Gün batımı klasiği.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-4-item-4",
+              "name": "Gin Tonic",
+              "description": "Aromatik bitkilerle.",
+              "tags": [
+                "kokteyller"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-4-item-5",
+              "name": "Margarita",
+              "description": "Tuz kenarlı klasik.",
+              "tags": [
+                "kokteyller"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "varuna-gezgin-sec-5",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "varuna-gezgin-sec-5-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-5-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-5-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-5-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "varuna-gezgin-sec-5-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
               ]
             }
           ]
@@ -3828,41 +8986,231 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "bereket-doner-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "bereket-doner-sec-1",
+          "title": "Tavuk Döner",
           "items": [
             {
-              "id": "bereket-doner-item-1",
-              "name": "tavuk dürüm",
-              "keywords": [
-                "dürüm",
-                "tavuk döner"
+              "id": "bereket-doner-sec-1-item-1",
+              "name": "Ekmek Arası Döner",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "tavuk doner"
               ]
             },
             {
-              "id": "bereket-doner-item-2",
-              "name": "et dürüm",
-              "keywords": [
-                "dürüm"
+              "id": "bereket-doner-sec-1-item-2",
+              "name": "Tavuk Dürüm",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "tavuk doner"
               ]
             },
             {
-              "id": "bereket-doner-item-3",
-              "name": "ekmek arası döner",
-              "keywords": [
-                "döner"
+              "id": "bereket-doner-sec-1-item-3",
+              "name": "Et Döner Dürüm",
+              "description": "Lavaşta közlenmiş et döner.",
+              "tags": [
+                "tavuk doner"
               ]
             },
             {
-              "id": "bereket-doner-item-4",
-              "name": "menü",
-              "keywords": []
+              "id": "bereket-doner-sec-1-item-4",
+              "name": "Tavuk Döner Dürüm",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "tavuk doner"
+              ]
             },
             {
-              "id": "bereket-doner-item-5",
-              "name": "ayran",
-              "keywords": [
-                "ayran"
+              "id": "bereket-doner-sec-1-item-5",
+              "name": "Porsiyon Döner",
+              "description": "Pilav ve közlenmiş biberle.",
+              "tags": [
+                "tavuk doner"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-1-item-6",
+              "name": "Pilav Üstü Döner",
+              "description": "Doyurucu klasik.",
+              "tags": [
+                "tavuk doner"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bereket-doner-sec-2",
+          "title": "Et Döner",
+          "items": [
+            {
+              "id": "bereket-doner-sec-2-item-1",
+              "name": "Et Dürüm",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "et doner"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-2-item-2",
+              "name": "Et Döner Dürüm",
+              "description": "Lavaşta közlenmiş et döner.",
+              "tags": [
+                "et doner"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-2-item-3",
+              "name": "Tavuk Döner Dürüm",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "et doner"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-2-item-4",
+              "name": "Porsiyon Döner",
+              "description": "Pilav ve közlenmiş biberle.",
+              "tags": [
+                "et doner"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-2-item-5",
+              "name": "Pilav Üstü Döner",
+              "description": "Doyurucu klasik.",
+              "tags": [
+                "et doner"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-2-item-6",
+              "name": "Zurna Dürüm",
+              "description": "Büyük boy.",
+              "tags": [
+                "et doner"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bereket-doner-sec-3",
+          "title": "Dürümler",
+          "items": [
+            {
+              "id": "bereket-doner-sec-3-item-1",
+              "name": "Et Döner Dürüm",
+              "description": "Lavaşta közlenmiş et döner.",
+              "tags": [
+                "durumler"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-3-item-2",
+              "name": "Tavuk Döner Dürüm",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "durumler"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-3-item-3",
+              "name": "Porsiyon Döner",
+              "description": "Pilav ve közlenmiş biberle.",
+              "tags": [
+                "durumler"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-3-item-4",
+              "name": "Pilav Üstü Döner",
+              "description": "Doyurucu klasik.",
+              "tags": [
+                "durumler"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-3-item-5",
+              "name": "Zurna Dürüm",
+              "description": "Büyük boy.",
+              "tags": [
+                "durumler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bereket-doner-sec-4",
+          "title": "Menüler",
+          "items": [
+            {
+              "id": "bereket-doner-sec-4-item-1",
+              "name": "Menü",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "menuler"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-4-item-2",
+              "name": "Ayran",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "menuler"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-4-item-3",
+              "name": "Günün Önerisi",
+              "description": "Sorunuz.",
+              "tags": [
+                "menuler"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-4-item-4",
+              "name": "Mevsim Seçkisi",
+              "description": "Dönemsel.",
+              "tags": [
+                "menuler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bereket-doner-sec-5",
+          "title": "İçecekler",
+          "items": [
+            {
+              "id": "bereket-doner-sec-5-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-5-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-5-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "bereket-doner-sec-5-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
               ]
             }
           ]
@@ -3943,41 +9291,186 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "coffee-di-toee-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "coffee-di-toee-sec-1",
+          "title": "Espresso Bazlı",
           "items": [
             {
-              "id": "coffee-di-toee-item-1",
-              "name": "espresso",
-              "keywords": [
-                "espresso"
+              "id": "coffee-di-toee-sec-1-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "espresso bazli"
               ]
             },
             {
-              "id": "coffee-di-toee-item-2",
-              "name": "cappuccino",
-              "keywords": [
-                "cappuccino"
+              "id": "coffee-di-toee-sec-1-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "espresso bazli"
               ]
             },
             {
-              "id": "coffee-di-toee-item-3",
-              "name": "latte",
-              "keywords": [
-                "latte"
+              "id": "coffee-di-toee-sec-1-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "espresso bazli"
               ]
             },
             {
-              "id": "coffee-di-toee-item-4",
-              "name": "tiramisu",
-              "keywords": [
-                "tiramisu"
+              "id": "coffee-di-toee-sec-1-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "espresso bazli"
               ]
             },
             {
-              "id": "coffee-di-toee-item-5",
-              "name": "cookie",
-              "keywords": []
+              "id": "coffee-di-toee-sec-1-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "espresso bazli"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "coffee-di-toee-sec-2",
+          "title": "Filtre Kahve",
+          "items": [
+            {
+              "id": "coffee-di-toee-sec-2-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "coffee-di-toee-sec-2-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "coffee-di-toee-sec-2-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "coffee-di-toee-sec-2-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "filtre kahve"
+              ]
+            },
+            {
+              "id": "coffee-di-toee-sec-2-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "filtre kahve"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "coffee-di-toee-sec-3",
+          "title": "Soğuk Kahveler",
+          "items": [
+            {
+              "id": "coffee-di-toee-sec-3-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            },
+            {
+              "id": "coffee-di-toee-sec-3-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            },
+            {
+              "id": "coffee-di-toee-sec-3-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            },
+            {
+              "id": "coffee-di-toee-sec-3-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            },
+            {
+              "id": "coffee-di-toee-sec-3-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "soguk kahveler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "coffee-di-toee-sec-4",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "coffee-di-toee-sec-4-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "coffee-di-toee-sec-4-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "coffee-di-toee-sec-4-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "coffee-di-toee-sec-4-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "coffee-di-toee-sec-4-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
             }
           ]
         }
@@ -4055,39 +9548,140 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "bex-coffee-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "bex-coffee-sec-1",
+          "title": "Kahveler",
           "items": [
             {
-              "id": "bex-coffee-item-1",
-              "name": "iced latte",
-              "keywords": [
-                "iced latte"
+              "id": "bex-coffee-sec-1-item-1",
+              "name": "Filtre Kahve",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kahveler"
               ]
             },
             {
-              "id": "bex-coffee-item-2",
-              "name": "americano",
-              "keywords": [
-                "americano"
+              "id": "bex-coffee-sec-1-item-2",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "kahveler"
               ]
             },
             {
-              "id": "bex-coffee-item-3",
-              "name": "filtre kahve",
-              "keywords": [
-                "kahve"
+              "id": "bex-coffee-sec-1-item-3",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "kahveler"
               ]
             },
             {
-              "id": "bex-coffee-item-4",
-              "name": "limonata",
-              "keywords": []
+              "id": "bex-coffee-sec-1-item-4",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "kahveler"
+              ]
             },
             {
-              "id": "bex-coffee-item-5",
-              "name": "cookie",
-              "keywords": []
+              "id": "bex-coffee-sec-1-item-5",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "bex-coffee-sec-1-item-6",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "kahveler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bex-coffee-sec-2",
+          "title": "Soğuk İçecekler",
+          "items": [
+            {
+              "id": "bex-coffee-sec-2-item-1",
+              "name": "Iced Latte",
+              "description": "Buz üstüne süt ve espresso.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "bex-coffee-sec-2-item-2",
+              "name": "Iced Americano",
+              "description": "Buzlu sade kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "bex-coffee-sec-2-item-3",
+              "name": "Cold Brew",
+              "description": "12 saat soğuk demleme.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "bex-coffee-sec-2-item-4",
+              "name": "Frozen",
+              "description": "Meyveli buz karışımı.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            },
+            {
+              "id": "bex-coffee-sec-2-item-5",
+              "name": "Iced Mocha",
+              "description": "Çikolatalı soğuk kahve.",
+              "tags": [
+                "soguk icecekler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bex-coffee-sec-3",
+          "title": "Atıştırmalıklar",
+          "items": [
+            {
+              "id": "bex-coffee-sec-3-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            },
+            {
+              "id": "bex-coffee-sec-3-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            },
+            {
+              "id": "bex-coffee-sec-3-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            },
+            {
+              "id": "bex-coffee-sec-3-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "atistirmaliklar"
+              ]
             }
           ]
         }
@@ -4167,39 +9761,224 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "mcdonalds-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "mcdonalds-sec-1",
+          "title": "Burger Menüleri",
           "items": [
             {
-              "id": "mcdonalds-item-1",
-              "name": "big mac",
-              "keywords": [
-                "big mac"
+              "id": "mcdonalds-sec-1-item-1",
+              "name": "Cheeseburger",
+              "description": "Cheddar'lı klasik.",
+              "tags": [
+                "burger menuleri"
               ]
             },
             {
-              "id": "mcdonalds-item-2",
-              "name": "mcchicken",
-              "keywords": []
-            },
-            {
-              "id": "mcdonalds-item-3",
-              "name": "nugget",
-              "keywords": [
-                "nugget"
+              "id": "mcdonalds-sec-1-item-2",
+              "name": "Double Burger",
+              "description": "Çift köfte, yoğun lezzet.",
+              "tags": [
+                "burger menuleri"
               ]
             },
             {
-              "id": "mcdonalds-item-4",
-              "name": "patates",
-              "keywords": [
+              "id": "mcdonalds-sec-1-item-3",
+              "name": "Tavuk Burger",
+              "description": "Çıtır tavuklu.",
+              "tags": [
+                "burger menuleri"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-1-item-4",
+              "name": "House Burger",
+              "description": "Mekanın imza burgeri.",
+              "tags": [
+                "burger menuleri"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-1-item-5",
+              "name": "Mini Burger Tabağı",
+              "description": "Üçlü tadım seti.",
+              "tags": [
+                "burger menuleri"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mcdonalds-sec-2",
+          "title": "Tavuk Ürünleri",
+          "items": [
+            {
+              "id": "mcdonalds-sec-2-item-1",
+              "name": "Çıtır Tavuk",
+              "description": "Baharatlı kaplama.",
+              "tags": [
+                "tavuk urunleri"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-2-item-2",
+              "name": "Izgara Tavuk",
+              "description": "Marine edilmiş.",
+              "tags": [
+                "tavuk urunleri"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-2-item-3",
+              "name": "Kanat",
+              "description": "Acılı soslu.",
+              "tags": [
+                "tavuk urunleri"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-2-item-4",
+              "name": "Köri Soslu Tavuk",
+              "description": "Pilav eşliğinde.",
+              "tags": [
+                "tavuk urunleri"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mcdonalds-sec-3",
+          "title": "Patates",
+          "items": [
+            {
+              "id": "mcdonalds-sec-3-item-1",
+              "name": "Patates",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
                 "patates"
               ]
             },
             {
-              "id": "mcdonalds-item-5",
-              "name": "mcflurry",
-              "keywords": []
+              "id": "mcdonalds-sec-3-item-2",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "patates"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-3-item-3",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "patates"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-3-item-4",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "patates"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-3-item-5",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "patates"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mcdonalds-sec-4",
+          "title": "Tatlı & Dondurma",
+          "items": [
+            {
+              "id": "mcdonalds-sec-4-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatli dondurma"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-4-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatli dondurma"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-4-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatli dondurma"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-4-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatli dondurma"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-4-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatli dondurma"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mcdonalds-sec-5",
+          "title": "Kahvaltı",
+          "items": [
+            {
+              "id": "mcdonalds-sec-5-item-1",
+              "name": "Serpme Kahvaltı",
+              "description": "Zengin köy kahvaltısı, sınırsız çay.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-5-item-2",
+              "name": "Menemen",
+              "description": "Bol domatesli.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-5-item-3",
+              "name": "Avokado Tost",
+              "description": "Ekşi maya üstü avokado.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-5-item-4",
+              "name": "Omlet Çeşitleri",
+              "description": "Sade, kaşarlı, mantarlı.",
+              "tags": [
+                "kahvalti"
+              ]
+            },
+            {
+              "id": "mcdonalds-sec-5-item-5",
+              "name": "Simit Tabağı",
+              "description": "Simit, beyaz peynir, domates.",
+              "tags": [
+                "kahvalti"
+              ]
             }
           ]
         }
@@ -4280,42 +10059,177 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "durumle-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "durumle-sec-1",
+          "title": "Et Dürümler",
           "items": [
             {
-              "id": "durumle-item-1",
-              "name": "kaşarlı et dürüm",
-              "keywords": [
-                "dürüm",
-                "et dürüm"
+              "id": "durumle-sec-1-item-1",
+              "name": "Tavuk Dürüm",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "et durumler"
               ]
             },
             {
-              "id": "durumle-item-2",
-              "name": "tavuk dürüm",
-              "keywords": [
-                "dürüm",
-                "tavuk dürüm"
+              "id": "durumle-sec-1-item-2",
+              "name": "Kaşarlı Et Dürüm",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "et durumler"
               ]
             },
             {
-              "id": "durumle-item-3",
-              "name": "zurna dürüm",
-              "keywords": [
-                "dürüm"
+              "id": "durumle-sec-1-item-3",
+              "name": "Et Döner Dürüm",
+              "description": "Lavaşta közlenmiş et döner.",
+              "tags": [
+                "et durumler"
               ]
             },
             {
-              "id": "durumle-item-4",
-              "name": "patates",
-              "keywords": []
+              "id": "durumle-sec-1-item-4",
+              "name": "Tavuk Döner Dürüm",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "et durumler"
+              ]
             },
             {
-              "id": "durumle-item-5",
-              "name": "ayran",
-              "keywords": [
-                "ayran"
+              "id": "durumle-sec-1-item-5",
+              "name": "Porsiyon Döner",
+              "description": "Pilav ve közlenmiş biberle.",
+              "tags": [
+                "et durumler"
+              ]
+            },
+            {
+              "id": "durumle-sec-1-item-6",
+              "name": "Pilav Üstü Döner",
+              "description": "Doyurucu klasik.",
+              "tags": [
+                "et durumler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "durumle-sec-2",
+          "title": "Tavuk Dürümler",
+          "items": [
+            {
+              "id": "durumle-sec-2-item-1",
+              "name": "Et Döner Dürüm",
+              "description": "Lavaşta közlenmiş et döner.",
+              "tags": [
+                "tavuk durumler"
+              ]
+            },
+            {
+              "id": "durumle-sec-2-item-2",
+              "name": "Tavuk Döner Dürüm",
+              "description": "Bol malzemeli.",
+              "tags": [
+                "tavuk durumler"
+              ]
+            },
+            {
+              "id": "durumle-sec-2-item-3",
+              "name": "Porsiyon Döner",
+              "description": "Pilav ve közlenmiş biberle.",
+              "tags": [
+                "tavuk durumler"
+              ]
+            },
+            {
+              "id": "durumle-sec-2-item-4",
+              "name": "Pilav Üstü Döner",
+              "description": "Doyurucu klasik.",
+              "tags": [
+                "tavuk durumler"
+              ]
+            },
+            {
+              "id": "durumle-sec-2-item-5",
+              "name": "Zurna Dürüm",
+              "description": "Büyük boy.",
+              "tags": [
+                "tavuk durumler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "durumle-sec-3",
+          "title": "Yan Ürünler",
+          "items": [
+            {
+              "id": "durumle-sec-3-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "durumle-sec-3-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "durumle-sec-3-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "durumle-sec-3-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "yan urunler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "durumle-sec-4",
+          "title": "İçecekler",
+          "items": [
+            {
+              "id": "durumle-sec-4-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "durumle-sec-4-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "durumle-sec-4-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "durumle-sec-4-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
               ]
             }
           ]
@@ -4395,39 +10309,178 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "burger-king-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "burger-king-sec-1",
+          "title": "Burger Menüleri",
           "items": [
             {
-              "id": "burger-king-item-1",
-              "name": "whopper",
-              "keywords": [
-                "whopper"
+              "id": "burger-king-sec-1-item-1",
+              "name": "Cheeseburger",
+              "description": "Cheddar'lı klasik.",
+              "tags": [
+                "burger menuleri"
               ]
             },
             {
-              "id": "burger-king-item-2",
-              "name": "king chicken",
-              "keywords": []
-            },
-            {
-              "id": "burger-king-item-3",
-              "name": "nugget",
-              "keywords": [
-                "nugget"
+              "id": "burger-king-sec-1-item-2",
+              "name": "Double Burger",
+              "description": "Çift köfte, yoğun lezzet.",
+              "tags": [
+                "burger menuleri"
               ]
             },
             {
-              "id": "burger-king-item-4",
-              "name": "patates",
-              "keywords": [
-                "patates"
+              "id": "burger-king-sec-1-item-3",
+              "name": "Tavuk Burger",
+              "description": "Çıtır tavuklu.",
+              "tags": [
+                "burger menuleri"
               ]
             },
             {
-              "id": "burger-king-item-5",
-              "name": "sundae",
-              "keywords": []
+              "id": "burger-king-sec-1-item-4",
+              "name": "House Burger",
+              "description": "Mekanın imza burgeri.",
+              "tags": [
+                "burger menuleri"
+              ]
+            },
+            {
+              "id": "burger-king-sec-1-item-5",
+              "name": "Mini Burger Tabağı",
+              "description": "Üçlü tadım seti.",
+              "tags": [
+                "burger menuleri"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "burger-king-sec-2",
+          "title": "Tavuk Ürünleri",
+          "items": [
+            {
+              "id": "burger-king-sec-2-item-1",
+              "name": "Çıtır Tavuk",
+              "description": "Baharatlı kaplama.",
+              "tags": [
+                "tavuk urunleri"
+              ]
+            },
+            {
+              "id": "burger-king-sec-2-item-2",
+              "name": "Izgara Tavuk",
+              "description": "Marine edilmiş.",
+              "tags": [
+                "tavuk urunleri"
+              ]
+            },
+            {
+              "id": "burger-king-sec-2-item-3",
+              "name": "Kanat",
+              "description": "Acılı soslu.",
+              "tags": [
+                "tavuk urunleri"
+              ]
+            },
+            {
+              "id": "burger-king-sec-2-item-4",
+              "name": "Köri Soslu Tavuk",
+              "description": "Pilav eşliğinde.",
+              "tags": [
+                "tavuk urunleri"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "burger-king-sec-3",
+          "title": "Patates & Yan Ürünler",
+          "items": [
+            {
+              "id": "burger-king-sec-3-item-1",
+              "name": "Patates",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "patates yan urunler"
+              ]
+            },
+            {
+              "id": "burger-king-sec-3-item-2",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "patates yan urunler"
+              ]
+            },
+            {
+              "id": "burger-king-sec-3-item-3",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "patates yan urunler"
+              ]
+            },
+            {
+              "id": "burger-king-sec-3-item-4",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "patates yan urunler"
+              ]
+            },
+            {
+              "id": "burger-king-sec-3-item-5",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "patates yan urunler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "burger-king-sec-4",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "burger-king-sec-4-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "burger-king-sec-4-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "burger-king-sec-4-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "burger-king-sec-4-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "burger-king-sec-4-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
             }
           ]
         }
@@ -4508,42 +10561,215 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "subway-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "subway-sec-1",
+          "title": "Sub Sandviçler",
           "items": [
             {
-              "id": "subway-item-1",
-              "name": "tavuklu sub",
-              "keywords": [
-                "sub"
+              "id": "subway-sec-1-item-1",
+              "name": "Tavuklu Sub",
+              "description": "Taze malzemelerle.",
+              "tags": [
+                "sub sandvicler"
               ]
             },
             {
-              "id": "subway-item-2",
-              "name": "ton balıklı sub",
-              "keywords": [
-                "sub"
+              "id": "subway-sec-1-item-2",
+              "name": "Ton Balıklı Sub",
+              "description": "Hafif.",
+              "tags": [
+                "sub sandvicler"
               ]
             },
             {
-              "id": "subway-item-3",
-              "name": "köfteli sub",
-              "keywords": [
-                "sub"
+              "id": "subway-sec-1-item-3",
+              "name": "Köfteli Sub",
+              "description": "Marinara soslu.",
+              "tags": [
+                "sub sandvicler"
               ]
             },
             {
-              "id": "subway-item-4",
-              "name": "salata",
-              "keywords": [
-                "salata"
+              "id": "subway-sec-1-item-4",
+              "name": "Sebzeli Sub",
+              "description": "Vejetaryen.",
+              "tags": [
+                "sub sandvicler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "subway-sec-2",
+          "title": "Salatalar",
+          "items": [
+            {
+              "id": "subway-sec-2-item-1",
+              "name": "Salata",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "salatalar"
               ]
             },
             {
-              "id": "subway-item-5",
-              "name": "cookie",
-              "keywords": [
-                "cookie"
+              "id": "subway-sec-2-item-2",
+              "name": "Sezar Salata",
+              "description": "Izgara tavuklu.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "subway-sec-2-item-3",
+              "name": "Tavuklu Uzun Tabak",
+              "description": "İmza salata.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "subway-sec-2-item-4",
+              "name": "Ton Balıklı Salata",
+              "description": "Protein deposu.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "subway-sec-2-item-5",
+              "name": "Protein Bowl",
+              "description": "Kinoa ve tavukla.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "subway-sec-2-item-6",
+              "name": "Wrap Çeşitleri",
+              "description": "Tavuklu / sebzeli.",
+              "tags": [
+                "salatalar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "subway-sec-3",
+          "title": "Wrapler",
+          "items": [
+            {
+              "id": "subway-sec-3-item-1",
+              "name": "Sezar Salata",
+              "description": "Izgara tavuklu.",
+              "tags": [
+                "wrapler"
+              ]
+            },
+            {
+              "id": "subway-sec-3-item-2",
+              "name": "Tavuklu Uzun Tabak",
+              "description": "İmza salata.",
+              "tags": [
+                "wrapler"
+              ]
+            },
+            {
+              "id": "subway-sec-3-item-3",
+              "name": "Ton Balıklı Salata",
+              "description": "Protein deposu.",
+              "tags": [
+                "wrapler"
+              ]
+            },
+            {
+              "id": "subway-sec-3-item-4",
+              "name": "Protein Bowl",
+              "description": "Kinoa ve tavukla.",
+              "tags": [
+                "wrapler"
+              ]
+            },
+            {
+              "id": "subway-sec-3-item-5",
+              "name": "Wrap Çeşitleri",
+              "description": "Tavuklu / sebzeli.",
+              "tags": [
+                "wrapler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "subway-sec-4",
+          "title": "Cookieler",
+          "items": [
+            {
+              "id": "subway-sec-4-item-1",
+              "name": "Tavuklu Sub",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "cookieler"
+              ]
+            },
+            {
+              "id": "subway-sec-4-item-2",
+              "name": "Ton Balıklı Sub",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "cookieler"
+              ]
+            },
+            {
+              "id": "subway-sec-4-item-3",
+              "name": "Köfteli Sub",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "cookieler"
+              ]
+            },
+            {
+              "id": "subway-sec-4-item-4",
+              "name": "Cookie",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "cookieler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "subway-sec-5",
+          "title": "İçecekler",
+          "items": [
+            {
+              "id": "subway-sec-5-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "subway-sec-5-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "subway-sec-5-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "subway-sec-5-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
               ]
             }
           ]
@@ -4625,39 +10851,170 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "arbys-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "arbys-sec-1",
+          "title": "Roast Beef Sandviçler",
           "items": [
             {
-              "id": "arbys-item-1",
-              "name": "klasik roast beef",
-              "keywords": [
-                "roast beef"
+              "id": "arbys-sec-1-item-1",
+              "name": "Çıtır Tavuk Sandviç",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "roast beef sandvicler"
               ]
             },
             {
-              "id": "arbys-item-2",
-              "name": "çıtır tavuk sandviç",
-              "keywords": [
-                "sandviç"
+              "id": "arbys-sec-1-item-2",
+              "name": "Klasik Roast Beef",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "roast beef sandvicler"
               ]
             },
             {
-              "id": "arbys-item-3",
-              "name": "curly fries",
-              "keywords": []
-            },
-            {
-              "id": "arbys-item-4",
-              "name": "milkshake",
-              "keywords": [
-                "milkshake"
+              "id": "arbys-sec-1-item-3",
+              "name": "Tavuklu Sub",
+              "description": "Taze malzemelerle.",
+              "tags": [
+                "roast beef sandvicler"
               ]
             },
             {
-              "id": "arbys-item-5",
-              "name": "nugget",
-              "keywords": []
+              "id": "arbys-sec-1-item-4",
+              "name": "Ton Balıklı Sub",
+              "description": "Hafif.",
+              "tags": [
+                "roast beef sandvicler"
+              ]
+            },
+            {
+              "id": "arbys-sec-1-item-5",
+              "name": "Köfteli Sub",
+              "description": "Marinara soslu.",
+              "tags": [
+                "roast beef sandvicler"
+              ]
+            },
+            {
+              "id": "arbys-sec-1-item-6",
+              "name": "Sebzeli Sub",
+              "description": "Vejetaryen.",
+              "tags": [
+                "roast beef sandvicler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "arbys-sec-2",
+          "title": "Tavuk Ürünleri",
+          "items": [
+            {
+              "id": "arbys-sec-2-item-1",
+              "name": "Çıtır Tavuk",
+              "description": "Baharatlı kaplama.",
+              "tags": [
+                "tavuk urunleri"
+              ]
+            },
+            {
+              "id": "arbys-sec-2-item-2",
+              "name": "Izgara Tavuk",
+              "description": "Marine edilmiş.",
+              "tags": [
+                "tavuk urunleri"
+              ]
+            },
+            {
+              "id": "arbys-sec-2-item-3",
+              "name": "Kanat",
+              "description": "Acılı soslu.",
+              "tags": [
+                "tavuk urunleri"
+              ]
+            },
+            {
+              "id": "arbys-sec-2-item-4",
+              "name": "Köri Soslu Tavuk",
+              "description": "Pilav eşliğinde.",
+              "tags": [
+                "tavuk urunleri"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "arbys-sec-3",
+          "title": "Patates",
+          "items": [
+            {
+              "id": "arbys-sec-3-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "patates"
+              ]
+            },
+            {
+              "id": "arbys-sec-3-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "patates"
+              ]
+            },
+            {
+              "id": "arbys-sec-3-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "patates"
+              ]
+            },
+            {
+              "id": "arbys-sec-3-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "patates"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "arbys-sec-4",
+          "title": "İçecekler",
+          "items": [
+            {
+              "id": "arbys-sec-4-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "arbys-sec-4-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "arbys-sec-4-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "arbys-sec-4-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
+              ]
             }
           ]
         }
@@ -4736,42 +11093,178 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "popeyes-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "popeyes-sec-1",
+          "title": "Çıtır Tavuklar",
           "items": [
             {
-              "id": "popeyes-item-1",
-              "name": "çıtır tavuk",
-              "keywords": [
-                "tavuk",
-                "çıtır tavuk"
+              "id": "popeyes-sec-1-item-1",
+              "name": "Tavuk Burger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "citir tavuklar"
               ]
             },
             {
-              "id": "popeyes-item-2",
-              "name": "tavuk burger",
-              "keywords": [
-                "tavuk",
-                "çıtır tavuk",
-                "tavuk burger"
+              "id": "popeyes-sec-1-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Baharatlı kaplama.",
+              "tags": [
+                "citir tavuklar"
               ]
             },
             {
-              "id": "popeyes-item-3",
-              "name": "kanat",
-              "keywords": [
-                "kanat"
+              "id": "popeyes-sec-1-item-3",
+              "name": "Izgara Tavuk",
+              "description": "Marine edilmiş.",
+              "tags": [
+                "citir tavuklar"
               ]
             },
             {
-              "id": "popeyes-item-4",
-              "name": "biscuit",
-              "keywords": []
+              "id": "popeyes-sec-1-item-4",
+              "name": "Kanat",
+              "description": "Acılı soslu.",
+              "tags": [
+                "citir tavuklar"
+              ]
             },
             {
-              "id": "popeyes-item-5",
-              "name": "patates",
-              "keywords": []
+              "id": "popeyes-sec-1-item-5",
+              "name": "Köri Soslu Tavuk",
+              "description": "Pilav eşliğinde.",
+              "tags": [
+                "citir tavuklar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "popeyes-sec-2",
+          "title": "Tavuk Burgerler",
+          "items": [
+            {
+              "id": "popeyes-sec-2-item-1",
+              "name": "Çıtır Tavuk",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "tavuk burgerler"
+              ]
+            },
+            {
+              "id": "popeyes-sec-2-item-2",
+              "name": "Cheeseburger",
+              "description": "Cheddar'lı klasik.",
+              "tags": [
+                "tavuk burgerler"
+              ]
+            },
+            {
+              "id": "popeyes-sec-2-item-3",
+              "name": "Double Burger",
+              "description": "Çift köfte, yoğun lezzet.",
+              "tags": [
+                "tavuk burgerler"
+              ]
+            },
+            {
+              "id": "popeyes-sec-2-item-4",
+              "name": "Tavuk Burger",
+              "description": "Çıtır tavuklu.",
+              "tags": [
+                "tavuk burgerler"
+              ]
+            },
+            {
+              "id": "popeyes-sec-2-item-5",
+              "name": "House Burger",
+              "description": "Mekanın imza burgeri.",
+              "tags": [
+                "tavuk burgerler"
+              ]
+            },
+            {
+              "id": "popeyes-sec-2-item-6",
+              "name": "Mini Burger Tabağı",
+              "description": "Üçlü tadım seti.",
+              "tags": [
+                "tavuk burgerler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "popeyes-sec-3",
+          "title": "Sepet Menüler",
+          "items": [
+            {
+              "id": "popeyes-sec-3-item-1",
+              "name": "Kova Menü",
+              "description": "Paylaşımlık çıtır tavuk.",
+              "tags": [
+                "sepet menuler"
+              ]
+            },
+            {
+              "id": "popeyes-sec-3-item-2",
+              "name": "Sepet Menü",
+              "description": "Tavuk + patates.",
+              "tags": [
+                "sepet menuler"
+              ]
+            },
+            {
+              "id": "popeyes-sec-3-item-3",
+              "name": "Zinger Menü",
+              "description": "Acılı tavuk burger.",
+              "tags": [
+                "sepet menuler"
+              ]
+            },
+            {
+              "id": "popeyes-sec-3-item-4",
+              "name": "Kanat Sepeti",
+              "description": "Soslu kanatlar.",
+              "tags": [
+                "sepet menuler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "popeyes-sec-4",
+          "title": "Yan Ürünler",
+          "items": [
+            {
+              "id": "popeyes-sec-4-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "popeyes-sec-4-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "popeyes-sec-4-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "popeyes-sec-4-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "yan urunler"
+              ]
             }
           ]
         }
@@ -4851,42 +11344,216 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "kfc-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "kfc-sec-1",
+          "title": "Kova Menüler",
           "items": [
             {
-              "id": "kfc-item-1",
-              "name": "kova menü",
-              "keywords": [
-                "kova"
+              "id": "kfc-sec-1-item-1",
+              "name": "Kova Menü",
+              "description": "Paylaşımlık çıtır tavuk.",
+              "tags": [
+                "kova menuler"
               ]
             },
             {
-              "id": "kfc-item-2",
-              "name": "zinger burger",
-              "keywords": [
-                "zinger"
+              "id": "kfc-sec-1-item-2",
+              "name": "Sepet Menü",
+              "description": "Tavuk + patates.",
+              "tags": [
+                "kova menuler"
               ]
             },
             {
-              "id": "kfc-item-3",
-              "name": "kanat",
-              "keywords": [
-                "kanat"
+              "id": "kfc-sec-1-item-3",
+              "name": "Zinger Menü",
+              "description": "Acılı tavuk burger.",
+              "tags": [
+                "kova menuler"
               ]
             },
             {
-              "id": "kfc-item-4",
-              "name": "çıtır tavuk",
-              "keywords": [
-                "tavuk",
-                "çıtır tavuk"
+              "id": "kfc-sec-1-item-4",
+              "name": "Kanat Sepeti",
+              "description": "Soslu kanatlar.",
+              "tags": [
+                "kova menuler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kfc-sec-2",
+          "title": "Burgerler",
+          "items": [
+            {
+              "id": "kfc-sec-2-item-1",
+              "name": "Zinger Burger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "burgerler"
               ]
             },
             {
-              "id": "kfc-item-5",
-              "name": "patates",
-              "keywords": []
+              "id": "kfc-sec-2-item-2",
+              "name": "Cheeseburger",
+              "description": "Cheddar'lı klasik.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "kfc-sec-2-item-3",
+              "name": "Double Burger",
+              "description": "Çift köfte, yoğun lezzet.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "kfc-sec-2-item-4",
+              "name": "Tavuk Burger",
+              "description": "Çıtır tavuklu.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "kfc-sec-2-item-5",
+              "name": "House Burger",
+              "description": "Mekanın imza burgeri.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "kfc-sec-2-item-6",
+              "name": "Mini Burger Tabağı",
+              "description": "Üçlü tadım seti.",
+              "tags": [
+                "burgerler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kfc-sec-3",
+          "title": "Kanatlar",
+          "items": [
+            {
+              "id": "kfc-sec-3-item-1",
+              "name": "Kova Menü",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kanatlar"
+              ]
+            },
+            {
+              "id": "kfc-sec-3-item-2",
+              "name": "Kanat",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kanatlar"
+              ]
+            },
+            {
+              "id": "kfc-sec-3-item-3",
+              "name": "Çıtır Tavuk",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kanatlar"
+              ]
+            },
+            {
+              "id": "kfc-sec-3-item-4",
+              "name": "Patates",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "kanatlar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kfc-sec-4",
+          "title": "Yan Ürünler",
+          "items": [
+            {
+              "id": "kfc-sec-4-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "kfc-sec-4-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "kfc-sec-4-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "kfc-sec-4-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "yan urunler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kfc-sec-5",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "kfc-sec-5-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "kfc-sec-5-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "kfc-sec-5-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "kfc-sec-5-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "kfc-sec-5-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
             }
           ]
         }
@@ -4966,42 +11633,176 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "hmbrgr-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "hmbrgr-sec-1",
+          "title": "Gourmet Burgerler",
           "items": [
             {
-              "id": "hmbrgr-item-1",
-              "name": "signature burger",
-              "keywords": [
-                "burger"
+              "id": "hmbrgr-sec-1-item-1",
+              "name": "Çıtır Tavuk Burger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "gourmet burgerler"
               ]
             },
             {
-              "id": "hmbrgr-item-2",
-              "name": "trüflü burger",
-              "keywords": [
-                "burger",
-                "trüf"
+              "id": "hmbrgr-sec-1-item-2",
+              "name": "Trüflü Burger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "gourmet burgerler"
               ]
             },
             {
-              "id": "hmbrgr-item-3",
-              "name": "çıtır tavuk burger",
-              "keywords": [
-                "burger"
+              "id": "hmbrgr-sec-1-item-3",
+              "name": "Signature Burger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "gourmet burgerler"
               ]
             },
             {
-              "id": "hmbrgr-item-4",
-              "name": "parmesan patates",
-              "keywords": [
-                "patates"
+              "id": "hmbrgr-sec-1-item-4",
+              "name": "Cheeseburger",
+              "description": "Cheddar'lı klasik.",
+              "tags": [
+                "gourmet burgerler"
               ]
             },
             {
-              "id": "hmbrgr-item-5",
-              "name": "milkshake",
-              "keywords": [
+              "id": "hmbrgr-sec-1-item-5",
+              "name": "Double Burger",
+              "description": "Çift köfte, yoğun lezzet.",
+              "tags": [
+                "gourmet burgerler"
+              ]
+            },
+            {
+              "id": "hmbrgr-sec-1-item-6",
+              "name": "Tavuk Burger",
+              "description": "Çıtır tavuklu.",
+              "tags": [
+                "gourmet burgerler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hmbrgr-sec-2",
+          "title": "Tavuk Burgerler",
+          "items": [
+            {
+              "id": "hmbrgr-sec-2-item-1",
+              "name": "Cheeseburger",
+              "description": "Cheddar'lı klasik.",
+              "tags": [
+                "tavuk burgerler"
+              ]
+            },
+            {
+              "id": "hmbrgr-sec-2-item-2",
+              "name": "Double Burger",
+              "description": "Çift köfte, yoğun lezzet.",
+              "tags": [
+                "tavuk burgerler"
+              ]
+            },
+            {
+              "id": "hmbrgr-sec-2-item-3",
+              "name": "Tavuk Burger",
+              "description": "Çıtır tavuklu.",
+              "tags": [
+                "tavuk burgerler"
+              ]
+            },
+            {
+              "id": "hmbrgr-sec-2-item-4",
+              "name": "House Burger",
+              "description": "Mekanın imza burgeri.",
+              "tags": [
+                "tavuk burgerler"
+              ]
+            },
+            {
+              "id": "hmbrgr-sec-2-item-5",
+              "name": "Mini Burger Tabağı",
+              "description": "Üçlü tadım seti.",
+              "tags": [
+                "tavuk burgerler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hmbrgr-sec-3",
+          "title": "Yan Ürünler",
+          "items": [
+            {
+              "id": "hmbrgr-sec-3-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "hmbrgr-sec-3-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "hmbrgr-sec-3-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "yan urunler"
+              ]
+            },
+            {
+              "id": "hmbrgr-sec-3-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "yan urunler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hmbrgr-sec-4",
+          "title": "Milkshake",
+          "items": [
+            {
+              "id": "hmbrgr-sec-4-item-1",
+              "name": "Parmesan Patates",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "milkshake"
+              ]
+            },
+            {
+              "id": "hmbrgr-sec-4-item-2",
+              "name": "Milkshake",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "milkshake"
+              ]
+            },
+            {
+              "id": "hmbrgr-sec-4-item-3",
+              "name": "Günün Önerisi",
+              "description": "Sorunuz.",
+              "tags": [
+                "milkshake"
+              ]
+            },
+            {
+              "id": "hmbrgr-sec-4-item-4",
+              "name": "Mevsim Seçkisi",
+              "description": "Dönemsel.",
+              "tags": [
                 "milkshake"
               ]
             }
@@ -5086,40 +11887,207 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "hamlet-market-02-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "hamlet-market-02-sec-1",
+          "title": "İçecekler",
           "items": [
             {
-              "id": "hamlet-market-02-item-1",
-              "name": "su",
-              "keywords": [
-                "su"
+              "id": "hamlet-market-02-sec-1-item-1",
+              "name": "Soğuk İçecek",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "icecekler"
               ]
             },
             {
-              "id": "hamlet-market-02-item-2",
-              "name": "soğuk içecek",
-              "keywords": [
-                "içecek"
+              "id": "hamlet-market-02-sec-1-item-2",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
               ]
             },
             {
-              "id": "hamlet-market-02-item-3",
-              "name": "dondurma",
-              "keywords": [
+              "id": "hamlet-market-02-sec-1-item-3",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "hamlet-market-02-sec-1-item-4",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "hamlet-market-02-sec-1-item-5",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hamlet-market-02-sec-2",
+          "title": "Atıştırmalıklar",
+          "items": [
+            {
+              "id": "hamlet-market-02-sec-2-item-1",
+              "name": "Patates Kızartması",
+              "description": "Çıtır, baharatlı.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            },
+            {
+              "id": "hamlet-market-02-sec-2-item-2",
+              "name": "Çıtır Tavuk",
+              "description": "Ballı hardal sosla.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            },
+            {
+              "id": "hamlet-market-02-sec-2-item-3",
+              "name": "Soğan Halkası",
+              "description": "Çıtır kaplamalı.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            },
+            {
+              "id": "hamlet-market-02-sec-2-item-4",
+              "name": "Nachos",
+              "description": "Cheddar soslu.",
+              "tags": [
+                "atistirmaliklar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hamlet-market-02-sec-3",
+          "title": "Dondurma",
+          "items": [
+            {
+              "id": "hamlet-market-02-sec-3-item-1",
+              "name": "Dondurma",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
                 "dondurma"
               ]
             },
             {
-              "id": "hamlet-market-02-item-4",
-              "name": "cips",
-              "keywords": []
+              "id": "hamlet-market-02-sec-3-item-2",
+              "name": "Kesme Dondurma",
+              "description": "Keçi sütlü Maraş usulü.",
+              "tags": [
+                "dondurma"
+              ]
             },
             {
-              "id": "hamlet-market-02-item-5",
-              "name": "güneş kremi",
-              "keywords": [
-                "güneş kremi"
+              "id": "hamlet-market-02-sec-3-item-3",
+              "name": "Külahta İki Top",
+              "description": "Günün çeşitleri.",
+              "tags": [
+                "dondurma"
+              ]
+            },
+            {
+              "id": "hamlet-market-02-sec-3-item-4",
+              "name": "Çikolatalı Dondurma",
+              "description": "Belçika çikolatalı.",
+              "tags": [
+                "dondurma"
+              ]
+            },
+            {
+              "id": "hamlet-market-02-sec-3-item-5",
+              "name": "Meyveli Sorbe",
+              "description": "Süt içermez.",
+              "tags": [
+                "dondurma"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hamlet-market-02-sec-4",
+          "title": "Plaj Ürünleri",
+          "items": [
+            {
+              "id": "hamlet-market-02-sec-4-item-1",
+              "name": "Güneş Kremi",
+              "description": "SPF 30/50.",
+              "tags": [
+                "plaj urunleri"
+              ]
+            },
+            {
+              "id": "hamlet-market-02-sec-4-item-2",
+              "name": "After-Sun",
+              "description": "Güneş sonrası bakım.",
+              "tags": [
+                "plaj urunleri"
+              ]
+            },
+            {
+              "id": "hamlet-market-02-sec-4-item-3",
+              "name": "Plaj Topu",
+              "description": "Şişme.",
+              "tags": [
+                "plaj urunleri"
+              ]
+            },
+            {
+              "id": "hamlet-market-02-sec-4-item-4",
+              "name": "Terlik",
+              "description": "Çeşitli numaralar.",
+              "tags": [
+                "plaj urunleri"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hamlet-market-02-sec-5",
+          "title": "Temel Gıda",
+          "items": [
+            {
+              "id": "hamlet-market-02-sec-5-item-1",
+              "name": "Ekmek",
+              "description": "Günlük.",
+              "tags": [
+                "temel gida"
+              ]
+            },
+            {
+              "id": "hamlet-market-02-sec-5-item-2",
+              "name": "Süt",
+              "description": "Soğuk dolap.",
+              "tags": [
+                "temel gida"
+              ]
+            },
+            {
+              "id": "hamlet-market-02-sec-5-item-3",
+              "name": "Yumurta",
+              "description": "10'lu.",
+              "tags": [
+                "temel gida"
+              ]
+            },
+            {
+              "id": "hamlet-market-02-sec-5-item-4",
+              "name": "Konserve",
+              "description": "Çeşitli.",
+              "tags": [
+                "temel gida"
               ]
             }
           ]
@@ -5200,40 +12168,178 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "paninaro-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "paninaro-sec-1",
+          "title": "Paniniler",
           "items": [
             {
-              "id": "paninaro-item-1",
-              "name": "kaşarlı panini",
-              "keywords": [
-                "panini"
+              "id": "paninaro-sec-1-item-1",
+              "name": "Kaşarlı Panini",
+              "description": "Pizza hamuru ekmeğiyle.",
+              "tags": [
+                "paniniler"
               ]
             },
             {
-              "id": "paninaro-item-2",
-              "name": "tavuklu panini",
-              "keywords": [
-                "panini"
+              "id": "paninaro-sec-1-item-2",
+              "name": "Tavuklu Panini",
+              "description": "Pesto soslu.",
+              "tags": [
+                "paniniler"
               ]
             },
             {
-              "id": "paninaro-item-3",
-              "name": "İtalyan sucuklu panini",
-              "keywords": [
-                "panini",
-                "italyan"
+              "id": "paninaro-sec-1-item-3",
+              "name": "İtalyan Sucuklu Panini",
+              "description": "Acılı.",
+              "tags": [
+                "paniniler"
               ]
             },
             {
-              "id": "paninaro-item-4",
-              "name": "salata",
-              "keywords": []
+              "id": "paninaro-sec-1-item-4",
+              "name": "Vejetaryen Panini",
+              "description": "Közlenmiş sebzeli.",
+              "tags": [
+                "paniniler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "paninaro-sec-2",
+          "title": "Salatalar",
+          "items": [
+            {
+              "id": "paninaro-sec-2-item-1",
+              "name": "Salata",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "salatalar"
+              ]
             },
             {
-              "id": "paninaro-item-5",
-              "name": "limonata",
-              "keywords": []
+              "id": "paninaro-sec-2-item-2",
+              "name": "Sezar Salata",
+              "description": "Izgara tavuklu.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "paninaro-sec-2-item-3",
+              "name": "Tavuklu Uzun Tabak",
+              "description": "İmza salata.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "paninaro-sec-2-item-4",
+              "name": "Ton Balıklı Salata",
+              "description": "Protein deposu.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "paninaro-sec-2-item-5",
+              "name": "Protein Bowl",
+              "description": "Kinoa ve tavukla.",
+              "tags": [
+                "salatalar"
+              ]
+            },
+            {
+              "id": "paninaro-sec-2-item-6",
+              "name": "Wrap Çeşitleri",
+              "description": "Tavuklu / sebzeli.",
+              "tags": [
+                "salatalar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "paninaro-sec-3",
+          "title": "İçecekler",
+          "items": [
+            {
+              "id": "paninaro-sec-3-item-1",
+              "name": "Ayran",
+              "description": "Yayık ayranı.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "paninaro-sec-3-item-2",
+              "name": "Limonata",
+              "description": "Ev yapımı, naneli.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "paninaro-sec-3-item-3",
+              "name": "Buzlu Çay",
+              "description": "Şeftali / limon.",
+              "tags": [
+                "icecekler"
+              ]
+            },
+            {
+              "id": "paninaro-sec-3-item-4",
+              "name": "Taze Portakal Suyu",
+              "description": "Günlük sıkım.",
+              "tags": [
+                "icecekler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "paninaro-sec-4",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "paninaro-sec-4-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "paninaro-sec-4-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "paninaro-sec-4-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "paninaro-sec-4-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "paninaro-sec-4-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
             }
           ]
         }
@@ -5313,40 +12419,232 @@ export const venues = [
       ],
       "sections": [
         {
-          "id": "shakespeare-one-cikanlar",
-          "title": "Öne Çıkanlar",
+          "id": "shakespeare-sec-1",
+          "title": "Kahvaltılar",
           "items": [
             {
-              "id": "shakespeare-item-1",
-              "name": "serpme kahvaltı",
-              "keywords": [
-                "kahvaltı",
-                "serpme kahvaltı"
+              "id": "shakespeare-sec-1-item-1",
+              "name": "Serpme Kahvaltı",
+              "description": "Zengin köy kahvaltısı, sınırsız çay.",
+              "tags": [
+                "kahvaltilar"
               ]
             },
             {
-              "id": "shakespeare-item-2",
-              "name": "shakespeare tost",
-              "keywords": [
-                "tost"
+              "id": "shakespeare-sec-1-item-2",
+              "name": "Menemen",
+              "description": "Bol domatesli.",
+              "tags": [
+                "kahvaltilar"
               ]
             },
             {
-              "id": "shakespeare-item-3",
-              "name": "granola bowl",
-              "keywords": [
-                "bowl"
+              "id": "shakespeare-sec-1-item-3",
+              "name": "Avokado Tost",
+              "description": "Ekşi maya üstü avokado.",
+              "tags": [
+                "kahvaltilar"
               ]
             },
             {
-              "id": "shakespeare-item-4",
-              "name": "burger",
-              "keywords": []
+              "id": "shakespeare-sec-1-item-4",
+              "name": "Omlet Çeşitleri",
+              "description": "Sade, kaşarlı, mantarlı.",
+              "tags": [
+                "kahvaltilar"
+              ]
             },
             {
-              "id": "shakespeare-item-5",
-              "name": "latte",
-              "keywords": []
+              "id": "shakespeare-sec-1-item-5",
+              "name": "Simit Tabağı",
+              "description": "Simit, beyaz peynir, domates.",
+              "tags": [
+                "kahvaltilar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shakespeare-sec-2",
+          "title": "Kahveler",
+          "items": [
+            {
+              "id": "shakespeare-sec-2-item-1",
+              "name": "Espresso",
+              "description": "Klasik yoğun espresso.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-2-item-2",
+              "name": "Americano",
+              "description": "Espresso ve sıcak su.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-2-item-3",
+              "name": "Latte",
+              "description": "Sütlü yumuşak kahve.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-2-item-4",
+              "name": "Flat White",
+              "description": "Yoğun espresso, ince süt dokusu.",
+              "tags": [
+                "kahveler"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-2-item-5",
+              "name": "Cappuccino",
+              "description": "Süt köpüklü klasik.",
+              "tags": [
+                "kahveler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shakespeare-sec-3",
+          "title": "Burgerler",
+          "items": [
+            {
+              "id": "shakespeare-sec-3-item-1",
+              "name": "Burger",
+              "description": "Mekanın öne çıkanlarından.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-3-item-2",
+              "name": "Cheeseburger",
+              "description": "Cheddar'lı klasik.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-3-item-3",
+              "name": "Double Burger",
+              "description": "Çift köfte, yoğun lezzet.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-3-item-4",
+              "name": "Tavuk Burger",
+              "description": "Çıtır tavuklu.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-3-item-5",
+              "name": "House Burger",
+              "description": "Mekanın imza burgeri.",
+              "tags": [
+                "burgerler"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-3-item-6",
+              "name": "Mini Burger Tabağı",
+              "description": "Üçlü tadım seti.",
+              "tags": [
+                "burgerler"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shakespeare-sec-4",
+          "title": "Makarnalar",
+          "items": [
+            {
+              "id": "shakespeare-sec-4-item-1",
+              "name": "Penne Arrabiata",
+              "description": "Acılı domates soslu.",
+              "tags": [
+                "makarnalar"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-4-item-2",
+              "name": "Fettuccine Alfredo",
+              "description": "Kremalı.",
+              "tags": [
+                "makarnalar"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-4-item-3",
+              "name": "Bolonez",
+              "description": "Kıymalı klasik.",
+              "tags": [
+                "makarnalar"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-4-item-4",
+              "name": "Pesto Makarna",
+              "description": "Fesleğen soslu.",
+              "tags": [
+                "makarnalar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shakespeare-sec-5",
+          "title": "Tatlılar",
+          "items": [
+            {
+              "id": "shakespeare-sec-5-item-1",
+              "name": "San Sebastian",
+              "description": "Akışkan merkezli yanık cheesecake.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-5-item-2",
+              "name": "Cheesecake",
+              "description": "Günlük dilim.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-5-item-3",
+              "name": "Brownie",
+              "description": "Sıcak servis, çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-5-item-4",
+              "name": "Tiramisu",
+              "description": "Kahveli İtalyan klasiği.",
+              "tags": [
+                "tatlilar"
+              ]
+            },
+            {
+              "id": "shakespeare-sec-5-item-5",
+              "name": "Profiterol",
+              "description": "Çikolata soslu.",
+              "tags": [
+                "tatlilar"
+              ]
             }
           ]
         }

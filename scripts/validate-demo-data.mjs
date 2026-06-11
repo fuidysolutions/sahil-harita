@@ -48,6 +48,32 @@ for (const v of venues) {
     check(filled(val) || val === true, `${v.id || "?"}: ${name} boş`);
 }
 
+// 11b: menü derinliği (Sprint 8.5)
+for (const v of venues) {
+  const m = v.menu || {};
+  const sections = m.sections || [];
+  const total = sections.reduce((a, s) => a + (s.items?.length || 0), 0);
+  check((m.categories?.length || 0) >= 3, `${v.id}: menu.categories < 3`);
+  check((m.topItems?.length || 0) >= 5, `${v.id}: menu.topItems < 5`);
+  check(sections.length >= 3, `${v.id}: menu.sections < 3`);
+  check(total >= 12, `${v.id}: toplam menü item < 12 (${total})`);
+  for (const s of sections) {
+    check(!!(s.title && s.title.trim()), `${v.id}: boş section title`);
+    check((s.items?.length || 0) >= 4, `${v.id}/${s.title}: section item < 4`);
+    for (const it of s.items || [])
+      check(!!(it.name && it.name.trim()), `${v.id}/${s.title}: boş item adı`);
+  }
+}
+// 11c: özel menü testleri
+const secTitles = (id) => (venues.find((v) => v.id === id)?.menu.sections || [])
+  .map((s) => normalizeText(s.title));
+const hasSec = (id, ...keys) => keys.some((k) => secTitles(id).some((t) => t.includes(normalizeText(k))));
+check(hasSec("irish-pub", "biralar"), "irish-pub: Biralar bölümü yok");
+check(hasSec("mado", "dondurma", "tatlı"), "mado: Dondurma/Tatlılar bölümü yok");
+check(hasSec("watsons", "kozmetik", "güneş", "cilt"), "watsons: Kozmetik/Güneş bölümü yok");
+check(hasSec("decathlon", "spor", "plaj", "yüzme"), "decathlon: Spor/Plaj bölümü yok");
+check(secTitles("shakespeare").length >= 4, "shakespeare: sections < 4");
+
 // 12-14: referans bütünlüğü
 const zoneIds = new Set(zones.map((z) => z.id));
 for (const v of venues) check(zoneIds.has(v.zoneId), `${v.id}: bilinmeyen zoneId ${v.zoneId}`);
