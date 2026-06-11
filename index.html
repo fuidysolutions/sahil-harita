@@ -10,6 +10,7 @@
 <script>
 /* ALGE perf işaretleri (Sprint 8.6) — ayrıntı yalnız ?debugPerf=1 ile */
 window.__ALGE_PERF={t0:performance.now(),m:{},dbg:/[?&]debugPerf=1/.test(location.search),
+  c:{mu:0,dw:0,rf:0},   /* Sprint 8.9 runtime sayaçları: marker update / dom write / render frame */
   mark(n){ if(this.m[n]!==undefined) return; this.m[n]=Math.round(performance.now());
     if(this.dbg) console.info('[ALGE PERF mark]', n, this.m[n]+'ms'); },
   summary(){ if(this._s) return; this._s=true;
@@ -4882,15 +4883,18 @@ if(IS_MOBILE){
     return d;
   });
   const _pv=new THREE.Vector3();
+  const _pinT=VENUES.map(()=>''), _pinV=VENUES.map(()=>null);   // Sprint 8.9: değişmeyen stil yazılmaz
   updatePins=function(){
     const w=innerWidth, h=innerHeight;
     VENUES.forEach((v,i)=>{
       const p=uvToWorld(v.u,v.v);
       _pv.set(p.x,1.4,p.z).project(camera);
       const el=pinEls[i];
-      if(_pv.z>1){ el.style.display='none'; return; }
-      el.style.display='flex';
-      el.style.transform=`translate(${((_pv.x*0.5+0.5)*w).toFixed(1)}px,${((-_pv.y*0.5+0.5)*h).toFixed(1)}px)`;
+      const vis=_pv.z<=1;
+      if(_pinV[i]!==vis){ _pinV[i]=vis; el.style.display=vis?'flex':'none'; __ALGE_PERF.c.dw++; }
+      if(!vis) return;
+      const t=`translate(${((_pv.x*0.5+0.5)*w).toFixed(1)}px,${((-_pv.y*0.5+0.5)*h).toFixed(1)}px)`;
+      if(t!==_pinT[i]){ _pinT[i]=t; el.style.transform=t; __ALGE_PERF.c.dw++; }
     });
   };
 
@@ -5117,8 +5121,30 @@ const _clock=new THREE.Clock();
   }
 
   if(updatePins) updatePins();
+  window.__ALGE_FRAME_TICK=performance.now();   // marker yedek döngüsü için canlılık damgası (Sprint 8.9)
   if(window.__ALGE_FRAME_HOOKS) for(const f of window.__ALGE_FRAME_HOOKS) f();   // marker güncellemeleri (Sprint 8.8)
   renderer.render(scene,camera);   // not: rAF gizli sekmede zaten durur; ek guard siyah kare riski yaratıyordu
+
+  /* ---- Sprint 8.9: hissedilen performans ölçümü (yalnız ?debugPerf=1) ---- */
+  const C=__ALGE_PERF.c; C.rf++;
+  if(__ALGE_PERF.dbg){
+    const now=performance.now(), S=__ALGE_PERF._smp||(__ALGE_PERF._smp={t:now,sec:now,secF:0,fpsMin:Infinity,frames:0,long:0,mu0:C.mu,dw0:C.dw,rf0:C.rf,last:now});
+    const fdt=now-S.last; S.last=now; S.frames++;
+    if(fdt>50) S.long++;
+    S.secF++;
+    if(now-S.sec>=1000){ S.fpsMin=Math.min(S.fpsMin,S.secF*1000/(now-S.sec)); S.sec=now; S.secF=0; }
+    if(now-S.t>=5000){
+      const w=(now-S.t)/1000;
+      console.info('[ALGE RUNTIME PERF]',{
+        fpsAvg:+(S.frames/w).toFixed(1),
+        fpsMin:S.fpsMin===Infinity?+(S.frames/w).toFixed(1):+S.fpsMin.toFixed(1),
+        longFrames:S.long,
+        markerUpdatesPerSecond:+((C.mu-S.mu0)/w).toFixed(1),
+        domWritesPerSecond:+((C.dw-S.dw0)/w).toFixed(1),
+        renderFramesPerSecond:+((C.rf-S.rf0)/w).toFixed(1)});
+      S.t=now; S.frames=0; S.long=0; S.fpsMin=Infinity; S.mu0=C.mu; S.dw0=C.dw; S.rf0=C.rf;
+    }
+  }
 })();
 
 window.__ALGE_FLY = {   // ALGE venue uçuş köprüsü (Sprint 8.3) — mevcut uçuş makinesi, veri objesiyle

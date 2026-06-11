@@ -4,6 +4,7 @@
 import { qrPoints, zones, venues } from "../data/index.js";
 import { showToast } from "./uiToast.js";
 import { xToPresenceUV, xToWorldX } from "./mapAnchors.js";
+import { createScreenAnchor } from "./markerProjector.js";
 
 /* ---- QR parse ---- */
 function getQrIdFromUrl() {
@@ -161,39 +162,28 @@ btn.addEventListener("click", () => {
   panel.classList.toggle("on");
 });
 
-/* ---- marker konumlama (Sprint 8.8 pipeline) ----
+/* ---- marker konumlama (Sprint 8.8 pipeline, Sprint 8.9'da projektöre taşındı) ----
    presence anchor (u,v) -> uvToWorld -> world point -> Vector3.project(camera)
    -> ekran x/y -> DOM. Anchor ASLA ekran ofsetiyle kaydırılmaz/kıskaçlanmaz;
    görüş dışına çıkarsa doğal olarak ekran dışına gider (p.z>1'de gizlenir).
    Buradasın anchor'ı = QR datasındaki presenceAnchor varsa o; yoksa
-   mekan bandının bahçe/yürüyüş hattı tarafı (xToPresenceUV). */
+   mekan bandının bahçe/yürüyüş hattı tarafı (xToPresenceUV).
+   DOM yazım disiplini (dirty-check, translate3d) markerProjector.js'te. */
 const PRESENCE_WORLD_Y = 0.9;   // yürüyüş hattı zemini (bina 1.4'ünden alçak)
 
-function presenceUV() {
-  return activeQrPoint.presenceAnchor || xToPresenceUV(activeQrPoint.mapPosition.x);
-}
-
-function updateYouAreHereMarkerPosition() {
-  const g = window.__ALGE3D;
-  if (g && g.camera && g.uvToWorld) {
-    const { u, v } = presenceUV();
-    const p = g.uvToWorld(u, v);
-    p.y = PRESENCE_WORLD_Y;
-    p.project(g.camera);
-    if (p.z > 1) { marker.style.display = "none"; return; }
-    marker.style.display = "flex";
-    marker.style.left = ((p.x * 0.5 + 0.5) * window.innerWidth).toFixed(1) + "px";
-    marker.style.top = ((-p.y * 0.5 + 0.5) * window.innerHeight).toFixed(1) + "px";
-  } else {
-    // fallback: 3D köprüsü yoksa normalize konumu viewport'a eşle
+createScreenAnchor({
+  el: marker,
+  worldY: PRESENCE_WORLD_Y,
+  baseTransform: "translate(-50%,-11px)",
+  getUV: () => activeQrPoint.presenceAnchor || xToPresenceUV(activeQrPoint.mapPosition.x),
+  fallback: () => {
     const safeLeft = 28, safeRight = window.innerWidth - 28;
-    marker.style.display = "flex";
-    marker.style.left = (safeLeft + activeQrPoint.mapPosition.x * (safeRight - safeLeft)) + "px";
-    marker.style.top = (window.innerHeight * 0.42) + "px";
+    return {
+      x: safeLeft + activeQrPoint.mapPosition.x * (safeRight - safeLeft),
+      y: window.innerHeight * 0.42
+    };
   }
-}
-
-window.addEventListener("resize", updateYouAreHereMarkerPosition);
+});
 
 /* mobil turun başlangıcını QR konumuna hizala (köprü varsa) */
 (function alignTour() {
@@ -205,11 +195,3 @@ window.addEventListener("resize", updateYouAreHereMarkerPosition);
   }
 })();
 
-/* ana render döngüsüyle AYNI karede güncelle (1 kare gecikme/jitter olmaz);
-   köprü yoksa kendi rAF döngüsüne düşer */
-(window.__ALGE_FRAME_HOOKS = window.__ALGE_FRAME_HOOKS || []).push(updateYouAreHereMarkerPosition);
-(function markerLoop() {
-  updateYouAreHereMarkerPosition();   // yedek: ana döngü dondurulmuş olsa da konum güncel kalır
-  requestAnimationFrame(markerLoop);
-})();
-updateYouAreHereMarkerPosition();

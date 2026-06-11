@@ -6,6 +6,7 @@
 import { venues, campaigns } from "../data/index.js";
 import { xToUV, xToWorldX } from "./mapAnchors.js";
 import { getVenueImage } from "./venueImages.js";
+import { createScreenAnchor } from "./markerProjector.js";
 
 const MARKER_WORLD_Y = 1.4;
 
@@ -29,28 +30,22 @@ marker.className = "alge-venue-marker";
 marker.innerHTML = '<div class="alge-venue-marker__dot"></div><div class="alge-venue-marker__label"></div>';
 document.body.appendChild(marker);
 
-function updateVenueMarker() {
-  if (!activeVenue) { marker.style.display = "none"; return; }
-  const g = window.__ALGE3D;
-  if (g && g.camera && g.uvToWorld) {
-    const { u, v } = xToUV(activeVenue.mapFocusPoint.x);
-    const p = g.uvToWorld(u, v);
-    p.y = MARKER_WORLD_Y;
-    p.project(g.camera);
-    if (p.z > 1) { marker.style.display = "none"; return; }
-    // Sprint 8.8: kıskaç yok — anchor world noktasında kalır, kamera dönerken kaymaz
-    marker.style.display = "flex";
-    marker.style.left = ((p.x * 0.5 + 0.5) * window.innerWidth).toFixed(1) + "px";
-    marker.style.top = ((-p.y * 0.5 + 0.5) * window.innerHeight).toFixed(1) + "px";
-  } else {
+/* Sprint 8.8: kıskaç yok — anchor world noktasında kalır, kamera dönerken kaymaz.
+   Sprint 8.9: DOM yazım disiplini (dirty-check, translate3d) markerProjector.js'te. */
+const venueAnchor = createScreenAnchor({
+  el: marker,
+  worldY: MARKER_WORLD_Y,
+  baseTransform: "translate(-50%,-9px)",
+  getUV: () => activeVenue ? xToUV(activeVenue.mapFocusPoint.x) : null,
+  fallback: () => {
+    if (!activeVenue) return null;
     const safeLeft = 28, safeRight = window.innerWidth - 28;
-    marker.style.display = "flex";
-    marker.style.left = (safeLeft + activeVenue.mapFocusPoint.x * (safeRight - safeLeft)) + "px";
-    marker.style.top = (window.innerHeight * 0.38) + "px";
+    return {
+      x: safeLeft + activeVenue.mapFocusPoint.x * (safeRight - safeLeft),
+      y: window.innerHeight * 0.38
+    };
   }
-}
-(window.__ALGE_FRAME_HOOKS = window.__ALGE_FRAME_HOOKS || []).push(updateVenueMarker);
-(function loop() { updateVenueMarker(); requestAnimationFrame(loop); })();
+});
 
 /* ---- ortak focus: uçuş + varışta legacy detay ekranı ---- */
 function focusVenueById(venueId, options = {}) {
@@ -91,7 +86,7 @@ function focusVenueById(venueId, options = {}) {
   }
 
   marker.querySelector(".alge-venue-marker__label").textContent = venue.name;
-  updateVenueMarker();
+  venueAnchor.forceUpdate();   // anchor değişti: dirty-cache'i atla, hemen konumla
 
   window.dispatchEvent(new CustomEvent("alge:venue-focused", {
     detail: { venue, source: options.source || "unknown" }
