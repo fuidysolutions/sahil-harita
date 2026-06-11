@@ -55,3 +55,6 @@ Sprint 0: repo foundation ve local çalışma ortamı.
 Sprint 1: 47 mekanlık araştırma datası `src/data/` JS data layer'a dönüştürüldü
 (venues, zones, qrPoints, campaigns, events, adPlacements, searchIndex, trends)
 + `npm run validate:data` doğrulama scripti. `index.html` değiştirilmedi.
+Sprint 2: QR routing + "Buradasın" marker (`src/app/qrRuntime.js`).
+URL: `/qr/qr-demo-01..10` veya `/?qr=...`; geçersiz QR -> qr-demo-01.
+index.html'e yalnızca `__ALGE3D` köprüsü + module script etiketi eklendi.

@@ -4965,6 +4965,22 @@ const _clock=new THREE.Clock();
   if(updatePins) updatePins();
   renderer.render(scene,camera);
 })();
+
+window.__ALGE3D = {   // ALGE QR runtime köprüsü (Sprint 2)
+  camera, uvToWorld,
+  // Mobil turun başlangıç fazını verilen dünya X'ine en yakın noktaya hizalar.
+  // Tur makinesine (mobPose/idleT) dokunmaz, yalnızca fazı kaydırır; tur aynen devam eder.
+  setMobileTourNearX(worldX){
+    if(!IS_MOBILE) return false;
+    const mid=(MOB.xa+MOB.xb)/2, half=(MOB.xb-MOB.xa)/2;
+    const sPh=Math.max(-1,Math.min(1,(worldX-mid)/half));
+    idleT=Math.asin(sPh)/MOB.w;
+    const p=mobPose(sPh);
+    camera.position.copy(p.pos); controls.target.copy(p.tgt); camera.lookAt(controls.target);
+    return true;
+  }
+};
 </script>
+<script type="module" src="/src/app/qrRuntime.js"></script>
 </body>
 </html>
