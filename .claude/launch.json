@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "sahil-harita",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8765"],
-      "port": 8765
+      "name": "sahil-harita-vite",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 5173
     }
   ]
 }
