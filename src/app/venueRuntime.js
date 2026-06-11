@@ -1,16 +1,16 @@
-// ALGE venue runtime — Sprint 4
-// Ortak venue focus / action router: venueId -> harita odağı + aktif marker + data-driven kart.
-// Search, kampanya karuseli vb. sonraki sprintlerde bu katmana bağlanacak.
+// ALGE venue runtime — Sprint 4 (Sprint 8.3-8.4'te sadeleştirildi)
+// Ortak venue focus / action router: venueId -> sinematik uçuş (mevcut makine,
+// __ALGE_FLY köprüsü) -> varışta legacy detay ekranı (gerçek veriyle) + turkuaz marker.
+// Beyaz drawer kart ve beyaz detay/menü sheet'leri KALDIRILDI (kullanıcı kararı,
+// Sprint 8.4): mekan ekranı tek — uçuş sonunda açılan detay ekranı.
 import { venues, campaigns } from "../data/index.js";
 import { xToUV, xToWorldX } from "./mapAnchors.js";
 
-/* Eşleme mapAnchors.js'ten: kullanıcının işaretlediği gerçek Mado/Shakespeare
-   noktaları arasında eşit aralıklı doğrusal interpolasyon (Sprint 8.2). */
 const MARKER_WORLD_Y = 1.4;
 
 let activeVenue = null;
 
-/* ---- stiller ---- */
+/* ---- stiller (yalnız aktif mekan marker'ı) ---- */
 const style = document.createElement("style");
 style.textContent = `
 .alge-venue-marker{position:fixed;z-index:45;transform:translate(-50%,-50%);pointer-events:none;
@@ -19,37 +19,6 @@ style.textContent = `
   border:2px solid #fff;box-shadow:0 0 0 8px rgba(53,224,242,.20);}
 .alge-venue-marker__label{margin-top:6px;padding:4px 8px;border-radius:999px;background:rgba(19,41,61,.92);
   color:#fff;font-size:11px;font-weight:700;white-space:nowrap;font-family:system-ui,sans-serif;}
-.alge-vcard{position:fixed;z-index:60;left:10px;right:10px;bottom:calc(70px + env(safe-area-inset-bottom));
-  max-width:430px;margin:0 auto;background:#fff;border-radius:18px;padding:14px;display:none;
-  box-shadow:0 10px 36px rgba(10,25,40,.28);font-family:system-ui,sans-serif;color:#13293d;}
-.alge-vcard.on{display:block;}
-.alge-vcard__close{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:999px;
-  border:0;background:rgba(19,41,61,.08);color:#13293d;font-size:13px;cursor:pointer;line-height:1;}
-.alge-vcard h3{margin:0 22px 2px 0;font-size:17px;}
-.alge-vcard .alge-vcard__cat{font-size:11px;font-weight:700;color:#0e7a8a;margin-bottom:6px;}
-.alge-vcard .alge-vcard__short{font-size:12.5px;color:#42566b;line-height:1.35;margin-bottom:8px;}
-.alge-vcard .alge-vcard__chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;}
-.alge-vcard .alge-vcard__chips span{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:999px;
-  background:rgba(53,224,242,.14);color:#0e7a8a;}
-.alge-vcard .alge-vcard__row{font-size:11.5px;color:#42566b;margin-bottom:3px;}
-.alge-vcard .alge-vcard__row b{color:#13293d;}
-.alge-vcard__btns{display:flex;gap:8px;margin-top:10px;}
-.alge-vcard__btns button{flex:1;border:0;border-radius:999px;padding:9px 0;font-size:12px;font-weight:700;
-  cursor:pointer;font-family:inherit;}
-#alge-vbtn-dir{background:#13293d;color:#fff;}
-#alge-vbtn-detail,#alge-vbtn-menu{background:rgba(19,41,61,.08);color:#13293d;}
-.alge-vsheet{position:fixed;z-index:65;left:0;right:0;bottom:0;max-height:62vh;overflow-y:auto;
-  background:#fff;border-radius:18px 18px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom));
-  display:none;box-shadow:0 -10px 40px rgba(10,25,40,.3);font-family:system-ui,sans-serif;color:#13293d;}
-.alge-vsheet.on{display:block;}
-.alge-vsheet h4{margin:0 26px 10px 0;font-size:15px;}
-.alge-vsheet__close{position:absolute;top:12px;right:12px;width:26px;height:26px;border-radius:999px;
-  border:0;background:rgba(19,41,61,.08);font-size:13px;cursor:pointer;line-height:1;color:#13293d;}
-.alge-vsheet p{font-size:12.5px;color:#42566b;line-height:1.45;margin:0 0 8px;}
-.alge-vsheet p b{color:#13293d;}
-.alge-vsheet .alge-vsheet__tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px;}
-.alge-vsheet .alge-vsheet__tags span{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:999px;
-  background:rgba(19,41,61,.07);color:#13293d;}
 `;
 document.head.appendChild(style);
 
@@ -75,7 +44,6 @@ function updateVenueMarker() {
     marker.style.left = Math.max(44, Math.min(window.innerWidth - 44, sx)).toFixed(1) + "px";
     marker.style.top = Math.max(120, Math.min(bottomSafe, sy)).toFixed(1) + "px";
   } else {
-    // fallback: normalize konumu viewport'a eşle
     const safeLeft = 28, safeRight = window.innerWidth - 28;
     marker.style.display = "flex";
     marker.style.left = (safeLeft + activeVenue.mapFocusPoint.x * (safeRight - safeLeft)) + "px";
@@ -84,92 +52,7 @@ function updateVenueMarker() {
 }
 (function loop() { updateVenueMarker(); requestAnimationFrame(loop); })();
 
-/* ---- venue card ---- */
-const card = document.createElement("div");
-card.className = "alge-vcard";
-card.innerHTML = `
-  <button class="alge-vcard__close" aria-label="Kapat">✕</button>
-  <h3></h3>
-  <div class="alge-vcard__cat"></div>
-  <div class="alge-vcard__short"></div>
-  <div class="alge-vcard__chips"></div>
-  <div class="alge-vcard__row alge-vcard__featured"></div>
-  <div class="alge-vcard__row alge-vcard__campaign"></div>
-  <div class="alge-vcard__btns">
-    <button id="alge-vbtn-dir" type="button">Yol Tarifi</button>
-    <button id="alge-vbtn-detail" type="button">Detay</button>
-    <button id="alge-vbtn-menu" type="button">Menü</button>
-  </div>`;
-document.body.appendChild(card);
-
-/* ---- detay / menü sheet'leri ---- */
-function makeSheet(id) {
-  const el = document.createElement("div");
-  el.className = "alge-vsheet";
-  el.id = id;
-  el.innerHTML = `<button class="alge-vsheet__close" aria-label="Kapat">✕</button><h4></h4><div class="alge-vsheet__body"></div>`;
-  document.body.appendChild(el);
-  el.querySelector(".alge-vsheet__close").addEventListener("click", () => el.classList.remove("on"));
-  return el;
-}
-const detailSheet = makeSheet("alge-vsheet-detail");
-const menuSheet = makeSheet("alge-vsheet-menu");
-const esc = (s) => String(s ?? "Bilinmiyor");
-
-function openDetailSheet(v) {
-  menuSheet.classList.remove("on");
-  detailSheet.querySelector("h4").textContent = v.name + " · Detay";
-  const d = v.digital || {};
-  detailSheet.querySelector(".alge-vsheet__body").innerHTML = `
-    <p>${esc(v.card.detail)}</p>
-    <p><b>Neden seçer:</b> ${esc(v.search.whyChoose)}</p>
-    <p><b>Fiyat:</b> ${esc(v.priceLevel)}</p>
-    <p><b>Web:</b> ${esc(d.website)} · <b>IG:</b> ${esc(d.instagram)} · <b>Tel:</b> ${esc(d.phone)}</p>
-    ${v.notes ? `<p><b>Not:</b> ${v.notes}</p>` : ""}`;
-  detailSheet.classList.add("on");
-}
-
-function openMenuSheet(v) {
-  detailSheet.classList.remove("on");
-  menuSheet.querySelector("h4").textContent = v.name + " · Menü";
-  const cats = (v.menu.categories || []).map((c) => `<span>${c}</span>`).join("");
-  const tops = (v.menu.topItems || []).map((t) => `<span>${t}</span>`).join("");
-  const keys = (v.search.keywords || []).slice(0, 10).map((k) => `<span>${k}</span>`).join("");
-  menuSheet.querySelector(".alge-vsheet__body").innerHTML = `
-    <p><b>Kategoriler</b></p><div class="alge-vsheet__tags">${cats}</div>
-    <p style="margin-top:10px"><b>Öne çıkanlar</b></p><div class="alge-vsheet__tags">${tops}</div>
-    <p style="margin-top:10px"><b>Arama etiketleri</b></p><div class="alge-vsheet__tags">${keys}</div>`;
-  menuSheet.classList.add("on");
-}
-
-function openDirections(venue) {
-  const query = venue.directions?.query || venue.name;
-  const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
-  window.open(url, "_blank", "noopener,noreferrer");
-}
-
-card.querySelector(".alge-vcard__close").addEventListener("click", () => {
-  card.classList.remove("on");
-  detailSheet.classList.remove("on");
-  menuSheet.classList.remove("on");
-  activeVenue = null;
-});
-card.querySelector("#alge-vbtn-dir").addEventListener("click", () => activeVenue && openDirections(activeVenue));
-card.querySelector("#alge-vbtn-detail").addEventListener("click", () => activeVenue && openDetailSheet(activeVenue));
-card.querySelector("#alge-vbtn-menu").addEventListener("click", () => activeVenue && openMenuSheet(activeVenue));
-
-function fillCard(v) {
-  card.querySelector("h3").textContent = v.name;
-  card.querySelector(".alge-vcard__cat").textContent = `${v.category} · ${v.subcategory}`;
-  card.querySelector(".alge-vcard__short").textContent = v.card.short;
-  card.querySelector(".alge-vcard__chips").innerHTML =
-    (v.card.features || []).slice(0, 4).map((f) => `<span>${f}</span>`).join("");
-  card.querySelector(".alge-vcard__featured").innerHTML = `<b>Öne çıkan:</b> ${esc(v.card.featuredProduct)}`;
-  card.querySelector(".alge-vcard__campaign").innerHTML = `<b>Kampanya:</b> ${esc(v.card.campaign)}`;
-  card.classList.add("on");
-}
-
-/* ---- ortak focus ---- */
+/* ---- ortak focus: uçuş + varışta legacy detay ekranı ---- */
 function focusVenueById(venueId, options = {}) {
   const venue = venues.find((v) => v.id === venueId);
   if (!venue) {
@@ -178,17 +61,14 @@ function focusVenueById(venueId, options = {}) {
   }
   activeVenue = venue;
 
-  // açık overlay'ler: pop-up/search/kampanya/etkinlik kapanır, sheet'ler sıfırlanır (Sprint 8)
+  // açık overlay'ler kapanır
   if (window.__ALGE_POPUP && window.__ALGE_POPUP.isOpen()) window.__ALGE_POPUP.closeOpeningAd();
   window.ALGE_SEARCH_RUNTIME?.closeSearch();
   window.ALGE_CAMPAIGN_RUNTIME?.closeCampaigns();
   window.ALGE_CAMPAIGN_RUNTIME?.closeEvents();
-  detailSheet.classList.remove("on");
-  menuSheet.classList.remove("on");
   document.querySelector(".alge-qr-panel")?.classList.remove("on");
 
-  // UÇUŞ: mevcut sinematik uçuş makinesi (bezier + blur) + varışta legacy detay ekranı,
-  // içerik gerçek venue datasından (Sprint 8.3 — baseline davranışı geri geldi).
+  // sinematik uçuş (bezier + blur) -> varışta legacy detay ekranı gerçek veriyle
   const { u, v } = xToUV(venue.mapFocusPoint.x);
   const flew = window.__ALGE_FLY?.toVenue?.({
     name: venue.name,
@@ -199,16 +79,12 @@ function focusVenueById(venueId, options = {}) {
     menu: venue.menu?.categories || []
   }) || false;
 
-  marker.querySelector(".alge-venue-marker__label").textContent = venue.name;
-  if (flew) {
-    card.classList.remove("on"); // uçuş varken drawer açılmaz; varışta legacy ekran açılır
-  } else {
-    // fallback (uçuş meşgul/3D yok): tur kaydırma + data drawer kartı
-    if (window.__ALGE3D?.setMobileTourNearX) {
-      window.__ALGE3D.setMobileTourNearX(xToWorldX(venue.mapFocusPoint.x));
-    }
-    fillCard(venue);
+  if (!flew && window.__ALGE3D?.setMobileTourNearX) {
+    // fallback (uçuş kullanılamıyorsa): kamerayı mekana kaydır
+    window.__ALGE3D.setMobileTourNearX(xToWorldX(venue.mapFocusPoint.x));
   }
+
+  marker.querySelector(".alge-venue-marker__label").textContent = venue.name;
   updateVenueMarker();
 
   window.dispatchEvent(new CustomEvent("alge:venue-focused", {
@@ -219,11 +95,10 @@ function focusVenueById(venueId, options = {}) {
 
 const getActiveVenue = () => activeVenue;
 
-/* search sonuç kartındaki Menü butonu için: focus + menü sheet'i */
+/* Menü istekleri de uçuşa gider; menü, varıştaki detay ekranındaki
+   "Menüyü Gör" ile açılır (beyaz menü sheet'i kaldırıldı) */
 function openVenueMenu(venueId) {
-  const venue = focusVenueById(venueId, { source: "search-menu" });
-  if (venue) openMenuSheet(venue);
-  return venue;
+  return focusVenueById(venueId, { source: "search-menu" });
 }
 
 window.ALGE_VENUE_RUNTIME = { focusVenueById, getActiveVenue, openVenueMenu };
