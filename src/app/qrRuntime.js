@@ -3,7 +3,7 @@
 // QR chip'i ve demo panelini çizer. index.html'e minimum müdahale: bu modül + __ALGE3D köprüsü.
 import { qrPoints, zones, venues } from "../data/index.js";
 import { showToast } from "./uiToast.js";
-import { xToUV, xToWorldX } from "./mapAnchors.js";
+import { xToPresenceUV, xToWorldX } from "./mapAnchors.js";
 
 /* ---- QR parse ---- */
 function getQrIdFromUrl() {
@@ -33,7 +33,7 @@ window.dispatchEvent(new CustomEvent("alge:qr-ready", { detail: { activeQrPoint,
 /* ---- stiller (index.html'e CSS eklememek için buradan enjekte) ---- */
 const style = document.createElement("style");
 style.textContent = `
-.alge-you-are-here{position:fixed;z-index:6;transform:translate(-50%,-50%);pointer-events:none;
+.alge-you-are-here{position:fixed;z-index:6;transform:translate(-50%,-11px);pointer-events:none;
   display:flex;flex-direction:column;align-items:center;gap:6px;}
 /* referans (mobilekran): parlayan cyan nokta + beyaz çip */
 .alge-you-are-here__dot{width:16px;height:16px;border-radius:999px;background:#27b9d6;
@@ -41,11 +41,11 @@ style.textContent = `
 @keyframes algePulse{0%{box-shadow:0 0 0 5px rgba(53,224,242,.32)}70%{box-shadow:0 0 0 14px rgba(53,224,242,.06)}100%{box-shadow:0 0 0 5px rgba(53,224,242,.32)}}
 .alge-you-are-here__label{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.96);
   color:#1d3450;font-size:11.5px;font-weight:700;white-space:nowrap;
-  font-family:'Inter',system-ui,sans-serif;border:1px solid rgba(29,52,80,.10);
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;border:1px solid rgba(29,52,80,.10);
   box-shadow:0 4px 14px rgba(20,40,65,.14);}
 .alge-qr-chip{position:fixed;z-index:35;top:78px;left:12px;padding:7px 13px;border-radius:999px;
   background:rgba(255,255,255,.96);color:#1d3450;font-size:11.5px;font-weight:700;
-  font-family:'Inter',system-ui,sans-serif;border:1px solid rgba(29,52,80,.10);
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;border:1px solid rgba(29,52,80,.10);
   box-shadow:0 4px 14px rgba(20,40,65,.14);pointer-events:none;}
 @media (min-width:769px){.alge-qr-chip{left:auto;right:12px;top:12px;}}
 .alge-qr-btn{position:fixed;z-index:88;right:10px;bottom:96px;width:40px;height:40px;border-radius:999px;
@@ -161,46 +161,35 @@ btn.addEventListener("click", () => {
   panel.classList.toggle("on");
 });
 
-/* ---- marker konumlama ----
-   Tercih: mevcut 3D izdüşüm (window.__ALGE3D köprüsü: camera + uvToWorld).
-   QR mapPosition.x (0..1, şerit boyu) -> uv eşlemesi mapAnchors.js'ten:
-   kullanıcının işaretlediği gerçek Mado/Shakespeare noktaları arasında
-   doğrusal interpolasyon (Sprint 8.2). */
-const MARKER_WORLD_Y = 1.4;
+/* ---- marker konumlama (Sprint 8.8 pipeline) ----
+   presence anchor (u,v) -> uvToWorld -> world point -> Vector3.project(camera)
+   -> ekran x/y -> DOM. Anchor ASLA ekran ofsetiyle kaydırılmaz/kıskaçlanmaz;
+   görüş dışına çıkarsa doğal olarak ekran dışına gider (p.z>1'de gizlenir).
+   Buradasın anchor'ı = QR datasındaki presenceAnchor varsa o; yoksa
+   mekan bandının bahçe/yürüyüş hattı tarafı (xToPresenceUV). */
+const PRESENCE_WORLD_Y = 0.9;   // yürüyüş hattı zemini (bina 1.4'ünden alçak)
 
-function normalizedToScreen(position) {
-  const safeLeft = 28;
-  const safeRight = window.innerWidth - 28;
-  const safeTop = 120;
-  const safeBottom = window.innerHeight - 190;
-  return {
-    x: safeLeft + position.x * (safeRight - safeLeft),
-    y: safeTop + position.y * (safeBottom - safeTop)
-  };
+function presenceUV() {
+  return activeQrPoint.presenceAnchor || xToPresenceUV(activeQrPoint.mapPosition.x);
 }
 
 function updateYouAreHereMarkerPosition() {
   const g = window.__ALGE3D;
   if (g && g.camera && g.uvToWorld) {
-    const { u, v } = xToUV(activeQrPoint.mapPosition.x);
+    const { u, v } = presenceUV();
     const p = g.uvToWorld(u, v);
-    p.y = MARKER_WORLD_Y;
+    p.y = PRESENCE_WORLD_Y;
     p.project(g.camera);
     if (p.z > 1) { marker.style.display = "none"; return; }
     marker.style.display = "flex";
-    // baseline'daki openPopAd kalıbı: ekran dışına taşarsa güvenli alana kıskaçla
-    const sx = (p.x * 0.5 + 0.5) * window.innerWidth;
-    const sy = (-p.y * 0.5 + 0.5) * window.innerHeight;
-    // alt sınır: mobil UI yığınının (kart+çipler+karusel) üstünde kalsın
-    const bottomSafe = Math.min(window.innerHeight - 190, window.innerHeight * 0.55);
-    marker.style.left = Math.max(44, Math.min(window.innerWidth - 44, sx)).toFixed(1) + "px";
-    marker.style.top = Math.max(158, Math.min(bottomSafe, sy)).toFixed(1) + "px";
+    marker.style.left = ((p.x * 0.5 + 0.5) * window.innerWidth).toFixed(1) + "px";
+    marker.style.top = ((-p.y * 0.5 + 0.5) * window.innerHeight).toFixed(1) + "px";
   } else {
     // fallback: 3D köprüsü yoksa normalize konumu viewport'a eşle
-    const pt = normalizedToScreen(activeQrPoint.mapPosition);
+    const safeLeft = 28, safeRight = window.innerWidth - 28;
     marker.style.display = "flex";
-    marker.style.left = pt.x + "px";
-    marker.style.top = pt.y + "px";
+    marker.style.left = (safeLeft + activeQrPoint.mapPosition.x * (safeRight - safeLeft)) + "px";
+    marker.style.top = (window.innerHeight * 0.42) + "px";
   }
 }
 
@@ -216,7 +205,11 @@ window.addEventListener("resize", updateYouAreHereMarkerPosition);
   }
 })();
 
+/* ana render döngüsüyle AYNI karede güncelle (1 kare gecikme/jitter olmaz);
+   köprü yoksa kendi rAF döngüsüne düşer */
+(window.__ALGE_FRAME_HOOKS = window.__ALGE_FRAME_HOOKS || []).push(updateYouAreHereMarkerPosition);
 (function markerLoop() {
-  updateYouAreHereMarkerPosition();
+  updateYouAreHereMarkerPosition();   // yedek: ana döngü dondurulmuş olsa da konum güncel kalır
   requestAnimationFrame(markerLoop);
 })();
+updateYouAreHereMarkerPosition();

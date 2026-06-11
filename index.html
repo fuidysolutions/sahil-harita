@@ -6,7 +6,7 @@
 <title>Kabartma 3D — Demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script>
 /* ALGE perf işaretleri (Sprint 8.6) — ayrıntı yalnız ?debugPerf=1 ile */
 window.__ALGE_PERF={t0:performance.now(),m:{},dbg:/[?&]debugPerf=1/.test(location.search),
@@ -438,7 +438,7 @@ window.addEventListener('error',function(e){
   <div class="brand">
     <div class="brand-txt">
       <img class="brand-logo" src="/assets/brand/go.png" alt="AlgeGo">
-      <div class="brand-product">Sahil keşif Web App'i</div>
+      <div class="brand-product">SAHİL YAŞAM MERKEZİ</div>
       <div class="bt">SAHİL YAŞAM MERKEZİ</div>
       <div class="bs">Mekanlar, etkinlikler ve güncel kampanyaları keşfet</div>
     </div>
@@ -5117,6 +5117,7 @@ const _clock=new THREE.Clock();
   }
 
   if(updatePins) updatePins();
+  if(window.__ALGE_FRAME_HOOKS) for(const f of window.__ALGE_FRAME_HOOKS) f();   // marker güncellemeleri (Sprint 8.8)
   renderer.render(scene,camera);   // not: rAF gizli sekmede zaten durur; ek guard siyah kare riski yaratıyordu
 })();
 

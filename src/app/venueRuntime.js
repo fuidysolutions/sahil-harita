@@ -14,7 +14,7 @@ let activeVenue = null;
 /* ---- stiller (yalnız aktif mekan marker'ı) ---- */
 const style = document.createElement("style");
 style.textContent = `
-.alge-venue-marker{position:fixed;z-index:7;transform:translate(-50%,-50%);pointer-events:none;
+.alge-venue-marker{position:fixed;z-index:7;transform:translate(-50%,-9px);pointer-events:none;
   display:none;flex-direction:column;align-items:center;}
 .alge-venue-marker__dot{width:14px;height:14px;border-radius:999px;background:#35e0f2;
   border:2px solid #fff;box-shadow:0 0 0 8px rgba(53,224,242,.20);}
@@ -38,12 +38,10 @@ function updateVenueMarker() {
     p.y = MARKER_WORLD_Y;
     p.project(g.camera);
     if (p.z > 1) { marker.style.display = "none"; return; }
-    const sx = (p.x * 0.5 + 0.5) * window.innerWidth;
-    const sy = (-p.y * 0.5 + 0.5) * window.innerHeight;
-    const bottomSafe = Math.min(window.innerHeight - 190, window.innerHeight * 0.5);
+    // Sprint 8.8: kıskaç yok — anchor world noktasında kalır, kamera dönerken kaymaz
     marker.style.display = "flex";
-    marker.style.left = Math.max(44, Math.min(window.innerWidth - 44, sx)).toFixed(1) + "px";
-    marker.style.top = Math.max(158, Math.min(bottomSafe, sy)).toFixed(1) + "px";
+    marker.style.left = ((p.x * 0.5 + 0.5) * window.innerWidth).toFixed(1) + "px";
+    marker.style.top = ((-p.y * 0.5 + 0.5) * window.innerHeight).toFixed(1) + "px";
   } else {
     const safeLeft = 28, safeRight = window.innerWidth - 28;
     marker.style.display = "flex";
@@ -51,6 +49,7 @@ function updateVenueMarker() {
     marker.style.top = (window.innerHeight * 0.38) + "px";
   }
 }
+(window.__ALGE_FRAME_HOOKS = window.__ALGE_FRAME_HOOKS || []).push(updateVenueMarker);
 (function loop() { updateVenueMarker(); requestAnimationFrame(loop); })();
 
 /* ---- ortak focus: uçuş + varışta legacy detay ekranı ---- */

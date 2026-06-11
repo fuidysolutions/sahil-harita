@@ -20,3 +20,14 @@ export function xToUV(x) {
 export function xToWorldX(x) {
   return (xToUV(x).u - 0.5) * PW;
 }
+
+/* Presence (Buradasın) hattı — Sprint 8.8:
+   QR/kullanıcı noktası bina bandında DEĞİL, binaların bahçe/yürüyüş hattı
+   tarafındaki birleşim noktasında durur (kullanıcı kararı). Yürüyüş hattı
+   kaynak görselde bina bandının deniz tarafında; v eksenine sabit ofset. */
+export const PRESENCE_V_OFFSET = 0.085;
+
+export function xToPresenceUV(x) {
+  const { u, v } = xToUV(x);
+  return { u, v: v + PRESENCE_V_OFFSET };
+}
