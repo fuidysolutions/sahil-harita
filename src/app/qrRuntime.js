@@ -94,29 +94,60 @@ document.body.appendChild(btn);
 
 const panel = document.createElement("div");
 panel.className = "alge-qr-panel";
-panel.innerHTML = qrPoints
-  .map((qr) => {
-    const no = (qr.id.match(/(\d+)$/) || [])[1];
-    const active = qr.id === activeQrPoint.id;
-    return `
-    <div class="alge-qr-card${active ? " active" : ""}" data-qr="${qr.id}">
-      <img src="/qr/${qr.id}.png" alt="QR-${no}">
-      <div class="alge-qr-card__mid">
-        <b>QR-${no}${active ? '<span class="alge-qr-card__active">AKTİF</span>' : ""}</b>
-        <div class="alge-qr-card__label">${qr.label}</div>
-        <div class="alge-qr-card__link">/qr/${qr.id}</div>
-      </div>
-      <div class="alge-qr-card__btns">
-        <button class="alge-qr-open" type="button">Aç</button>
-        <button class="alge-qr-copy" type="button">Linki kopyala</button>
-      </div>
-    </div>`;
-  })
-  .join("");
 document.body.appendChild(panel);
+
+/* Sprint 8.6: panel içeriği (10 QR görseli dahil) LAZY — ilk açılışta değil,
+   butona ilk basışta kurulur; açılışta 10 görsel isteği tasarrufu */
+let panelBuilt = false;
+function buildPanel() {
+  if (panelBuilt) return;
+  panelBuilt = true;
+  panel.innerHTML = qrPoints
+    .map((qr) => {
+      const no = (qr.id.match(/(\d+)$/) || [])[1];
+      const active = qr.id === activeQrPoint.id;
+      return `
+      <div class="alge-qr-card${active ? " active" : ""}" data-qr="${qr.id}">
+        <img src="/qr/${qr.id}.png" alt="QR-${no}" decoding="async">
+        <div class="alge-qr-card__mid">
+          <b>QR-${no}${active ? '<span class="alge-qr-card__active">AKTİF</span>' : ""}</b>
+          <div class="alge-qr-card__label">${qr.label}</div>
+          <div class="alge-qr-card__link">/qr/${qr.id}</div>
+        </div>
+        <div class="alge-qr-card__btns">
+          <button class="alge-qr-open" type="button">Aç</button>
+          <button class="alge-qr-copy" type="button">Linki kopyala</button>
+        </div>
+      </div>`;
+    })
+    .join("");
+  panel.querySelectorAll(".alge-qr-card").forEach((cardEl) => {
+    const qrId = cardEl.dataset.qr;
+    const fullUrl = `${window.location.origin}/qr/${qrId}`;
+    cardEl.querySelector(".alge-qr-open").addEventListener("click", () => {
+      window.location.href = `/qr/${qrId}`;
+    });
+    cardEl.querySelector(".alge-qr-copy").addEventListener("click", async (e) => {
+      const btnEl = e.currentTarget;
+      try {
+        await navigator.clipboard.writeText(fullUrl);
+        btnEl.textContent = "Kopyalandı ✓";
+        showToast("Kopyalandı ✓");
+      } catch {
+        // clipboard yoksa güvenli fallback
+        window.prompt("QR linki (kopyalamak için):", fullUrl);
+        btnEl.textContent = "Linki kopyala";
+        return;
+      }
+      setTimeout(() => { btnEl.textContent = "Linki kopyala"; }, 1500);
+    });
+  });
+}
+
 btn.addEventListener("click", () => {
   const willOpen = !panel.classList.contains("on");
   if (willOpen) {
+    buildPanel();
     // büyük sheet'ler ve popup panelle karışmasın (Sprint 8 overlay düzeni)
     window.ALGE_SEARCH_RUNTIME?.closeSearch();
     window.ALGE_CAMPAIGN_RUNTIME?.closeCampaigns();
@@ -124,28 +155,6 @@ btn.addEventListener("click", () => {
     if (window.__ALGE_POPUP?.isOpen()) window.__ALGE_POPUP.closeOpeningAd();
   }
   panel.classList.toggle("on");
-});
-
-panel.querySelectorAll(".alge-qr-card").forEach((cardEl) => {
-  const qrId = cardEl.dataset.qr;
-  const fullUrl = `${window.location.origin}/qr/${qrId}`;
-  cardEl.querySelector(".alge-qr-open").addEventListener("click", () => {
-    window.location.href = `/qr/${qrId}`;
-  });
-  cardEl.querySelector(".alge-qr-copy").addEventListener("click", async (e) => {
-    const btnEl = e.currentTarget;
-    try {
-      await navigator.clipboard.writeText(fullUrl);
-      btnEl.textContent = "Kopyalandı ✓";
-      showToast("Kopyalandı ✓");
-    } catch {
-      // clipboard yoksa güvenli fallback
-      window.prompt("QR linki (kopyalamak için):", fullUrl);
-      btnEl.textContent = "Linki kopyala";
-      return;
-    }
-    setTimeout(() => { btnEl.textContent = "Linki kopyala"; }, 1500);
-  });
 });
 
 /* ---- marker konumlama ----
