@@ -4568,7 +4568,7 @@ function closePopAd(fly){
     setTimeout(()=>{ fillCard(VENUES[POP_VENUE]); flyToVenue(POP_VENUE); }, 380);
   }
 }
-popad.addEventListener('click',()=>closePopAd(true));
+popad.addEventListener('click',()=>{ if(window.__ALGE_AD_CTA){ window.__ALGE_AD_CTA(); } else { closePopAd(true); } });
 document.getElementById('popclose').addEventListener('click',e=>{e.stopPropagation();closePopAd(false);});
 popdim.addEventListener('click',()=>closePopAd(false));
 
@@ -4583,7 +4583,7 @@ function beamTick(dt){
     flashSpr.material.opacity=e;
     flashRing.material.opacity=e*0.9;
     flashRing.scale.setScalar(0.4+1.4*e);
-    if(!popLaunched && beamT>=0.55){ popLaunched=true; openPopAd(); }
+    if(!popLaunched && beamT>=0.55){ popLaunched=true; if(!popOpen && !window.__ALGE_AD_SHOWN) openPopAd(); }
     if(beamT>=0.7){ beamState='fade'; beamT=0; }
   }else if(beamState==='fade'){
     const k=Math.max(0,1-beamT/0.45);
@@ -4966,6 +4966,20 @@ const _clock=new THREE.Clock();
   renderer.render(scene,camera);
 })();
 
+window.__ALGE_POPUP = {   // ALGE ad runtime köprüsü (Sprint 3)
+  // Mevcut popup fonksiyonları üzerinden açar; beam görseli korunur ama açılış ona bağımlı değildir.
+  openOpeningAd(){
+    if(popOpen || window.__ALGE_AD_SHOWN) return false;
+    window.__ALGE_AD_SHOWN = true;   // sayfa başına tek açılış (çift açılış koruması)
+    startBeamAd();            // görsel parlama (rAF kısıtlıysa sessizce beklemede kalır)
+    openPopAd();              // normal yol: çift rAF ile animasyonlu açılış
+    // rAF hiç akmıyorsa (gizli/throttled sayfa) wall-clock güvencesi:
+    setTimeout(()=>{ if(!popOpen){ popad.classList.add('on'); popdim.classList.add('on'); popOpen=true; } }, 250);
+    return true;
+  },
+  closeOpeningAd(){ closePopAd(false); },
+  isOpen(){ return popOpen; }
+};
 window.__ALGE3D = {   // ALGE QR runtime köprüsü (Sprint 2)
   camera, uvToWorld,
   // Mobil turun başlangıç fazını verilen dünya X'ine en yakın noktaya hizalar.
@@ -4982,5 +4996,6 @@ window.__ALGE3D = {   // ALGE QR runtime köprüsü (Sprint 2)
 };
 </script>
 <script type="module" src="/src/app/qrRuntime.js"></script>
+<script type="module" src="/src/app/adRuntime.js"></script>
 </body>
 </html>

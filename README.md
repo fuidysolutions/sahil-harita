@@ -58,3 +58,6 @@ Sprint 1: 47 mekanlık araştırma datası `src/data/` JS data layer'a dönüşt
 Sprint 2: QR routing + "Buradasın" marker (`src/app/qrRuntime.js`).
 URL: `/qr/qr-demo-01..10` veya `/?qr=...`; geçersiz QR -> qr-demo-01.
 index.html'e yalnızca `__ALGE3D` köprüsü + module script etiketi eklendi.
+Sprint 3: Açılış pop-up reklamı `adPlacements.js` datasına bağlandı (`src/app/adRuntime.js`).
+Sıra garantisi: harita -> marker -> pop-up; rAF throttling'e karşı wall-clock fallback.
+CTA `alge:ad-action` eventi yayınlar (uçuş bağı Sprint 4'te). Beam görseli korundu.

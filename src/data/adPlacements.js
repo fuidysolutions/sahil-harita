@@ -4,6 +4,9 @@ export const adPlacements = [
   {
     id: "opening-popup",
     slot: "opening-popup",
+    placementType: "opening-popup",
+    isActive: true,
+    priority: 100,
     title: "Bugünün Fırsatı",
     subtitle: "Mado'da dondurma molası",
     venueId: "mado",
@@ -16,6 +19,9 @@ export const adPlacements = [
   {
     id: "search-trend",
     slot: "search-trend",
+    placementType: "search-trend",
+    isActive: true,
+    priority: 90,
     title: "Trend Aramalar",
     subtitle: "Sponsorlu trend listesi",
     sponsoredVenueIds: ["mado", "tezgah-burger", "shakespeare"],
@@ -25,6 +31,9 @@ export const adPlacements = [
   {
     id: "search-sponsored-result",
     slot: "search-sponsored-result",
+    placementType: "search-sponsored-result",
+    isActive: true,
+    priority: 80,
     title: "Sponsorlu Sonuç",
     subtitle: "Eşleşen aramalarda sponsorlu mekan üstte gösterilir",
     rules: [
@@ -38,6 +47,9 @@ export const adPlacements = [
   {
     id: "campaign-carousel",
     slot: "campaign-carousel",
+    placementType: "campaign-carousel",
+    isActive: true,
+    priority: 70,
     title: "Öne Çıkan Kampanyalar",
     subtitle: "Ana ekran kampanya karuseli",
     campaignIds: [
@@ -60,6 +72,9 @@ export const adPlacements = [
   {
     id: "category-sponsored-card",
     slot: "category-sponsored-card",
+    placementType: "category-sponsored-card",
+    isActive: true,
+    priority: 60,
     title: "Kategori Sponsoru",
     subtitle: "Kategori listelerinde sponsorlu kart",
     rules: [
@@ -73,6 +88,9 @@ export const adPlacements = [
   {
     id: "venue-detail-recommendation",
     slot: "venue-detail-recommendation",
+    placementType: "venue-detail-recommendation",
+    isActive: true,
+    priority: 50,
     title: "Buna da Bakın",
     subtitle: "Mekan detay kartı altında öneri",
     strategy: "same-zone-different-category",
