@@ -61,3 +61,7 @@ index.html'e yalnızca `__ALGE3D` köprüsü + module script etiketi eklendi.
 Sprint 3: Açılış pop-up reklamı `adPlacements.js` datasına bağlandı (`src/app/adRuntime.js`).
 Sıra garantisi: harita -> marker -> pop-up; rAF throttling'e karşı wall-clock fallback.
 CTA `alge:ad-action` eventi yayınlar (uçuş bağı Sprint 4'te). Beam görseli korundu.
+Sprint 4: Ortak venue focus / action router (`src/app/venueRuntime.js`).
+`window.ALGE_VENUE_RUNTIME.focusVenueById(id)` -> harita odağı + turkuaz aktif marker
++ data-driven kart (Yol Tarifi / Detay / Menü) + `alge:venue-focused` eventi.
+`alge:ad-action` (openVenue) artık gerçek focus'a bağlı. Tek seçili mekan gösterilir.
