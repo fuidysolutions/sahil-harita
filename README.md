@@ -49,6 +49,31 @@ npm run build:search-index
 Araştırmadaki "Bilinmiyor" / "(demo önerisi)" / "teyit edilmeli" ifadeleri
 veri modelinde bilinçli korunur (`flags.demoSuggestion`, `flags.needsVerification`, `notes`).
 
+## Canlı Demo
+
+Demo URL: **https://sahil-harita-demo.netlify.app**
+
+QR girişleri: `https://sahil-harita-demo.netlify.app/qr/qr-demo-01` ... `qr-demo-10`
+
+## Deploy
+
+Build:
+
+```bash
+npm run build
+```
+
+Netlify publish directory: `dist` (ayarlar `netlify.toml`'da; `/qr/*` SPA
+yönlendirmesi `public/_redirects` ile sağlanır).
+
+CLI ile yayın:
+
+```bash
+npx netlify deploy --prod --dir=dist
+```
+
+URL değişirse QR'ları yeni adresle yeniden üretip build + deploy tekrarlanır.
+
 ## Demo Akışı
 
 Detaylı demo senaryosu için:
@@ -73,7 +98,7 @@ PUBLIC_BASE_URL=https://example.com npm run generate:qrs
 ```
 
 QR link formatı: `/qr/qr-demo-01` ... `/qr/qr-demo-10`
-(query fallback: `/?qr=qr-demo-01`). Repodaki PNG'ler localhost'u encode eder;
+(query fallback: `/?qr=qr-demo-01`). Repodaki PNG'ler canlı adresi (sahil-harita-demo.netlify.app) encode eder;
 QR demo paneli görselleri `/qr/<id>.png` yolundan okur.
 
 ## Sprint Notu

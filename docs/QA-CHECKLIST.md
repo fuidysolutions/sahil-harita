@@ -48,5 +48,17 @@ Sprint 8 QA sonuçları (preview ortamında otomatik + görsel test; işaretlile
 - [x] npm run build
 - [x] npm run preview
 
+## Live Deploy (https://sahil-harita-demo.netlify.app)
+- [x] Canlı URL açılıyor
+- [x] /qr/qr-demo-01 çalışıyor (chip + marker + opening ad + CTA -> Mado)
+- [x] /qr/qr-demo-05 ve /qr/qr-demo-10 çalışıyor
+- [x] /?qr=qr-demo-03 çalışıyor; /?qr=qr-demo-99 default QR-01'e düşüyor
+- [x] QR manifest canlı domain içeriyor (localhost yok)
+- [x] QR panel görselleri canlıda yükleniyor (10/10)
+- [x] Search çalışıyor (burger, kozmetik -> Watsons)
+- [x] Campaign/Event çalışıyor (kampanya tık -> venue focus)
+- [x] Console temiz
+- [ ] Telefonla gerçek QR okutma (kullanıcı testi bekliyor)
+
 ## Console
 - [x] Kritik hata yok (yalnızca kasıtlı geçersiz-ID test uyarıları)

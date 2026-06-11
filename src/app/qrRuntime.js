@@ -99,7 +99,7 @@ panel.innerHTML = qrPoints
     const active = qr.id === activeQrPoint.id;
     return `
     <div class="alge-qr-card${active ? " active" : ""}" data-qr="${qr.id}">
-      <img src="/qr/${qr.id}.png" alt="QR-${no}" loading="lazy">
+      <img src="/qr/${qr.id}.png" alt="QR-${no}">
       <div class="alge-qr-card__mid">
         <b>QR-${no}${active ? '<span class="alge-qr-card__active">AKTİF</span>' : ""}</b>
         <div class="alge-qr-card__label">${qr.label}</div>
