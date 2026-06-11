@@ -260,6 +260,18 @@ body{font-family:var(--alge-sans);}
 }
 #vbadges span i{font-style:normal;color:var(--alge-text-3);font-weight:600;display:block;font-size:.86em;}
 
+/* detay görsel alanı (temsili) */
+#vphoto{display:none;margin:0 0 14px;position:relative;}
+#vphoto img{width:100%;max-height:clamp(140px,24vh,230px);object-fit:cover;
+  border-radius:var(--alge-r-lg);box-shadow:var(--alge-sh-2);display:block;}
+#vphoto figcaption{position:absolute;right:10px;bottom:10px;font-size:9.5px;font-weight:700;
+  background:rgba(255,255,255,.85);color:var(--alge-text-3);padding:3px 8px;border-radius:999px;}
+/* opsiyonel menü fiyatı (veri yoksa render edilmez) */
+#vmenuinline .vmprice{float:right;font-style:normal;font-weight:800;color:var(--alge-navy);font-size:12px;}
+/* logo altı ürün satırı */
+.brand-product{font-size:11px;font-weight:600;color:var(--alge-text-3);margin:-4px 0 10px;letter-spacing:.04em;}
+#side.collapsed .brand-product{display:none;}
+
 /* CTA'lar: Nasıl Giderim navy dolu, diğerleri outline */
 #vcard .pill{
   border-radius:var(--alge-r-pill);font-weight:700;

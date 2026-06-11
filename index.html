@@ -437,7 +437,8 @@ window.addEventListener('error',function(e){
 <aside id="side" class="collapsed">
   <div class="brand">
     <div class="brand-txt">
-      <img class="brand-logo" src="/assets/brand/go.png" alt="algeGo">
+      <img class="brand-logo" src="/assets/brand/go.png" alt="AlgeGo">
+      <div class="brand-product">Sahil keşif Web App'i</div>
       <div class="bt">SAHİL YAŞAM MERKEZİ</div>
       <div class="bs">Mekanlar, etkinlikler ve güncel kampanyaları keşfet</div>
     </div>
@@ -492,7 +493,7 @@ window.addEventListener('error',function(e){
 </div>
 
 <!-- ============ MOBİL APP ARAYÜZÜ ============ -->
-<div id="mlogo"><img src="/assets/brand/go.png" alt="algeGo"></div>
+<div id="mlogo"><img src="/assets/brand/go.png" alt="AlgeGo"></div>
 <div id="mtop">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
   <span>SAHİL YAŞAM MERKEZİ</span>
@@ -547,6 +548,7 @@ window.addEventListener('error',function(e){
       <div id="vcat"></div>
       <div id="vbadges"></div>
       <p class="vdesc"></p>
+      <figure id="vphoto"><img alt="" loading="lazy" decoding="async"><figcaption>Temsili görsel</figcaption></figure>
       <button class="pill" id="vroute">Nasıl Giderim</button>
     </div>
     <div class="vright">
@@ -4578,6 +4580,12 @@ function fillCard(v){
     vb.innerHTML=bh; vb.style.display=bh?'flex':'none';
   }
   vcard.querySelector('.vdesc').textContent=v.desc;
+  // temsili kategori görseli (gerçek mekan fotoğrafı iddiası yok)
+  const vp=document.getElementById('vphoto');
+  if(vp){
+    if(v.img){ vp.querySelector('img').src=v.img; vp.style.display='block'; }
+    else vp.style.display='none';
+  }
 
   const right=vcard.querySelector('.vright');
   const dish=vcard.querySelector('.vdish'), featEl=vcard.querySelector('.vfeat');
@@ -4611,7 +4619,8 @@ function fillCard(v){
     (mObj.sections||[]).forEach((sec,si)=>{
       html+='<div class="vmsec" id="vmsec-'+si+'">'+sec.title+'</div>';
       (sec.items||[]).forEach(it=>{
-        html+='<div class="vmitem"><b>'+it.name+'</b>'+(it.description?'<span>'+it.description+'</span>':'')+'</div>';
+        const price=it.priceText?'<em class="vmprice">'+it.priceText+'</em>':'';
+        html+='<div class="vmitem">'+price+'<b>'+it.name+'</b>'+(it.description?'<span>'+it.description+'</span>':'')+'</div>';
       });
     });
     mwrap.innerHTML=html; mwrap.style.display='block';
@@ -4742,7 +4751,7 @@ function beamTick(dt){
 function setBar(on){ document.body.classList.toggle('flying', !on); }
 
 /* ---- sol panel: sekmeler + liste + arama + detay kartı ---- */
-const VENUE_THUMBS=[AD14, AD01, AD03];   // mevcut asset'lerden: kahve / burger / plaj-gece
+const VENUE_THUMBS=['/assets/venues/category-cafe.webp','/assets/venues/category-dessert.webp','/assets/venues/category-market.webp'];   // kategori temsili görselleri (Sprint 8.7): Shakespeare/Mado/Hamlet
 const listEl=document.getElementById('list');
 const srch=document.getElementById('srch');
 let activeTab='mekan', selVenue=0;

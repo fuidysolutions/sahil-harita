@@ -5,6 +5,7 @@
 // Sprint 8.4): mekan ekranı tek — uçuş sonunda açılan detay ekranı.
 import { venues, campaigns } from "../data/index.js";
 import { xToUV, xToWorldX } from "./mapAnchors.js";
+import { getVenueImage } from "./venueImages.js";
 
 const MARKER_WORLD_Y = 1.4;
 
@@ -81,7 +82,8 @@ function focusVenueById(venueId, options = {}) {
     featuredProduct: venue.card?.featuredProduct,
     campaign: venue.card?.campaign,
     features: venue.card?.features || [],
-    priceLevel: venue.priceLevel
+    priceLevel: venue.priceLevel,
+    img: getVenueImage(venue)   // temsili kategori görseli (Sprint 8.7)
   }) || false;
 
   if (!flew && window.__ALGE3D?.setMobileTourNearX) {

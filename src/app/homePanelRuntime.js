@@ -4,6 +4,7 @@
 // 12 kampanya ve 5 etkinlikten render edilir. Legacy placeholder render'ı
 // capture-interception ile devre dışı kalır (index.html koduna dokunulmaz).
 import { venues, campaigns, events } from "../data/index.js";
+import { getVenueImage } from "./venueImages.js";
 
 const listEl = document.getElementById("list");
 const venueOf = (id) => venues.find((v) => v.id === id);
@@ -20,6 +21,8 @@ style.textContent = `
 .alge-hsp{font-size:8.5px;font-weight:800;padding:2px 7px;border-radius:999px;
   background:var(--alge-amber-soft,#fdeedd);color:#dd7e2f;margin-left:6px;vertical-align:1px;}
 .alge-hcta{font-size:10px;font-weight:700;color:var(--alge-teal,#157f8d);margin-top:3px;}
+.alge-vr-img{width:64px;height:64px;border-radius:14px;object-fit:cover;flex:0 0 auto;
+  align-self:center;box-shadow:0 4px 12px rgba(20,40,65,.12);}
 `;
 document.head.appendChild(style);
 
@@ -32,6 +35,7 @@ function venueRow(v) {
   return `
   <div class="vrow alge-hrow" data-venue="${v.id}">
     <span class="no">${String(v.order).padStart(2, "0")}</span>
+    <img class="alge-vr-img" src="${getVenueImage(v)}" alt="" loading="lazy" decoding="async">
     <div class="vr-mid">
       <div class="vr-name">${esc(v.name)}</div>
       <div class="vr-cat">${esc(v.category)} · ${esc(v.subcategory)}</div>
@@ -146,9 +150,13 @@ function renderFeatured() {
   const campCount = campaigns.filter((c) => c.venueId === v.id).length;
   const camp = document.getElementById("vmCamp");
   if (camp) camp.textContent = campCount > 0 ? `${campCount} aktif kampanya` : v.card.campaign;
-  // tematik olmayan eski küçük görsel gizlenir (görsel uydurma yok)
+  // kategori bazlı temsili görsel (Sprint 8.7 low-KB katmanı)
   const thumb = document.getElementById("vmThumb");
-  if (thumb) thumb.style.display = "none";
+  if (thumb) {
+    thumb.src = getVenueImage(v);
+    thumb.style.display = "";
+    thumb.loading = "lazy";
+  }
 }
 
 /* mini kart butonları: legacy flyToVenue yerine venue runtime (capture ile) */
