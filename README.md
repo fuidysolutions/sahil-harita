@@ -69,3 +69,8 @@ Sprint 5: Search gerçek data'ya bağlandı (`src/app/searchRuntime.js`).
 Üst arama hapı + alt bar "Ara" yeni search sheet'i açar; boş query'de genel trendler
 + popüler aramalar, query'de venue/searchIndex/kampanya/etkinlik eşleşmesi
 (tr normalize, kök eşleşme). Sonuç tıklaması focusVenueById'e gider.
+Sprint 6: Kampanya/etkinlik yüzeyleri data'ya bağlandı (`src/app/campaignRuntime.js`).
+Karusel posterleri korunarak data caption'larıyla eşlendi (tema eşlemesi görsel
+tespitli); alt nav Kampanyalar/Etkinlikler gerçek sheet'leri açar; tıklamalar
+venue focus'a gider; alge:campaign-action / alge:event-action eventleri.
+Opening ad posteri aktif reklamın mekanına göre gömülü posterlerden seçilir.
