@@ -1,0 +1,319 @@
+/* ============================================================
+   ALGE QR — UI Redesign (white/soft/minimal/editorial)
+   Token sistemi + mevcut shell'in üzerine giydirme.
+   Referanslar: Anaekran.png, mobilekran.png, açılırkartdetay.png
+   Not: shadcn/Radix React gerektirir; aynı tasarım dili vanilla
+   token CSS ile uygulanmıştır (low-KB kuralı).
+   ============================================================ */
+
+:root{
+  /* renk tokenları (ALGE palet: navy / teal-cyan / sky / sınırlı amber / beyaz) */
+  --alge-navy:#1d3450;
+  --alge-navy-deep:#13263d;
+  --alge-teal:#157f8d;
+  --alge-cyan:#35e0f2;
+  --alge-sky:#eaf4f7;
+  --alge-amber:#e8a93c;
+  --alge-amber-soft:#f7ead2;
+  --alge-bg:#ffffff;
+  --alge-bg-soft:#f3f6f8;
+  --alge-line:rgba(29,52,80,.10);
+  --alge-line-strong:rgba(29,52,80,.18);
+  --alge-text:#1d3450;
+  --alge-text-2:#54677c;
+  --alge-text-3:#8b9aab;
+
+  /* radius */
+  --alge-r-sm:10px; --alge-r-md:16px; --alge-r-lg:22px; --alge-r-xl:28px; --alge-r-pill:999px;
+
+  /* gölgeler (yumuşak, geniş) */
+  --alge-sh-1:0 2px 10px rgba(20,40,65,.06);
+  --alge-sh-2:0 8px 28px rgba(20,40,65,.10);
+  --alge-sh-3:0 18px 50px rgba(20,40,65,.16);
+  --alge-glow:0 0 0 4px rgba(53,224,242,.16);
+
+  /* tipografi */
+  --alge-serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --alge-sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+
+  /* motion (uçuş hissiyle uyumlu: yumuşak yüksel + parla) */
+  --alge-ease:cubic-bezier(.22,1,.36,1);
+  --alge-dur:220ms;
+}
+
+/* ---- ortak hover/motion dili ---- */
+.tab,.vrow,.srow,.erow,.crow,.pill,.vmgor,
+#quick button,.vm-actions button,#mvcard button,#mchips button,
+.alge-qr-btn,.alge-qr-card__btns button,.as-chips button,.as-result,.as-trend,
+.alge-citem,.ci-cta,.adcard,.mslide,#alge-ad-cta,#seeall{
+  transition:transform var(--alge-dur) var(--alge-ease),
+             box-shadow var(--alge-dur) var(--alge-ease),
+             background var(--alge-dur) var(--alge-ease),
+             border-color var(--alge-dur) var(--alge-ease),
+             filter var(--alge-dur) var(--alge-ease);
+}
+.tab:hover,.pill:hover,.vmgor:hover,#quick button:hover,.vm-actions button:hover,
+#mvcard button:hover,#mchips button:hover,.alge-qr-btn:hover,
+.alge-qr-card__btns button:hover,.as-chips button:hover,.ci-cta:hover,#alge-ad-cta:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--alge-sh-2), var(--alge-glow);
+}
+.vrow:hover,.srow:hover,.erow:hover,.crow:hover,.as-result:hover,.as-trend:hover,.alge-citem:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--alge-sh-2);
+  border-color:rgba(53,224,242,.45);
+}
+
+body{font-family:var(--alge-sans);}
+
+/* ============================================================
+   MASAÜSTÜ SOL SIDEBAR (Anaekran.png)
+   ============================================================ */
+#side{
+  background:rgba(255,255,255,.94);
+  -webkit-backdrop-filter:blur(18px) saturate(1.2);backdrop-filter:blur(18px) saturate(1.2);
+  border:1px solid var(--alge-line);
+  border-radius:var(--alge-r-xl);
+  box-shadow:var(--alge-sh-3);
+  color:var(--alge-text);
+}
+#side.collapsed{background:rgba(255,255,255,.92);color:var(--alge-text);
+  border:1px solid var(--alge-line);box-shadow:var(--alge-sh-2);}
+#side.collapsed .bt,#side.collapsed .bs{color:var(--alge-text);}
+
+/* marka alanı: ALGE yazı markası + serif başlık */
+#side .brand-txt::before{
+  content:"ALGE";
+  display:block;
+  font-family:var(--alge-serif);
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:.34em;
+  color:var(--alge-teal);
+  margin-bottom:6px;
+}
+#side .bt{
+  font-family:var(--alge-serif);
+  font-weight:700;
+  color:var(--alge-navy);
+  letter-spacing:.06em;
+}
+#side .bs{color:var(--alge-text-2);}
+#sideToggle{background:var(--alge-bg-soft);color:var(--alge-navy);
+  border:1px solid var(--alge-line);}
+#sideToggle:hover{box-shadow:var(--alge-glow);}
+
+/* arama kutusu */
+#side .searchbox{
+  background:var(--alge-bg-soft);
+  border:1.5px solid var(--alge-line);
+  border-radius:var(--alge-r-pill);
+  box-shadow:none;
+}
+#side .searchbox svg{color:var(--alge-text-3);}
+#srch{color:var(--alge-text);}
+#srch::placeholder{color:var(--alge-text-3);}
+#side .searchbox:focus-within{border-color:var(--alge-cyan);box-shadow:var(--alge-glow);}
+
+/* sekmeler */
+.tabs .tab{
+  background:var(--alge-bg);
+  border:1.5px solid var(--alge-line);
+  color:var(--alge-text-2);
+  border-radius:var(--alge-r-pill);
+  font-weight:700;
+}
+.tabs .tab.on{
+  background:var(--alge-navy);
+  border-color:var(--alge-navy);
+  color:#fff;
+  box-shadow:var(--alge-sh-2);
+}
+
+/* mekan liste kartları */
+#list .vrow,#list .srow,#list .erow,#list .crow{
+  background:var(--alge-bg);
+  border:1.5px solid var(--alge-line);
+  border-radius:var(--alge-r-md);
+  box-shadow:var(--alge-sh-1);
+  color:var(--alge-text);
+}
+#list .vrow .no,#list .srow .no{color:var(--alge-text-3);}
+#list .vr-name,#list .e-name,#list .c-name{color:var(--alge-navy);font-weight:800;}
+#list .vr-cat,#list .e-venue,#list .c-venue{color:var(--alge-teal);font-weight:700;}
+#list .e-when{color:var(--alge-text-2);}
+#list .arr{color:var(--alge-teal);}
+#list .tagp{background:var(--alge-sky);color:var(--alge-teal);border:none;}
+#list .noresult{color:var(--alge-text-2);}
+
+/* alt mini featured kart */
+#vmini{
+  background:var(--alge-bg);
+  border:1.5px solid var(--alge-line);
+  border-radius:var(--alge-r-lg);
+  box-shadow:var(--alge-sh-2);
+  color:var(--alge-text);
+}
+#vmini .vm-name{color:var(--alge-navy);}
+#vmini p{color:var(--alge-text-2);}
+#vmini .vm-meta span{color:var(--alge-text-2);}
+.vm-actions button{
+  background:var(--alge-bg);
+  border:1.5px solid var(--alge-line-strong);
+  color:var(--alge-navy);
+  border-radius:var(--alge-r-pill);
+  font-weight:700;
+}
+.vm-actions button:last-child{background:var(--alge-navy);border-color:var(--alge-navy);color:#fff;}
+
+/* alt hızlı aksiyonlar */
+#quick button{
+  background:var(--alge-bg);
+  border:1.5px solid var(--alge-line);
+  color:var(--alge-text-2);
+  border-radius:var(--alge-r-pill);
+  font-weight:700;
+}
+
+/* alt kampanya şeridi başlığı */
+#cardshead span{color:#fff;text-shadow:0 2px 10px rgba(10,25,40,.5);
+  font-family:var(--alge-serif);letter-spacing:.04em;font-weight:700;}
+#seeall{background:rgba(255,255,255,.92);color:var(--alge-navy);
+  border:1px solid var(--alge-line);border-radius:var(--alge-r-pill);font-weight:700;}
+.adcard{border-radius:var(--alge-r-lg);box-shadow:var(--alge-sh-2);}
+.adcard:hover{transform:translateY(-3px);box-shadow:var(--alge-sh-3);}
+
+/* ============================================================
+   MOBİL SHELL (mobilekran.png)
+   ============================================================ */
+#mtop{
+  background:rgba(255,255,255,.96);
+  border:1px solid var(--alge-line);
+  box-shadow:var(--alge-sh-2);
+}
+#mtop span{
+  font-family:var(--alge-serif);
+  color:var(--alge-navy);
+  font-weight:700;
+  letter-spacing:.22em;
+}
+#mtop svg{color:var(--alge-navy);}
+
+/* pinler: lacivert daire + beyaz ikon (referans) */
+.mpin{
+  background:var(--alge-navy) !important;
+  border:2.5px solid #fff;
+  box-shadow:0 6px 16px rgba(20,40,65,.35);
+}
+.mpin.sel::before{background:rgba(53,224,242,.35);}
+
+/* mobil alt mekan kartı */
+#mvcard{border-radius:var(--alge-r-lg);box-shadow:var(--alge-sh-3);
+  border:1px solid var(--alge-line);}
+#mvcard button{border-radius:var(--alge-r-pill);font-weight:700;
+  border:1.5px solid var(--alge-line-strong);background:#fff;color:var(--alge-navy);}
+#mvcard button:last-child{background:var(--alge-navy);border-color:var(--alge-navy);color:#fff;}
+
+/* kategori hızlı filtreler */
+#mchips button{background:#fff;border:1.5px solid var(--alge-line);
+  color:var(--alge-navy);border-radius:var(--alge-r-pill);font-weight:700;
+  box-shadow:var(--alge-sh-1);}
+#mchips button.on{background:var(--alge-navy);border-color:var(--alge-navy);color:#fff;}
+
+/* alt nav */
+#mbar{background:rgba(255,255,255,.96);border-top:1px solid var(--alge-line);
+  box-shadow:0 -8px 24px rgba(20,40,65,.08);}
+#mbar button{color:var(--alge-text-3);font-weight:700;}
+#mbar button.on{color:var(--alge-navy);}
+#mbar button.on svg{color:var(--alge-teal);}
+
+/* ============================================================
+   UÇUŞ-SONU DETAY EKRANI (açılırkartdetay.png)
+   yapı aynı (#vcard vleft/vright) — görsel dil giydirildi
+   ============================================================ */
+#vcard{
+  background:rgba(255,255,255,.97);
+  border:1px solid var(--alge-line);
+  border-radius:var(--alge-r-xl);
+  box-shadow:var(--alge-sh-3);
+  color:var(--alge-text);
+}
+#vcard .vleft{border-right:1px solid var(--alge-line);}
+#vcard h2{
+  font-family:var(--alge-serif);
+  font-weight:700;
+  color:var(--alge-navy);
+}
+#vcat{color:var(--alge-teal) !important;font-weight:700;}
+#vcard .vdesc{color:var(--alge-text-2);}
+#vcard .vrating b{color:var(--alge-navy);}
+#vcard .vrating .stars{color:var(--alge-amber);}
+#vcard .vrating .cnt{color:var(--alge-text-3);}
+#vclose{background:var(--alge-bg-soft);color:var(--alge-navy);
+  border:1px solid var(--alge-line);border-radius:var(--alge-r-pill);}
+#vclose:hover{box-shadow:var(--alge-glow);}
+
+/* bilgi rozetleri (fiyat / konum) */
+#vbadges{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 14px;}
+#vbadges span{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--alge-bg-soft);
+  border:1px solid var(--alge-line);
+  border-radius:12px;
+  padding:8px 12px;
+  font-size:clamp(11px,1.2vw,12.5px);
+  font-weight:700;color:var(--alge-navy);
+}
+#vbadges span i{font-style:normal;color:var(--alge-text-3);font-weight:600;display:block;font-size:.86em;}
+
+/* CTA'lar: Nasıl Giderim navy dolu, diğerleri outline */
+#vcard .pill{
+  border-radius:var(--alge-r-pill);font-weight:700;
+  background:var(--alge-navy);color:#fff;border:1.5px solid var(--alge-navy);
+}
+#vcard #vmenu{background:#fff;color:var(--alge-navy);border:1.5px solid var(--alge-line-strong);}
+
+/* sağ kolon: section pill'leri */
+#vsecpills{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;}
+#vsecpills button{
+  border:1.5px solid var(--alge-line);background:#fff;color:var(--alge-navy);
+  border-radius:var(--alge-r-pill);padding:8px 14px;font-weight:700;cursor:pointer;
+  font-size:clamp(11px,1.2vw,12.5px);font-family:inherit;
+  transition:all var(--alge-dur) var(--alge-ease);
+}
+#vsecpills button:hover{transform:translateY(-2px);box-shadow:var(--alge-glow);}
+#vsecpills button.on{background:var(--alge-teal);border-color:var(--alge-teal);color:#fff;}
+
+/* öne çıkan / kampanya kutuları */
+#vmenuinline .vmetal{
+  background:var(--alge-bg-soft);
+  border:1px solid var(--alge-line);
+  border-radius:var(--alge-r-md);
+  padding:10px 12px;margin-bottom:8px;
+  color:var(--alge-text-2);
+}
+#vmenuinline .vmetal b{color:var(--alge-navy);}
+#vmenuinline .vchips span{background:var(--alge-sky);color:var(--alge-teal);}
+#vmenuinline .vmsec{color:var(--alge-teal);}
+#vmenuinline .vmitem{border-bottom:1px solid var(--alge-line);padding-bottom:6px;}
+#vmenuinline .vmitem b{color:var(--alge-navy);}
+#vmenuinline .vmitem span{color:var(--alge-text-2);}
+#vmenuinline .vmgor{background:var(--alge-navy);}
+
+/* menü overlay */
+#menup .inner{background:rgba(255,255,255,.98);border-radius:var(--alge-r-xl);
+  border:1px solid var(--alge-line);box-shadow:var(--alge-sh-3);color:var(--alge-text);}
+#menup h3{font-family:var(--alge-serif);color:var(--alge-navy);}
+#menup li.msec{color:var(--alge-teal);}
+#menup li.mitem b{color:var(--alge-navy);}
+#mclose{background:var(--alge-bg-soft);color:var(--alge-navy);border:1px solid var(--alge-line);}
+
+/* ============================================================
+   POP-UP REKLAM — yumuşak beyaz çerçeve
+   ============================================================ */
+#popad{
+  border:1px solid var(--alge-line);
+  box-shadow:0 24px 70px rgba(20,40,65,.35), var(--alge-glow);
+}
+#alge-ad-caption{font-family:var(--alge-sans);}
+#alge-ad-cta{background:var(--alge-navy) !important;}

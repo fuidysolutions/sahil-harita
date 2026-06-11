@@ -34,15 +34,19 @@ window.dispatchEvent(new CustomEvent("alge:qr-ready", { detail: { activeQrPoint,
 const style = document.createElement("style");
 style.textContent = `
 .alge-you-are-here{position:fixed;z-index:28;transform:translate(-50%,-50%);pointer-events:none;
-  display:flex;flex-direction:column;align-items:center;}
-.alge-you-are-here__dot{width:14px;height:14px;border-radius:999px;background:#ef233c;
-  border:2px solid #fff;box-shadow:0 0 0 8px rgba(239,35,60,.18);animation:algePulse 1.8s ease-out infinite;}
-@keyframes algePulse{0%{box-shadow:0 0 0 4px rgba(239,35,60,.30)}70%{box-shadow:0 0 0 12px rgba(239,35,60,.05)}100%{box-shadow:0 0 0 4px rgba(239,35,60,.30)}}
-.alge-you-are-here__label{margin-top:6px;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.92);
-  color:#17202a;font-size:11px;font-weight:700;white-space:nowrap;font-family:system-ui,sans-serif;}
-.alge-qr-chip{position:fixed;z-index:35;top:78px;left:12px;padding:5px 10px;border-radius:999px;
-  background:rgba(255,255,255,.92);color:#13293d;font-size:11px;font-weight:700;
-  font-family:system-ui,sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.15);pointer-events:none;}
+  display:flex;flex-direction:column;align-items:center;gap:6px;}
+/* referans (mobilekran): parlayan cyan nokta + beyaz çip */
+.alge-you-are-here__dot{width:16px;height:16px;border-radius:999px;background:#27b9d6;
+  border:3px solid #fff;box-shadow:0 0 0 7px rgba(53,224,242,.25);animation:algePulse 2s ease-out infinite;}
+@keyframes algePulse{0%{box-shadow:0 0 0 5px rgba(53,224,242,.32)}70%{box-shadow:0 0 0 14px rgba(53,224,242,.06)}100%{box-shadow:0 0 0 5px rgba(53,224,242,.32)}}
+.alge-you-are-here__label{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.96);
+  color:#1d3450;font-size:11.5px;font-weight:700;white-space:nowrap;
+  font-family:'Inter',system-ui,sans-serif;border:1px solid rgba(29,52,80,.10);
+  box-shadow:0 4px 14px rgba(20,40,65,.14);}
+.alge-qr-chip{position:fixed;z-index:35;top:78px;left:12px;padding:7px 13px;border-radius:999px;
+  background:rgba(255,255,255,.96);color:#1d3450;font-size:11.5px;font-weight:700;
+  font-family:'Inter',system-ui,sans-serif;border:1px solid rgba(29,52,80,.10);
+  box-shadow:0 4px 14px rgba(20,40,65,.14);pointer-events:none;}
 @media (min-width:769px){.alge-qr-chip{left:auto;right:12px;top:12px;}}
 .alge-qr-btn{position:fixed;z-index:88;right:10px;bottom:96px;width:40px;height:40px;border-radius:999px;
   background:#13293d;color:#fff;font-size:12px;font-weight:800;font-family:system-ui,sans-serif;

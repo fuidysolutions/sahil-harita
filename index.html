@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Kabartma 3D — Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script>
 /* ALGE perf işaretleri (Sprint 8.6) — ayrıntı yalnız ?debugPerf=1 ile */
 window.__ALGE_PERF={t0:performance.now(),m:{},dbg:/[?&]debugPerf=1/.test(location.search),
@@ -415,6 +418,7 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #vbar button:disabled{opacity:.45;cursor:default;}
   #vbar button:not(:disabled):hover{border-color:#22d3ee;}
 </style>
+<link rel="stylesheet" href="/assets/theme/alge.css">
 </head>
 <body>
 <div id="errband"></div>
@@ -539,6 +543,7 @@ window.addEventListener('error',function(e){
       <h2></h2>
       <div class="vrating"><b></b><span class="stars"></span><span class="cnt"></span></div>
       <div id="vcat"></div>
+      <div id="vbadges"></div>
       <p class="vdesc"></p>
       <button class="pill" id="vroute">Nasıl Giderim</button>
     </div>
@@ -4561,6 +4566,15 @@ function fillCard(v){
   }else rt.style.display='none';
   const vcat=document.getElementById('vcat');
   if(vcat){ vcat.textContent=v.cat||''; vcat.style.display=v.cat?'block':'none'; }
+  // bilgi rozetleri (eldeki gerçek alanlardan; uydurma puan/saat yok)
+  const vb=document.getElementById('vbadges');
+  if(vb){
+    let bh='';
+    if(v.priceLevel) bh+='<span>₺ '+v.priceLevel+'<i>Fiyat seviyesi</i></span>';
+    bh+='<span>Beach Park<i>Konum</i></span>';
+    if(v.campaign) bh+='<span>Kampanya var<i>Bugün</i></span>';
+    vb.innerHTML=bh; vb.style.display=bh?'flex':'none';
+  }
   vcard.querySelector('.vdesc').textContent=v.desc;
 
   const right=vcard.querySelector('.vright');
@@ -4583,12 +4597,17 @@ function fillCard(v){
       html+='<div class="vchips">'+v.features.map(f=>'<span>'+f+'</span>').join('')+'</div>';
     if(v.featuredProduct) html+='<div class="vmetal"><b>Öne çıkan:</b> '+v.featuredProduct+'</div>';
     if(v.campaign) html+='<div class="vmetal"><b>Kampanya:</b> '+v.campaign+'</div>';
+    // section pill'leri (referans: açılırkartdetay) — tıklayınca ilgili bölüme kaydırır
+    if(mObj.sections&&mObj.sections.length){
+      html+='<div id="vsecpills">'+mObj.sections.map((sec,si)=>
+        '<button type="button" data-sec="vmsec-'+si+'"'+(si===0?' class="on"':'')+'>'+sec.title+'</button>').join('')+'</div>';
+    }
     if(mObj.topItems&&mObj.topItems.length)
       html+='<div class="vmsec">MENÜDEN ÖNE ÇIKANLAR</div><div class="vchips">'+
         mObj.topItems.slice(0,6).map(t=>'<span>'+t+'</span>').join('')+'</div>';
     html+='<button class="vmgor" id="vmenu2" type="button">Menüyü Gör</button>';
-    (mObj.sections||[]).forEach(sec=>{
-      html+='<div class="vmsec">'+sec.title+'</div>';
+    (mObj.sections||[]).forEach((sec,si)=>{
+      html+='<div class="vmsec" id="vmsec-'+si+'">'+sec.title+'</div>';
       (sec.items||[]).forEach(it=>{
         html+='<div class="vmitem"><b>'+it.name+'</b>'+(it.description?'<span>'+it.description+'</span>':'')+'</div>';
       });
@@ -4623,6 +4642,13 @@ function fillCard(v){
 }
 document.getElementById('vmenu').addEventListener('click',()=>document.getElementById('menup').classList.add('open'));
 document.addEventListener('click',e=>{ if(e.target&&e.target.id==='vmenu2') document.getElementById('menup').classList.add('open'); });
+document.addEventListener('click',e=>{
+  const b=e.target&&e.target.closest&&e.target.closest('#vsecpills button');
+  if(!b) return;
+  document.querySelectorAll('#vsecpills button').forEach(x=>x.classList.toggle('on',x===b));
+  const t=document.getElementById(b.dataset.sec);
+  if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+});
 document.getElementById('vroute').addEventListener('click',()=>{
   const v=window.__ALGE_FLY_ACTIVE || VENUES[activeVenue];
   const dest=encodeURIComponent(v.maps || (v.name+' Sahil Yaşam Merkezi Antalya'));
@@ -5080,7 +5106,7 @@ const _clock=new THREE.Clock();
   }
 
   if(updatePins) updatePins();
-  if(!document.hidden) renderer.render(scene,camera);   // Sprint 8.6: gizli sekmede boş render atlama
+  renderer.render(scene,camera);   // not: rAF gizli sekmede zaten durur; ek guard siyah kare riski yaratıyordu
 })();
 
 window.__ALGE_FLY = {   // ALGE venue uçuş köprüsü (Sprint 8.3) — mevcut uçuş makinesi, veri objesiyle
