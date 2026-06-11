@@ -187,13 +187,28 @@ function focusVenueById(venueId, options = {}) {
   menuSheet.classList.remove("on");
   document.querySelector(".alge-qr-panel")?.classList.remove("on");
 
-  // harita odağı (köprü varsa; mevcut motor değiştirilmez)
-  if (window.__ALGE3D?.setMobileTourNearX) {
-    window.__ALGE3D.setMobileTourNearX(xToWorldX(venue.mapFocusPoint.x));
-  }
+  // UÇUŞ: mevcut sinematik uçuş makinesi (bezier + blur) + varışta legacy detay ekranı,
+  // içerik gerçek venue datasından (Sprint 8.3 — baseline davranışı geri geldi).
+  const { u, v } = xToUV(venue.mapFocusPoint.x);
+  const flew = window.__ALGE_FLY?.toVenue?.({
+    name: venue.name,
+    cat: `${venue.category} · ${venue.subcategory}`,
+    u, v,
+    desc: venue.card.detail,
+    maps: venue.directions?.query,
+    menu: venue.menu?.categories || []
+  }) || false;
 
   marker.querySelector(".alge-venue-marker__label").textContent = venue.name;
-  fillCard(venue);
+  if (flew) {
+    card.classList.remove("on"); // uçuş varken drawer açılmaz; varışta legacy ekran açılır
+  } else {
+    // fallback (uçuş meşgul/3D yok): tur kaydırma + data drawer kartı
+    if (window.__ALGE3D?.setMobileTourNearX) {
+      window.__ALGE3D.setMobileTourNearX(xToWorldX(venue.mapFocusPoint.x));
+    }
+    fillCard(venue);
+  }
   updateVenueMarker();
 
   window.dispatchEvent(new CustomEvent("alge:venue-focused", {

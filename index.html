@@ -4384,27 +4384,30 @@ const ADS=[AD01,AD02,AD03,AD04,AD05,AD06,AD07,AD08,AD09,AD10,AD11,AD12,AD13,AD14
 /* Mekanlar: u,v = görsel üzerinde 0–1 oranlar (işaretleme aracı formatı)
    rating/reviews ÖRNEK veridir — gerçek değerlerle güncellenecek */
 const VENUES=[
-  {name:"Shakespeare Coffee & Bistro", cat:"Kahve & Bistro", u:0.930, v:0.428,
+  {name:"Shakespeare Coffee & Bistro", cat:"Kahve & Bistro", u:0.907, v:0.364,
    logo:LOGO_SHX, rating:4.7, reviews:324,
-   maps:"Shakespeare Coffee & Bistro Sahil Yaşam Merkezi Antalya",
+   maps:"Shakespeare Coffee & Bistro Beach Park Antalya",
    tags:[["Açık","ok"],["Kampanya var","amber"]],
-   hours:"09:00 – 23:00", camp:"2 aktif kampanya",
+   hours:"09:00 – 23:00", camp:"1 aktif kampanya",
    desc2:"Deniz manzaralı kahve ve hafif atıştırmalıklar.",
-   desc:"Sahil şeridinin sağ ucunda, deniz tarafında şemsiyeli bahçesi ve kapalı oturma alanıyla gün boyu kahvaltıdan akşam yemeğine uzanan bir mutfak.",
+   desc:"Serpme kahvaltıdan burgere geniş bistro menüsü sunar. Hattın sağ ucunda gün boyu oturulan klasik mekan.",
    feat:{img:DISH_CF, name:"Chicken Fingers", price:"₺479,00",
      desc:"Çıtır kaplamalı parmak tavuk 200 gr, baharatlı kızarmış patates, ballı hardal sos ve tatlı acı sos ile"},
-   menu:["Kahvaltılar","Paylaşımlıklar","Çorba","Salatalar","One Bowl","Makarnalar",
-         "Wok & Noodle","Ana Yemekler","Burger ve Sandviçler","Pizzalar","Vegan ve Vejeteryan","Fit Seçenekler"]},
-  {name:"Marina Burger House", cat:"Burger & Fast Food", u:0.500, v:0.424, rating:4.5, reviews:120,
-   tags:[["Popüler","amber"],["349 TL Menü","amber"]],
-   hours:"11:00 – 23:30", camp:"1 aktif kampanya",
-   desc2:"El yapımı smash burgerler ve çıtır patates.",
-   desc:"Şeridin tam ortasında, el yapımı smash burgerleri ve sahile bakan terasıyla hızlı ama özenli bir mutfak."},
-  {name:"Blue Coast Beach", cat:"Beach Club", u:0.180, v:0.428, rating:4.3, reviews:86,
-   tags:[["Yakında","cool"],["Etkinlik","cool"]],
-   hours:"10:00 – 02:00", camp:"Hafta sonu etkinliği",
-   desc2:"Plaj partileri ve gün batımı seansları.",
-   desc:"Şeridin batı ucunda; gündüz şezlong ve plaj servisi, akşam gün batımı seansları ve canlı müzik."}
+   menu:["Kahvaltılar","Kahveler","Burgerler","Makarnalar","Tatlılar","Bowllar"]},
+  {name:"Mado", cat:"Kafe & Tatlı", u:0.042, v:0.385,
+   maps:"Mado Beach Park Konyaaltı",
+   tags:[["Açık","ok"],["Kampanya var","amber"]],
+   hours:"09:00 – 23:00", camp:"1 aktif kampanya",
+   desc2:"Maraş dondurması ve geleneksel tatlının adresi.",
+   desc:"Keçi sütlü Maraş dondurması, künefe ve serpme kahvaltı sunar. Deniz kenarında gün boyu oturulabilecek geniş bir mekan.",
+   menu:["Dondurma","Tatlılar","Kahvaltı","Ana yemek","Kahveler"]},
+  {name:"Hamlet Market", cat:"Market", u:0.3241, v:0.3782,
+   maps:"Hamlet Market Beach Park Antalya",
+   tags:[["Açık","ok"],["Plaj ürünleri","cool"]],
+   hours:"08:00 – 24:00", camp:"Su + atıştırmalık ikilisi",
+   desc2:"Plaj ihtiyaçları için hızlı market.",
+   desc:"İçecek, atıştırmalık ve plaj ürünleri satar. Güneş kremi ve su gibi acil ihtiyaçlar için en yakın nokta.",
+   menu:["İçecekler","Atıştırmalıklar","Dondurma","Plaj ürünleri","Temel gıda"]}
 ];
 /* küçük liste satırları + sekme verileri — gerçek veriye geçişte sadece bu diziler değişir */
 const SMALL_VENUES=[];   // placeholder listesi kaldırıldı (Sprint 8.1) — sol panel gerçek 47 mekan datasından render edilir
@@ -4459,6 +4462,7 @@ function flyEase(t){ return 1-Math.pow(1-Math.pow(t,1.6),2.2); }  // yavaş kalk
 
 function flyToVenue(i){
   if(mode!=='free') return;
+  window.__ALGE_FLY_ACTIVE=null;   // legacy hedef: vroute VENUES'tan okur
   idleOn=false; if(idleTimer) clearTimeout(idleTimer);
   activeVenue=i;
   const ven=VENUES[i];
@@ -4482,13 +4486,16 @@ function flyToVenue(i){
   vig.classList.add('on'); glow.classList.add('on');
   setBar(false);
 }
+let cardSeq=0;   // kapanıştan sonra gecikmiş açılış callback'i kartı yeniden açmasın
 function dreamWake(){
   glow.classList.remove('on');
   flash.classList.add('pulse');
   setTimeout(()=>flash.classList.remove('pulse'),400);
-  setTimeout(()=>vcard.classList.add('open'),120);
+  const cs=++cardSeq;
+  setTimeout(()=>{ if(cs===cardSeq) vcard.classList.add('open'); },120);
 }
 function closeCard(){
+  cardSeq++;   // bekleyen kart açılışlarını geçersiz kıl
   vcard.classList.remove('open');
   // geri uçuş
   const p0=camera.position.clone();
@@ -4529,7 +4536,7 @@ function fillCard(v){
 }
 document.getElementById('vmenu').addEventListener('click',()=>document.getElementById('menup').classList.add('open'));
 document.getElementById('vroute').addEventListener('click',()=>{
-  const v=VENUES[activeVenue];
+  const v=window.__ALGE_FLY_ACTIVE || VENUES[activeVenue];
   const dest=encodeURIComponent(v.maps || (v.name+' Sahil Yaşam Merkezi Antalya'));
   window.open('https://www.google.com/maps/dir/?api=1&destination='+dest+'&travelmode=walking','_blank');
 });
@@ -4568,6 +4575,7 @@ function startBeamAd(){
   if(beamState!=='off') return;
   makeFlash(); beamState='flash'; beamT=0; popLaunched=false;
 }
+let popSeq=0;   // gecikmiş rAF/timer callback'leri kapanıştan sonra pop-up'ı yeniden açmasın
 function openPopAd(){
   // afiş, mekanın üzerindeki parlamanın ekrandaki noktasından uçar
   const p=uvToWorld(VENUES[POP_VENUE].u,VENUES[POP_VENUE].v);
@@ -4575,11 +4583,14 @@ function openPopAd(){
   const x=Math.max(40,Math.min(innerWidth-40,(pt.x*0.5+0.5)*innerWidth));
   const y=Math.max(40,Math.min(innerHeight-40,(-pt.y*0.5+0.5)*innerHeight));
   popad.style.left=x+'px'; popad.style.top=y+'px';
+  const seq=++popSeq;
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    if(seq!==popSeq) return;
     popad.classList.add('on'); popdim.classList.add('on'); popOpen=true;
   }));
 }
 function closePopAd(fly){
+  popSeq++;   // bekleyen açılış callback'lerini geçersiz kıl
   popad.classList.remove('on'); popdim.classList.remove('on'); popOpen=false;
   if(fly && mode==='free'){
     setTimeout(()=>{ fillCard(VENUES[POP_VENUE]); flyToVenue(POP_VENUE); }, 380);
@@ -4983,6 +4994,40 @@ const _clock=new THREE.Clock();
   renderer.render(scene,camera);
 })();
 
+window.__ALGE_FLY = {   // ALGE venue uçuş köprüsü (Sprint 8.3) — mevcut uçuş makinesi, veri objesiyle
+  // d: {name, cat, u, v, desc, menu[], maps, feat?, logo?, rating?}
+  toVenue(d){
+    if(mode==='focus'){   // önceki odaktan anında çık, yeni uçuşa izin ver
+      vcard.classList.remove('open');
+      cnv.style.filter=''; vig.classList.remove('on'); glow.classList.remove('on');
+      mode='free'; controls.enabled=true; setBar(true);
+    }
+    if(mode!=='free' && mode!=='fly' && mode!=='return') return false;
+    const freshFlight=(mode==='free');
+    cardSeq++; vcard.classList.remove('open');   // olası bayat kart kapansın
+    window.__ALGE_FLY_ACTIVE=d;
+    fillCard(d);
+    idleOn=false; if(idleTimer) clearTimeout(idleTimer);
+    const T=uvToWorld(d.u,d.v);
+    if(freshFlight){ homePos=camera.position.clone(); homeTgt=controls.target.clone(); }
+    const dist=20, el=40*Math.PI/180;
+    endPos=new THREE.Vector3(T.x+3.5, T.y+dist*Math.sin(el), T.z+dist*Math.cos(el));
+    const p0=camera.position.clone();
+    const p1=p0.clone().add(new THREE.Vector3(0,9,5));
+    const p2=p0.clone().lerp(endPos,0.55); p2.y=Math.max(p0.y,endPos.y)+13;
+    curveCam=new THREE.CubicBezierCurve3(p0,p1,p2,endPos);
+    tgtFrom=controls.target.clone(); tgtTo=T.clone();
+    fovFrom=camera.fov; fovTo=40;
+    flyT=0; flyDur=2.2; mode='fly'; cardShown=false;
+    controls.enabled=false;
+    vig.classList.add('on'); glow.classList.add('on');
+    setBar(false);
+    return true;
+  },
+  goHome(){ if(mode==='focus') closeCard(); },
+  isBusy(){ return mode!=='free'; }
+};
+
 window.__ALGE_POPUP = {   // ALGE ad runtime köprüsü (Sprint 3)
   // Mevcut popup fonksiyonları üzerinden açar; beam görseli korunur ama açılış ona bağımlı değildir.
   openOpeningAd(){
@@ -4991,7 +5036,8 @@ window.__ALGE_POPUP = {   // ALGE ad runtime köprüsü (Sprint 3)
     startBeamAd();            // görsel parlama (rAF kısıtlıysa sessizce beklemede kalır)
     openPopAd();              // normal yol: çift rAF ile animasyonlu açılış
     // rAF hiç akmıyorsa (gizli/throttled sayfa) wall-clock güvencesi:
-    setTimeout(()=>{ if(!popOpen){ popad.classList.add('on'); popdim.classList.add('on'); popOpen=true; } }, 250);
+    const seq=popSeq;
+    setTimeout(()=>{ if(!popOpen && seq===popSeq){ popad.classList.add('on'); popdim.classList.add('on'); popOpen=true; } }, 250);
     return true;
   },
   closeOpeningAd(){ closePopAd(false); },
