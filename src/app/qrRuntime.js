@@ -2,6 +2,7 @@
 // URL'den QR ID okur, data layer'dan aktif QR/zone'u bulur, "Buradasın" marker'ı,
 // QR chip'i ve demo panelini çizer. index.html'e minimum müdahale: bu modül + __ALGE3D köprüsü.
 import { qrPoints, zones, venues } from "../data/index.js";
+import { showToast } from "./uiToast.js";
 
 /* ---- QR parse ---- */
 function getQrIdFromUrl() {
@@ -31,22 +32,22 @@ window.dispatchEvent(new CustomEvent("alge:qr-ready", { detail: { activeQrPoint,
 /* ---- stiller (index.html'e CSS eklememek için buradan enjekte) ---- */
 const style = document.createElement("style");
 style.textContent = `
-.alge-you-are-here{position:fixed;z-index:25;transform:translate(-50%,-50%);pointer-events:none;
+.alge-you-are-here{position:fixed;z-index:30;transform:translate(-50%,-50%);pointer-events:none;
   display:flex;flex-direction:column;align-items:center;}
 .alge-you-are-here__dot{width:14px;height:14px;border-radius:999px;background:#ef233c;
   border:2px solid #fff;box-shadow:0 0 0 8px rgba(239,35,60,.18);animation:algePulse 1.8s ease-out infinite;}
 @keyframes algePulse{0%{box-shadow:0 0 0 4px rgba(239,35,60,.30)}70%{box-shadow:0 0 0 12px rgba(239,35,60,.05)}100%{box-shadow:0 0 0 4px rgba(239,35,60,.30)}}
 .alge-you-are-here__label{margin-top:6px;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.92);
   color:#17202a;font-size:11px;font-weight:700;white-space:nowrap;font-family:system-ui,sans-serif;}
-.alge-qr-chip{position:fixed;z-index:26;top:78px;left:12px;padding:5px 10px;border-radius:999px;
+.alge-qr-chip{position:fixed;z-index:35;top:78px;left:12px;padding:5px 10px;border-radius:999px;
   background:rgba(255,255,255,.92);color:#13293d;font-size:11px;font-weight:700;
   font-family:system-ui,sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.15);pointer-events:none;}
 @media (min-width:769px){.alge-qr-chip{left:auto;right:12px;top:12px;}}
-.alge-qr-btn{position:fixed;z-index:27;right:10px;bottom:96px;width:40px;height:40px;border-radius:999px;
+.alge-qr-btn{position:fixed;z-index:88;right:10px;bottom:96px;width:40px;height:40px;border-radius:999px;
   background:#13293d;color:#fff;font-size:12px;font-weight:800;font-family:system-ui,sans-serif;
   border:2px solid rgba(255,255,255,.85);box-shadow:0 2px 10px rgba(0,0,0,.3);cursor:pointer;}
 @media (min-width:769px){.alge-qr-btn{bottom:16px;}}
-.alge-qr-panel{position:fixed;z-index:28;right:10px;bottom:144px;width:min(86vw,300px);max-height:56vh;
+.alge-qr-panel{position:fixed;z-index:90;right:10px;bottom:144px;width:min(86vw,300px);max-height:56vh;
   overflow-y:auto;background:rgba(255,255,255,.97);border-radius:16px;
   box-shadow:0 6px 24px rgba(0,0,0,.25);padding:10px;display:none;font-family:system-ui,sans-serif;}
 @media (min-width:769px){.alge-qr-panel{bottom:64px;}}
@@ -112,7 +113,17 @@ panel.innerHTML = qrPoints
   })
   .join("");
 document.body.appendChild(panel);
-btn.addEventListener("click", () => panel.classList.toggle("on"));
+btn.addEventListener("click", () => {
+  const willOpen = !panel.classList.contains("on");
+  if (willOpen) {
+    // büyük sheet'ler ve popup panelle karışmasın (Sprint 8 overlay düzeni)
+    window.ALGE_SEARCH_RUNTIME?.closeSearch();
+    window.ALGE_CAMPAIGN_RUNTIME?.closeCampaigns();
+    window.ALGE_CAMPAIGN_RUNTIME?.closeEvents();
+    if (window.__ALGE_POPUP?.isOpen()) window.__ALGE_POPUP.closeOpeningAd();
+  }
+  panel.classList.toggle("on");
+});
 
 panel.querySelectorAll(".alge-qr-card").forEach((cardEl) => {
   const qrId = cardEl.dataset.qr;
@@ -125,6 +136,7 @@ panel.querySelectorAll(".alge-qr-card").forEach((cardEl) => {
     try {
       await navigator.clipboard.writeText(fullUrl);
       btnEl.textContent = "Kopyalandı ✓";
+      showToast("Kopyalandı ✓");
     } catch {
       // clipboard yoksa güvenli fallback
       window.prompt("QR linki (kopyalamak için):", fullUrl);

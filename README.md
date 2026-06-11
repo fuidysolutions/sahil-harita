@@ -49,6 +49,13 @@ npm run build:search-index
 Araştırmadaki "Bilinmiyor" / "(demo önerisi)" / "teyit edilmeli" ifadeleri
 veri modelinde bilinçli korunur (`flags.demoSuggestion`, `flags.needsVerification`, `notes`).
 
+## Demo Akışı
+
+Detaylı demo senaryosu için:
+
+- [docs/DEMO-AKISI.md](docs/DEMO-AKISI.md)
+- [docs/QA-CHECKLIST.md](docs/QA-CHECKLIST.md)
+
 ## Demo QR Kodları
 
 10 demo QR kodu `public/qr/` altında üretilir (+ `qr-manifest.json`).
@@ -97,3 +104,7 @@ Opening ad posteri aktif reklamın mekanına göre gömülü posterlerden seçil
 Sprint 7: 10 demo QR PNG'si üretildi (`scripts/generate-demo-qrs.mjs`,
 `npm run generate:qrs`, PUBLIC_BASE_URL ile configurable); QR demo paneli
 gerçek QR görselleri + AKTİF rozeti + Aç / Linki kopyala butonlarıyla güçlendirildi.
+Sprint 8: Demo polish — z-index katman düzeni (marker 30 < chip 35 < venue marker 45
+< kart 60 < search 80 < kampanya 85 < QR panel 90 < popup 100 < toast 120),
+overlay çakışma yönetimi tamamlandı, ortak toast (uiToast.js), vite build script'i,
+docs/DEMO-AKISI.md + docs/QA-CHECKLIST.md.

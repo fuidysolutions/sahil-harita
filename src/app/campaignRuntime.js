@@ -56,7 +56,7 @@ style.textContent = `
 .alge-camp-cap span{font-size:10px;opacity:.85;}
 .alge-camp-cap .alge-camp-tag{display:inline-block;font-size:8.5px;font-weight:800;margin-left:6px;
   padding:2px 6px;border-radius:999px;background:rgba(53,224,242,.25);color:#bdf3fa;vertical-align:1px;}
-.alge-csheet{position:fixed;z-index:31;left:0;right:0;bottom:0;top:max(56px, env(safe-area-inset-top));
+.alge-csheet{position:fixed;z-index:85;left:0;right:0;bottom:0;top:max(56px, env(safe-area-inset-top));
   background:rgba(248,251,253,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-radius:22px 22px 0 0;box-shadow:0 -12px 44px rgba(10,25,40,.35);display:none;
   flex-direction:column;font-family:system-ui,sans-serif;color:#13293d;max-width:520px;margin:0 auto;}

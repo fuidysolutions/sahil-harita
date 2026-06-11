@@ -97,9 +97,9 @@ function search(query) {
 /* ---------- UI ---------- */
 const style = document.createElement("style");
 style.textContent = `
-#alge-search-dim{position:fixed;inset:0;z-index:30;background:rgba(10,25,40,.35);display:none;}
+#alge-search-dim{position:fixed;inset:0;z-index:78;background:rgba(10,25,40,.35);display:none;}
 #alge-search-dim.on{display:block;}
-#alge-search{position:fixed;z-index:31;left:0;right:0;bottom:0;top:max(56px, env(safe-area-inset-top));
+#alge-search{position:fixed;z-index:80;left:0;right:0;bottom:0;top:max(56px, env(safe-area-inset-top));
   background:rgba(248,251,253,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-radius:22px 22px 0 0;box-shadow:0 -12px 44px rgba(10,25,40,.35);display:none;
   flex-direction:column;font-family:system-ui,sans-serif;color:#13293d;max-width:520px;margin:0 auto;}

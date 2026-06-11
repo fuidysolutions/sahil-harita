@@ -13,13 +13,13 @@ let activeVenue = null;
 /* ---- stiller ---- */
 const style = document.createElement("style");
 style.textContent = `
-.alge-venue-marker{position:fixed;z-index:24;transform:translate(-50%,-50%);pointer-events:none;
+.alge-venue-marker{position:fixed;z-index:45;transform:translate(-50%,-50%);pointer-events:none;
   display:none;flex-direction:column;align-items:center;}
 .alge-venue-marker__dot{width:14px;height:14px;border-radius:999px;background:#35e0f2;
   border:2px solid #fff;box-shadow:0 0 0 8px rgba(53,224,242,.20);}
 .alge-venue-marker__label{margin-top:6px;padding:4px 8px;border-radius:999px;background:rgba(19,41,61,.92);
   color:#fff;font-size:11px;font-weight:700;white-space:nowrap;font-family:system-ui,sans-serif;}
-.alge-vcard{position:fixed;z-index:22;left:10px;right:10px;bottom:calc(70px + env(safe-area-inset-bottom));
+.alge-vcard{position:fixed;z-index:60;left:10px;right:10px;bottom:calc(70px + env(safe-area-inset-bottom));
   max-width:430px;margin:0 auto;background:#fff;border-radius:18px;padding:14px;display:none;
   box-shadow:0 10px 36px rgba(10,25,40,.28);font-family:system-ui,sans-serif;color:#13293d;}
 .alge-vcard.on{display:block;}
@@ -38,7 +38,7 @@ style.textContent = `
   cursor:pointer;font-family:inherit;}
 #alge-vbtn-dir{background:#13293d;color:#fff;}
 #alge-vbtn-detail,#alge-vbtn-menu{background:rgba(19,41,61,.08);color:#13293d;}
-.alge-vsheet{position:fixed;z-index:23;left:0;right:0;bottom:0;max-height:62vh;overflow-y:auto;
+.alge-vsheet{position:fixed;z-index:65;left:0;right:0;bottom:0;max-height:62vh;overflow-y:auto;
   background:#fff;border-radius:18px 18px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom));
   display:none;box-shadow:0 -10px 40px rgba(10,25,40,.3);font-family:system-ui,sans-serif;color:#13293d;}
 .alge-vsheet.on{display:block;}
@@ -177,8 +177,11 @@ function focusVenueById(venueId, options = {}) {
   }
   activeVenue = venue;
 
-  // açık overlay'ler: pop-up açıksa kapat, sheet'leri sıfırla, QR paneli kapat
+  // açık overlay'ler: pop-up/search/kampanya/etkinlik kapanır, sheet'ler sıfırlanır (Sprint 8)
   if (window.__ALGE_POPUP && window.__ALGE_POPUP.isOpen()) window.__ALGE_POPUP.closeOpeningAd();
+  window.ALGE_SEARCH_RUNTIME?.closeSearch();
+  window.ALGE_CAMPAIGN_RUNTIME?.closeCampaigns();
+  window.ALGE_CAMPAIGN_RUNTIME?.closeEvents();
   detailSheet.classList.remove("on");
   menuSheet.classList.remove("on");
   document.querySelector(".alge-qr-panel")?.classList.remove("on");

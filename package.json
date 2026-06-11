@@ -6,6 +6,7 @@
   "description": "ALGE QR / Sahil Harita — QR ile açılan 3D harita destekli keşif demo Web App'i",
   "scripts": {
     "dev": "vite --host",
+    "build": "vite build",
     "preview": "vite preview",
     "validate:data": "node scripts/validate-demo-data.mjs",
     "build:venues": "node scripts/build-venues-from-research.mjs",
