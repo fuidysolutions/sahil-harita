@@ -4383,17 +4383,17 @@ const VENUES=[
    hours:"11:00 – 23:30", camp:"1 aktif kampanya",
    desc2:"El yapımı smash burgerler ve çıtır patates.",
    desc:"Şeridin tam ortasında, el yapımı smash burgerleri ve sahile bakan terasıyla hızlı ama özenli bir mutfak."},
-  {name:"Blue Coast Beach", cat:"Plaj Kulübü", u:0.180, v:0.428, rating:4.3, reviews:86,
+  {name:"Blue Coast Beach", cat:"Beach Club", u:0.180, v:0.428, rating:4.3, reviews:86,
    tags:[["Yakında","cool"],["Etkinlik","cool"]],
    hours:"10:00 – 02:00", camp:"Hafta sonu etkinliği",
    desc2:"Plaj partileri ve gün batımı seansları.",
    desc:"Şeridin batı ucunda; gündüz şezlong ve plaj servisi, akşam gün batımı seansları ve canlı müzik."}
 ];
 /* küçük liste satırları + sekme verileri — gerçek veriye geçişte sadece bu diziler değişir */
-const SMALL_VENUES=["Sahil Market","Sunset Lounge","Mekan 06","Mekan 07","Mekan 08","Mekan 09","Mekan 10"];
+const SMALL_VENUES=[];   // placeholder listesi kaldırıldı (Sprint 8.1) — sol panel gerçek 47 mekan datasından render edilir
 const EVENTS=[
   {when:"Bugün 21:00",   name:"Sahilde Akustik Gece", venue:"Blue Coast Beach"},
-  {when:"Yarın 20:30",   name:"DJ Sunset Session",    venue:"Sunset Lounge"},
+  {when:"Yarın 20:30",   name:"DJ Sunset Session",    venue:"Bahane Lounge"},
   {when:"Cumartesi 19:00",name:"Canlı Fasıl Gecesi",  venue:"Shakespeare Coffee & Bistro"}
 ];
 const CAMPAIGNS=[
@@ -5000,5 +5000,6 @@ window.__ALGE3D = {   // ALGE QR runtime köprüsü (Sprint 2)
 <script type="module" src="/src/app/venueRuntime.js"></script>
 <script type="module" src="/src/app/searchRuntime.js"></script>
 <script type="module" src="/src/app/campaignRuntime.js"></script>
+<script type="module" src="/src/app/homePanelRuntime.js"></script>
 </body>
 </html>

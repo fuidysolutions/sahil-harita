@@ -133,3 +133,8 @@ Sprint 8: Demo polish — z-index katman düzeni (marker 30 < chip 35 < venue ma
 < kart 60 < search 80 < kampanya 85 < QR panel 90 < popup 100 < toast 120),
 overlay çakışma yönetimi tamamlandı, ortak toast (uiToast.js), vite build script'i,
 docs/DEMO-AKISI.md + docs/QA-CHECKLIST.md.
+Sprint 8.1: Masaüstü sol paneli gerçek data'ya bağlandı (homePanelRuntime.js):
+47 mekan listesi (Mado->Shakespeare), Etkinlikler (5) ve Kampanyalar (12) sekmeleri,
+QR'a göre featured mini kart, panel araması gerçek search sheet'ini açar.
+Placeholder'lar (Mekan 06-10, Sahil Market, Sunset Lounge, Plaj Kulübü) kaldırıldı.
+Opening ad poster değişimi geri alındı (onaysız görsel değişimi yok; data şeridi kalır).

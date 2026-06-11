@@ -247,32 +247,9 @@ document.addEventListener("click", (e) => {
   if (t.closest('#mchips button[data-k="etkinlik"]')) { e.stopPropagation(); e.preventDefault(); openEvents(); }
 }, true);
 
-/* ---- opening ad poster uyumu (güvenli görsel seçim) ----
-   Aktif opening ad mekanına uygun poster gömülü slide'lardan seçilir;
-   eşleşme yoksa mevcut poster aynen kalır. */
-const OPENING_POSTER_SLIDE = { "mado": 7, "tezgah-burger": 0, "shakespeare": 8, "kfc": 9, "yotto": 10 };
-function posterUrlAt(idx) {
-  // mobil karusel (.mslide background) veya masaüstü şeridi (.adcard --img)
-  const slide = document.querySelectorAll("#mcar .mslide")[idx];
-  if (slide) {
-    const m = slide.style.backgroundImage.match(/url\("?(.+?)"?\)/);
-    if (m) return m[1];
-  }
-  const card = document.querySelectorAll("#track .adcard")[idx];
-  if (card) {
-    const m = (card.style.getPropertyValue("--img") || "").match(/url\("?(.+?)"?\)\s*$/);
-    if (m) return m[1];
-  }
-  return null;
-}
-(function fixOpeningPoster() {
-  const ad = window.ALGE_ACTIVE_OPENING_AD;
-  const idx = ad ? OPENING_POSTER_SLIDE[ad.venueId] : undefined;
-  if (idx === undefined) return;
-  const img = document.getElementById("popimg");
-  const url = posterUrlAt(idx);
-  if (img && url) img.src = url;
-})();
+/* Opening ad poster değişimi GERİ ALINDI (Sprint 8.1 kararı):
+   kullanıcı onayı olmadan afiş görseli değiştirilmez. Baseline poster aynen kalır;
+   data'dan gelen başlık/alt başlık/mekan/CTA şeridi (adRuntime) görünmeye devam eder. */
 
 /* search açılırken kampanya/etkinlik sheet'leri de kapansın:
    searchRuntime'ın tetikleyicilerine paralel dinleyiciler (stopPropagation
