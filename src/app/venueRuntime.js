@@ -13,7 +13,7 @@ let activeVenue = null;
 /* ---- stiller (yalnız aktif mekan marker'ı) ---- */
 const style = document.createElement("style");
 style.textContent = `
-.alge-venue-marker{position:fixed;z-index:29;transform:translate(-50%,-50%);pointer-events:none;
+.alge-venue-marker{position:fixed;z-index:7;transform:translate(-50%,-50%);pointer-events:none;
   display:none;flex-direction:column;align-items:center;}
 .alge-venue-marker__dot{width:14px;height:14px;border-radius:999px;background:#35e0f2;
   border:2px solid #fff;box-shadow:0 0 0 8px rgba(53,224,242,.20);}
@@ -42,7 +42,7 @@ function updateVenueMarker() {
     const bottomSafe = Math.min(window.innerHeight - 190, window.innerHeight * 0.5);
     marker.style.display = "flex";
     marker.style.left = Math.max(44, Math.min(window.innerWidth - 44, sx)).toFixed(1) + "px";
-    marker.style.top = Math.max(120, Math.min(bottomSafe, sy)).toFixed(1) + "px";
+    marker.style.top = Math.max(158, Math.min(bottomSafe, sy)).toFixed(1) + "px";
   } else {
     const safeLeft = 28, safeRight = window.innerWidth - 28;
     marker.style.display = "flex";

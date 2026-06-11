@@ -33,7 +33,7 @@ window.dispatchEvent(new CustomEvent("alge:qr-ready", { detail: { activeQrPoint,
 /* ---- stiller (index.html'e CSS eklememek için buradan enjekte) ---- */
 const style = document.createElement("style");
 style.textContent = `
-.alge-you-are-here{position:fixed;z-index:28;transform:translate(-50%,-50%);pointer-events:none;
+.alge-you-are-here{position:fixed;z-index:6;transform:translate(-50%,-50%);pointer-events:none;
   display:flex;flex-direction:column;align-items:center;gap:6px;}
 /* referans (mobilekran): parlayan cyan nokta + beyaz çip */
 .alge-you-are-here__dot{width:16px;height:16px;border-radius:999px;background:#27b9d6;
@@ -194,7 +194,7 @@ function updateYouAreHereMarkerPosition() {
     // alt sınır: mobil UI yığınının (kart+çipler+karusel) üstünde kalsın
     const bottomSafe = Math.min(window.innerHeight - 190, window.innerHeight * 0.55);
     marker.style.left = Math.max(44, Math.min(window.innerWidth - 44, sx)).toFixed(1) + "px";
-    marker.style.top = Math.max(120, Math.min(bottomSafe, sy)).toFixed(1) + "px";
+    marker.style.top = Math.max(158, Math.min(bottomSafe, sy)).toFixed(1) + "px";
   } else {
     // fallback: 3D köprüsü yoksa normalize konumu viewport'a eşle
     const pt = normalizedToScreen(activeQrPoint.mapPosition);

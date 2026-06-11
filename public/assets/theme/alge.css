@@ -10,11 +10,12 @@
   /* renk tokenları (ALGE palet: navy / teal-cyan / sky / sınırlı amber / beyaz) */
   --alge-navy:#1d3450;
   --alge-navy-deep:#13263d;
-  --alge-teal:#157f8d;
-  --alge-cyan:#35e0f2;
+  --alge-teal:#1b7fb5;   /* logo mavisinin metin-güvenli tonu */
+  --alge-cyan:#2aa4e1;   /* logo mavisi (örneklendi) */
+  --alge-blue:#2aa4e1;
   --alge-sky:#eaf4f7;
-  --alge-amber:#e8a93c;
-  --alge-amber-soft:#f7ead2;
+  --alge-amber:#ef9645;  /* logo turuncusu (sınırlı vurgu) */
+  --alge-amber-soft:#fdeedd;
   --alge-bg:#ffffff;
   --alge-bg-soft:#f3f6f8;
   --alge-line:rgba(29,52,80,.10);
@@ -30,7 +31,7 @@
   --alge-sh-1:0 2px 10px rgba(20,40,65,.06);
   --alge-sh-2:0 8px 28px rgba(20,40,65,.10);
   --alge-sh-3:0 18px 50px rgba(20,40,65,.16);
-  --alge-glow:0 0 0 4px rgba(53,224,242,.16);
+  --alge-glow:0 0 0 4px rgba(42,164,225,.18);
 
   /* tipografi */
   --alge-serif:'Playfair Display',Georgia,'Times New Roman',serif;
@@ -82,16 +83,9 @@ body{font-family:var(--alge-sans);}
 #side.collapsed .bt,#side.collapsed .bs{color:var(--alge-text);}
 
 /* marka alanı: ALGE yazı markası + serif başlık */
-#side .brand-txt::before{
-  content:"ALGE";
-  display:block;
-  font-family:var(--alge-serif);
-  font-weight:700;
-  font-size:15px;
-  letter-spacing:.34em;
-  color:var(--alge-teal);
-  margin-bottom:6px;
-}
+#side .brand-txt::before{content:none;}
+.brand-logo{height:38px;width:auto;display:block;margin-bottom:10px;}
+#side.collapsed .brand-logo{height:28px;margin-bottom:4px;}
 #side .bt{
   font-family:var(--alge-serif);
   font-weight:700;
@@ -317,3 +311,16 @@ body{font-family:var(--alge-sans);}
 }
 #alge-ad-caption{font-family:var(--alge-sans);}
 #alge-ad-cta{background:var(--alge-navy) !important;}
+
+
+/* ---- mobil marka yuvası (kapsülün üst ortası; sade) ---- */
+#mlogo{display:none;}
+@media (max-width:768px){
+  #mlogo{display:flex;align-items:center;position:fixed;z-index:19;
+    top:calc(6px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);
+    background:rgba(255,255,255,.96);border:1px solid var(--alge-line);
+    border-radius:999px;padding:6px 16px;box-shadow:var(--alge-sh-2);}
+  #mlogo img{height:18px;width:auto;display:block;}
+  #mtop{top:calc(44px + env(safe-area-inset-top)) !important;}
+  body .alge-qr-chip{top:112px;}
+}

@@ -16,9 +16,9 @@ style.textContent = `
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 .alge-hrow .alge-vr-meta{font-size:10px;color:var(--alge-text-3,#8b9aab);margin-top:2px;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.alge-hrow .alge-vr-meta b{color:#b07a23;font-weight:700;}
+.alge-hrow .alge-vr-meta b{color:#dd7e2f;font-weight:700;}
 .alge-hsp{font-size:8.5px;font-weight:800;padding:2px 7px;border-radius:999px;
-  background:var(--alge-amber-soft,#f7ead2);color:#b07a23;margin-left:6px;vertical-align:1px;}
+  background:var(--alge-amber-soft,#fdeedd);color:#dd7e2f;margin-left:6px;vertical-align:1px;}
 .alge-hcta{font-size:10px;font-weight:700;color:var(--alge-teal,#157f8d);margin-top:3px;}
 `;
 document.head.appendChild(style);
