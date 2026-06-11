@@ -2,11 +2,11 @@
 // Ortak venue focus / action router: venueId -> harita odağı + aktif marker + data-driven kart.
 // Search, kampanya karuseli vb. sonraki sprintlerde bu katmana bağlanacak.
 import { venues, campaigns } from "../data/index.js";
+import { xToUV, xToWorldX } from "./mapAnchors.js";
 
-/* qrRuntime ile aynı ölçülü eşleme: mapFocusPoint.x (0..1) -> doku u -> dünya X (PW=120) */
-const U_WEST = 0.3333, U_EAST = 0.6667, V_BAND = 0.428, MARKER_WORLD_Y = 1.4, PW = 120;
-const xToU = (x) => U_WEST + x * (U_EAST - U_WEST);
-const xToWorld = (x) => (xToU(x) - 0.5) * PW;
+/* Eşleme mapAnchors.js'ten: kullanıcının işaretlediği gerçek Mado/Shakespeare
+   noktaları arasında eşit aralıklı doğrusal interpolasyon (Sprint 8.2). */
+const MARKER_WORLD_Y = 1.4;
 
 let activeVenue = null;
 
@@ -63,7 +63,8 @@ function updateVenueMarker() {
   if (!activeVenue) { marker.style.display = "none"; return; }
   const g = window.__ALGE3D;
   if (g && g.camera && g.uvToWorld) {
-    const p = g.uvToWorld(xToU(activeVenue.mapFocusPoint.x), V_BAND);
+    const { u, v } = xToUV(activeVenue.mapFocusPoint.x);
+    const p = g.uvToWorld(u, v);
     p.y = MARKER_WORLD_Y;
     p.project(g.camera);
     if (p.z > 1) { marker.style.display = "none"; return; }
@@ -188,7 +189,7 @@ function focusVenueById(venueId, options = {}) {
 
   // harita odağı (köprü varsa; mevcut motor değiştirilmez)
   if (window.__ALGE3D?.setMobileTourNearX) {
-    window.__ALGE3D.setMobileTourNearX(xToWorld(venue.mapFocusPoint.x));
+    window.__ALGE3D.setMobileTourNearX(xToWorldX(venue.mapFocusPoint.x));
   }
 
   marker.querySelector(".alge-venue-marker__label").textContent = venue.name;

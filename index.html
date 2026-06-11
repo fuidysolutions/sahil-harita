@@ -4260,7 +4260,7 @@ controls.target.set(-13.5,1,10);        // kalibre hedef (masaüstü)
 
 /* ---- mobil kalibrasyon: hedef Xa<->Xb arasında süzülür ---- */
 const IS_MOBILE=matchMedia('(max-width:768px)').matches;
-const MOB={xa:-20, xb:38.5, z:3.5, dist:61.5,
+const MOB={xa:-55, xb:48.8, z:3.5, dist:61.5,   // uçlar gerçek mekan anchor'ları (Sprint 8.2)
            phi:(90-57)*Math.PI/180, az:52*Math.PI/180,
            amp:14.5*Math.PI/180, w:(2*Math.PI)/44};
 function mobPose(s){   // s: -1..1 fazı -> hedef + kamera konumu
@@ -4298,7 +4298,7 @@ const mesh=new THREE.Mesh(geo,mat);
 // kenar başına farklı genişlik: deniz tarafı en geniş erime
 const aCv=document.createElement('canvas'); aCv.width=512; aCv.height=Math.max(64,Math.round(512*RATIO));
 {const c=aCv.getContext('2d'), w=aCv.width, h=aCv.height;
- const fx=w*0.14, fyTop=h*0.10, fyBot=h*0.30;     // sol/sağ, orman tarafı, deniz tarafı
+ const fx=w*0.015, fyTop=h*0.10, fyBot=h*0.30;   // sol/sağ ÇOK dar (Sprint 8.2: uçlardaki mekanlar erimesin), orman, deniz
  const sm=t=>{t=Math.max(0,Math.min(1,t)); return t*t*(3-2*t);};
  const img=c.createImageData(w,h), d=img.data;
  for(let y=0;y<h;y++){
@@ -4315,6 +4315,23 @@ mat.alphaMap=alphaTex; mat.transparent=true;
 mesh.rotation.x=-Math.PI/2;          // düzlemi yatır, yükseklik = +y
 mesh.castShadow=true; mesh.receiveShadow=true;
 scene.add(mesh);
+
+// görselin DIŞINA yumuşak gölge: haritadan biraz büyük, kenarları eriyen koyu düzlem (Sprint 8.2)
+{const sCv=document.createElement('canvas'); sCv.width=256; sCv.height=Math.max(64,Math.round(256*RATIO));
+ const c2=sCv.getContext('2d'), w2=sCv.width, h2=sCv.height;
+ const mX=w2*0.045, mY=h2*0.075;
+ const sm2=t=>{t=Math.max(0,Math.min(1,t)); return t*t*(3-2*t);};
+ const img2=c2.createImageData(w2,h2), d2=img2.data;
+ for(let y=0;y<h2;y++)for(let x=0;x<w2;x++){
+   const a=sm2(x/mX)*sm2((w2-1-x)/mX)*sm2(y/mY)*sm2((h2-1-y)/mY);
+   const i2=(y*w2+x)*4; d2[i2]=d2[i2+1]=d2[i2+2]=0; d2[i2+3]=Math.round(a*255);
+ }
+ c2.putImageData(img2,0,0);
+ const sTex=new THREE.CanvasTexture(sCv);
+ const sMesh=new THREE.Mesh(new THREE.PlaneGeometry(PW*1.05,PD*1.09),
+   new THREE.MeshBasicMaterial({map:sTex,transparent:true,opacity:0.38,depthWrite:false,fog:false}));
+ sMesh.rotation.x=-Math.PI/2; sMesh.position.y=0.30; sMesh.renderOrder=-1;
+ scene.add(sMesh);}
 
 // yükseklik haritasını oku ve uygula
 let baseH=null;

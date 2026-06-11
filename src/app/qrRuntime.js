@@ -3,6 +3,7 @@
 // QR chip'i ve demo panelini çizer. index.html'e minimum müdahale: bu modül + __ALGE3D köprüsü.
 import { qrPoints, zones, venues } from "../data/index.js";
 import { showToast } from "./uiToast.js";
+import { xToUV, xToWorldX } from "./mapAnchors.js";
 
 /* ---- QR parse ---- */
 function getQrIdFromUrl() {
@@ -149,14 +150,10 @@ panel.querySelectorAll(".alge-qr-card").forEach((cardEl) => {
 
 /* ---- marker konumlama ----
    Tercih: mevcut 3D izdüşüm (window.__ALGE3D köprüsü: camera + uvToWorld).
-   QR mapPosition.x (0..1, şerit boyu) -> doku uv eşlemesi.
-   Anchors, hizalanmış kamerada bandın ekranda kalan aralığından ÖLÇÜLDÜ
-   (375px portre, izdüşüm taraması): batı worldX=-20 -> u=0.3333, doğu worldX=20 -> u=0.6667.
-   Böylece her QR noktasında hizalanan kamera marker'ı görür
-   (QR-01 sol başlangıç, QR-10 sağ bitiş hissi). Gerçek mekan koordinatları sonraki
-   sprintte işaretleme aracıyla girilecek; bu, sprint tanımındaki "ilk demo eşlemesi"dir.
-   v=0.428 mekan bandı hattı. */
-const U_WEST = 0.3333, U_EAST = 0.6667, V_BAND = 0.428, MARKER_WORLD_Y = 1.4;
+   QR mapPosition.x (0..1, şerit boyu) -> uv eşlemesi mapAnchors.js'ten:
+   kullanıcının işaretlediği gerçek Mado/Shakespeare noktaları arasında
+   doğrusal interpolasyon (Sprint 8.2). */
+const MARKER_WORLD_Y = 1.4;
 
 function normalizedToScreen(position) {
   const safeLeft = 28;
@@ -172,8 +169,8 @@ function normalizedToScreen(position) {
 function updateYouAreHereMarkerPosition() {
   const g = window.__ALGE3D;
   if (g && g.camera && g.uvToWorld) {
-    const u = U_WEST + activeQrPoint.mapPosition.x * (U_EAST - U_WEST);
-    const p = g.uvToWorld(u, V_BAND);
+    const { u, v } = xToUV(activeQrPoint.mapPosition.x);
+    const p = g.uvToWorld(u, v);
     p.y = MARKER_WORLD_Y;
     p.project(g.camera);
     if (p.z > 1) { marker.style.display = "none"; return; }
@@ -196,12 +193,11 @@ function updateYouAreHereMarkerPosition() {
 
 window.addEventListener("resize", updateYouAreHereMarkerPosition);
 
-/* mobil turun başlangıcını QR konumuna hizala (köprü varsa; PW=120 sahne genişliği) */
+/* mobil turun başlangıcını QR konumuna hizala (köprü varsa) */
 (function alignTour() {
   const g = window.__ALGE3D;
   if (g && g.setMobileTourNearX) {
-    const u = U_WEST + activeQrPoint.mapPosition.x * (U_EAST - U_WEST);
-    g.setMobileTourNearX((u - 0.5) * 120);
+    g.setMobileTourNearX(xToWorldX(activeQrPoint.mapPosition.x));
   } else {
     requestAnimationFrame(alignTour); // köprü henüz kurulmadıysa bekle
   }
