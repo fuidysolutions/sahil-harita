@@ -49,6 +49,26 @@ npm run build:search-index
 Araştırmadaki "Bilinmiyor" / "(demo önerisi)" / "teyit edilmeli" ifadeleri
 veri modelinde bilinçli korunur (`flags.demoSuggestion`, `flags.needsVerification`, `notes`).
 
+## Demo QR Kodları
+
+10 demo QR kodu `public/qr/` altında üretilir (+ `qr-manifest.json`).
+
+Local üretim:
+
+```bash
+npm run generate:qrs
+```
+
+Belirli demo domainiyle üretim (Netlify vb. yayın sonrası yeniden üretin):
+
+```bash
+PUBLIC_BASE_URL=https://example.com npm run generate:qrs
+```
+
+QR link formatı: `/qr/qr-demo-01` ... `/qr/qr-demo-10`
+(query fallback: `/?qr=qr-demo-01`). Repodaki PNG'ler localhost'u encode eder;
+QR demo paneli görselleri `/qr/<id>.png` yolundan okur.
+
 ## Sprint Notu
 
 Sprint 0: repo foundation ve local çalışma ortamı.
@@ -74,3 +94,6 @@ Karusel posterleri korunarak data caption'larıyla eşlendi (tema eşlemesi gör
 tespitli); alt nav Kampanyalar/Etkinlikler gerçek sheet'leri açar; tıklamalar
 venue focus'a gider; alge:campaign-action / alge:event-action eventleri.
 Opening ad posteri aktif reklamın mekanına göre gömülü posterlerden seçilir.
+Sprint 7: 10 demo QR PNG'si üretildi (`scripts/generate-demo-qrs.mjs`,
+`npm run generate:qrs`, PUBLIC_BASE_URL ile configurable); QR demo paneli
+gerçek QR görselleri + AKTİF rozeti + Aç / Linki kopyala butonlarıyla güçlendirildi.

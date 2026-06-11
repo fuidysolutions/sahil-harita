@@ -9,9 +9,11 @@
     "preview": "vite preview",
     "validate:data": "node scripts/validate-demo-data.mjs",
     "build:venues": "node scripts/build-venues-from-research.mjs",
-    "build:search-index": "node scripts/build-search-index-from-research.mjs"
+    "build:search-index": "node scripts/build-search-index-from-research.mjs",
+    "generate:qrs": "node scripts/generate-demo-qrs.mjs"
   },
   "devDependencies": {
+    "qrcode": "^1.5.4",
     "vite": "^6.3.5"
   }
 }

@@ -46,15 +46,27 @@ style.textContent = `
   background:#13293d;color:#fff;font-size:12px;font-weight:800;font-family:system-ui,sans-serif;
   border:2px solid rgba(255,255,255,.85);box-shadow:0 2px 10px rgba(0,0,0,.3);cursor:pointer;}
 @media (min-width:769px){.alge-qr-btn{bottom:16px;}}
-.alge-qr-panel{position:fixed;z-index:28;right:10px;bottom:144px;max-height:50vh;overflow-y:auto;
-  background:rgba(255,255,255,.96);border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.25);
-  padding:8px;display:none;font-family:system-ui,sans-serif;}
+.alge-qr-panel{position:fixed;z-index:28;right:10px;bottom:144px;width:min(86vw,300px);max-height:56vh;
+  overflow-y:auto;background:rgba(255,255,255,.97);border-radius:16px;
+  box-shadow:0 6px 24px rgba(0,0,0,.25);padding:10px;display:none;font-family:system-ui,sans-serif;}
 @media (min-width:769px){.alge-qr-panel{bottom:64px;}}
 .alge-qr-panel.on{display:block;}
-.alge-qr-panel a{display:block;padding:7px 10px;border-radius:8px;color:#13293d;
-  text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;}
-.alge-qr-panel a.active{background:#13293d;color:#fff;}
-.alge-qr-panel a:not(.active):hover{background:rgba(19,41,61,.08);}
+.alge-qr-card{display:flex;gap:10px;align-items:center;padding:8px;border-radius:12px;margin-bottom:6px;
+  border:1.5px solid rgba(19,41,61,.08);}
+.alge-qr-card.active{border-color:#35e0f2;background:rgba(53,224,242,.07);}
+.alge-qr-card img{width:88px;height:88px;border-radius:8px;background:#fff;flex:0 0 auto;
+  image-rendering:pixelated;}
+.alge-qr-card .alge-qr-card__mid{flex:1;min-width:0;}
+.alge-qr-card b{display:block;font-size:12.5px;color:#13293d;}
+.alge-qr-card .alge-qr-card__label{font-size:11px;color:#42566b;line-height:1.25;}
+.alge-qr-card .alge-qr-card__link{font-size:9.5px;color:#8a97a5;word-break:break-all;margin-top:2px;}
+.alge-qr-card .alge-qr-card__active{display:inline-block;font-size:8.5px;font-weight:800;
+  padding:2px 7px;border-radius:999px;background:#35e0f2;color:#063a42;margin-left:5px;vertical-align:1px;}
+.alge-qr-card__btns{display:flex;flex-direction:column;gap:5px;}
+.alge-qr-card__btns button{border:0;border-radius:999px;padding:6px 10px;font-size:10.5px;font-weight:700;
+  cursor:pointer;font-family:inherit;white-space:nowrap;}
+.alge-qr-card__btns .alge-qr-open{background:#13293d;color:#fff;}
+.alge-qr-card__btns .alge-qr-copy{background:rgba(19,41,61,.08);color:#13293d;}
 `;
 document.head.appendChild(style);
 
@@ -83,12 +95,45 @@ panel.className = "alge-qr-panel";
 panel.innerHTML = qrPoints
   .map((qr) => {
     const no = (qr.id.match(/(\d+)$/) || [])[1];
-    const cls = qr.id === activeQrPoint.id ? ' class="active"' : "";
-    return `<a${cls} href="/qr/${qr.id}">QR-${no} — ${qr.label}</a>`;
+    const active = qr.id === activeQrPoint.id;
+    return `
+    <div class="alge-qr-card${active ? " active" : ""}" data-qr="${qr.id}">
+      <img src="/qr/${qr.id}.png" alt="QR-${no}" loading="lazy">
+      <div class="alge-qr-card__mid">
+        <b>QR-${no}${active ? '<span class="alge-qr-card__active">AKTİF</span>' : ""}</b>
+        <div class="alge-qr-card__label">${qr.label}</div>
+        <div class="alge-qr-card__link">/qr/${qr.id}</div>
+      </div>
+      <div class="alge-qr-card__btns">
+        <button class="alge-qr-open" type="button">Aç</button>
+        <button class="alge-qr-copy" type="button">Linki kopyala</button>
+      </div>
+    </div>`;
   })
   .join("");
 document.body.appendChild(panel);
 btn.addEventListener("click", () => panel.classList.toggle("on"));
+
+panel.querySelectorAll(".alge-qr-card").forEach((cardEl) => {
+  const qrId = cardEl.dataset.qr;
+  const fullUrl = `${window.location.origin}/qr/${qrId}`;
+  cardEl.querySelector(".alge-qr-open").addEventListener("click", () => {
+    window.location.href = `/qr/${qrId}`;
+  });
+  cardEl.querySelector(".alge-qr-copy").addEventListener("click", async (e) => {
+    const btnEl = e.currentTarget;
+    try {
+      await navigator.clipboard.writeText(fullUrl);
+      btnEl.textContent = "Kopyalandı ✓";
+    } catch {
+      // clipboard yoksa güvenli fallback
+      window.prompt("QR linki (kopyalamak için):", fullUrl);
+      btnEl.textContent = "Linki kopyala";
+      return;
+    }
+    setTimeout(() => { btnEl.textContent = "Linki kopyala"; }, 1500);
+  });
+});
 
 /* ---- marker konumlama ----
    Tercih: mevcut 3D izdüşüm (window.__ALGE3D köprüsü: camera + uvToWorld).

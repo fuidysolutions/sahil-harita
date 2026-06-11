@@ -1,0 +1,72 @@
+[
+  {
+    "id": "qr-demo-01",
+    "code": "QR-01",
+    "label": "Mado Önü",
+    "url": "http://localhost:5173/qr/qr-demo-01",
+    "image": "/qr/qr-demo-01.png"
+  },
+  {
+    "id": "qr-demo-02",
+    "code": "QR-02",
+    "label": "Irish Pub / Beaver Çevresi",
+    "url": "http://localhost:5173/qr/qr-demo-02",
+    "image": "/qr/qr-demo-02.png"
+  },
+  {
+    "id": "qr-demo-03",
+    "code": "QR-03",
+    "label": "Pizza / Kahve Batı",
+    "url": "http://localhost:5173/qr/qr-demo-03",
+    "image": "/qr/qr-demo-03.png"
+  },
+  {
+    "id": "qr-demo-04",
+    "code": "QR-04",
+    "label": "Burger / Kahve Geçişi",
+    "url": "http://localhost:5173/qr/qr-demo-04",
+    "image": "/qr/qr-demo-04.png"
+  },
+  {
+    "id": "qr-demo-05",
+    "code": "QR-05",
+    "label": "Merkez Restoranlar",
+    "url": "http://localhost:5173/qr/qr-demo-05",
+    "image": "/qr/qr-demo-05.png"
+  },
+  {
+    "id": "qr-demo-06",
+    "code": "QR-06",
+    "label": "Market / Aile Restoranları",
+    "url": "http://localhost:5173/qr/qr-demo-06",
+    "image": "/qr/qr-demo-06.png"
+  },
+  {
+    "id": "qr-demo-07",
+    "code": "QR-07",
+    "label": "Mağaza / Kahve Alanı",
+    "url": "http://localhost:5173/qr/qr-demo-07",
+    "image": "/qr/qr-demo-07.png"
+  },
+  {
+    "id": "qr-demo-08",
+    "code": "QR-08",
+    "label": "Doğu Kafe / Restoran",
+    "url": "http://localhost:5173/qr/qr-demo-08",
+    "image": "/qr/qr-demo-08.png"
+  },
+  {
+    "id": "qr-demo-09",
+    "code": "QR-09",
+    "label": "Fast Food Hattı",
+    "url": "http://localhost:5173/qr/qr-demo-09",
+    "image": "/qr/qr-demo-09.png"
+  },
+  {
+    "id": "qr-demo-10",
+    "code": "QR-10",
+    "label": "Shakespeare Çevresi",
+    "url": "http://localhost:5173/qr/qr-demo-10",
+    "image": "/qr/qr-demo-10.png"
+  }
+]
