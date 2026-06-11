@@ -1,11 +1,15 @@
 {
   "name": "sahil-harita",
   "private": true,
+  "type": "module",
   "version": "0.1.0",
   "description": "ALGE QR / Sahil Harita — QR ile açılan 3D harita destekli keşif demo Web App'i",
   "scripts": {
     "dev": "vite --host",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate:data": "node scripts/validate-demo-data.mjs",
+    "build:venues": "node scripts/build-venues-from-research.mjs",
+    "build:search-index": "node scripts/build-search-index-from-research.mjs"
   },
   "devDependencies": {
     "vite": "^6.3.5"

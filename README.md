@@ -28,6 +28,30 @@ QR ile açılan, 3D harita destekli ALGE / Beach Park keşif demo Web App'i.
   search index). Henüz uygulamaya entegre edilmedi.
 - `CLAUDE.md` — proje devir belgesi ve çalışma kuralları.
 
+## Demo Data
+
+Araştırma dokümanlarından üretilen demo data dosyaları `src/data/` altında tutulur.
+
+Doğrulama:
+
+```bash
+npm run validate:data
+```
+
+`venues.js` ve `searchIndex.js` araştırma dokümanlarından script ile üretilir
+(elle düzenlemeyin; kaynak dokümanı düzeltip yeniden üretin):
+
+```bash
+npm run build:venues
+npm run build:search-index
+```
+
+Araştırmadaki "Bilinmiyor" / "(demo önerisi)" / "teyit edilmeli" ifadeleri
+veri modelinde bilinçli korunur (`flags.demoSuggestion`, `flags.needsVerification`, `notes`).
+
 ## Sprint Notu
 
 Sprint 0: repo foundation ve local çalışma ortamı.
+Sprint 1: 47 mekanlık araştırma datası `src/data/` JS data layer'a dönüştürüldü
+(venues, zones, qrPoints, campaigns, events, adPlacements, searchIndex, trends)
++ `npm run validate:data` doğrulama scripti. `index.html` değiştirilmedi.
