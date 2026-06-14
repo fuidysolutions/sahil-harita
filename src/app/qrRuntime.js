@@ -42,11 +42,11 @@ style.textContent = `
 @keyframes algePulse{0%{box-shadow:0 0 0 5px rgba(53,224,242,.32)}70%{box-shadow:0 0 0 14px rgba(53,224,242,.06)}100%{box-shadow:0 0 0 5px rgba(53,224,242,.32)}}
 .alge-you-are-here__label{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.96);
   color:#1d3450;font-size:11.5px;font-weight:700;white-space:nowrap;
-  font-family:'Plus Jakarta Sans',system-ui,sans-serif;border:1px solid rgba(29,52,80,.10);
+  font-family:'Urbanist',system-ui,sans-serif;border:1px solid rgba(29,52,80,.10);
   box-shadow:0 4px 14px rgba(20,40,65,.14);}
 .alge-qr-chip{position:fixed;z-index:35;top:78px;left:12px;padding:7px 13px;border-radius:999px;
   background:rgba(255,255,255,.96);color:#1d3450;font-size:11.5px;font-weight:700;
-  font-family:'Plus Jakarta Sans',system-ui,sans-serif;border:1px solid rgba(29,52,80,.10);
+  font-family:'Urbanist',system-ui,sans-serif;border:1px solid rgba(29,52,80,.10);
   box-shadow:0 4px 14px rgba(20,40,65,.14);pointer-events:none;}
 @media (min-width:769px){.alge-qr-chip{left:auto;right:12px;top:12px;}}
 .alge-qr-btn{position:fixed;z-index:88;right:10px;bottom:96px;width:40px;height:40px;border-radius:999px;

@@ -47,29 +47,56 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #load{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:#9fb0c3;font-size:14px;z-index:20;background:#0b0e13;}
 
 
-  #mlogo{position:fixed;left:50%;top:calc(12px + env(safe-area-inset-top));z-index:18;
-    transform:translateX(-50%);pointer-events:none;}
-  #mlogo img{display:block;width:118px;height:auto;filter:drop-shadow(0 8px 18px rgba(8,35,61,.16));}
-  #mtop{position:fixed;left:20px;right:20px;top:calc(74px + env(safe-area-inset-top));z-index:18;
-    display:flex;align-items:center;gap:12px;background:var(--surface-soft);border:1px solid rgba(255,255,255,.78);
-    border-radius:var(--radius-pill);padding:13px 17px;box-shadow:var(--shadow-soft);
-    backdrop-filter:blur(14px) saturate(1.18);-webkit-backdrop-filter:blur(14px) saturate(1.18);cursor:pointer;}
-  #mtop i{font-size:23px;color:#41566b;flex:0 0 auto;}
-  #mtop span{flex:1;text-align:left;font-size:16px;font-weight:500;color:#4a5d70;
-    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  /* ===== AlgeGo SHELL — tek responsive kabuk (map üstü hafif UI katmanı) ===== */
 
-  #mstack{position:fixed;left:14px;right:14px;bottom:calc(82px + env(safe-area-inset-bottom));z-index:16;
+  /* logo: üst-orta, dengeli */
+  #mlogo{position:fixed;left:50%;top:calc(16px + env(safe-area-inset-top));z-index:18;
+    transform:translateX(-50%);pointer-events:none;}
+  #mlogo img{display:block;width:122px;height:auto;
+    filter:drop-shadow(0 10px 22px rgba(8,35,61,.18));}
+
+  /* search bar: premium floating pill, ortalı kolon */
+  #mtop{position:fixed;left:50%;transform:translateX(-50%);
+    top:calc(72px + env(safe-area-inset-top));z-index:18;
+    width:min(calc(100% - 36px), 480px);
+    display:flex;align-items:center;gap:11px;
+    background:rgba(255,255,255,.96);border:1px solid var(--border-soft);
+    border-radius:var(--radius-pill);padding:13px 13px 13px 18px;box-shadow:var(--shadow-soft);
+    backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);
+    cursor:default;}
+  #mtop > i{font-size:21px;color:var(--logo-blue);flex:0 0 auto;}
+  #mtop span{flex:1;text-align:left;font-size:15.5px;font-weight:500;color:#5a6f82;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  #mtop .mtop-tune{flex:0 0 auto;width:36px;height:36px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:#f1f6fb;border:1px solid var(--border-soft);color:#41566b;cursor:pointer;
+    transition:color .2s cubic-bezier(.22,1,.36,1),border-color .2s cubic-bezier(.22,1,.36,1);}
+  #mtop .mtop-tune i{font-size:18px;line-height:1;}
+  #mtop .mtop-tune:hover{color:var(--logo-blue);border-color:#bfe3f5;}
+
+  /* kategori rail + alt yığın */
+  #mstack{position:fixed;left:50%;transform:translateX(-50%);
+    bottom:calc(86px + env(safe-area-inset-bottom));z-index:16;
+    width:min(calc(100% - 24px), 520px);
     display:flex;flex-direction:column;gap:10px;}
 
-  #mchips{display:flex;gap:8px;overflow-x:auto;background:transparent;border-radius:0;
-    padding:0 2px 8px;box-shadow:none;}
+  #mchips{display:flex;gap:9px;justify-content:safe center;overflow-x:auto;
+    padding:2px 6px 16px;background:transparent;}
   #mchips::-webkit-scrollbar{display:none;}
-  #mchips button{position:relative;flex:0 0 auto;display:flex;align-items:center;gap:7px;padding:10px 15px;
-    border-radius:var(--radius-pill);font-size:12px;font-weight:600;border:1px solid var(--border-soft);
-    background:var(--surface);color:#41566b;white-space:nowrap;cursor:pointer;box-shadow:0 8px 22px rgba(8,35,61,.09);}
-  #mchips button.on{background:var(--logo-blue);color:#fff;border-color:var(--logo-blue);}
-  #mchips button.on::after{content:'';position:absolute;left:18px;right:18px;bottom:-7px;height:2px;
-    background:var(--orange);clip-path:polygon(4px 0, calc(100% - 4px) 0, 100% 50%, calc(100% - 4px) 100%, 4px 100%, 0 50%);}
+  #mchips button{position:relative;flex:0 0 auto;display:flex;align-items:center;gap:7px;padding:10px 16px;
+    border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;border:1px solid var(--border-soft);
+    background:rgba(255,255,255,.96);color:#41566b;white-space:nowrap;cursor:pointer;
+    box-shadow:0 6px 18px rgba(8,35,61,.08);
+    transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s cubic-bezier(.22,1,.36,1),
+      background .2s cubic-bezier(.22,1,.36,1),color .2s cubic-bezier(.22,1,.36,1);}
+  #mchips button:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(8,35,61,.12);}
+  /* Blue Active Rail */
+  #mchips button.on{background:var(--logo-blue);color:#fff;border-color:var(--logo-blue);
+    box-shadow:0 10px 26px rgba(0,152,216,.28);}
+  /* aktif pill altında düz ince turuncu çizgi — sadece iki ucu sivri */
+  #mchips button.on::after{content:'';position:absolute;left:16px;right:16px;bottom:-6px;height:3px;
+    background:var(--orange);
+    clip-path:polygon(5px 0, calc(100% - 5px) 0, 100% 50%, calc(100% - 5px) 100%, 5px 100%, 0 50%);}
   #mchips i{font-size:17px;line-height:1;}
 
   .chip-trend,.chip-menu,.chip-campaign{display:inline-flex;align-items:center;gap:6px;border-radius:var(--radius-pill);
@@ -82,14 +109,21 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   .chip-menu i,.chip-campaign i{font-size:16px;color:inherit;}
 
 
-  #mbar{position:fixed;left:18px;right:18px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:17;
-    background:var(--surface-soft);border:1px solid rgba(255,255,255,.78);border-radius:var(--radius-lg);
-    display:flex;padding:9px 10px;justify-content:space-around;box-shadow:var(--shadow-soft);
-    backdrop-filter:blur(16px) saturate(1.16);-webkit-backdrop-filter:blur(16px) saturate(1.16);}
-  #mbar button{display:flex;flex-direction:column;align-items:center;gap:4px;border:none;background:none;
-    font-size:11px;font-weight:500;color:#5a6f82;min-width:64px;cursor:pointer;padding:8px 10px;border-radius:18px;}
-  #mbar button i{font-size:24px;line-height:1;}
-  #mbar button.on{background:#eef8fd;color:var(--logo-blue);}
+  /* alt nav: hafif QR web app tab bar (native app ağırlığı yok) */
+  #mbar{position:fixed;left:50%;transform:translateX(-50%);
+    bottom:calc(12px + env(safe-area-inset-bottom));z-index:17;
+    width:min(calc(100% - 28px), 460px);
+    display:flex;justify-content:space-around;align-items:center;
+    background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.8);border-radius:22px;
+    padding:7px 8px;box-shadow:0 12px 30px rgba(8,35,61,.12);
+    backdrop-filter:blur(16px) saturate(1.18);-webkit-backdrop-filter:blur(16px) saturate(1.18);}
+  #mbar button{display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:none;
+    font-size:10.5px;font-weight:500;color:#728698;flex:1;min-width:0;cursor:pointer;
+    padding:7px 4px;border-radius:16px;
+    transition:color .2s cubic-bezier(.22,1,.36,1),background .2s cubic-bezier(.22,1,.36,1);}
+  #mbar button i{font-size:22px;line-height:1;}
+  #mbar button:hover{color:#41566b;}
+  #mbar button.on{color:var(--logo-blue);background:rgba(0,152,216,.08);}
   /* uçuş/focus sırasında shell çekilir (harita + sinematik katmanlar görünür kalır) */
   body.flying #mtop,body.flying #mstack,body.flying #mbar{display:none !important;}
 
@@ -109,7 +143,6 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
 
 
 </style>
-<link rel="stylesheet" href="/assets/theme/alge.css">
 </head>
 <body>
 <div id="errband"></div>
@@ -129,8 +162,8 @@ window.addEventListener('error',function(e){
 <div id="mlogo"><img src="/assets/brand/go.png" alt="AlgeGo"></div>
 <div id="mtop">
   <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
-  <span>Mekan, kampanya veya ihtiyaç ara</span>
-  <i class="ph ph-sliders-horizontal" aria-hidden="true"></i>
+  <span>Mekan, kampanya veya etkinlik ara</span>
+  <button class="mtop-tune" type="button" tabindex="-1" aria-label="Filtrele"><i class="ph ph-sliders-horizontal" aria-hidden="true"></i></button>
 </div>
 <div id="mstack">
   <div id="mchips"></div>
