@@ -36,10 +36,10 @@ const style = document.createElement("style");
 style.textContent = `
 .alge-you-are-here{position:fixed;z-index:6;transform:translate(-50%,-11px);pointer-events:none;
   display:flex;flex-direction:column;align-items:center;gap:6px;}
-/* referans (mobilekran): parlayan cyan nokta + beyaz çip */
-.alge-you-are-here__dot{width:16px;height:16px;border-radius:999px;background:#27b9d6;
-  border:3px solid #fff;box-shadow:0 0 0 7px rgba(53,224,242,.25);animation:algePulse 2s ease-out infinite;}
-@keyframes algePulse{0%{box-shadow:0 0 0 5px rgba(53,224,242,.32)}70%{box-shadow:0 0 0 14px rgba(53,224,242,.06)}100%{box-shadow:0 0 0 5px rgba(53,224,242,.32)}}
+/* AlgeGo: parlayan konum noktası + beyaz çip (logo mavisi) */
+.alge-you-are-here__dot{width:16px;height:16px;border-radius:999px;background:#0098d8;
+  border:3px solid #fff;box-shadow:0 0 0 7px rgba(0,152,216,.25);animation:algePulse 2s ease-out infinite;}
+@keyframes algePulse{0%{box-shadow:0 0 0 5px rgba(0,152,216,.32)}70%{box-shadow:0 0 0 14px rgba(0,152,216,.06)}100%{box-shadow:0 0 0 5px rgba(0,152,216,.32)}}
 .alge-you-are-here__label{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.96);
   color:#1d3450;font-size:11.5px;font-weight:700;white-space:nowrap;
   font-family:'Urbanist',system-ui,sans-serif;border:1px solid rgba(29,52,80,.10);
@@ -60,7 +60,7 @@ style.textContent = `
 .alge-qr-panel.on{display:block;}
 .alge-qr-card{display:flex;gap:10px;align-items:center;padding:8px;border-radius:12px;margin-bottom:6px;
   border:1.5px solid rgba(19,41,61,.08);}
-.alge-qr-card.active{border-color:#35e0f2;background:rgba(53,224,242,.07);}
+.alge-qr-card.active{border-color:#0098d8;background:rgba(0,152,216,.07);}
 .alge-qr-card img{width:88px;height:88px;border-radius:8px;background:#fff;flex:0 0 auto;
   image-rendering:pixelated;}
 .alge-qr-card .alge-qr-card__mid{flex:1;min-width:0;}
@@ -68,7 +68,7 @@ style.textContent = `
 .alge-qr-card .alge-qr-card__label{font-size:11px;color:#42566b;line-height:1.25;}
 .alge-qr-card .alge-qr-card__link{font-size:9.5px;color:#8a97a5;word-break:break-all;margin-top:2px;}
 .alge-qr-card .alge-qr-card__active{display:inline-block;font-size:8.5px;font-weight:800;
-  padding:2px 7px;border-radius:999px;background:#35e0f2;color:#063a42;margin-left:5px;vertical-align:1px;}
+  padding:2px 7px;border-radius:999px;background:#0098d8;color:#fff;margin-left:5px;vertical-align:1px;}
 .alge-qr-card__btns{display:flex;flex-direction:column;gap:5px;}
 .alge-qr-card__btns button{border:0;border-radius:999px;padding:6px 10px;font-size:10.5px;font-weight:700;
   cursor:pointer;font-family:inherit;white-space:nowrap;}

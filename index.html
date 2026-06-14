@@ -444,7 +444,7 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   .fc-home i{font-size:17px;}
   .fc-home:hover{background:#0b2c4d;}
 
-  /* ===== MEKAN DETAY SHEET (bilgi odaklı; rating/menü/sepet yok) ===== */
+  /* ===== MEKAN DETAY SHEET (bilgi odaklı) ===== */
   #vddim{position:fixed;inset:0;z-index:24;background:rgba(8,35,61,.22);
     opacity:0;pointer-events:none;transition:opacity .3s cubic-bezier(.22,1,.36,1);}
   #vddim.on{opacity:1;pointer-events:auto;}
@@ -515,7 +515,7 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   .vd-menu i{font-size:18px;color:var(--logo-blue);}
   .vd-menu:hover{border-color:#bfe3f5;background:#eef6fc;}
 
-  /* ===== MENÜ / ÜRÜN LİSTESİ SHEET (bilgi amaçlı; +/sepet/sipariş yok) ===== */
+  /* ===== MENÜ / ÜRÜN LİSTESİ SHEET (bilgi amaçlı) ===== */
   #mndim{position:fixed;inset:0;z-index:27;background:rgba(8,35,61,.28);
     opacity:0;pointer-events:none;transition:opacity .3s cubic-bezier(.22,1,.36,1);}
   #mndim.on{opacity:1;pointer-events:auto;}
@@ -4817,14 +4817,15 @@ CHIPS.forEach(c=>{
   });
   chipsEl.appendChild(b);
 });
-/* alt bar: Harita=Search'i kapat; diğerleri placeholder (bu sprintte yalnız Search var) */
+/* alt bar + ana sheet karşılıklı dışlama: aynı anda yalnız tek ana sheet açık kalır */
 function setNavActive(v){ document.querySelectorAll('#mbar button').forEach(b=>b.classList.toggle('on', b.dataset.v===v)); }
+function closeMainSheets(){ closeSearch(); closeYerler(); closeOffers(); closeEvents(); closeServices(); }
 document.querySelectorAll('#mbar button').forEach(b=>{
   b.addEventListener('click',()=>{
     const v=b.dataset.v;
-    if(v==='harita'){ closeSearch(); closeYerler(); closeOffers(); closeEvents(); return; }
-    if(v==='yerler'){ closeOffers(); closeEvents(); openYerler(); return; }
-    if(v==='firsatlar'){ closeEvents(); openOffers(); return; }
+    if(v==='harita'){ closeMainSheets(); return; }
+    if(v==='yerler'){ openYerler(); return; }
+    if(v==='firsatlar'){ openOffers(); return; }
     if(v==='etkinlik'){ openEvents(); return; }
   });
 });
@@ -4892,6 +4893,7 @@ function inspectVenue(i){
   flyAndFocus(i,'Arama');   // uçuş + focus mini panel (detay ekranı yok)
 }
 function openSearch(){
+  closeMainSheets();
   document.body.dataset.mview='yerler';
   setNavActive('yerler');            // Search açıkken alt bar: Yerler aktif
   ssInput.value=''; renderSearch();
@@ -4910,7 +4912,7 @@ document.getElementById('mtop').addEventListener('click',openSearch);   // searc
 document.getElementById('ssClose').addEventListener('click',closeSearch);
 ssDim.addEventListener('click',closeSearch);
 ssInput.addEventListener('input',renderSearch);
-ssInput.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSearch(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && ssEl.classList.contains('open')) closeSearch(); });
 
 /* ================= YERLER (kategori filtreli mekan listesi) =================
    Veri: VENUES. İncele -> mevcut uçuş; detay ekranı yok. Search'e dokunmaz (yl* öneki). */
@@ -4971,7 +4973,7 @@ function ylFirstNonEmptyCat(){
   return 'yeme';
 }
 function openYerler(){
-  closeSearch();                        // karşılıklı dışlama (Search açıksa kapat)
+  closeMainSheets();                    // tek ana sheet açık kalır
   ylActiveCat=ylFirstNonEmptyCat();     // ilk dolu kategori ile aç (boş ekran gelmesin)
   syncYlCats(); renderYerler();
   document.body.dataset.mview='yerler';
@@ -5060,7 +5062,7 @@ function ofInspect(i){
   flyAndFocus(i,'Fırsatlar');   // uçuş + focus mini panel (detay ekranı yok)
 }
 function openOffers(){
-  closeSearch(); closeYerler();        // karşılıklı dışlama
+  closeMainSheets();                   // tek ana sheet açık kalır
   ofActiveCat='tum'; syncOfCats(); renderOffers();
   document.body.dataset.mview='firsatlar';
   setNavActive('firsatlar');           // Fırsatlar açıkken alt bar: Fırsatlar aktif
@@ -5100,7 +5102,7 @@ const EV_DATA=[
   {name:"Barista Workshop",          place:"Shakespeare Coffee & Bistro", date:"Bu Hafta",  time:"15:00", type:"workshop", when:"hafta", vi:0,
    desc:"Filtre kahve demleme ve latte art üzerine uygulamalı atölye."},
   {name:"Maraş Dondurma Atölyesi",   place:"Mado",                        date:"Bugün",     time:"16:00", type:"workshop", when:"bugun", vi:1,
-   desc:"Geleneksel dondurma yapımını deneyimleyin; çocuklarla katılıma uygun."},
+   desc:"Geleneksel dondurma yapımını deneyimleyin; çocuklar için de uygun."},
   {name:"Çocuk Boyama Atölyesi",     place:"Hamlet Market önü",           date:"Pazar",     time:"11:00", type:"aile",     when:"hafta", vi:2,
    desc:"Aileler için boyama ve el işi etkinliği; tüm yaşlara uygun keyifli bir program."}
 ];
@@ -5159,7 +5161,7 @@ function evInspect(j,el){
   }
 }
 function openEvents(){
-  closeSearch(); closeYerler(); closeOffers();   // karşılıklı dışlama
+  closeMainSheets();                             // tek ana sheet açık kalır
   evActiveCat='tum'; syncEvCats(); renderEvents();
   document.body.dataset.mview='etkinlik';
   setNavActive('etkinlik');                       // Etkinlikler açıkken alt bar: Etkinlikler aktif
@@ -5218,9 +5220,11 @@ function focusGoHome(){
 document.getElementById('fcHome').addEventListener('click',focusGoHome);
 document.getElementById('fcClose').addEventListener('click',focusGoHome);   // kapat = güvenli geri dönüş (stuck focus bırakmaz)
 document.getElementById('fcDetail').addEventListener('click',()=>{ if(fcVenue>=0) openVenueDetail(fcVenue); });
+/* Esc: focus mini panel açıkken güvenli Haritaya dön (Detay/Menü kendi Esc'lerinden önce sırada) */
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && fcEl.classList.contains('open')) focusGoHome(); });
 
 /* ================= MEKAN DETAY SHEET (bilgi odaklı) =================
-   Veri: VENUES. Focus mini panel -> Detay. Menü/rating/sepet/yol tarifi yok.
+   Veri: VENUES. Focus mini panel -> Detay. Yalnız bilgi gösterimi.
    Kamera/uçuş koduna dokunmaz; mevcut köprüleri güvenli kullanır. Diğer ekranlara dokunmaz (vd* öneki). */
 const vdEl=document.getElementById('vdsheet');
 const vdDim=document.getElementById('vddim');
@@ -5266,7 +5270,7 @@ document.getElementById('vdHome').addEventListener('click',()=>{ closeVenueDetai
 document.addEventListener('keydown',e=>{ if(e.key==='Escape' && vdEl.classList.contains('open') && !mnEl.classList.contains('open')) closeVenueDetail(true); });
 
 /* ================= MENÜ / ÜRÜN LİSTESİ SHEET (bilgi amaçlı) =================
-   +/sepet/sipariş/satın al YOK. Veri: minimal demo menü inline (VENUES feat/kategori temelli).
+   Yalnız bilgi gösterimi. Veri: minimal demo menü inline (VENUES feat/kategori temelli).
    Mekan Detay -> Menü; kapanınca Detay'a döner (item 9). Diğer ekranlara dokunmaz (mn* öneki). */
 const MENU_TABS=[{k:'featured',l:'Öne Çıkanlar'},{k:'drinks',l:'İçecekler'},{k:'desserts',l:'Tatlılar'},{k:'mains',l:'Ana Ürünler'}];
 const MENU_DATA={
@@ -5402,6 +5406,7 @@ function showSvcToast(msg){
   svcToastTimer=setTimeout(()=>svcToast.classList.remove('on'),2400);
 }
 function openServices(){
+  closeMainSheets();
   renderServices();
   svcDim.classList.add('on');
   svcEl.classList.add('open'); svcEl.setAttribute('aria-hidden','false');
