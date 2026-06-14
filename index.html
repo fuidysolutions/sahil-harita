@@ -430,12 +430,147 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   .fc-desc{font-size:12px;line-height:1.35;color:#64778a;margin-bottom:2px;
     display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
   .fc-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;}
-  .fc-home{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;margin-top:12px;
+  .fc-actions{display:flex;gap:9px;margin-top:12px;}
+  .fc-detail{flex:0 0 auto;display:flex;align-items:center;gap:6px;border:1px solid var(--border-soft);
+    background:#fff;color:var(--navy);border-radius:var(--radius-pill);padding:12px 16px;
+    font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;
+    transition:border-color .2s cubic-bezier(.22,1,.36,1),color .2s cubic-bezier(.22,1,.36,1);}
+  .fc-detail i{font-size:16px;color:var(--logo-blue);}
+  .fc-detail:hover{border-color:#bfe3f5;color:var(--logo-blue);}
+  .fc-home{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;
     border:none;border-radius:var(--radius-pill);padding:12px 16px;background:var(--navy);color:#fff;
     font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer;box-shadow:0 10px 24px rgba(8,35,61,.22);
     transition:background .2s cubic-bezier(.22,1,.36,1);}
   .fc-home i{font-size:17px;}
   .fc-home:hover{background:#0b2c4d;}
+
+  /* ===== MEKAN DETAY SHEET (bilgi odaklı; rating/menü/sepet yok) ===== */
+  #vddim{position:fixed;inset:0;z-index:24;background:rgba(8,35,61,.22);
+    opacity:0;pointer-events:none;transition:opacity .3s cubic-bezier(.22,1,.36,1);}
+  #vddim.on{opacity:1;pointer-events:auto;}
+  #vdsheet{position:fixed;left:50%;transform:translateX(-50%) translateY(16px);
+    top:calc(60px + env(safe-area-inset-top));
+    bottom:calc(12px + env(safe-area-inset-bottom));
+    width:min(calc(100% - 24px), 520px);z-index:26;
+    display:flex;flex-direction:column;
+    background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-soft);overflow:hidden;
+    opacity:0;pointer-events:none;
+    transition:opacity .28s cubic-bezier(.22,1,.36,1),transform .28s cubic-bezier(.22,1,.36,1);}
+  #vdsheet.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+
+  .vd-top{display:flex;align-items:center;justify-content:space-between;padding:13px 16px 6px;flex:0 0 auto;}
+  .vd-kicker{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#90a0b0;}
+  #vdClose{width:34px;height:34px;border-radius:50%;border:1px solid var(--border-soft);background:#fff;
+    color:#5a6f82;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;
+    transition:color .2s cubic-bezier(.22,1,.36,1),border-color .2s cubic-bezier(.22,1,.36,1);}
+  #vdClose:hover{color:var(--navy);border-color:#cdd9e6;}
+
+  #vdBody{flex:1;min-height:0;overflow-y:auto;padding:4px 16px 16px;}
+  #vdBody::-webkit-scrollbar{width:5px;}
+  #vdBody::-webkit-scrollbar-thumb{background:#dfe7ef;border-radius:3px;}
+  .vd-hero{border-radius:var(--radius-md);overflow:hidden;margin-bottom:14px;box-shadow:0 12px 28px rgba(8,35,61,.14);}
+  .vd-hero img{width:100%;height:168px;object-fit:cover;display:block;}
+  #vdName{font-size:22px;font-weight:600;color:var(--navy);line-height:1.1;}
+  .vd-cat{font-size:13px;font-weight:500;color:var(--logo-blue);margin:4px 0 9px;}
+  #vdChips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+  #vdChips:empty{display:none;}
+  .vd-desc{font-size:13.5px;line-height:1.55;color:#46586b;margin-bottom:14px;}
+  .vd-info{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:12px;}
+  .vd-tile{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:11px 10px;border-radius:14px;
+    background:#f6f9fc;border:1px solid var(--border-soft);min-width:0;}
+  .vd-tile i{font-size:18px;color:var(--logo-blue);}
+  .vd-tile span{font-size:10.5px;font-weight:500;color:#90a0b0;}
+  .vd-tile b{font-size:12.5px;font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
+  .vd-row{display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:14px;background:#fff;
+    border:1px solid var(--border-soft);margin-bottom:9px;}
+  .vd-row > i{font-size:19px;color:var(--orange);flex:0 0 auto;}
+  .vd-row span{display:block;font-size:11px;font-weight:500;color:#90a0b0;}
+  .vd-row b{font-size:13.5px;font-weight:600;color:var(--navy);}
+  .vd-feat-card{display:grid;grid-template-columns:84px 1fr;gap:12px;padding:11px;border-radius:var(--radius-md);
+    background:#fff;border:1px solid var(--border-soft);box-shadow:0 8px 20px rgba(8,35,61,.08);margin-bottom:9px;}
+  .vd-feat-card img{width:84px;height:84px;border-radius:12px;object-fit:cover;}
+  .vd-feat-info{min-width:0;}
+  .vd-feat-label{font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--orange);}
+  .vd-feat-name{font-size:15px;font-weight:600;color:var(--navy);margin-top:2px;}
+  .vd-feat-price{font-size:13.5px;font-weight:600;color:var(--orange);margin:1px 0 4px;}
+  .vd-feat-info p{font-size:11.5px;line-height:1.4;color:#64778a;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .vd-cta{display:flex;gap:9px;padding:12px 16px calc(14px + env(safe-area-inset-bottom));flex:0 0 auto;
+    border-top:1px solid var(--border-soft);background:#fff;}
+  .vd-btn-2{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--border-soft);
+    background:#fff;color:var(--navy);border-radius:var(--radius-pill);padding:12px;font-size:13px;font-weight:600;
+    font-family:inherit;cursor:pointer;transition:border-color .2s cubic-bezier(.22,1,.36,1),color .2s cubic-bezier(.22,1,.36,1);}
+  .vd-btn-2 i{font-size:16px;color:var(--logo-blue);}
+  .vd-btn-2:hover{border-color:#bfe3f5;color:var(--logo-blue);}
+  .vd-btn-1{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;border:none;
+    background:var(--navy);color:#fff;border-radius:var(--radius-pill);padding:12px;font-size:13px;font-weight:600;
+    font-family:inherit;cursor:pointer;box-shadow:0 10px 24px rgba(8,35,61,.22);transition:background .2s cubic-bezier(.22,1,.36,1);}
+  .vd-btn-1 i{font-size:16px;}
+  .vd-btn-1:hover{background:#0b2c4d;}
+  .vd-menu{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;margin:2px 0 4px;
+    border:1px solid var(--border-soft);background:#f6f9fc;color:var(--navy);border-radius:var(--radius-md);
+    padding:13px;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer;
+    transition:border-color .2s cubic-bezier(.22,1,.36,1),background .2s cubic-bezier(.22,1,.36,1);}
+  .vd-menu i{font-size:18px;color:var(--logo-blue);}
+  .vd-menu:hover{border-color:#bfe3f5;background:#eef6fc;}
+
+  /* ===== MENÜ / ÜRÜN LİSTESİ SHEET (bilgi amaçlı; +/sepet/sipariş yok) ===== */
+  #mndim{position:fixed;inset:0;z-index:27;background:rgba(8,35,61,.28);
+    opacity:0;pointer-events:none;transition:opacity .3s cubic-bezier(.22,1,.36,1);}
+  #mndim.on{opacity:1;pointer-events:auto;}
+  #mnsheet{position:fixed;left:50%;transform:translateX(-50%) translateY(16px);
+    top:calc(60px + env(safe-area-inset-top));
+    bottom:calc(12px + env(safe-area-inset-bottom));
+    width:min(calc(100% - 24px), 520px);z-index:28;
+    display:flex;flex-direction:column;
+    background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-soft);overflow:hidden;
+    opacity:0;pointer-events:none;
+    transition:opacity .28s cubic-bezier(.22,1,.36,1),transform .28s cubic-bezier(.22,1,.36,1);}
+  #mnsheet.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+
+  .mn-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:14px 16px 4px;flex:0 0 auto;}
+  .mn-titlewrap{min-width:0;}
+  .mn-titlewrap h2{font-size:21px;font-weight:600;color:var(--navy);line-height:1.1;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .mn-sub{font-size:12px;font-weight:500;color:#90a0b0;margin-top:3px;}
+  #mnClose{flex:0 0 auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--border-soft);background:#fff;
+    color:#5a6f82;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;
+    transition:color .2s cubic-bezier(.22,1,.36,1),border-color .2s cubic-bezier(.22,1,.36,1);}
+  #mnClose:hover{color:var(--navy);border-color:#cdd9e6;}
+  .mn-meta{display:flex;align-items:center;gap:9px;padding:0 16px 10px;flex:0 0 auto;}
+  .mn-chip{flex:0 0 auto;display:inline-flex;align-items:center;border-radius:var(--radius-pill);padding:5px 11px;
+    background:#eef6fc;border:1px solid #d4e9f7;color:var(--logo-blue);font-size:11.5px;font-weight:600;}
+  .mn-desc{min-width:0;flex:1;font-size:12px;font-weight:500;color:#64778a;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .mn-tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 16px 12px;flex:0 0 auto;}
+  .mn-tabs::-webkit-scrollbar{display:none;}
+  .mn-tab{flex:0 0 auto;border:1px solid var(--border-soft);background:rgba(255,255,255,.96);color:#41566b;
+    border-radius:var(--radius-pill);padding:9px 14px;font-size:12.5px;font-weight:600;font-family:inherit;
+    white-space:nowrap;cursor:pointer;box-shadow:0 4px 12px rgba(8,35,61,.06);
+    transition:background .2s cubic-bezier(.22,1,.36,1),color .2s cubic-bezier(.22,1,.36,1);}
+  .mn-tab.on{background:var(--logo-blue);border-color:var(--logo-blue);color:#fff;box-shadow:0 8px 20px rgba(0,152,216,.24);}
+  #mnBody{flex:1;min-height:0;overflow-y:auto;padding:2px 16px 14px;}
+  #mnBody::-webkit-scrollbar{width:5px;}
+  #mnBody::-webkit-scrollbar-thumb{background:#dfe7ef;border-radius:3px;}
+  .mn-list{display:flex;flex-direction:column;}
+  .mn-item{display:flex;align-items:flex-start;gap:12px;padding:13px 2px;border-bottom:1px solid #eef2f6;}
+  .mn-item:last-child{border-bottom:none;}
+  .mn-item-mid{flex:1;min-width:0;}
+  .mn-item-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .mn-name{font-size:14.5px;font-weight:600;color:var(--navy);}
+  .mn-tag{display:inline-flex;align-items:center;border-radius:var(--radius-pill);padding:3px 8px;
+    background:var(--orange-soft);color:var(--orange);font-size:10px;font-weight:600;}
+  .mn-item-desc{font-size:12px;line-height:1.4;color:#64778a;margin-top:3px;}
+  .mn-price{flex:0 0 auto;font-size:14.5px;font-weight:600;color:var(--navy);white-space:nowrap;padding-top:1px;}
+  .mn-foot{padding:10px 16px calc(14px + env(safe-area-inset-bottom));flex:0 0 auto;
+    border-top:1px solid var(--border-soft);background:#fff;}
+  .mn-back{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;border:1px solid var(--border-soft);
+    background:#fff;color:var(--navy);border-radius:var(--radius-pill);padding:12px;font-size:13px;font-weight:600;
+    font-family:inherit;cursor:pointer;transition:border-color .2s cubic-bezier(.22,1,.36,1),color .2s cubic-bezier(.22,1,.36,1);}
+  .mn-back i{font-size:16px;color:var(--logo-blue);}
+  .mn-back:hover{border-color:#bfe3f5;color:var(--logo-blue);}
 
 
 
@@ -556,7 +691,55 @@ window.addEventListener('error',function(e){
       <div id="fcChips" class="fc-chips"></div>
     </div>
   </div>
-  <button id="fcHome" class="fc-home" type="button"><i class="ph ph-arrow-left" aria-hidden="true"></i>Haritaya dön</button>
+  <div class="fc-actions">
+    <button id="fcDetail" class="fc-detail" type="button"><i class="ph ph-info" aria-hidden="true"></i>Detay</button>
+    <button id="fcHome" class="fc-home" type="button"><i class="ph ph-arrow-left" aria-hidden="true"></i>Haritaya dön</button>
+  </div>
+</div>
+
+<!-- ============ MEKAN DETAY SHEET (bilgi odaklı) ============ -->
+<div id="vddim"></div>
+<div id="vdsheet" aria-hidden="true" role="dialog" aria-label="Mekan detayı">
+  <div class="vd-top">
+    <span class="vd-kicker">Mekan</span>
+    <button id="vdClose" type="button" aria-label="Kapat"><i class="ph ph-x" aria-hidden="true"></i></button>
+  </div>
+  <div id="vdBody">
+    <div class="vd-hero"><img id="vdHero" alt="" loading="lazy" decoding="async"></div>
+    <h2 id="vdName"></h2>
+    <div id="vdCat" class="vd-cat"></div>
+    <div id="vdChips"></div>
+    <p id="vdDesc" class="vd-desc"></p>
+    <div id="vdInfo" class="vd-info"></div>
+    <div id="vdHours"></div>
+    <div id="vdFeat"></div>
+    <button id="vdMenu" class="vd-menu" type="button"><i class="ph ph-fork-knife" aria-hidden="true"></i>Menüyü Gör</button>
+  </div>
+  <div class="vd-cta">
+    <button id="vdShow" class="vd-btn-2" type="button"><i class="ph ph-map-trifold" aria-hidden="true"></i>Haritada göster</button>
+    <button id="vdHome" class="vd-btn-1" type="button"><i class="ph ph-arrow-left" aria-hidden="true"></i>Haritaya dön</button>
+  </div>
+</div>
+
+<!-- ============ MENÜ / ÜRÜN LİSTESİ SHEET (bilgi amaçlı) ============ -->
+<div id="mndim"></div>
+<div id="mnsheet" aria-hidden="true" role="dialog" aria-label="Menü">
+  <div class="mn-top">
+    <div class="mn-titlewrap">
+      <h2 id="mnName"></h2>
+      <p class="mn-sub">Menü · Ürün Listesi</p>
+    </div>
+    <button id="mnClose" type="button" aria-label="Kapat"><i class="ph ph-x" aria-hidden="true"></i></button>
+  </div>
+  <div class="mn-meta">
+    <span id="mnChip" class="mn-chip"></span>
+    <span id="mnDesc" class="mn-desc"></span>
+  </div>
+  <div class="mn-tabs" id="mnTabs"></div>
+  <div id="mnBody"></div>
+  <div class="mn-foot">
+    <button id="mnBack" class="mn-back" type="button"><i class="ph ph-arrow-left" aria-hidden="true"></i>Mekan detayına dön</button>
+  </div>
 </div>
 
 <script>
@@ -4927,8 +5110,10 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeEvents(); });
    Detay ekranı DEĞİL; yalnız focus state helper. Kamera/uçuş koduna dokunmaz; mevcut
    __ALGE_FLY.goHome() köprüsünü güvenli kullanır. Diğer ekranlara dokunmaz (fc* öneki). */
 const fcEl=document.getElementById('fccard');
+let fcVenue=-1, fcSource='';
 function openFocusCard(i, source){
   const v=VENUES[i]; if(!v) return;
+  fcVenue=i; fcSource=source||'';
   document.getElementById('fcThumb').src=vThumb(i);
   document.getElementById('fcSource').textContent=source||'';
   document.getElementById('fcName').textContent=v.name;
@@ -4961,6 +5146,153 @@ function focusGoHome(){
 }
 document.getElementById('fcHome').addEventListener('click',focusGoHome);
 document.getElementById('fcClose').addEventListener('click',focusGoHome);   // kapat = güvenli geri dönüş (stuck focus bırakmaz)
+document.getElementById('fcDetail').addEventListener('click',()=>{ if(fcVenue>=0) openVenueDetail(fcVenue); });
+
+/* ================= MEKAN DETAY SHEET (bilgi odaklı) =================
+   Veri: VENUES. Focus mini panel -> Detay. Menü/rating/sepet/yol tarifi yok.
+   Kamera/uçuş koduna dokunmaz; mevcut köprüleri güvenli kullanır. Diğer ekranlara dokunmaz (vd* öneki). */
+const vdEl=document.getElementById('vdsheet');
+const vdDim=document.getElementById('vddim');
+let vdVenue=-1;
+function vdStatus(v){ const ok=(v.tags||[]).find(t=>t[1]==='ok'); return ok?ok[0]:'Bugün açık'; }
+function openVenueDetail(i){
+  const v=VENUES[i]; if(!v) return;
+  vdVenue=i;
+  document.getElementById('vdHero').src=vThumb(i);
+  document.getElementById('vdName').textContent=v.name;
+  document.getElementById('vdCat').textContent=v.cat||'';
+  document.getElementById('vdChips').innerHTML=vChipsHTML(v);
+  document.getElementById('vdDesc').textContent=v.desc||v.desc2||'';
+  document.getElementById('vdInfo').innerHTML=
+    '<div class="vd-tile"><i class="ph ph-map-pin" aria-hidden="true"></i><span>Konum</span><b>Beach Park</b></div>'+
+    '<div class="vd-tile"><i class="ph ph-tag" aria-hidden="true"></i><span>Kategori</span><b>'+(v.cat||'—')+'</b></div>'+
+    '<div class="vd-tile"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Durum</span><b>'+vdStatus(v)+'</b></div>';
+  document.getElementById('vdHours').innerHTML = v.hours
+    ? '<div class="vd-row"><i class="ph ph-clock" aria-hidden="true"></i><div><span>Çalışma saatleri</span><b>'+v.hours+'</b></div></div>'
+    : '';
+  let feat='';
+  if(v.feat) feat+='<div class="vd-feat-card"><img src="'+v.feat.img+'" alt="" loading="lazy" decoding="async">'+
+    '<div class="vd-feat-info"><span class="vd-feat-label">Öne çıkan ürün</span>'+
+    '<div class="vd-feat-name">'+v.feat.name+'</div><div class="vd-feat-price">'+v.feat.price+'</div>'+
+    '<p>'+(v.feat.desc||'')+'</p></div></div>';
+  if(v.camp) feat+='<div class="vd-row"><i class="ph ph-ticket" aria-hidden="true"></i><div><span>Kampanya</span><b>'+v.camp+'</b></div></div>';
+  document.getElementById('vdFeat').innerHTML=feat;
+  closeFocusCard();                          // mini panel gizlenir
+  document.getElementById('vdBody').scrollTop=0;
+  vdDim.classList.add('on');
+  vdEl.classList.add('open'); vdEl.setAttribute('aria-hidden','false');
+}
+function closeVenueDetail(reShowFocus){
+  if(!vdEl.classList.contains('open')) return;
+  vdEl.classList.remove('open'); vdEl.setAttribute('aria-hidden','true');
+  vdDim.classList.remove('on');
+  if(reShowFocus && vdVenue>=0) openFocusCard(vdVenue, fcSource);   // map hâlâ focus'ta; mini panel geri gelir
+}
+document.getElementById('vdClose').addEventListener('click',()=>closeVenueDetail(true));
+vdDim.addEventListener('click',()=>closeVenueDetail(true));
+document.getElementById('vdShow').addEventListener('click',()=>closeVenueDetail(true));         // Haritada göster: focus'lu haritayı + mini paneli göster (zaten odakta)
+document.getElementById('vdHome').addEventListener('click',()=>{ closeVenueDetail(false); focusGoHome(); });  // Haritaya dön: shell'e
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && vdEl.classList.contains('open') && !mnEl.classList.contains('open')) closeVenueDetail(true); });
+
+/* ================= MENÜ / ÜRÜN LİSTESİ SHEET (bilgi amaçlı) =================
+   +/sepet/sipariş/satın al YOK. Veri: minimal demo menü inline (VENUES feat/kategori temelli).
+   Mekan Detay -> Menü; kapanınca Detay'a döner (item 9). Diğer ekranlara dokunmaz (mn* öneki). */
+const MENU_TABS=[{k:'featured',l:'Öne Çıkanlar'},{k:'drinks',l:'İçecekler'},{k:'desserts',l:'Tatlılar'},{k:'mains',l:'Ana Ürünler'}];
+const MENU_DATA={
+  0:{ // Shakespeare Coffee & Bistro
+    featured:[
+      {name:'Chicken Fingers', desc:'Çıtır kaplamalı parmak tavuk, baharatlı patates ve ballı hardal sos ile.', price:'₺479,00', tag:'Öne çıkan'},
+      {name:'Serpme Kahvaltı', desc:'Zengin içerikli iki kişilik serpme kahvaltı tabağı.', price:'₺520,00', tag:'Kahvaltı'}
+    ],
+    drinks:[
+      {name:'Filtre Kahve', desc:'Günün çekirdeğinden taze demleme.', price:'₺95,00', tag:''},
+      {name:'Latte', desc:'Espresso ve buharla ısıtılmış süt.', price:'₺115,00', tag:''}
+    ],
+    desserts:[
+      {name:'San Sebastian Cheesecake', desc:'Yoğun kıvamlı, hafif yanık üzeri.', price:'₺165,00', tag:'Tatlı'}
+    ],
+    mains:[
+      {name:'Smash Burger', desc:'İnce kıyma köfte, cheddar ve özel sos.', price:'₺349,00', tag:''},
+      {name:'Penne Arrabiata', desc:'Acılı domates soslu makarna.', price:'₺265,00', tag:''}
+    ]
+  },
+  1:{ // Mado
+    featured:[
+      {name:'Maraş Dondurması', desc:'Keçi sütlü geleneksel dövme dondurma.', price:'₺140,00', tag:'Öne çıkan'}
+    ],
+    drinks:[
+      {name:'Türk Kahvesi', desc:'Közde pişmiş geleneksel sunum.', price:'₺85,00', tag:''},
+      {name:'Salep', desc:'Tarçın ile servis edilen sıcak içecek.', price:'₺95,00', tag:''}
+    ],
+    desserts:[
+      {name:'Künefe', desc:'Antep fıstıklı, tel kadayıf ve peynir.', price:'₺195,00', tag:'Öne çıkan'},
+      {name:'Kazandibi', desc:'Geleneksel sütlü tatlı.', price:'₺120,00', tag:''}
+    ],
+    mains:[
+      {name:'Serpme Kahvaltı', desc:'Deniz kenarında zengin kahvaltı.', price:'₺480,00', tag:''}
+    ]
+  },
+  2:{ // Hamlet Market
+    featured:[
+      {name:'Su + Atıştırmalık İkilisi', desc:'Plaj günü için pratik kombin.', price:'₺75,00', tag:'Kampanya'}
+    ],
+    drinks:[
+      {name:'Soğuk İçecekler', desc:'Su, soda, meşrubat ve enerji içecekleri.', price:'', tag:''},
+      {name:'Taze Limonata', desc:'Soğuk servis, günlük hazırlanır.', price:'₺60,00', tag:''}
+    ],
+    desserts:[
+      {name:'Paketli Dondurma', desc:'Çeşitli markalar, dondurucu reyonunda.', price:'', tag:''}
+    ],
+    mains:[
+      {name:'Plaj Ürünleri', desc:'Güneş kremi, şişme, havlu ve temel ihtiyaçlar.', price:'', tag:'Plaj'},
+      {name:'Temel Gıda', desc:'Atıştırmalık ve pratik gıda ürünleri.', price:'', tag:''}
+    ]
+  }
+};
+const mnEl=document.getElementById('mnsheet');
+const mnDim=document.getElementById('mndim');
+const mnBody=document.getElementById('mnBody');
+const mnTabs=document.getElementById('mnTabs');
+let mnVenue=-1, mnActiveTab='featured';
+MENU_TABS.forEach(t=>{
+  const b=document.createElement('button');
+  b.className='mn-tab'; b.dataset.mnTab=t.k; b.textContent=t.l;
+  b.addEventListener('click',()=>{ mnActiveTab=t.k; syncMnTabs(); renderMenu(); mnBody.scrollTop=0; });
+  mnTabs.appendChild(b);
+});
+function syncMnTabs(){ mnTabs.querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.mnTab===mnActiveTab)); }
+function mnItemHTML(p){
+  const tag=p.tag?'<span class="mn-tag">'+p.tag+'</span>':'';
+  const price=p.price?'<span class="mn-price">'+p.price+'</span>':'';
+  return '<div class="mn-item"><div class="mn-item-mid"><div class="mn-item-top"><span class="mn-name">'+p.name+'</span>'+tag+'</div><p class="mn-item-desc">'+(p.desc||'')+'</p></div>'+price+'</div>';
+}
+function renderMenu(){
+  const m=MENU_DATA[mnVenue]||{};
+  const items=m[mnActiveTab]||[];
+  mnBody.innerHTML = items.length
+    ? '<div class="mn-list">'+items.map(mnItemHTML).join('')+'</div>'
+    : '<div class="ss-empty">Bu bölümde ürün yok</div>';
+}
+function openVenueMenu(i){
+  const v=VENUES[i]; if(!v) return;
+  mnVenue=i; mnActiveTab='featured'; syncMnTabs();
+  document.getElementById('mnName').textContent=v.name;
+  document.getElementById('mnChip').textContent=v.cat||'';
+  document.getElementById('mnDesc').textContent=v.desc2||v.desc||'';
+  renderMenu(); mnBody.scrollTop=0;
+  mnDim.classList.add('on');
+  mnEl.classList.add('open'); mnEl.setAttribute('aria-hidden','false');
+}
+function closeVenueMenu(){
+  if(!mnEl.classList.contains('open')) return;
+  mnEl.classList.remove('open'); mnEl.setAttribute('aria-hidden','true');
+  mnDim.classList.remove('on');   // detay sheet arkada açık kalır -> görünür olur (item 9)
+}
+document.getElementById('vdMenu').addEventListener('click',()=>{ if(vdVenue>=0) openVenueMenu(vdVenue); });
+document.getElementById('mnClose').addEventListener('click',closeVenueMenu);
+document.getElementById('mnBack').addEventListener('click',closeVenueMenu);
+mnDim.addEventListener('click',closeVenueMenu);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && mnEl.classList.contains('open')) closeVenueMenu(); });
 
 idleAnchor();   // açılışta yay salınımı başlasın
 
