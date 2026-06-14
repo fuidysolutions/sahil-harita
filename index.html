@@ -4532,6 +4532,8 @@ const __isMobilePR=matchMedia('(max-width:768px)').matches;
 renderer.setPixelRatio(Math.min(devicePixelRatio||1, __isMobilePR?1.25:1.5));   // Sprint 8.6: perf
 window.__ALGE_PERF&&__ALGE_PERF.mark('webgl-init-end');
 renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+// Sprint 13: ışık + zemin statik -> gölgeyi her frame değil, yalnız gerektiğinde hesapla (mobil GPU)
+renderer.shadowMap.autoUpdate=false; renderer.shadowMap.needsUpdate=true;   // ilk frame için tek gölge render'ı
 
 const scene=new THREE.Scene();
 // gökyüzü degradesi + sis: kenarlar buluta erisin
@@ -4646,6 +4648,7 @@ hmImg.onload=()=>{
     baseH[i]=d[(py*cv.width+px)*4]/255;
   }
   applyHeight(2.0);   // harita 1/2 kodlu: bina .50 / kabin .40 / ağaç .70 / tepe 1.0 (çarpan 2 = normal)
+  renderer.shadowMap.needsUpdate=true;   // kabartma uygulandı: gölgeyi bir kez relief'le güncelle, sonra dondur
   document.getElementById('load').style.display='none';
   __ALGE_PERF.mark('first-map-visible');
   setTimeout(()=>{ __ALGE_PERF.mark('first-interaction-ready'); __ALGE_PERF.summary(); }, 600);
