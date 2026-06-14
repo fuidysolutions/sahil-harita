@@ -7,7 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<link rel="preload" as="image" href="/assets/map/hm.png">
+<link rel="preload" as="image" href="/assets/map/tex-2560.jpg" media="(max-width:768px)">
+<script defer src="https://unpkg.com/@phosphor-icons/web"></script>
 <script>
 /* ALGE perf işaretleri (Sprint 8.6) — ayrıntı yalnız ?debugPerf=1 ile */
 window.__ALGE_PERF={t0:performance.now(),m:{},dbg:/[?&]debugPerf=1/.test(location.search),
@@ -44,7 +46,12 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #errband{display:none;position:fixed;left:0;right:0;top:0;z-index:99;background:#c0392b;color:#fff;
     font-size:11px;padding:6px 10px;font-family:ui-monospace,monospace;word-break:break-all;}
   #c{position:fixed;inset:0;display:block;}
-  #load{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:#9fb0c3;font-size:14px;z-index:20;background:#0b0e13;}
+  /* shell-first: küçük, non-blocking yükleme göstergesi (UI'ı kapatmaz) */
+  #load{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:6;
+    display:flex;align-items:center;gap:8px;pointer-events:none;
+    background:rgba(255,255,255,.9);border:1px solid var(--border-soft);border-radius:var(--radius-pill);
+    padding:9px 17px;color:#5a6f82;font-size:12.5px;font-weight:500;box-shadow:var(--shadow-card);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
 
 
   /* ===== AlgeGo SHELL — tek responsive kabuk (map üstü hafif UI katmanı) ===== */
@@ -654,7 +661,7 @@ window.addEventListener('error',function(e){
   if(b){b.style.display='block';b.textContent='HATA: '+(e.message||e.type)+(e.filename?' @'+e.lineno:'');}
 });
 </script>
-<div id="load">Kabartma hesaplanıyor…</div>
+<div id="load">Harita yükleniyor…</div>
 <canvas id="c"></canvas>
 <div id="vig"></div>
 <div id="flash"></div>
@@ -4653,23 +4660,7 @@ function applyHeight(scale){
 }
 
 const LOGO_SHX="/assets/posters/logo-shx.png";
-const DISH_CF="/assets/posters/dish-cf.png";
-const AD01="/assets/posters/ad01.jpg";
-const AD02="/assets/posters/ad02.jpg";
-const AD03="/assets/posters/ad03.jpg";
-const AD04="/assets/posters/ad04.jpg";
-const AD05="/assets/posters/ad05.jpg";
-const AD06="/assets/posters/ad06.jpg";
-const AD07="/assets/posters/ad07.jpg";
-const AD08="/assets/posters/ad08.jpg";
-const AD09="/assets/posters/ad09.jpg";
-const AD10="/assets/posters/ad10.jpg";
-const AD11="/assets/posters/ad11.jpg";
-const AD12="/assets/posters/ad12.jpg";
-const AD13="/assets/posters/ad13.jpg";
-const AD14="/assets/posters/ad14.jpg";
-const AD_POP="/assets/posters/ad-pop.jpg";
-const ADS=[AD01,AD02,AD03,AD04,AD05,AD06,AD07,AD08,AD09,AD10,AD11,AD12,AD13,AD14];
+const DISH_CF="/assets/posters/dish-cf.webp";
 /* ================= UÇUŞ SİSTEMİ ================= */
 /* Mekanlar: u,v = görsel üzerinde 0–1 oranlar (işaretleme aracı formatı)
    rating/reviews ÖRNEK veridir — gerçek değerlerle güncellenecek */
