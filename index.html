@@ -484,6 +484,13 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
     opacity:0;pointer-events:none;
     transition:opacity .28s cubic-bezier(.22,1,.36,1),transform .28s cubic-bezier(.22,1,.36,1);}
   #vdsheet.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+  /* from-map: uçuş sonu blur anında harita merkezinden büyüyerek gelme (Sprint Visual-2 #2) */
+  #vdsheet.open.from-map{transform-origin:center center;
+    animation:vdFromMap .52s cubic-bezier(.22,1,.36,1);}
+  @keyframes vdFromMap{
+    0%{opacity:0;transform:translateX(-50%) translateY(7%) scale(.46);}
+    55%{opacity:1;}
+    100%{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}}
 
   .vd-top{display:flex;align-items:center;justify-content:space-between;padding:13px 16px 6px;flex:0 0 auto;}
   .vd-kicker{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#90a0b0;}
@@ -927,7 +934,7 @@ window.addEventListener('error',function(e){
     <button id="vdRoute" class="vd-menu" type="button"><i class="ph ph-navigation-arrow" aria-hidden="true"></i>Nasıl giderim</button>
   </div>
   <div class="vd-cta">
-    <button id="vdShow" class="vd-btn-2" type="button"><i class="ph ph-map-trifold" aria-hidden="true"></i>Haritada göster</button>
+    <button id="vdShow" class="vd-btn-2" type="button"><i class="ph ph-house" aria-hidden="true"></i>Anasayfaya dön</button>
     <button id="vdHome" class="vd-btn-1" type="button"><i class="ph ph-arrow-left" aria-hidden="true"></i>Haritaya dön</button>
   </div>
 </div>
@@ -4937,6 +4944,11 @@ function dreamWake(){
   glow.classList.remove('on');
   flash.classList.add('pulse');
   setTimeout(()=>flash.classList.remove('pulse'),400);
+  // Sprint Visual-2 #2: blur başladığı an mekana doğrudan detay sheet'i (harita merkezinden büyüyerek)
+  if(pendingDetail>=0 && typeof openVenueDetail==='function'){
+    const i=pendingDetail; pendingDetail=-1;
+    openVenueDetail(i, true);
+  }
 }
 function closeCard(){
   cardSeq++;   // bekleyen kart açılışlarını geçersiz kıl
@@ -5352,6 +5364,7 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeEvents(); });
    __ALGE_FLY.goHome() köprüsünü güvenli kullanır. Diğer ekranlara dokunmaz (fc* öneki). */
 const fcEl=document.getElementById('fccard');
 let fcVenue=-1, fcSource='';
+let pendingDetail=-1, pendingDetailSource='';   // Sprint Visual-2: uçuş sonu blur anında açılacak detay hedefi
 function openFocusCard(i, source){
   const v=VENUES[i]; if(!v) return;
   fcVenue=i; fcSource=source||'';
@@ -5366,11 +5379,13 @@ function openFocusCard(i, source){
 function closeFocusCard(){
   fcEl.classList.remove('open'); fcEl.setAttribute('aria-hidden','true');
 }
-/* 4 ekranın "İncele" ortak yolu: mevcut uçuşu tetikle + mini paneli aç */
+/* Mekan seçim ortak yolu: UI kapanır (setBar/body.flying) -> uçuş -> uçuş sonu blur anında DOĞRUDAN detay.
+   Mini focus panel ARTIK AÇILMAZ (Sprint Visual-2 #1). openFocusCard/closeFocusCard pasif kalır. */
 function flyAndFocus(i, source){
+  pendingDetail=i; pendingDetailSource=source||'';
+  closeFocusCard();   // güvenlik: olası açık panel kapalı
   if(window.__ALGE_FLY && typeof window.__ALGE_FLY.toVenue==='function') window.__ALGE_FLY.toVenue(VENUES[i]);
   else flyToVenue(i);
-  openFocusCard(i, source);
 }
 /* Haritaya dön: mevcut goHome köprüsü (focus'ta çalışır; fly/return'de no-op).
    Kullanıcı uçuş bitmeden basarsa, focus'a varınca dönsün diye kısa süre tekrar denenir. */
@@ -5398,7 +5413,7 @@ const vdEl=document.getElementById('vdsheet');
 const vdDim=document.getElementById('vddim');
 let vdVenue=-1;
 function vdStatus(v){ const ok=(v.tags||[]).find(t=>t[1]==='ok'); return ok?ok[0]:'Bugün açık'; }
-function openVenueDetail(i){
+function openVenueDetail(i, fromMap){
   const v=VENUES[i]; if(!v) return;
   vdVenue=i;
   document.getElementById('vdHero').src=vThumb(i);
@@ -5420,27 +5435,41 @@ function openVenueDetail(i){
     '<p>'+(v.feat.desc||'')+'</p></div></div>';
   if(v.camp) feat+='<div class="vd-row"><i class="ph ph-ticket" aria-hidden="true"></i><div><span>Kampanya</span><b>'+v.camp+'</b></div></div>';
   document.getElementById('vdFeat').innerHTML=feat;
-  closeFocusCard();                          // mini panel gizlenir
+  closeFocusCard();                          // mini panel pasif (akışta açılmıyor)
   document.getElementById('vdBody').scrollTop=0;
   vdDim.classList.add('on');
+  // from-map: harita merkezinden büyüyerek gelme animasyonu (uçuş sonu blur anında)
+  vdEl.classList.remove('from-map');
+  if(fromMap){
+    vdEl.classList.add('from-map');
+    setTimeout(()=>vdEl.classList.remove('from-map'), 560);   // animasyon bitince normal state'e bırak
+  }
   vdEl.classList.add('open'); vdEl.setAttribute('aria-hidden','false');
 }
 function closeVenueDetail(reShowFocus){
   if(!vdEl.classList.contains('open')) return;
-  vdEl.classList.remove('open'); vdEl.setAttribute('aria-hidden','true');
+  vdEl.classList.remove('open','from-map'); vdEl.setAttribute('aria-hidden','true');
   vdDim.classList.remove('on');
   if(reShowFocus && vdVenue>=0) openFocusCard(vdVenue, fcSource);   // map hâlâ focus'ta; mini panel geri gelir
 }
-document.getElementById('vdClose').addEventListener('click',()=>closeVenueDetail(true));
-vdDim.addEventListener('click',()=>closeVenueDetail(true));
-document.getElementById('vdShow').addEventListener('click',()=>closeVenueDetail(true));         // Haritada göster: focus'lu haritayı + mini paneli göster (zaten odakta)
-document.getElementById('vdHome').addEventListener('click',()=>{ closeVenueDetail(false); focusGoHome(); });  // Haritaya dön: shell'e
-document.getElementById('vdRoute').addEventListener('click',()=>{   // Nasıl giderim: Google Maps yürüyüş rotası (eski davranış; v.maps yoksa ad+kompleks)
+/* Sprint Visual-2 #3: detay kapanışının tek yolu anasayfaya/haritaya dönüş (mini panel geri gelmez) */
+function detailToHome(){ closeVenueDetail(false); focusGoHome(); }
+document.getElementById('vdClose').addEventListener('click',detailToHome);
+vdDim.addEventListener('click',detailToHome);
+document.getElementById('vdShow').addEventListener('click',detailToHome);   // sol alt: "Anasayfaya dön"
+document.getElementById('vdHome').addEventListener('click',detailToHome);   // sağ alt: "Haritaya dön" (korunur)
+/* Sprint Visual-2 #4: "Nasıl giderim" — tüm mekanlar Beach Park (Konyaaltı/Antalya) bağlamına yönlenir.
+   Gerçek lat/lng veride yok; dış şube riskini azaltmak için mekan adı + sabit Beach Park bağlamı kullanılır. */
+function venueRouteDest(v){
+  const name=((v&&v.name)||'').trim();
+  return name ? (name+' Beach Park Konyaaltı Antalya') : 'Beach Park Konyaaltı Antalya';
+}
+document.getElementById('vdRoute').addEventListener('click',()=>{
   const v=VENUES[vdVenue]; if(!v) return;
-  const dest=encodeURIComponent(v.maps || (v.name+' Sahil Yaşam Merkezi Antalya'));
+  const dest=encodeURIComponent(venueRouteDest(v));
   window.open('https://www.google.com/maps/dir/?api=1&destination='+dest+'&travelmode=walking','_blank','noopener');
 });
-document.addEventListener('keydown',e=>{ if(e.key==='Escape' && vdEl.classList.contains('open') && !mnEl.classList.contains('open')) closeVenueDetail(true); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && vdEl.classList.contains('open') && !mnEl.classList.contains('open')) detailToHome(); });
 
 /* ================= MENÜ / ÜRÜN LİSTESİ SHEET (bilgi amaçlı) =================
    Yalnız bilgi gösterimi. Veri: minimal demo menü inline (VENUES feat/kategori temelli).
