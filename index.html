@@ -84,24 +84,27 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #mtop .mtop-tune i{font-size:18px;line-height:1;}
   #mtop .mtop-tune:hover{color:var(--logo-blue);border-color:#bfe3f5;}
 
-  /* ===== KATEGORİ RAİL — sol dikey, renkli mavi kartlar (mobil öncelikli) ===== */
-  #mchips{position:fixed;left:calc(12px + env(safe-area-inset-left));z-index:16;
-    top:calc(126px + env(safe-area-inset-top));
-    display:flex;flex-direction:column;align-items:stretch;gap:9px;
-    width:max-content;max-width:48vw;}
-  #mchips button{position:relative;display:flex;align-items:center;gap:10px;width:100%;
-    padding:11px 15px;border-radius:15px;font-size:13px;font-weight:600;font-family:inherit;
-    border:1px solid rgba(255,255,255,.28);
-    background:linear-gradient(135deg,#13a7e6,#0086c4);color:#fff;
-    white-space:nowrap;cursor:pointer;box-shadow:0 10px 22px rgba(0,134,196,.30);
+  /* ===== KATEGORİ RAİL — sol dikey frosted tile (ikon üstte mavi, etiket altta) — Anaekran1 referansı ===== */
+  #mchips{position:fixed;left:calc(13px + env(safe-area-inset-left));z-index:16;
+    top:calc(124px + env(safe-area-inset-top));
+    display:flex;flex-direction:column;align-items:flex-start;gap:11px;
+    width:max-content;max-width:46vw;}
+  #mchips button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:6px;width:66px;min-height:66px;padding:11px 6px 9px;
+    border-radius:19px;font-family:inherit;text-align:center;cursor:pointer;
+    border:1px solid rgba(255,255,255,.75);
+    background:rgba(255,255,255,.93);color:var(--navy);
+    box-shadow:0 10px 24px rgba(8,35,61,.14);
+    backdrop-filter:blur(12px) saturate(1.15);-webkit-backdrop-filter:blur(12px) saturate(1.15);
     transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s cubic-bezier(.22,1,.36,1),
-      filter .2s cubic-bezier(.22,1,.36,1);}
-  #mchips button:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(0,134,196,.36);}
-  #mchips button i{font-size:18px;line-height:1;flex:0 0 auto;}
-  /* aktif kategori: turuncu sol vurgu çubuğu + hafif parlama */
-  #mchips button.on{filter:saturate(1.08);box-shadow:0 14px 30px rgba(0,134,196,.40);}
-  #mchips button.on::before{content:'';position:absolute;left:0;top:9px;bottom:9px;width:4px;
-    border-radius:0 4px 4px 0;background:var(--orange);}
+      background .2s cubic-bezier(.22,1,.36,1),border-color .2s cubic-bezier(.22,1,.36,1);}
+  #mchips button:hover{transform:translateY(-1px);box-shadow:0 14px 30px rgba(8,35,61,.18);}
+  #mchips button i{font-size:23px;line-height:1;color:var(--logo-blue);}
+  #mchips button span{font-size:10px;font-weight:600;line-height:1.12;color:var(--navy);
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  /* aktif kategori: yumuşak mavi vurgu (premium, düz değil) */
+  #mchips button.on{background:rgba(0,152,216,.12);border-color:rgba(0,152,216,.45);
+    box-shadow:0 12px 28px rgba(0,134,196,.22);}
 
   /* ===== ÖNE ÇIKAN RAİL — alt yatay marquee (3 okunur turuncu kart) ===== */
   #msponsor{position:fixed;left:0;right:0;z-index:16;
@@ -718,7 +721,7 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
     /* kategori rail + öne çıkan: sol kolonda search altında (mobil sol-dikey rail'i override eder) */
     #mchips{left:32px;right:auto;top:148px;bottom:auto;transform:none;
       flex-direction:row;flex-wrap:wrap;width:min(46vw,520px);max-width:none;align-items:flex-start;}
-    #mchips button{width:auto;}
+    #mchips button{width:72px;}
     #msponsor{left:32px;right:auto;top:auto;bottom:104px;width:min(46vw,560px);
       -webkit-mask-image:none;mask-image:none;}
     .spon-track{animation:none;width:auto;flex-wrap:wrap;padding:0;}
@@ -4976,7 +4979,7 @@ const CHIPS=[
 const chipsEl=document.getElementById('mchips');
 CHIPS.forEach(c=>{
   const b=document.createElement('button');
-  b.innerHTML=`<i class="ph ${c.icon}" aria-hidden="true"></i>${c.l}`;
+  b.innerHTML=`<i class="ph ${c.icon}" aria-hidden="true"></i><span>${c.l}</span>`;
   b.dataset.k=c.k;
   b.addEventListener('click',()=>{
     chipsEl.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
