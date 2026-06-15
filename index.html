@@ -84,27 +84,55 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #mtop .mtop-tune i{font-size:18px;line-height:1;}
   #mtop .mtop-tune:hover{color:var(--logo-blue);border-color:#bfe3f5;}
 
-  /* ===== KATEGORİ RAİL — sol dikey frosted tile (ikon üstte mavi, etiket altta) — Anaekran1 referansı ===== */
-  #mchips{position:fixed;left:calc(13px + env(safe-area-inset-left));z-index:16;
-    top:calc(124px + env(safe-area-inset-top));
-    display:flex;flex-direction:column;align-items:flex-start;gap:11px;
-    width:max-content;max-width:46vw;}
-  #mchips button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:6px;width:66px;min-height:66px;padding:11px 6px 9px;
-    border-radius:19px;font-family:inherit;text-align:center;cursor:pointer;
-    border:1px solid rgba(255,255,255,.75);
-    background:rgba(255,255,255,.93);color:var(--navy);
-    box-shadow:0 10px 24px rgba(8,35,61,.14);
-    backdrop-filter:blur(12px) saturate(1.15);-webkit-backdrop-filter:blur(12px) saturate(1.15);
-    transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s cubic-bezier(.22,1,.36,1),
-      background .2s cubic-bezier(.22,1,.36,1),border-color .2s cubic-bezier(.22,1,.36,1);}
-  #mchips button:hover{transform:translateY(-1px);box-shadow:0 14px 30px rgba(8,35,61,.18);}
-  #mchips button i{font-size:23px;line-height:1;color:var(--logo-blue);}
-  #mchips button span{font-size:10px;font-weight:600;line-height:1.12;color:var(--navy);
-    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-  /* aktif kategori: yumuşak mavi vurgu (premium, düz değil) */
-  #mchips button.on{background:rgba(0,152,216,.12);border-color:rgba(0,152,216,.45);
-    box-shadow:0 12px 28px rgba(0,134,196,.22);}
+  /* ===== KATEGORİ POINT ACCORDION (Sprint Visual-6) — mobil: kapalıyken point, açıkken kartlar ===== */
+  /* kapalı çekirdek: orta-sol mini mavi cam pusula noktası */
+  #mcatpoint{position:fixed;left:calc(22px + env(safe-area-inset-left));z-index:17;
+    top:54vh;top:54svh;transform:translateY(-50%);
+    width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(255,255,255,.55);color:#fff;cursor:pointer;
+    background:linear-gradient(135deg,rgba(19,167,230,.92),rgba(0,134,196,.96));
+    box-shadow:0 12px 26px rgba(0,134,196,.34);
+    backdrop-filter:blur(10px) saturate(1.2);-webkit-backdrop-filter:blur(10px) saturate(1.2);
+    animation:catPulse 3.6s ease-in-out infinite;}
+  #mcatpoint i{font-size:24px;line-height:1;}
+  #mcatpoint::after{content:'';position:absolute;top:6px;right:6px;width:8px;height:8px;border-radius:50%;
+    background:var(--orange);box-shadow:0 0 0 2px rgba(255,255,255,.85);}
+  #mcatpoint:hover{transform:translateY(-50%) scale(1.04);}
+  #mcatdock.open #mcatpoint{animation:none;box-shadow:0 12px 30px rgba(0,134,196,.5);}
+  @keyframes catPulse{0%,100%{box-shadow:0 12px 26px rgba(0,134,196,.32);}
+    50%{box-shadow:0 14px 32px rgba(0,134,196,.5);}}
+
+  /* açık kartlar: orta-sol alana doğru açılan mavi gradient kartlar */
+  #mchips{position:fixed;left:92px;z-index:16;
+    top:calc(54vh - 150px);top:calc(54svh - 150px);
+    display:flex;flex-direction:column;gap:14px;width:min(64vw,270px);transform:none;
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .2s ease,visibility .2s ease;}
+  #mcatdock.open #mchips{opacity:1;visibility:visible;pointer-events:auto;}
+  #mchips.wiggle{animation:catWiggle .5s ease-in-out;}
+  #mchips button{position:relative;display:flex;align-items:center;gap:12px;width:100%;height:60px;
+    padding:0 16px;border-radius:16px;font-family:inherit;cursor:pointer;text-align:left;
+    border:1px solid rgba(255,255,255,.28);
+    background:linear-gradient(135deg,#13a7e6,#0086c4);color:#fff;
+    box-shadow:0 12px 26px rgba(0,134,196,.32);
+    backdrop-filter:blur(8px) saturate(1.15);-webkit-backdrop-filter:blur(8px) saturate(1.15);
+    opacity:0;transform:translateX(-20px) scale(.82);
+    transition:opacity .34s cubic-bezier(.22,1,.36,1),transform .34s cubic-bezier(.22,1,.36,1),
+      box-shadow .2s cubic-bezier(.22,1,.36,1);}
+  #mcatdock.open #mchips button{opacity:1;transform:translateX(0) scale(1);}
+  #mcatdock.open #mchips button:nth-child(1){transition-delay:0s;}
+  #mcatdock.open #mchips button:nth-child(2){transition-delay:.06s;}
+  #mcatdock.open #mchips button:nth-child(3){transition-delay:.12s;}
+  #mcatdock.open #mchips button:nth-child(4){transition-delay:.18s;}
+  #mchips button i{font-size:21px;line-height:1;flex:0 0 auto;color:#fff;}
+  #mchips button span{font-size:13.5px;font-weight:600;line-height:1.1;color:#fff;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  /* turuncu aktif/accent çizgisi */
+  #mchips button.on::before{content:'';position:absolute;left:0;top:11px;bottom:11px;width:4px;
+    border-radius:0 4px 4px 0;background:var(--orange);}
+  #mchips button.on{box-shadow:0 14px 30px rgba(0,134,196,.42);}
+  @keyframes catWiggle{0%,100%{transform:translateX(0);}
+    25%{transform:translateX(2px);}50%{transform:translateX(-2px);}75%{transform:translateX(1px);}}
 
   /* ===== ÖNE ÇIKAN RAİL — alt yatay marquee (3 okunur turuncu kart) ===== */
   #msponsor{position:fixed;left:0;right:0;z-index:16;
@@ -154,7 +182,7 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #mbar button:hover{color:#41566b;}
   #mbar button.on{color:var(--logo-blue);background:rgba(0,152,216,.08);}
   /* uçuş/focus sırasında shell çekilir (harita + sinematik katmanlar görünür kalır) */
-  body.flying #mtop,body.flying #mchips,body.flying #msponsor,body.flying #mbar{display:none !important;}
+  body.flying #mtop,body.flying #mchips,body.flying #mcatpoint,body.flying #msponsor,body.flying #mbar{display:none !important;}
 
   /* ===== ARAMA SONUÇLARI SHEET (map üstü overlay) ===== */
   #ssdim{position:fixed;inset:0;z-index:24;background:rgba(8,35,61,.16);
@@ -719,9 +747,19 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
     #mtop{left:32px;right:auto;top:86px;transform:none;width:min(46vw,520px);}
 
     /* kategori rail + öne çıkan: sol kolonda search altında (mobil sol-dikey rail'i override eder) */
+    /* desktop: accordion KAPALI — point gizli, kategoriler her zaman görünür frosted tile (mobil-öncesi görünüm) */
+    #mcatpoint{display:none;}
     #mchips{left:32px;right:auto;top:148px;bottom:auto;transform:none;
-      flex-direction:row;flex-wrap:wrap;width:min(46vw,520px);max-width:none;align-items:flex-start;}
-    #mchips button{width:72px;}
+      flex-direction:row;flex-wrap:wrap;gap:11px;width:min(46vw,520px);max-width:none;align-items:flex-start;
+      opacity:1;visibility:visible;pointer-events:auto;}
+    #mchips button{flex-direction:column;align-items:center;justify-content:center;gap:6px;
+      width:72px;min-height:66px;height:auto;padding:11px 6px 9px;border-radius:19px;
+      background:rgba(255,255,255,.93);color:var(--navy);border:1px solid rgba(255,255,255,.75);
+      box-shadow:0 10px 24px rgba(8,35,61,.14);opacity:1;transform:none;}
+    #mchips button i{font-size:23px;color:var(--logo-blue);}
+    #mchips button span{font-size:10px;}
+    #mchips button.on{background:rgba(0,152,216,.12);border-color:rgba(0,152,216,.45);}
+    #mchips button.on::before{display:none;}
     #msponsor{left:32px;right:auto;top:auto;bottom:104px;width:min(46vw,560px);
       -webkit-mask-image:none;mask-image:none;}
     .spon-track{animation:none;width:auto;flex-wrap:wrap;padding:0;}
@@ -813,7 +851,10 @@ window.addEventListener('error',function(e){
   <span>Mekan, kampanya veya etkinlik ara</span>
   <button class="mtop-tune" type="button" tabindex="-1" aria-label="Filtrele"><i class="ph ph-sliders-horizontal" aria-hidden="true"></i></button>
 </div>
-<div id="mchips"></div>
+<div id="mcatdock">
+  <button id="mcatpoint" type="button" aria-label="Kategoriler" aria-expanded="false"><i class="ph ph-squares-four" aria-hidden="true"></i></button>
+  <div id="mchips" role="group" aria-label="Kategoriler"></div>
+</div>
 <div id="msponsor"></div>
 
 <nav id="mbar">
@@ -4984,10 +5025,43 @@ CHIPS.forEach(c=>{
   b.addEventListener('click',()=>{
     chipsEl.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
     b.classList.add('on');
+    catClose();           // accordion kapan
     openYerlerCat(c.k);   // #6: ilgili kategorideki mekanları Yerler sheet'inde listele
   });
   chipsEl.appendChild(b);
 });
+
+/* ===== Kategori point accordion kontrolü (Sprint Visual-6) ===== */
+const catDock=document.getElementById('mcatdock');
+const catPoint=document.getElementById('mcatpoint');
+const catIsMobile=()=>matchMedia('(max-width:1023px)').matches;
+function catOpen(){ if(catDock){ catDock.classList.add('open'); if(catPoint) catPoint.setAttribute('aria-expanded','true'); } }
+function catClose(){ if(catDock){ catDock.classList.remove('open'); } if(chipsEl) chipsEl.classList.remove('wiggle'); if(catPoint) catPoint.setAttribute('aria-expanded','false'); }
+function catToggle(){ (catDock&&catDock.classList.contains('open'))?catClose():catOpen(); }
+if(catPoint) catPoint.addEventListener('click',e=>{ e.stopPropagation(); catToggle(); });
+/* açıkken point/kart dışına (boş alan / harita) basınca kapan */
+document.addEventListener('pointerdown',e=>{
+  if(!catDock || !catDock.classList.contains('open')) return;
+  if(catDock.contains(e.target)) return;     // point veya kart içi -> kendi handler'ı yönetir
+  catClose();
+}, true);
+/* tanıtım: pop-up kapandıktan sonra session'da 1 kez aç -> titret -> kapan; manuel tık her zaman çalışır */
+function playCategoryIntro(){
+  if(sessionStorage.getItem('algeCategoryIntroPlayed')) return;
+  if(!catIsMobile()) return;                                  // yalnız mobil
+  if(cpopEl.classList.contains('on') || cpopAnyOverlayOpen()) return;  // pop-up/sheet/detay/uçuş varsa oynama
+  sessionStorage.setItem('algeCategoryIntroPlayed','1');
+  catOpen();
+  setTimeout(()=>{ chipsEl.classList.add('wiggle'); setTimeout(()=>chipsEl.classList.remove('wiggle'),600); }, 560);
+  setTimeout(()=>{ catClose(); }, 2400);                      // sonra tek point'e dön
+}
+function maybePlayCategoryIntro(delay){
+  setTimeout(()=>{
+    if(sessionStorage.getItem('algeCategoryIntroPlayed')) return;
+    if(cpopEl.classList.contains('on')) return;               // pop-up hâlâ açıksa: kapanınca tetiklenecek
+    playCategoryIntro();
+  }, delay||0);
+}
 /* alt bar + ana sheet karşılıklı dışlama: aynı anda yalnız tek ana sheet açık kalır */
 function setNavActive(v){ document.querySelectorAll('#mbar button').forEach(b=>b.classList.toggle('on', b.dataset.v===v)); }
 function closeMainSheets(){ closeSearch(); closeYerler(); closeOffers(); closeEvents(); closeServices(); }
@@ -5647,10 +5721,12 @@ function showCampaignPopup(){
 function closeCampaignPopup(){
   cpopEl.classList.remove('on'); cpopEl.setAttribute('aria-hidden','true');
   cpopDim.classList.remove('on');
+  maybePlayCategoryIntro(480);   // Sprint Visual-6: pop-up kapanınca kategori intro (uçuş/sheet açıksa guard skip eder)
 }
 function scheduleCampaignPopup(){
-  if(sessionStorage.getItem('algeCampaignPopupShown')) return;
+  if(sessionStorage.getItem('algeCampaignPopupShown')){ maybePlayCategoryIntro(900); return; }  // pop-up gösterilmiyor -> kısa gecikmeyle intro
   setTimeout(showCampaignPopup, 1500);
+  maybePlayCategoryIntro(3200);  // güvenli fallback (pop-up açıksa guard skip; kapanınca closeCampaignPopup tetikler)
 }
 document.getElementById('cpopClose').addEventListener('click',e=>{ e.stopPropagation(); closeCampaignPopup(); });  // sadece kapat
 cpopDim.addEventListener('click',closeCampaignPopup);
