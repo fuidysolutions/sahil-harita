@@ -666,44 +666,33 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #glow.on{opacity:1;}
 
 
-  /* ===== KAMPANYA POP-UP (görselli reklam; fly-in; map'i boğmaz) ===== */
-  #cpopdim{position:fixed;inset:0;z-index:38;background:rgba(8,35,61,.32);
-    opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(.22,1,.36,1);}
+  /* ===== KAMPANYA POP-UP (Netlify eski referansı: ORTADA + dim scrim + SADECE görsel kreatifi + X) =====
+     Referans (#popad): ekran ortası, scrim rgba(5,12,18,.45), 560×700 görsel, transform .55s cubic-bezier(.2,.85,.3,1.06) overshoot pop-in */
+  #cpopdim{position:fixed;inset:0;z-index:99;background:rgba(5,12,18,.45);
+    opacity:0;pointer-events:none;transition:opacity .4s cubic-bezier(.22,1,.36,1);}
   #cpopdim.on{opacity:1;pointer-events:auto;}
-  #cpop{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));z-index:39;
-    width:min(calc(100% - 32px), 340px);
-    background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius-lg);overflow:hidden;
-    box-shadow:0 30px 80px rgba(8,35,61,.42);
+  /* ekran ortasında; container'da kart/çerçeve YOK — yalnız görsel + kapatma X */
+  #cpop{position:fixed;left:50%;top:50%;z-index:100;
+    width:min(calc(100% - 44px), 320px);
     opacity:0;pointer-events:none;
-    transform:translate(-50%,48px) scale(.92);
-    transition:opacity .4s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.2,.85,.3,1.06);}
-  #cpop.on{opacity:1;pointer-events:auto;transform:translate(-50%,0) scale(1);}
-  #cpopClose{position:absolute;top:10px;right:10px;z-index:2;width:32px;height:32px;border-radius:50%;
-    background:rgba(8,35,61,.55);color:#fff;border:1px solid rgba(255,255,255,.5);
+    transform:translate(-50%,-50%) scale(.82);
+    transition:opacity .4s ease,transform .55s cubic-bezier(.2,.85,.3,1.06);}
+  #cpop.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1);}
+  #cpopClose{position:absolute;top:8px;right:8px;z-index:2;width:32px;height:32px;border-radius:50%;
+    background:rgba(8,35,61,.6);color:#fff;border:1px solid rgba(255,255,255,.55);
     display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;
+    box-shadow:0 6px 16px rgba(8,35,61,.4);
     backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
-  .cpop-media{position:relative;}
-  .cpop-media img{display:block;width:100%;height:188px;object-fit:cover;background:#eef2f5;}
-  .cpop-badge{position:absolute;left:12px;top:12px;display:inline-flex;align-items:center;gap:5px;
-    background:var(--orange);color:#fff;border-radius:var(--radius-pill);padding:5px 11px;font-size:11px;font-weight:700;
-    box-shadow:0 6px 16px rgba(255,122,26,.4);}
-  .cpop-badge i{font-size:14px;}
-  .cpop-body{padding:14px 16px 16px;}
-  .cpop-title{font-size:18px;font-weight:600;color:var(--navy);line-height:1.15;}
-  .cpop-line{font-size:13px;line-height:1.4;color:#5a6f82;margin:5px 0 12px;
-    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-  .cpop-go{display:inline-flex;align-items:center;justify-content:center;gap:7px;width:100%;border:none;
-    background:var(--navy);color:#fff;border-radius:var(--radius-pill);padding:12px 16px;
-    font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer;box-shadow:0 10px 24px rgba(8,35,61,.25);
-    transition:background .2s cubic-bezier(.22,1,.36,1);}
-  .cpop-go i{font-size:16px;}
-  .cpop-go:hover{background:#0b2c4d;}
+  /* görselin tamamı tıklanabilir buton; metin/CTA yok */
+  .cpop-media{display:block;position:relative;width:100%;margin:0;padding:0;border:none;background:none;
+    cursor:pointer;border-radius:20px;overflow:hidden;font:inherit;
+    box-shadow:0 30px 80px rgba(5,12,18,.5);-webkit-tap-highlight-color:transparent;}
+  .cpop-media img{display:block;width:100%;height:auto;background:#eef2f5;}
   body.flying #cpop,body.flying #cpopdim{display:none !important;}
-  /* desktop: sağ-alt fly-in reklam kartı; map görünür kalır */
-  @media (min-width:1024px){
-    #cpop{left:auto;right:32px;bottom:32px;width:360px;transform:translate(0,48px) scale(.92);}
-    #cpop.on{transform:translate(0,0) scale(1);}
-    #cpopdim{background:rgba(8,35,61,.12);}
+  /* hareket hassasiyeti: scale/pop kapalı, yalnız yumuşak fade */
+  @media (prefers-reduced-motion: reduce){
+    #cpop{transition:opacity .3s ease;transform:translate(-50%,-50%) scale(1);}
+    #cpopdim{transition:opacity .3s ease;}
   }
 
   /* ===== DESKTOP (≥1024px): map üstü web-site yerleşimi — mobil kuralları yalnız override eder ===== */
@@ -978,15 +967,9 @@ window.addEventListener('error',function(e){
 <div id="cpopdim"></div>
 <div id="cpop" aria-hidden="true" role="dialog" aria-label="Kampanya reklamı">
   <button id="cpopClose" type="button" aria-label="Kapat"><i class="ph ph-x" aria-hidden="true"></i></button>
-  <div class="cpop-media">
-    <img id="cpopImg" alt="" loading="lazy" decoding="async">
-    <span class="cpop-badge"><i class="ph ph-megaphone-simple" aria-hidden="true"></i>Sponsorlu</span>
-  </div>
-  <div class="cpop-body">
-    <div id="cpopTitle" class="cpop-title"></div>
-    <p id="cpopLine" class="cpop-line"></p>
-    <button id="cpopGo" class="cpop-go" type="button">Haritada Göster <i class="ph ph-arrow-right" aria-hidden="true"></i></button>
-  </div>
+  <button id="cpopMedia" class="cpop-media" type="button" aria-label="Kampanyayı haritada gör">
+    <img id="cpopImg" alt="Kampanya görseli" loading="lazy" decoding="async">
+  </button>
 </div>
 
 <script>
@@ -5600,9 +5583,7 @@ function showCampaignPopup(){
   if(cpopAnyOverlayOpen()){ sessionStorage.setItem('algeCampaignPopupShown','1'); return; }  // meşgulse: üstüne binme
   const idx=cpopFindTarget(); const v=VENUES[idx]; if(!v) return;
   cpopVenueIdx=idx;
-  document.getElementById('cpopImg').src='/assets/posters/campaign-pop.webp';
-  document.getElementById('cpopTitle').textContent=(v.name||'Kampanya')+' Kampanyası';
-  document.getElementById('cpopLine').textContent=v.camp||v.desc2||'Sana özel kampanyayı keşfet.';
+  document.getElementById('cpopImg').src='/assets/posters/campaign-pop.webp';  // SADECE görsel; başlık/açıklama/CTA yok
   sessionStorage.setItem('algeCampaignPopupShown','1');
   cpopDim.classList.add('on');
   cpopEl.classList.add('on'); cpopEl.setAttribute('aria-hidden','false');
@@ -5615,9 +5596,9 @@ function scheduleCampaignPopup(){
   if(sessionStorage.getItem('algeCampaignPopupShown')) return;
   setTimeout(showCampaignPopup, 1500);
 }
-document.getElementById('cpopClose').addEventListener('click',closeCampaignPopup);
+document.getElementById('cpopClose').addEventListener('click',e=>{ e.stopPropagation(); closeCampaignPopup(); });  // sadece kapat
 cpopDim.addEventListener('click',closeCampaignPopup);
-document.getElementById('cpopGo').addEventListener('click',()=>{
+document.getElementById('cpopMedia').addEventListener('click',()=>{  // görsele tık: kapan + Burger King'e uç
   const i=cpopVenueIdx; closeCampaignPopup();
   if(i>=0) flyAndFocus(i,'Kampanya');   // mevcut uçuş + focus mini panel
 });
@@ -5626,6 +5607,15 @@ window.addEventListener('alge:venues-ready', scheduleCampaignPopup);
 /* ================= DESKTOP-ONLY: sağ öneri paneli + büyük öne çıkan kart =================
    Gerçek venue datasından (window.ALGE_VENUES) beslenir; venues-ready'de render edilir.
    Mobilde gizli (CSS). Map/uçuş/datasource'a dokunmaz; mevcut akışları (flyAndFocus/openVenueDetail/openYerler/openEvents) kullanır. */
+/* Burger King kampanya pop-up'a ait — desktop home (feature kart + sağ panel) onu GÖSTERMEZ (çift görünmesin) */
+function isBurgerKing(v){ return !!v && (v.id==='burger-king' || /burger king/i.test(v.name||'')); }
+/* büyük feature kart hedefi: Burger King DEĞİL — öncelik sponsorlu (Mado/Danilos/Robert's), yoksa ilk BK olmayan mekan */
+function dFeatureFindTarget(){
+  let idx=VENUES.findIndex(v=>v.sponsored && !isBurgerKing(v));  // 1) sponsorlu ama Burger King değil
+  if(idx<0) idx=VENUES.findIndex(v=>!isBurgerKing(v));           // 2) ilk Burger King olmayan mekan
+  if(idx<0) idx=0;                                               // 3) güvenli fallback
+  return idx;
+}
 function dpCardHTML(o){
   return '<div class="dp-card" data-i="'+o.idx+'" data-act="'+(o.act||'')+'" role="button" tabindex="0">'+
     '<img src="'+o.thumb+'" alt="" loading="lazy" decoding="async">'+
@@ -5635,9 +5625,9 @@ function dpCardHTML(o){
 function renderDesktop(){
   const list=document.getElementById('dpList'); const feat=document.getElementById('dFeature');
   if(!list||!feat||!VENUES.length) return;
-  /* büyük öne çıkan kart: Burger King / sponsorlu / fallback (kampanya pop-up ile aynı hedef mantığı) */
-  const fIdx=cpopFindTarget(); const fv=VENUES[fIdx];
-  document.getElementById('dfImg').src=(fv.id==='burger-king')?'/assets/posters/campaign-pop.webp':vThumb(fIdx);
+  /* büyük öne çıkan kart: Burger King DEĞİL (kampanya pop-up görseliyle çakışmasın) */
+  const fIdx=dFeatureFindTarget(); const fv=VENUES[fIdx];
+  document.getElementById('dfImg').src=vThumb(fIdx);
   document.getElementById('dfName').textContent=fv.name;
   document.getElementById('dfDesc').textContent=fv.desc2||fv.desc||'';
   let chips='';
@@ -5645,8 +5635,8 @@ function renderDesktop(){
   if(fv.camp) chips+='<span class="df-chip"><i class="ph ph-ticket" aria-hidden="true"></i>Kampanya</span>';
   document.getElementById('dfChips').innerHTML=chips;
   feat.dataset.i=fIdx;
-  /* sağ panel: 1) sponsorlu  2) farklı mekan  3) etkinlik */
-  const all=VENUES.map((v,i)=>({v,i}));
+  /* sağ panel: 1) sponsorlu  2) farklı mekan  3) etkinlik — Burger King hariç (pop-up'a ait, çift görünmesin) */
+  const all=VENUES.map((v,i)=>({v,i})).filter(x=>!isBurgerKing(x.v));
   const spons=all.filter(x=>x.v.sponsored);
   const c1=spons[0]||all[0];
   const c2=spons.find(x=>x.i!==c1.i)||all.find(x=>x.i!==c1.i)||c1;
