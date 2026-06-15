@@ -106,6 +106,21 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
     clip-path:polygon(5px 0, calc(100% - 5px) 0, 100% 50%, calc(100% - 5px) 100%, 5px 100%, 0 50%);}
   #mchips i{font-size:17px;line-height:1;}
 
+  /* sponsor mini rail (kategori rail altı — hafif reklam alanı; map'i kapatmaz) */
+  #msponsor{display:flex;gap:8px;padding:0 2px 2px;}
+  #msponsor:empty{display:none;}
+  .spon-card{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.94);border:1px solid var(--border-soft);border-radius:var(--radius-md);
+    padding:7px 9px;box-shadow:0 6px 16px rgba(8,35,61,.08);cursor:pointer;
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s cubic-bezier(.22,1,.36,1);}
+  .spon-card:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(8,35,61,.12);}
+  .spon-card img{width:34px;height:34px;border-radius:9px;object-fit:cover;flex:0 0 auto;}
+  .spon-mid{min-width:0;}
+  .spon-badge{display:block;font-size:8.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--orange);}
+  .spon-name{font-size:11.5px;font-weight:600;color:var(--navy);line-height:1.15;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
   .chip-trend,.chip-menu,.chip-campaign{display:inline-flex;align-items:center;gap:6px;border-radius:var(--radius-pill);
     padding:6px 11px;font-size:12px;font-weight:600;line-height:1;white-space:nowrap;}
   .chip-trend{background:var(--orange);color:#fff;}
@@ -676,6 +691,7 @@ window.addEventListener('error',function(e){
 </div>
 <div id="mstack">
   <div id="mchips"></div>
+  <div id="msponsor"></div>
 </div>
 
 <nav id="mbar">
@@ -4667,7 +4683,7 @@ const DISH_CF="/assets/posters/dish-cf.webp";
 /* ================= UÇUŞ SİSTEMİ ================= */
 /* Mekanlar: u,v = görsel üzerinde 0–1 oranlar (işaretleme aracı formatı)
    rating/reviews ÖRNEK veridir — gerçek değerlerle güncellenecek */
-const VENUES=[
+let VENUES=[
   {name:"Shakespeare Coffee & Bistro", cat:"Kahve & Bistro", u:0.907, v:0.364,
    logo:LOGO_SHX, rating:4.7, reviews:324,
    maps:"Shakespeare Coffee & Bistro Beach Park Antalya",
@@ -4827,7 +4843,7 @@ document.querySelectorAll('#mbar button').forEach(b=>{
 /* ================= ARAMA SONUÇLARI (Trendler + Tüm Sonuçlar) =================
    Veri: mevcut VENUES dizisi. İncele -> mevcut uçuş (flyToVenue), detay ekranı yok. */
 const VTHUMB=['/assets/venues/category-cafe.webp','/assets/venues/category-dessert.webp','/assets/venues/category-market.webp'];
-const vThumb=i=>VTHUMB[i]||VTHUMB[0];
+const vThumb=i=>(VENUES[i]&&VENUES[i].thumb)||VTHUMB[i]||VTHUMB[0];
 const vHasMenu=v=>Array.isArray(v.menu)?v.menu.length>0:!!v.menu;
 const vHasCampaign=v=>!!v.camp||(v.tags||[]).some(t=>/kampanya/i.test(t[0]));
 function vChipsHTML(v){
@@ -4867,7 +4883,8 @@ function renderSearch(){
   const term=(ssInput.value||'').trim().toLocaleLowerCase('tr');
   const hit=v=>!term || [v.name,v.cat,v.desc2,v.desc].some(s=>(s||'').toLocaleLowerCase('tr').includes(term));
   const matches=VENUES.map((v,i)=>({v,i})).filter(x=>hit(x.v));
-  const trends=matches.slice(0,3);
+  let trends=VENUES.map((v,i)=>({v,i})).filter(x=>x.v.sponsored).slice(0,3);   // Trendler = sponsorlu, query'den bağımsız
+  if(!trends.length) trends=matches.slice(0,3);   // sponsor yoksa (demo fallback) ilk sonuçlar
   let html='';
   if(trends.length){
     html+='<div class="ss-sec"><div class="ss-sec-l"><h3><i class="ph ph-fire-simple" aria-hidden="true"></i>Trendler</h3><p>Öne çıkan mekanlar</p></div></div>';
@@ -4917,6 +4934,7 @@ const YL_CATS=[
   {k:'alisveris', l:'Alışveriş'}
 ];
 function venueMainCat(v){
+  if(v.mcat) return v.mcat;   // gerçek veride adapter mcat sağlar (yeme/kafe/beach/alisveris)
   const t=((v.cat||'')+' '+(v.name||'')).toLocaleLowerCase('tr');
   if(/beach|plaj|sahil/.test(t)) return 'beach';
   if(/kahve|kafe|tatlı|bistro|dondurma|pastane|kek/.test(t)) return 'kafe';
@@ -5004,7 +5022,7 @@ function venueOffer(v,i){
     venue: v.name,
     title: hasFeat ? (v.feat.name+' Menüsü') : 'Güncel Kampanya',
     desc:  hasFeat ? (v.feat.desc||v.desc2||'') : (v.desc2||v.desc||''),
-    value: hasFeat ? v.feat.price : (v.camp||'Avantaj'),
+    value: (hasFeat && v.feat.price) ? v.feat.price : (v.camp||'Avantaj'),
     valid: 'Bugün'+(v.hours?' · '+v.hours:''),
     cat:   venueMainCat(v)
   };
@@ -5242,7 +5260,7 @@ function openVenueDetail(i){
   let feat='';
   if(v.feat) feat+='<div class="vd-feat-card"><img src="'+v.feat.img+'" alt="" loading="lazy" decoding="async">'+
     '<div class="vd-feat-info"><span class="vd-feat-label">Öne çıkan ürün</span>'+
-    '<div class="vd-feat-name">'+v.feat.name+'</div><div class="vd-feat-price">'+v.feat.price+'</div>'+
+    '<div class="vd-feat-name">'+v.feat.name+'</div>'+(v.feat.price?'<div class="vd-feat-price">'+v.feat.price+'</div>':'')+
     '<p>'+(v.feat.desc||'')+'</p></div></div>';
   if(v.camp) feat+='<div class="vd-row"><i class="ph ph-ticket" aria-hidden="true"></i><div><span>Kampanya</span><b>'+v.camp+'</b></div></div>';
   document.getElementById('vdFeat').innerHTML=feat;
@@ -5266,89 +5284,51 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape' && vdEl.classList.c
 /* ================= MENÜ / ÜRÜN LİSTESİ SHEET (bilgi amaçlı) =================
    Yalnız bilgi gösterimi. Veri: minimal demo menü inline (VENUES feat/kategori temelli).
    Mekan Detay -> Menü; kapanınca Detay'a döner (item 9). Diğer ekranlara dokunmaz (mn* öneki). */
-const MENU_TABS=[{k:'featured',l:'Öne Çıkanlar'},{k:'drinks',l:'İçecekler'},{k:'desserts',l:'Tatlılar'},{k:'mains',l:'Ana Ürünler'}];
-const MENU_DATA={
-  0:{ // Shakespeare Coffee & Bistro
-    featured:[
-      {name:'Chicken Fingers', desc:'Çıtır kaplamalı parmak tavuk, baharatlı patates ve ballı hardal sos ile.', price:'₺479,00', tag:'Öne çıkan'},
-      {name:'Serpme Kahvaltı', desc:'Zengin içerikli iki kişilik serpme kahvaltı tabağı.', price:'₺520,00', tag:'Kahvaltı'}
-    ],
-    drinks:[
-      {name:'Filtre Kahve', desc:'Günün çekirdeğinden taze demleme.', price:'₺95,00', tag:''},
-      {name:'Latte', desc:'Espresso ve buharla ısıtılmış süt.', price:'₺115,00', tag:''}
-    ],
-    desserts:[
-      {name:'San Sebastian Cheesecake', desc:'Yoğun kıvamlı, hafif yanık üzeri.', price:'₺165,00', tag:'Tatlı'}
-    ],
-    mains:[
-      {name:'Smash Burger', desc:'İnce kıyma köfte, cheddar ve özel sos.', price:'₺349,00', tag:''},
-      {name:'Penne Arrabiata', desc:'Acılı domates soslu makarna.', price:'₺265,00', tag:''}
-    ]
-  },
-  1:{ // Mado
-    featured:[
-      {name:'Maraş Dondurması', desc:'Keçi sütlü geleneksel dövme dondurma.', price:'₺140,00', tag:'Öne çıkan'}
-    ],
-    drinks:[
-      {name:'Türk Kahvesi', desc:'Közde pişmiş geleneksel sunum.', price:'₺85,00', tag:''},
-      {name:'Salep', desc:'Tarçın ile servis edilen sıcak içecek.', price:'₺95,00', tag:''}
-    ],
-    desserts:[
-      {name:'Künefe', desc:'Antep fıstıklı, tel kadayıf ve peynir.', price:'₺195,00', tag:'Öne çıkan'},
-      {name:'Kazandibi', desc:'Geleneksel sütlü tatlı.', price:'₺120,00', tag:''}
-    ],
-    mains:[
-      {name:'Serpme Kahvaltı', desc:'Deniz kenarında zengin kahvaltı.', price:'₺480,00', tag:''}
-    ]
-  },
-  2:{ // Hamlet Market
-    featured:[
-      {name:'Su + Atıştırmalık İkilisi', desc:'Plaj günü için pratik kombin.', price:'₺75,00', tag:'Kampanya'}
-    ],
-    drinks:[
-      {name:'Soğuk İçecekler', desc:'Su, soda, meşrubat ve enerji içecekleri.', price:'', tag:''},
-      {name:'Taze Limonata', desc:'Soğuk servis, günlük hazırlanır.', price:'₺60,00', tag:''}
-    ],
-    desserts:[
-      {name:'Paketli Dondurma', desc:'Çeşitli markalar, dondurucu reyonunda.', price:'', tag:''}
-    ],
-    mains:[
-      {name:'Plaj Ürünleri', desc:'Güneş kremi, şişme, havlu ve temel ihtiyaçlar.', price:'', tag:'Plaj'},
-      {name:'Temel Gıda', desc:'Atıştırmalık ve pratik gıda ürünleri.', price:'', tag:''}
-    ]
-  }
-};
 const mnEl=document.getElementById('mnsheet');
 const mnDim=document.getElementById('mndim');
 const mnBody=document.getElementById('mnBody');
 const mnTabs=document.getElementById('mnTabs');
-let mnVenue=-1, mnActiveTab='featured';
-MENU_TABS.forEach(t=>{
-  const b=document.createElement('button');
-  b.className='mn-tab'; b.dataset.mnTab=t.k; b.textContent=t.l;
-  b.addEventListener('click',()=>{ mnActiveTab=t.k; syncMnTabs(); renderMenu(); mnBody.scrollTop=0; });
-  mnTabs.appendChild(b);
-});
-function syncMnTabs(){ mnTabs.querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.mnTab===mnActiveTab)); }
+let mnVenue=-1, mnActiveTab=0, mnTabData=[];
+/* gerçek venue.menu (object {topItems, sections[{title,items[{name,description}]}]}) -> sekme modeli;
+   demo fallback: menu array (kategori adları). Bilgi amaçlı; fiyat/sepet yok. */
+function buildMenuModel(v){
+  const tabs=[]; const menu=v&&v.menu;
+  if(menu && typeof menu==='object' && !Array.isArray(menu)){
+    if(menu.topItems&&menu.topItems.length)
+      tabs.push({label:'Öne Çıkanlar', items:menu.topItems.map(n=>({name:n,desc:''}))});
+    (menu.sections||[]).forEach(sec=>tabs.push({
+      label:sec.title||'Menü', items:(sec.items||[]).map(it=>({name:it.name,desc:it.description||''}))
+    }));
+  }else if(Array.isArray(menu)&&menu.length){
+    tabs.push({label:'Kategoriler', items:menu.map(n=>({name:n,desc:''}))});
+  }
+  return tabs;
+}
 function mnItemHTML(p){
-  const tag=p.tag?'<span class="mn-tag">'+p.tag+'</span>':'';
-  const price=p.price?'<span class="mn-price">'+p.price+'</span>':'';
-  return '<div class="mn-item"><div class="mn-item-mid"><div class="mn-item-top"><span class="mn-name">'+p.name+'</span>'+tag+'</div><p class="mn-item-desc">'+(p.desc||'')+'</p></div>'+price+'</div>';
+  return '<div class="mn-item"><div class="mn-item-mid"><div class="mn-item-top"><span class="mn-name">'+p.name+'</span></div>'+(p.desc?'<p class="mn-item-desc">'+p.desc+'</p>':'')+'</div></div>';
+}
+function syncMnTabs(){ mnTabs.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('on', i===mnActiveTab)); }
+function renderMnTabs(){
+  mnTabs.innerHTML='';
+  mnTabData.forEach((t,i)=>{
+    const b=document.createElement('button'); b.className='mn-tab'+(i===mnActiveTab?' on':''); b.textContent=t.label;
+    b.addEventListener('click',()=>{ mnActiveTab=i; syncMnTabs(); renderMenu(); mnBody.scrollTop=0; });
+    mnTabs.appendChild(b);
+  });
 }
 function renderMenu(){
-  const m=MENU_DATA[mnVenue]||{};
-  const items=m[mnActiveTab]||[];
+  const t=mnTabData[mnActiveTab]; const items=(t&&t.items)||[];
   mnBody.innerHTML = items.length
     ? '<div class="mn-list">'+items.map(mnItemHTML).join('')+'</div>'
     : '<div class="ss-empty">Bu bölümde ürün yok</div>';
 }
 function openVenueMenu(i){
   const v=VENUES[i]; if(!v) return;
-  mnVenue=i; mnActiveTab='featured'; syncMnTabs();
+  mnVenue=i; mnTabData=buildMenuModel(v); mnActiveTab=0;
   document.getElementById('mnName').textContent=v.name;
   document.getElementById('mnChip').textContent=v.cat||'';
   document.getElementById('mnDesc').textContent=v.desc2||v.desc||'';
-  renderMenu(); mnBody.scrollTop=0;
+  renderMnTabs(); renderMenu(); mnBody.scrollTop=0;
   mnDim.classList.add('on');
   mnEl.classList.add('open'); mnEl.setAttribute('aria-hidden','false');
 }
@@ -5418,6 +5398,30 @@ if(svcTuneBtn) svcTuneBtn.addEventListener('click',e=>{ e.stopPropagation(); ope
 document.getElementById('svcClose').addEventListener('click',closeServices);
 svcDim.addEventListener('click',closeServices);
 document.addEventListener('keydown',e=>{ if(e.key==='Escape' && svcEl.classList.contains('open')) closeServices(); });
+
+/* ================= GERÇEK VENUE DATASI BAĞLAMA + SPONSOR RAIL =================
+   venueModel.js gerçek 47 mekanı window.ALGE_VENUES'e koyar ve 'alge:venues-ready' yayınlar
+   (modüller inline'dan sonra çalışır). Tüm VENUES okumaları lazy (sheet açılış/click) olduğundan güvenli. */
+function renderSponsors(){
+  const el=document.getElementById('msponsor'); if(!el) return;
+  const spons=VENUES.map((v,i)=>({v,i})).filter(x=>x.v.sponsored).slice(0,3);
+  el.innerHTML=spons.map(x=>
+    '<div class="spon-card" data-i="'+x.i+'" role="button" tabindex="0" aria-label="Sponsorlu: '+x.v.name+'">'+
+    '<img src="'+vThumb(x.i)+'" alt="" loading="lazy" decoding="async">'+
+    '<div class="spon-mid"><span class="spon-badge">Sponsorlu</span>'+
+    '<div class="spon-name">'+x.v.name+'</div></div></div>').join('');
+  el.querySelectorAll('.spon-card').forEach(c=>{
+    const go=()=>flyAndFocus(parseInt(c.dataset.i,10),'Sponsor');
+    c.addEventListener('click',go);
+    c.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } });
+  });
+}
+function applyRealVenues(){
+  if(window.ALGE_VENUES && window.ALGE_VENUES.length){ VENUES=window.ALGE_VENUES; }
+  renderSponsors();
+}
+window.addEventListener('alge:venues-ready', applyRealVenues);
+applyRealVenues();   // modül zaten çalıştıysa hemen; değilse demo fallback + event ile bağlanır
 
 idleAnchor();   // açılışta yay salınımı başlasın
 
@@ -5560,6 +5564,7 @@ window.__ALGE3D = {   // ALGE QR runtime köprüsü (Sprint 2)
   }
 };
 </script>
+<script type="module" src="/src/app/venueModel.js"></script>
 <script type="module" src="/src/app/qrRuntime.js"></script>
 </body>
 </html>
