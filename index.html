@@ -752,19 +752,19 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
     .dp-sub{font-size:11.5px;color:#64778a;margin-top:2px;
       display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 
-    /* büyük öne çıkan mekan kartı (alt-sol) */
-    #dFeature{display:block;position:fixed;z-index:16;left:32px;bottom:104px;width:min(38vw,400px);
+    /* büyük öne çıkan mekan kartı (alt-sol) — YATAY: görsel solda, içerik sağda (referans oranı) */
+    #dFeature{display:flex;position:fixed;z-index:16;left:32px;bottom:104px;width:min(46vw,600px);
       background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius-lg);overflow:hidden;
       box-shadow:var(--shadow-soft);}
-    .df-media{position:relative;}
-    .df-media img{display:block;width:100%;height:150px;object-fit:cover;background:#eef2f5;}
+    .df-media{position:relative;flex:0 0 200px;}
+    .df-media img{display:block;width:100%;height:100%;min-height:210px;object-fit:cover;background:#eef2f5;}
     .df-badge{position:absolute;left:12px;top:12px;display:inline-flex;align-items:center;background:var(--orange);
       color:#fff;border-radius:var(--radius-pill);padding:4px 10px;font-size:10.5px;font-weight:700;}
-    .df-body{padding:13px 15px 15px;}
-    .df-name{font-size:18px;font-weight:600;color:var(--navy);line-height:1.12;}
-    .df-desc{font-size:12.5px;line-height:1.4;color:#5a6f82;margin:5px 0 8px;
+    .df-body{flex:1;min-width:0;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;}
+    .df-name{font-size:20px;font-weight:600;color:var(--navy);line-height:1.12;}
+    .df-desc{font-size:12.5px;line-height:1.45;color:#5a6f82;margin:6px 0 11px;
       display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-    .df-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+    .df-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:13px;}
     .df-chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--navy-soft);
       background:#f1f6fb;border:1px solid var(--border-soft);border-radius:var(--radius-pill);padding:5px 10px;}
     .df-chip i{font-size:14px;color:var(--logo-blue);}
@@ -921,6 +921,7 @@ window.addEventListener('error',function(e){
     <div id="vdHours"></div>
     <div id="vdFeat"></div>
     <button id="vdMenu" class="vd-menu" type="button"><i class="ph ph-fork-knife" aria-hidden="true"></i>Menüyü Gör</button>
+    <button id="vdRoute" class="vd-menu" type="button"><i class="ph ph-navigation-arrow" aria-hidden="true"></i>Nasıl giderim</button>
   </div>
   <div class="vd-cta">
     <button id="vdShow" class="vd-btn-2" type="button"><i class="ph ph-map-trifold" aria-hidden="true"></i>Haritada göster</button>
@@ -5415,6 +5416,11 @@ document.getElementById('vdClose').addEventListener('click',()=>closeVenueDetail
 vdDim.addEventListener('click',()=>closeVenueDetail(true));
 document.getElementById('vdShow').addEventListener('click',()=>closeVenueDetail(true));         // Haritada göster: focus'lu haritayı + mini paneli göster (zaten odakta)
 document.getElementById('vdHome').addEventListener('click',()=>{ closeVenueDetail(false); focusGoHome(); });  // Haritaya dön: shell'e
+document.getElementById('vdRoute').addEventListener('click',()=>{   // Nasıl giderim: Google Maps yürüyüş rotası (eski davranış; v.maps yoksa ad+kompleks)
+  const v=VENUES[vdVenue]; if(!v) return;
+  const dest=encodeURIComponent(v.maps || (v.name+' Sahil Yaşam Merkezi Antalya'));
+  window.open('https://www.google.com/maps/dir/?api=1&destination='+dest+'&travelmode=walking','_blank','noopener');
+});
 document.addEventListener('keydown',e=>{ if(e.key==='Escape' && vdEl.classList.contains('open') && !mnEl.classList.contains('open')) closeVenueDetail(true); });
 
 /* ================= MENÜ / ÜRÜN LİSTESİ SHEET (bilgi amaçlı) =================
