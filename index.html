@@ -97,9 +97,9 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
     box-shadow:0 12px 26px rgba(0,134,196,.34);
     backdrop-filter:blur(10px) saturate(1.2);-webkit-backdrop-filter:blur(10px) saturate(1.2);
     animation:catPulse 3.6s ease-in-out infinite;}
-  /* point içi: AlgeGo logosunun "Go" bölümü (logo mavi kısımları mavi pointte kamufle, turuncu Go öne çıkar) */
-  #mcatpoint .mcat-go{width:40px;height:40px;
-    background:url('/assets/brand/go.png') no-repeat -181px -15px;background-size:221px 70px;}
+  /* point içi: özel "Go" asset'i (cat-go.svg) — ortalı, ezilmez/kırpılmaz, şeffaf zemin korunur */
+  #mcatpoint .mcat-go-img{width:42px;height:42px;object-fit:contain;display:block;
+    filter:drop-shadow(0 3px 5px rgba(4,35,52,.18));transform:translateY(1px);pointer-events:none;}
   #mcatpoint::after{content:'';position:absolute;top:6px;right:6px;width:8px;height:8px;border-radius:50%;
     background:var(--orange);box-shadow:0 0 0 2px rgba(255,255,255,.85);
     animation:catSignal 1.35s ease-in-out infinite;}   /* sinyal gibi yanıp sönme */
@@ -893,7 +893,7 @@ window.addEventListener('error',function(e){
   <button class="mtop-tune" type="button" tabindex="-1" aria-label="Filtrele"><i class="ph ph-sliders-horizontal" aria-hidden="true"></i></button>
 </div>
 <div id="mcatdock">
-  <button id="mcatpoint" type="button" aria-label="Kategoriler" aria-expanded="false"><span class="mcat-go" aria-hidden="true"></span></button>
+  <button id="mcatpoint" type="button" aria-label="Kategoriler" aria-expanded="false"><img class="mcat-go-img" src="/assets/brand/cat-go.svg" alt="" aria-hidden="true"></button>
   <div id="mchips" role="group" aria-label="Kategoriler"></div>
 </div>
 <div id="msponsor"></div>
