@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Kabartma 3D — Demo</title>
+<title>AlgeGo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600&display=swap" rel="stylesheet">
@@ -46,12 +46,15 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #errband{display:none;position:fixed;left:0;right:0;top:0;z-index:99;background:#c0392b;color:#fff;
     font-size:11px;padding:6px 10px;font-family:ui-monospace,monospace;word-break:break-all;}
   #c{position:fixed;inset:0;display:block;}
-  /* shell-first: küçük, non-blocking yükleme göstergesi (UI'ı kapatmaz) */
-  #load{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:6;
-    display:flex;align-items:center;gap:8px;pointer-events:none;
-    background:rgba(255,255,255,.9);border:1px solid var(--border-soft);border-radius:var(--radius-pill);
-    padding:9px 17px;color:#5a6f82;font-size:12.5px;font-weight:500;box-shadow:var(--shadow-card);
-    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+  /* açılış loading: beyaz zemin + AlgeGo logosu + "Yükleniyor…" (premium & sade) */
+  #load{position:fixed;inset:0;z-index:30;background:#ffffff;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
+    pointer-events:none;transition:opacity .45s ease;}
+  #load img{width:150px;height:auto;animation:loadPulse 1.8s ease-in-out infinite;
+    filter:drop-shadow(0 12px 30px rgba(8,35,61,.14));}
+  #load span{font-size:14px;font-weight:500;letter-spacing:.01em;color:#5a6f82;}
+  #load.done{opacity:0;}
+  @keyframes loadPulse{0%,100%{opacity:.55;transform:scale(.985);}50%{opacity:1;transform:scale(1);}}
 
 
   /* ===== AlgeGo SHELL — tek responsive kabuk (map üstü hafif UI katmanı) ===== */
@@ -64,62 +67,63 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
 
   /* search bar: premium floating pill, ortalı kolon */
   #mtop{position:fixed;left:50%;transform:translateX(-50%);
-    top:calc(72px + env(safe-area-inset-top));z-index:18;
-    width:min(calc(100% - 36px), 480px);
-    display:flex;align-items:center;gap:11px;
+    top:calc(70px + env(safe-area-inset-top));z-index:18;
+    width:min(calc(100% - 28px), 480px);
+    display:flex;align-items:center;gap:8px;
     background:rgba(255,255,255,.96);border:1px solid var(--border-soft);
-    border-radius:var(--radius-pill);padding:13px 13px 13px 18px;box-shadow:var(--shadow-soft);
+    border-radius:var(--radius-pill);padding:9px 9px 9px 15px;box-shadow:var(--shadow-soft);
     backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);
     cursor:default;}
-  #mtop > i{font-size:21px;color:var(--logo-blue);flex:0 0 auto;}
-  #mtop span{flex:1;text-align:left;font-size:15.5px;font-weight:500;color:#5a6f82;
+  #mtop > i{font-size:18px;color:var(--logo-blue);flex:0 0 auto;}
+  #mtop span{flex:1;min-width:0;text-align:left;font-size:13.5px;font-weight:500;color:#5a6f82;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  #mtop .mtop-tune{flex:0 0 auto;width:36px;height:36px;border-radius:50%;
+  #mtop .mtop-tune{flex:0 0 auto;width:32px;height:32px;border-radius:50%;
     display:flex;align-items:center;justify-content:center;
     background:#f1f6fb;border:1px solid var(--border-soft);color:#41566b;cursor:pointer;
     transition:color .2s cubic-bezier(.22,1,.36,1),border-color .2s cubic-bezier(.22,1,.36,1);}
   #mtop .mtop-tune i{font-size:18px;line-height:1;}
   #mtop .mtop-tune:hover{color:var(--logo-blue);border-color:#bfe3f5;}
 
-  /* kategori rail + alt yığın */
-  #mstack{position:fixed;left:50%;transform:translateX(-50%);
-    bottom:calc(86px + env(safe-area-inset-bottom));z-index:16;
-    width:min(calc(100% - 24px), 520px);
-    display:flex;flex-direction:column;gap:10px;}
-
-  #mchips{display:flex;gap:9px;justify-content:safe center;overflow-x:auto;
-    padding:2px 6px 16px;background:transparent;}
-  #mchips::-webkit-scrollbar{display:none;}
-  #mchips button{position:relative;flex:0 0 auto;display:flex;align-items:center;gap:7px;padding:10px 16px;
-    border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;border:1px solid var(--border-soft);
-    background:rgba(255,255,255,.96);color:#41566b;white-space:nowrap;cursor:pointer;
-    box-shadow:0 6px 18px rgba(8,35,61,.08);
+  /* ===== KATEGORİ RAİL — sol dikey, renkli mavi kartlar (mobil öncelikli) ===== */
+  #mchips{position:fixed;left:calc(12px + env(safe-area-inset-left));z-index:16;
+    top:calc(126px + env(safe-area-inset-top));
+    display:flex;flex-direction:column;align-items:stretch;gap:9px;
+    width:max-content;max-width:48vw;}
+  #mchips button{position:relative;display:flex;align-items:center;gap:10px;width:100%;
+    padding:11px 15px;border-radius:15px;font-size:13px;font-weight:600;font-family:inherit;
+    border:1px solid rgba(255,255,255,.28);
+    background:linear-gradient(135deg,#13a7e6,#0086c4);color:#fff;
+    white-space:nowrap;cursor:pointer;box-shadow:0 10px 22px rgba(0,134,196,.30);
     transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s cubic-bezier(.22,1,.36,1),
-      background .2s cubic-bezier(.22,1,.36,1),color .2s cubic-bezier(.22,1,.36,1);}
-  #mchips button:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(8,35,61,.12);}
-  /* Blue Active Rail */
-  #mchips button.on{background:var(--logo-blue);color:#fff;border-color:var(--logo-blue);
-    box-shadow:0 10px 26px rgba(0,152,216,.28);}
-  /* aktif pill altında düz ince turuncu çizgi — sadece iki ucu sivri */
-  #mchips button.on::after{content:'';position:absolute;left:16px;right:16px;bottom:-6px;height:3px;
-    background:var(--orange);
-    clip-path:polygon(5px 0, calc(100% - 5px) 0, 100% 50%, calc(100% - 5px) 100%, 5px 100%, 0 50%);}
-  #mchips i{font-size:17px;line-height:1;}
+      filter .2s cubic-bezier(.22,1,.36,1);}
+  #mchips button:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(0,134,196,.36);}
+  #mchips button i{font-size:18px;line-height:1;flex:0 0 auto;}
+  /* aktif kategori: turuncu sol vurgu çubuğu + hafif parlama */
+  #mchips button.on{filter:saturate(1.08);box-shadow:0 14px 30px rgba(0,134,196,.40);}
+  #mchips button.on::before{content:'';position:absolute;left:0;top:9px;bottom:9px;width:4px;
+    border-radius:0 4px 4px 0;background:var(--orange);}
 
-  /* sponsor mini rail (kategori rail altı — hafif reklam alanı; map'i kapatmaz) */
-  #msponsor{display:flex;gap:8px;padding:0 2px 2px;}
+  /* ===== ÖNE ÇIKAN RAİL — alt yatay marquee (3 okunur turuncu kart) ===== */
+  #msponsor{position:fixed;left:0;right:0;z-index:16;
+    bottom:calc(84px + env(safe-area-inset-bottom));
+    overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
   #msponsor:empty{display:none;}
-  .spon-card{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:8px;
-    background:rgba(255,255,255,.94);border:1px solid var(--border-soft);border-radius:var(--radius-md);
-    padding:7px 9px;box-shadow:0 6px 16px rgba(8,35,61,.08);cursor:pointer;
-    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-    transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s cubic-bezier(.22,1,.36,1);}
-  .spon-card:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(8,35,61,.12);}
-  .spon-card img{width:34px;height:34px;border-radius:9px;object-fit:cover;flex:0 0 auto;}
+  .spon-track{display:flex;gap:10px;width:max-content;padding:2px 12px;
+    animation:sponMarquee 26s linear infinite;}
+  #msponsor:hover .spon-track,#msponsor:active .spon-track{animation-play-state:paused;}
+  @keyframes sponMarquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .spon-card{flex:0 0 auto;display:flex;align-items:center;gap:11px;
+    background:linear-gradient(135deg,#ff9038,#ff6a12);border:1px solid rgba(255,255,255,.30);
+    border-radius:15px;padding:9px 16px 9px 10px;box-shadow:0 10px 24px rgba(255,106,18,.32);
+    cursor:pointer;transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s cubic-bezier(.22,1,.36,1);}
+  .spon-card:hover{transform:translateY(-1px);box-shadow:0 14px 30px rgba(255,106,18,.40);}
+  .spon-card img{width:42px;height:42px;border-radius:11px;object-fit:cover;flex:0 0 auto;
+    background:rgba(255,255,255,.25);}
   .spon-mid{min-width:0;}
-  .spon-badge{display:block;font-size:8.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--orange);}
-  .spon-name{font-size:11.5px;font-weight:600;color:var(--navy);line-height:1.15;
-    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .spon-badge{display:block;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(255,255,255,.92);}
+  .spon-name{font-size:14px;font-weight:700;color:#fff;line-height:1.15;white-space:nowrap;}
 
   .chip-trend,.chip-menu,.chip-campaign{display:inline-flex;align-items:center;gap:6px;border-radius:var(--radius-pill);
     padding:6px 11px;font-size:12px;font-weight:600;line-height:1;white-space:nowrap;}
@@ -147,7 +151,7 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #mbar button:hover{color:#41566b;}
   #mbar button.on{color:var(--logo-blue);background:rgba(0,152,216,.08);}
   /* uçuş/focus sırasında shell çekilir (harita + sinematik katmanlar görünür kalır) */
-  body.flying #mtop,body.flying #mstack,body.flying #mbar{display:none !important;}
+  body.flying #mtop,body.flying #mchips,body.flying #msponsor,body.flying #mbar{display:none !important;}
 
   /* ===== ARAMA SONUÇLARI SHEET (map üstü overlay) ===== */
   #ssdim{position:fixed;inset:0;z-index:24;background:rgba(8,35,61,.16);
@@ -704,13 +708,14 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
     /* search bar: logo altı, sol kolon, geniş */
     #mtop{left:32px;right:auto;top:86px;transform:none;width:min(46vw,520px);}
 
-    /* kategori rail + sponsor: sol kolonda search altında (alt orta dar kolon değil) */
-    #mstack{left:32px;right:auto;top:144px;bottom:auto;transform:none;width:min(46vw,520px);gap:12px;}
-    #mchips{justify-content:flex-start;}
-    .spon-card{padding:9px 11px;}
-    .spon-card img{width:40px;height:40px;}
-    .spon-name{font-size:12.5px;}
-    .spon-badge{font-size:9px;}
+    /* kategori rail + öne çıkan: sol kolonda search altında (mobil sol-dikey rail'i override eder) */
+    #mchips{left:32px;right:auto;top:148px;bottom:auto;transform:none;
+      flex-direction:row;flex-wrap:wrap;width:min(46vw,520px);max-width:none;align-items:flex-start;}
+    #mchips button{width:auto;}
+    #msponsor{left:32px;right:auto;top:auto;bottom:104px;width:min(46vw,560px);
+      -webkit-mask-image:none;mask-image:none;}
+    .spon-track{animation:none;width:auto;flex-wrap:wrap;padding:0;}
+    .spon-card{padding:9px 13px 9px 10px;}
 
     /* bottom nav: compact floating dock, sağ-alt (sol kolonla çakışmaz) */
     #mbar{left:50%;right:auto;transform:translateX(-50%);width:auto;gap:8px;padding:8px 14px;bottom:24px;}
@@ -785,7 +790,7 @@ window.addEventListener('error',function(e){
   if(b){b.style.display='block';b.textContent='HATA: '+(e.message||e.type)+(e.filename?' @'+e.lineno:'');}
 });
 </script>
-<div id="load">Harita yükleniyor…</div>
+<div id="load"><img src="/assets/brand/go.png" alt="AlgeGo"><span>Yükleniyor…</span></div>
 <canvas id="c"></canvas>
 <div id="vig"></div>
 <div id="flash"></div>
@@ -798,10 +803,8 @@ window.addEventListener('error',function(e){
   <span>Mekan, kampanya veya etkinlik ara</span>
   <button class="mtop-tune" type="button" tabindex="-1" aria-label="Filtrele"><i class="ph ph-sliders-horizontal" aria-hidden="true"></i></button>
 </div>
-<div id="mstack">
-  <div id="mchips"></div>
-  <div id="msponsor"></div>
-</div>
+<div id="mchips"></div>
+<div id="msponsor"></div>
 
 <nav id="mbar">
   <button data-v="harita" class="on"><i class="ph ph-map-trifold" aria-hidden="true"></i>Anasayfa</button>
@@ -816,7 +819,7 @@ window.addEventListener('error',function(e){
   <div id="dpList"></div>
 </aside>
 <div id="dFeature" aria-hidden="true">
-  <div class="df-media"><img id="dfImg" alt="" loading="lazy" decoding="async"><span class="df-badge">Sponsorlu</span></div>
+  <div class="df-media"><img id="dfImg" alt="" loading="lazy" decoding="async"><span class="df-badge">Öne Çıkan</span></div>
   <div class="df-body">
     <div id="dfName" class="df-name"></div>
     <p id="dfDesc" class="df-desc"></p>
@@ -4705,15 +4708,20 @@ camera.position.set(-13.5,41.2,32.3);   // kalibre: mesafe 46, yükseklik 61°, 
 const controls=new OrbitControls(camera,renderer.domElement);
 controls.enableDamping=true; controls.dampingFactor=0.08;
 controls.enableRotate=false;   // kullanıcı çeviremez; dönüş sadece yay animasyonunda
+controls.enableZoom=false;     // #10: pinch/wheel/çift-tık zoom kapalı
+controls.enablePan=false;      // #10: drag/pan/touch-move kapalı — harita yalnız sistem animasyonlarıyla
 controls.minDistance=17; controls.maxDistance=220;
 controls.minPolarAngle=0.08; controls.maxPolarAngle=1.15;   // çok yatmayı engelle
 controls.target.set(-13.5,1,10);        // kalibre hedef (masaüstü)
 
 /* ---- mobil kalibrasyon: hedef Xa<->Xb arasında süzülür ---- */
 const IS_MOBILE=matchMedia('(max-width:768px)').matches;
-const MOB={xa:-55, xb:48.8, z:3.5, dist:61.5,   // uçlar gerçek mekan anchor'ları (Sprint 8.2)
+/* Sprint Visual-1 (#9): idle tur ekran kenarına gitmesin — pan aralığı strip ortasına çekildi,
+   kamera biraz yaklaştırıldı; kenarlardaki boş/beyaz erime alanları kadraj dışında kalır.
+   Eski kalibrasyon: xa:-55, xb:48.8, dist:61.5, amp:14.5° (kalibrasyon-mobil.html ile teyit edilebilir). */
+const MOB={xa:-34, xb:30, z:3.5, dist:56,        // pan uçları strip ortasına çekildi (merkez ~-2)
            phi:(90-57)*Math.PI/180, az:52*Math.PI/180,
-           amp:14.5*Math.PI/180, w:(2*Math.PI)/44};
+           amp:11*Math.PI/180, w:(2*Math.PI)/44};
 function mobPose(s){   // s: -1..1 fazı -> hedef + kamera konumu
   const tx=(MOB.xa+MOB.xb)/2 + (MOB.xb-MOB.xa)/2*s;
   const tgt=new THREE.Vector3(tx,1,MOB.z);
@@ -4802,7 +4810,8 @@ hmImg.onload=()=>{
   }
   applyHeight(2.0);   // harita 1/2 kodlu: bina .50 / kabin .40 / ağaç .70 / tepe 1.0 (çarpan 2 = normal)
   renderer.shadowMap.needsUpdate=true;   // kabartma uygulandı: gölgeyi bir kez relief'le güncelle, sonra dondur
-  document.getElementById('load').style.display='none';
+  { const ld=document.getElementById('load');
+    if(ld){ ld.classList.add('done'); setTimeout(()=>{ ld.style.display='none'; }, 450); } }
   __ALGE_PERF.mark('first-map-visible');
   setTimeout(()=>{ __ALGE_PERF.mark('first-interaction-ready'); __ALGE_PERF.summary(); }, 600);
 };
@@ -4958,9 +4967,9 @@ CHIPS.forEach(c=>{
   b.innerHTML=`<i class="ph ${c.icon}" aria-hidden="true"></i>${c.l}`;
   b.dataset.k=c.k;
   b.addEventListener('click',()=>{
-    const was=b.classList.contains('on');
     chipsEl.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
-    if(!was) b.classList.add('on');   // tekrar bas: aktif filtre kalkar (bu sprintte ekran açılmaz)
+    b.classList.add('on');
+    openYerlerCat(c.k);   // #6: ilgili kategorideki mekanları Yerler sheet'inde listele
   });
   chipsEl.appendChild(b);
 });
@@ -4993,7 +5002,7 @@ function trendCardHTML(v,i){
   return `<article class="tcard" data-i="${i}" role="button" tabindex="0">
     <img src="${vThumb(i)}" alt="" loading="lazy" decoding="async">
     <div class="tc-mid">
-      <span class="chip-trend tc-spon">Sponsorlu</span>
+      <span class="chip-trend tc-spon">Öne Çıkan</span>
       <div class="tc-name">${v.name}</div>
       <div class="tc-sub">${v.cat}</div>
       <div class="tc-chips">${vChipsHTML(v)}</div>
@@ -5127,6 +5136,16 @@ function openYerler(){
   syncYlCats(); renderYerler();
   document.body.dataset.mview='yerler';
   setNavActive('yerler');               // Yerler açıkken alt bar: Yerler aktif
+  ylDim.classList.add('on');
+  ylEl.classList.add('open'); ylEl.setAttribute('aria-hidden','false');
+}
+/* #6: ana ekran kategori kartından doğrudan o kategoriyle aç (boş kategoride düzgün empty state) */
+function openYerlerCat(k){
+  closeMainSheets();
+  ylActiveCat = (YL_CATS.some(c=>c.k===k)) ? k : ylFirstNonEmptyCat();
+  syncYlCats(); renderYerler(); ylBody.scrollTop=0;
+  document.body.dataset.mview='yerler';
+  setNavActive('yerler');
   ylDim.classList.add('on');
   ylEl.classList.add('open'); ylEl.setAttribute('aria-hidden','false');
 }
@@ -5547,13 +5566,17 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape' && svcEl.classList.
 function renderSponsors(){
   const el=document.getElementById('msponsor'); if(!el) return;
   const spons=VENUES.map((v,i)=>({v,i})).filter(x=>x.v.sponsored).slice(0,3);
-  el.innerHTML=spons.map(x=>
-    '<div class="spon-card" data-i="'+x.i+'" role="button" tabindex="0" aria-label="Sponsorlu: '+x.v.name+'">'+
+  if(!spons.length){ el.innerHTML=''; return; }
+  const card=x=>
+    '<div class="spon-card" data-i="'+x.i+'" role="button" tabindex="0" aria-label="Öne Çıkan: '+x.v.name+'">'+
     '<img src="'+vThumb(x.i)+'" alt="" loading="lazy" decoding="async">'+
-    '<div class="spon-mid"><span class="spon-badge">Sponsorlu</span>'+
-    '<div class="spon-name">'+x.v.name+'</div></div></div>').join('');
+    '<div class="spon-mid"><span class="spon-badge">Öne Çıkan</span>'+
+    '<div class="spon-name">'+x.v.name+'</div></div></div>';
+  // marquee: seamless loop için kart seti iki kez basılır (track translateX -50% = tam bir set)
+  const set=spons.map(card).join('');
+  el.innerHTML='<div class="spon-track">'+set+set+'</div>';
   el.querySelectorAll('.spon-card').forEach(c=>{
-    const go=()=>flyAndFocus(parseInt(c.dataset.i,10),'Sponsor');
+    const go=()=>flyAndFocus(parseInt(c.dataset.i,10),'Öne Çıkan');
     c.addEventListener('click',go);
     c.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } });
   });
@@ -5647,7 +5670,7 @@ function renderDesktop(){
   const c1=spons[0]||all[0];
   const c2=spons.find(x=>x.i!==c1.i)||all.find(x=>x.i!==c1.i)||c1;
   const cards=[
-    {idx:c1.i,act:'',kicker:'Sponsorlu',name:c1.v.name,sub:c1.v.camp||c1.v.desc2||c1.v.cat,thumb:vThumb(c1.i)},
+    {idx:c1.i,act:'',kicker:'Öne Çıkan',name:c1.v.name,sub:c1.v.camp||c1.v.desc2||c1.v.cat,thumb:vThumb(c1.i)},
     {idx:c2.i,act:'',kicker:c2.v.cat||'Mekan',name:c2.v.name,sub:c2.v.desc2||c2.v.cat,thumb:vThumb(c2.i)}
   ];
   const ev=(typeof EV_DATA!=='undefined'&&EV_DATA.length)?EV_DATA[0]:null;
