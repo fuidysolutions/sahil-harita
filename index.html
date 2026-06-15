@@ -666,6 +666,37 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #glow.on{opacity:1;}
 
 
+  /* ===== DESKTOP (≥1024px): map üstü web-site yerleşimi — mobil kuralları yalnız override eder ===== */
+  @media (min-width:1024px){
+    /* logo sol üst (web header hissi) */
+    #mlogo{left:32px;right:auto;top:24px;transform:none;}
+    #mlogo img{width:128px;}
+
+    /* search bar: logo altı, sol kolon, geniş */
+    #mtop{left:32px;right:auto;top:86px;transform:none;width:min(46vw,520px);}
+
+    /* kategori rail + sponsor: sol kolonda search altında (alt orta dar kolon değil) */
+    #mstack{left:32px;right:auto;top:144px;bottom:auto;transform:none;width:min(46vw,520px);gap:12px;}
+    #mchips{justify-content:flex-start;}
+    .spon-card{padding:9px 11px;}
+    .spon-card img{width:40px;height:40px;}
+    .spon-name{font-size:12.5px;}
+    .spon-badge{font-size:9px;}
+
+    /* bottom nav: compact floating dock, sağ-alt (sol kolonla çakışmaz) */
+    #mbar{left:auto;right:32px;transform:none;width:auto;gap:8px;padding:8px 14px;bottom:24px;}
+    #mbar button{flex:0 0 auto;min-width:86px;}
+
+    /* sheet'ler: geniş, ortalı dialog (dar mobil kolon hissi yok) */
+    #searchsheet,#ylsheet,#ofsheet,#evsheet,#svcsheet,#vdsheet,#mnsheet{
+      width:min(88vw,820px);top:7vh;bottom:7vh;}
+
+    /* liste sheet'leri iki kolon kart düzeni (kartlar sıkışmasın) */
+    .yl-list,.of-list,.ev-list{display:grid;grid-template-columns:1fr 1fr;gap:11px;align-items:start;}
+
+    /* focus mini panel biraz daha geniş */
+    #fccard{width:min(70vw,520px);}
+  }
 </style>
 </head>
 <body>
@@ -695,7 +726,7 @@ window.addEventListener('error',function(e){
 </div>
 
 <nav id="mbar">
-  <button data-v="harita" class="on"><i class="ph ph-map-trifold" aria-hidden="true"></i>Harita</button>
+  <button data-v="harita" class="on"><i class="ph ph-map-trifold" aria-hidden="true"></i>Anasayfa</button>
   <button data-v="yerler"><i class="ph ph-map-pin" aria-hidden="true"></i>Yerler</button>
   <button data-v="firsatlar"><i class="ph ph-ticket" aria-hidden="true"></i>Fırsatlar</button>
   <button data-v="etkinlik"><i class="ph ph-calendar-star" aria-hidden="true"></i>Etkinlikler</button>
