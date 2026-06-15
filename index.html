@@ -70,16 +70,19 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
     top:calc(70px + env(safe-area-inset-top));z-index:18;
     width:min(calc(100% - 28px), 480px);
     display:flex;align-items:center;gap:8px;
-    background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.64);
-    border-radius:var(--radius-pill);padding:9px 9px 9px 15px;box-shadow:0 14px 40px rgba(8,35,61,.14);
-    backdrop-filter:blur(18px) saturate(1.15);-webkit-backdrop-filter:blur(18px) saturate(1.15);
+    background:linear-gradient(135deg,rgba(255,255,255,.58),rgba(255,255,255,.36));
+    border:1px solid rgba(255,255,255,.48);
+    border-radius:var(--radius-pill);padding:9px 9px 9px 15px;
+    box-shadow:0 18px 45px rgba(8,35,61,.16),inset 0 1px 0 rgba(255,255,255,.38);
+    backdrop-filter:blur(22px) saturate(1.22);-webkit-backdrop-filter:blur(22px) saturate(1.22);
     cursor:default;}
   #mtop > i{font-size:18px;color:var(--logo-blue);flex:0 0 auto;}
-  #mtop span{flex:1;min-width:0;text-align:left;font-size:13.5px;font-weight:500;color:#5a6f82;
+  #mtop span{flex:1;min-width:0;text-align:left;font-size:13.5px;font-weight:500;color:#4f6577;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   #mtop .mtop-tune{flex:0 0 auto;width:32px;height:32px;border-radius:50%;
     display:flex;align-items:center;justify-content:center;
-    background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.7);color:#41566b;cursor:pointer;
+    background:rgba(255,255,255,.34);border:1px solid rgba(255,255,255,.42);color:#41566b;cursor:pointer;
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
     transition:color .2s cubic-bezier(.22,1,.36,1),border-color .2s cubic-bezier(.22,1,.36,1);}
   #mtop .mtop-tune i{font-size:18px;line-height:1;}
   #mtop .mtop-tune:hover{color:var(--logo-blue);border-color:#bfe3f5;}
@@ -94,13 +97,19 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
     box-shadow:0 12px 26px rgba(0,134,196,.34);
     backdrop-filter:blur(10px) saturate(1.2);-webkit-backdrop-filter:blur(10px) saturate(1.2);
     animation:catPulse 3.6s ease-in-out infinite;}
-  #mcatpoint i{font-size:24px;line-height:1;}
+  /* point içi: AlgeGo logosunun "Go" bölümü (logo mavi kısımları mavi pointte kamufle, turuncu Go öne çıkar) */
+  #mcatpoint .mcat-go{width:40px;height:40px;
+    background:url('/assets/brand/go.png') no-repeat -181px -15px;background-size:221px 70px;}
   #mcatpoint::after{content:'';position:absolute;top:6px;right:6px;width:8px;height:8px;border-radius:50%;
-    background:var(--orange);box-shadow:0 0 0 2px rgba(255,255,255,.85);}
+    background:var(--orange);box-shadow:0 0 0 2px rgba(255,255,255,.85);
+    animation:catSignal 1.35s ease-in-out infinite;}   /* sinyal gibi yanıp sönme */
   #mcatpoint:hover{transform:translateY(-50%) scale(1.04);}
   #mcatdock.open #mcatpoint{animation:none;box-shadow:0 12px 30px rgba(0,134,196,.5);}
   @keyframes catPulse{0%,100%{box-shadow:0 12px 26px rgba(0,134,196,.32);}
     50%{box-shadow:0 14px 32px rgba(0,134,196,.5);}}
+  @keyframes catSignal{
+    0%,100%{transform:scale(1);opacity:1;box-shadow:0 0 0 0 rgba(255,122,24,.38);}
+    50%{transform:scale(.82);opacity:.72;box-shadow:0 0 0 7px rgba(255,122,24,0);}}
 
   /* açık kartlar: orta-sol alana doğru açılan mavi gradient kartlar */
   #mchips{position:fixed;left:92px;z-index:16;
@@ -109,21 +118,28 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
     opacity:0;visibility:hidden;pointer-events:none;
     transition:opacity .2s ease,visibility .2s ease;}
   #mcatdock.open #mchips{opacity:1;visibility:visible;pointer-events:auto;}
-  #mchips.wiggle{animation:catWiggle .5s ease-in-out;}
+  #mchips.wiggle{animation:catWiggle .42s ease-in-out;}
   #mchips button{position:relative;display:flex;align-items:center;gap:12px;width:100%;height:60px;
     padding:0 16px;border-radius:16px;font-family:inherit;cursor:pointer;text-align:left;
+    transform-origin:left center;
     border:1px solid rgba(255,255,255,.28);
     background:linear-gradient(135deg,#13a7e6,#0086c4);color:#fff;
     box-shadow:0 12px 26px rgba(0,134,196,.32);
     backdrop-filter:blur(8px) saturate(1.15);-webkit-backdrop-filter:blur(8px) saturate(1.15);
-    opacity:0;transform:translateX(-20px) scale(.82);
-    transition:opacity .34s cubic-bezier(.22,1,.36,1),transform .34s cubic-bezier(.22,1,.36,1),
+    opacity:0;transform:translate(-58px,0) scale(.62);
+    transition:opacity .28s ease,transform .34s cubic-bezier(.2,.8,.2,1),
       box-shadow .2s cubic-bezier(.22,1,.36,1);}
-  #mcatdock.open #mchips button{opacity:1;transform:translateX(0) scale(1);}
+  /* kapalı: kartlar point'e doğru toplanır (her kart point yönüne farklı yığılır) */
+  #mchips button:nth-child(1){transform:translate(-58px,96px) scale(.62);}
+  #mchips button:nth-child(2){transform:translate(-58px,36px) scale(.62);}
+  #mchips button:nth-child(3){transform:translate(-58px,-28px) scale(.62);}
+  #mchips button:nth-child(4){transform:translate(-58px,-88px) scale(.62);}
+  /* açık: normal konum + stagger */
+  #mcatdock.open #mchips button{opacity:1;transform:translate(0,0) scale(1);}
   #mcatdock.open #mchips button:nth-child(1){transition-delay:0s;}
-  #mcatdock.open #mchips button:nth-child(2){transition-delay:.06s;}
-  #mcatdock.open #mchips button:nth-child(3){transition-delay:.12s;}
-  #mcatdock.open #mchips button:nth-child(4){transition-delay:.18s;}
+  #mcatdock.open #mchips button:nth-child(2){transition-delay:.05s;}
+  #mcatdock.open #mchips button:nth-child(3){transition-delay:.10s;}
+  #mcatdock.open #mchips button:nth-child(4){transition-delay:.15s;}
   #mchips button i{font-size:21px;line-height:1;flex:0 0 auto;color:#fff;}
   #mchips button span{font-size:13.5px;font-weight:600;line-height:1.1;color:#fff;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -131,8 +147,16 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #mchips button.on::before{content:'';position:absolute;left:0;top:11px;bottom:11px;width:4px;
     border-radius:0 4px 4px 0;background:var(--orange);}
   #mchips button.on{box-shadow:0 14px 30px rgba(0,134,196,.42);}
-  @keyframes catWiggle{0%,100%{transform:translateX(0);}
+  @keyframes catWiggle{0%,100%{transform:translate(0,0) scale(1);}
     25%{transform:translateX(2px);}50%{transform:translateX(-2px);}75%{transform:translateX(1px);}}
+  @media (prefers-reduced-motion:reduce){
+    #mcatpoint{animation:none;}
+    #mcatpoint::after{animation:none;}
+    #mchips.wiggle{animation:none;}
+    #mchips button{transition:opacity .18s linear;transform:none;}
+    #mchips button:nth-child(1),#mchips button:nth-child(2),
+    #mchips button:nth-child(3),#mchips button:nth-child(4){transform:none;}
+    #mcatdock.open #mchips button{transform:none;}}
 
   /* ===== ÖNE ÇIKAN RAİL — alt yatay marquee (3 okunur turuncu kart) ===== */
   #msponsor{position:fixed;left:0;right:0;z-index:16;
@@ -190,7 +214,8 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
     opacity:0;pointer-events:none;transition:opacity .3s cubic-bezier(.22,1,.36,1);}
   #ssdim.on{opacity:1;pointer-events:auto;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);}
   /* kapalı/dinlenme: search bar yönünden (yukarı) gelmiş gibi hafif yukarı + küçülmüş */
-  #searchsheet{position:fixed;left:50%;transform:translateX(-50%) translateY(-16px) scale(.96);
+  #searchsheet{position:fixed;left:50%;
+    transform:translateX(-50%) translateY(-46px) scaleX(.9) scaleY(.66);
     top:calc(60px + env(safe-area-inset-top));
     bottom:calc(86px + env(safe-area-inset-bottom));
     width:min(calc(100% - 24px), 520px);z-index:25;transform-origin:top center;
@@ -198,13 +223,16 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
     background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius-lg);
     box-shadow:var(--shadow-soft);overflow:hidden;
     opacity:0;pointer-events:none;
-    transition:opacity .3s cubic-bezier(.2,.85,.25,1),transform .3s cubic-bezier(.2,.85,.25,1);}
-  #searchsheet.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0) scale(1);}
-  /* açılış: search bar'dan genişleyerek/morph ederek (transform-origin top center) */
-  #searchsheet.open.from-search{animation:ssOpen .5s cubic-bezier(.2,.85,.25,1);}
+    transition:opacity .34s cubic-bezier(.18,.86,.22,1),transform .34s cubic-bezier(.18,.86,.22,1);}
+  #searchsheet.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0) scaleX(1) scaleY(1);}
+  /* açılış: search bar'ın bulunduğu alandan ekrana doğru büyüyen morph (transform-origin top center) */
+  #searchsheet.open.from-search{animation:ssOpen .56s cubic-bezier(.18,.86,.22,1);}
   @keyframes ssOpen{
-    0%{opacity:0;transform:translateX(-50%) translateY(-22px) scale(.92);}
-    100%{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}}
+    0%{opacity:0;border-radius:34px;
+       transform:translateX(-50%) translateY(-72px) scaleX(.82) scaleY(.34);}
+    55%{opacity:1;}
+    100%{opacity:1;border-radius:var(--radius-lg);
+       transform:translateX(-50%) translateY(0) scaleX(1) scaleY(1);}}
   @media (prefers-reduced-motion:reduce){
     /* sade: uzun morph yok, kısa fade */
     #searchsheet,#searchsheet.open{transform:translateX(-50%) translateY(0);
@@ -865,7 +893,7 @@ window.addEventListener('error',function(e){
   <button class="mtop-tune" type="button" tabindex="-1" aria-label="Filtrele"><i class="ph ph-sliders-horizontal" aria-hidden="true"></i></button>
 </div>
 <div id="mcatdock">
-  <button id="mcatpoint" type="button" aria-label="Kategoriler" aria-expanded="false"><i class="ph ph-squares-four" aria-hidden="true"></i></button>
+  <button id="mcatpoint" type="button" aria-label="Kategoriler" aria-expanded="false"><span class="mcat-go" aria-hidden="true"></span></button>
   <div id="mchips" role="group" aria-label="Kategoriler"></div>
 </div>
 <div id="msponsor"></div>
@@ -5065,8 +5093,9 @@ function playCategoryIntro(){
   if(cpopEl.classList.contains('on') || cpopAnyOverlayOpen()) return;  // pop-up/sheet/detay/uçuş varsa oynama
   sessionStorage.setItem('algeCategoryIntroPlayed','1');
   catOpen();
-  setTimeout(()=>{ chipsEl.classList.add('wiggle'); setTimeout(()=>chipsEl.classList.remove('wiggle'),600); }, 560);
-  setTimeout(()=>{ catClose(); }, 2400);                      // sonra tek point'e dön
+  // kısa intro: aç -> kısa sallan -> point'e toplanarak kapan (toplam ~1.55sn, <2sn)
+  setTimeout(()=>{ chipsEl.classList.add('wiggle'); setTimeout(()=>chipsEl.classList.remove('wiggle'),440); }, 320);
+  setTimeout(()=>{ catClose(); }, 1250);                      // sonra tek point'e dön
 }
 function maybePlayCategoryIntro(delay){
   setTimeout(()=>{
@@ -5737,7 +5766,7 @@ function showCampaignPopup(){
 function closeCampaignPopup(){
   cpopEl.classList.remove('on'); cpopEl.setAttribute('aria-hidden','true');
   cpopDim.classList.remove('on');
-  maybePlayCategoryIntro(480);   // Sprint Visual-6: pop-up kapanınca kategori intro (uçuş/sheet açıksa guard skip eder)
+  maybePlayCategoryIntro(380);   // Sprint Visual-6/8: pop-up kapanınca kategori intro (uçuş/sheet açıksa guard skip eder)
 }
 function scheduleCampaignPopup(){
   if(sessionStorage.getItem('algeCampaignPopupShown')){ maybePlayCategoryIntro(900); return; }  // pop-up gösterilmiyor -> kısa gecikmeyle intro
