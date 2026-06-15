@@ -329,33 +329,33 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #ofBody{flex:1;min-height:0;overflow-y:auto;padding:4px 16px 18px;}
   #ofBody::-webkit-scrollbar{width:5px;}
   #ofBody::-webkit-scrollbar-thumb{background:#dfe7ef;border-radius:3px;}
-  .of-list{display:flex;flex-direction:column;gap:11px;}
+  /* Sprint Visual-3: kompakt YATAY fırsat kartı (küçük thumb solda, içerik sağda; düşük yükseklik) */
+  .of-list{display:flex;flex-direction:column;gap:9px;}
 
-  .of-card{display:grid;grid-template-columns:104px 1fr;gap:12px;
-    padding:10px;border-radius:var(--radius-md);background:#fff;border:1px solid var(--border-soft);
-    box-shadow:0 10px 26px rgba(8,35,61,.10);cursor:pointer;
+  .of-card{display:grid;grid-template-columns:78px 1fr;gap:11px;align-items:stretch;
+    padding:8px;border-radius:var(--radius-md);background:#fff;border:1px solid var(--border-soft);
+    box-shadow:0 6px 16px rgba(8,35,61,.08);cursor:pointer;
     transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s cubic-bezier(.22,1,.36,1);}
-  .of-card:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(8,35,61,.15);}
+  .of-card:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(8,35,61,.13);}
   .of-thumb{position:relative;}
-  .of-thumb img{width:104px;height:100%;min-height:104px;border-radius:12px;object-fit:cover;display:block;}
-  .of-mid{min-width:0;display:flex;flex-direction:column;gap:6px;}
-  .of-head{display:flex;align-items:center;justify-content:space-between;gap:8px;}
-  .of-venue{font-size:12px;font-weight:500;color:var(--logo-blue);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .of-title{font-size:16.5px;font-weight:600;color:var(--navy);line-height:1.12;
-    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-  .of-desc{font-size:12px;line-height:1.35;color:#64778a;
-    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-  .of-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-  .of-value{display:inline-flex;align-items:center;border-radius:12px;padding:7px 11px;background:var(--orange-soft);
-    color:var(--orange);font-size:15px;font-weight:600;line-height:1;}
-  .of-valid{display:inline-flex;align-items:center;gap:5px;border-radius:var(--radius-pill);padding:6px 10px;
-    background:#fff;border:1px solid #ffd9c2;color:var(--orange);font-size:11.5px;font-weight:600;}
-  .of-valid i{font-size:14px;}
+  .of-thumb img{width:78px;height:100%;min-height:78px;border-radius:11px;object-fit:cover;display:block;}
+  /* kampanya chip'i thumb üstüne taşındı: marka adına tam satır kalır (kesilmez) */
+  .of-badge{position:absolute;left:5px;top:5px;display:inline-flex;align-items:center;gap:4px;
+    background:var(--orange);color:#fff;border-radius:8px;padding:3px 7px;font-size:9.5px;font-weight:700;
+    letter-spacing:.02em;box-shadow:0 4px 10px rgba(255,106,18,.35);}
+  .of-badge i{font-size:11px;}
+  .of-mid{min-width:0;display:flex;flex-direction:column;justify-content:center;gap:3px;}
+  .of-venue{font-size:14px;font-weight:600;color:var(--navy);line-height:1.15;}   /* marka adı: kesilmez (wrap) */
+  .of-title{font-size:12px;font-weight:500;color:#64778a;line-height:1.3;
+    display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
   .of-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px;}
-  .of-go{display:inline-flex;align-items:center;gap:6px;border:none;border-radius:var(--radius-pill);
-    padding:9px 16px;background:var(--orange);color:#fff;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;
-    box-shadow:0 8px 20px rgba(255,122,26,.30);}
-  .of-go i{font-size:15px;}
+  .of-value{display:inline-flex;align-items:center;border-radius:9px;padding:4px 9px;background:var(--orange-soft);
+    color:var(--orange);font-size:12.5px;font-weight:700;line-height:1.1;
+    min-width:0;max-width:58%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .of-go{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;border:none;border-radius:var(--radius-pill);
+    padding:7px 13px;background:var(--orange);color:#fff;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;
+    box-shadow:0 6px 14px rgba(255,122,26,.28);}
+  .of-go i{font-size:14px;}
 
   body.flying #ofdim,body.flying #ofsheet{display:none !important;}
 
@@ -5209,19 +5209,14 @@ OF_CATS.forEach(c=>{
 function syncOfCats(){ ofCats.querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.ofCat===ofActiveCat)); }
 function offerCardHTML(o){
   return `<article class="of-card" data-i="${o.i}" role="button" tabindex="0">
-    <div class="of-thumb"><img src="${vThumb(o.i)}" alt="" loading="lazy" decoding="async"></div>
+    <div class="of-thumb"><img src="${vThumb(o.i)}" alt="" loading="lazy" decoding="async"><span class="of-badge"><i class="ph ph-ticket" aria-hidden="true"></i>Kampanya</span></div>
     <div class="of-mid">
-      <div class="of-head">
-        <span class="chip-campaign"><i class="ph ph-ticket" aria-hidden="true"></i>Kampanya</span>
-        <span class="of-venue">${o.venue}</span>
-      </div>
+      <div class="of-venue">${o.venue}</div>
       <div class="of-title">${o.title}</div>
-      <p class="of-desc">${o.desc}</p>
-      <div class="of-meta">
+      <div class="of-foot">
         <span class="of-value">${o.value}</span>
-        <span class="of-valid"><i class="ph ph-clock" aria-hidden="true"></i>${o.valid}</span>
+        <button class="of-go" type="button">İncele <i class="ph ph-caret-right" aria-hidden="true"></i></button>
       </div>
-      <div class="of-foot"><button class="of-go" type="button">İncele <i class="ph ph-caret-right" aria-hidden="true"></i></button></div>
     </div>
   </article>`;
 }
