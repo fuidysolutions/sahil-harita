@@ -211,8 +211,10 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
 
 
   /* alt nav: hafif QR web app tab bar (native app ağırlığı yok) */
+  /* native tab bar: kalıcı app shell katmanı — tab ekranlarının (yl/of/ev z25) ÜSTÜNDE,
+     detail(26, DOM sonrası)/menu(28)/popup(100) modallarının ALTINDA kalır. */
   #mbar{position:fixed;left:50%;transform:translateX(-50%);
-    bottom:calc(12px + env(safe-area-inset-bottom));z-index:17;
+    bottom:calc(12px + env(safe-area-inset-bottom));z-index:26;
     width:min(calc(100% - 28px), 460px);
     display:flex;justify-content:space-around;align-items:center;
     background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.8);border-radius:22px;
@@ -322,7 +324,8 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   body.flying #ssdim,body.flying #searchsheet{display:none !important;}
 
   /* ===== YERLER SHEET (kategori filtreli liste) ===== */
-  #yldim{position:fixed;inset:0;z-index:24;background:rgba(8,35,61,.16);
+  /* tab backdrop bottom nav alanına girmez (nav her zaman açıkta + tıklanabilir) */
+  #yldim{position:fixed;top:0;left:0;right:0;bottom:calc(86px + env(safe-area-inset-bottom));z-index:24;background:rgba(8,35,61,.16);
     opacity:0;pointer-events:none;transition:opacity .3s cubic-bezier(.22,1,.36,1);}
   #yldim.on{opacity:1;pointer-events:auto;}
   #ylsheet{position:fixed;left:50%;transform:translateX(-50%) translateY(14px);
@@ -383,7 +386,7 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   body.flying #yldim,body.flying #ylsheet{display:none !important;}
 
   /* ===== FIRSATLAR SHEET (kampanya/avantaj listesi) ===== */
-  #ofdim{position:fixed;inset:0;z-index:24;background:rgba(8,35,61,.16);
+  #ofdim{position:fixed;top:0;left:0;right:0;bottom:calc(86px + env(safe-area-inset-bottom));z-index:24;background:rgba(8,35,61,.16);
     opacity:0;pointer-events:none;transition:opacity .3s cubic-bezier(.22,1,.36,1);}
   #ofdim.on{opacity:1;pointer-events:auto;}
   #ofsheet{position:fixed;left:50%;transform:translateX(-50%) translateY(14px);
@@ -452,7 +455,7 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   body.flying #ofdim,body.flying #ofsheet{display:none !important;}
 
   /* ===== ETKİNLİKLER SHEET (etkinlik listesi) ===== */
-  #evdim{position:fixed;inset:0;z-index:24;background:rgba(8,35,61,.16);
+  #evdim{position:fixed;top:0;left:0;right:0;bottom:calc(86px + env(safe-area-inset-bottom));z-index:24;background:rgba(8,35,61,.16);
     opacity:0;pointer-events:none;transition:opacity .3s cubic-bezier(.22,1,.36,1);}
   #evdim.on{opacity:1;pointer-events:auto;}
   #evsheet{position:fixed;left:50%;transform:translateX(-50%) translateY(14px);
