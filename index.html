@@ -765,7 +765,11 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   @keyframes flashp{0%{opacity:0}28%{opacity:.55}100%{opacity:0}}
   #glow{position:fixed;width:240px;height:240px;pointer-events:none;z-index:4;opacity:0;
     transform:translate(-50%,-50%);transition:opacity .5s ease;
-    background:radial-gradient(circle, rgba(255,196,120,.55) 0%, rgba(255,196,120,.18) 38%, transparent 65%);}
+    background:radial-gradient(circle,
+      rgba(255,122,24,.78) 0%,
+      rgba(255,122,24,.38) 34%,
+      rgba(255,122,24,.10) 58%,
+      rgba(255,122,24,0) 76%);}
   #glow.on{opacity:1;}
 
 
