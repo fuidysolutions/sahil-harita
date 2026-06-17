@@ -92,48 +92,38 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   /* AlgeGo Category Action Button (Sprint 11) — premium cam, hafif 3D squircle (asset bağımsız) */
   #mcatpoint{position:fixed;left:calc(22px + env(safe-area-inset-left));z-index:17;
     top:54vh;top:54svh;transform:translateY(-50%);
-    width:68px;height:68px;border-radius:24px;display:flex;align-items:center;justify-content:center;
+    width:52px;height:52px;border-radius:17px;display:flex;align-items:center;justify-content:center;
     padding:0;cursor:pointer;appearance:none;-webkit-appearance:none;
-    border:1px solid rgba(185,238,255,.78);
+    border:1px solid rgba(185,238,255,.7);
     background:
-      radial-gradient(circle at 24% 18%, rgba(255,255,255,.55), rgba(255,255,255,0) 32%),
-      linear-gradient(145deg, #21b9f0 0%, #008bd2 42%, #005fae 100%);
-    box-shadow:0 18px 34px rgba(0,88,150,.34),0 0 0 1px rgba(0,180,255,.26),
-      inset 0 1px 0 rgba(255,255,255,.55),inset 0 -12px 18px rgba(0,48,110,.28);
-    backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px) saturate(1.2);
+      radial-gradient(circle at 26% 20%, rgba(255,255,255,.42), rgba(255,255,255,0) 36%),
+      linear-gradient(150deg, #1aa9e6 0%, #0086cd 48%, #0061ac 100%);
+    box-shadow:0 10px 22px rgba(0,88,150,.28),0 0 0 1px rgba(0,180,255,.2),
+      inset 0 1px 0 rgba(255,255,255,.45),inset 0 -8px 14px rgba(0,48,110,.24);
+    backdrop-filter:blur(10px) saturate(1.15);-webkit-backdrop-filter:blur(10px) saturate(1.15);
     animation:catPulse 3.6s ease-in-out infinite;
     transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s cubic-bezier(.22,1,.36,1),
       filter .22s cubic-bezier(.22,1,.36,1);}
   /* iç cam parlama katmanı (içeriği boğmaz) */
-  #mcatpoint::before{content:'';position:absolute;inset:3px;border-radius:21px;pointer-events:none;z-index:1;
+  #mcatpoint::before{content:'';position:absolute;inset:2px;border-radius:15px;pointer-events:none;z-index:1;
     background:
-      linear-gradient(135deg, rgba(255,255,255,.32), rgba(255,255,255,0) 38%),
-      radial-gradient(circle at 70% 15%, rgba(255,255,255,.16), rgba(255,255,255,0) 36%);}
-  #mcatpoint:hover{transform:translateY(-50%) scale(1.045);
-    box-shadow:0 20px 40px rgba(0,88,150,.42),0 0 0 1px rgba(0,180,255,.32),
-      inset 0 1px 0 rgba(255,255,255,.6),inset 0 -12px 18px rgba(0,48,110,.28);}
-  #mcatpoint:active{transform:translateY(-50%) scale(.96);}
+      linear-gradient(140deg, rgba(255,255,255,.26), rgba(255,255,255,0) 42%),
+      radial-gradient(circle at 70% 14%, rgba(255,255,255,.12), rgba(255,255,255,0) 38%);}
+  #mcatpoint:hover{transform:translateY(-50%) scale(1.04);
+    box-shadow:0 12px 26px rgba(0,88,150,.36),0 0 0 1px rgba(0,180,255,.26),
+      inset 0 1px 0 rgba(255,255,255,.5),inset 0 -8px 14px rgba(0,48,110,.24);}
+  #mcatpoint:active{transform:translateY(-50%) scale(.95);}
   #mcatdock.open #mcatpoint{animation:none;filter:saturate(1.08);
-    box-shadow:0 20px 44px rgba(0,88,150,.48),0 0 0 1px rgba(0,180,255,.34),
-      inset 0 1px 0 rgba(255,255,255,.6),inset 0 -12px 18px rgba(0,48,110,.3);}
-  /* iç kompozisyon: grid (sol üst) + Go (alt-orta) + ince dalga (en alt) — mark butonu doldurur */
-  .cat-orb-mark{position:absolute;inset:0;pointer-events:none;}
-  .cat-orb-grid{position:absolute;left:13px;top:13px;z-index:2;
-    display:grid;grid-template-columns:repeat(2,7px);grid-template-rows:repeat(2,7px);gap:5px;}
-  .cat-orb-grid i{display:block;width:7px;height:7px;border-radius:3px;background:rgba(238,252,255,.88);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.68),0 2px 5px rgba(0,42,90,.18);}
-  .cat-orb-go{position:absolute;left:50%;bottom:12px;transform:translateX(-50%) rotate(-5deg);z-index:3;
-    font-family:Georgia,'Times New Roman',serif;font-size:27px;font-style:italic;font-weight:700;
-    letter-spacing:-3px;line-height:1;color:#ff8a1c;
-    background:linear-gradient(180deg,#ffe36a 0%,#ff9a1f 45%,#ff6d12 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-    filter:drop-shadow(0 2px 2px rgba(120,45,4,.42));}
-  .cat-orb-wave{position:absolute;left:9px;right:9px;bottom:9px;height:13px;border-radius:999px;z-index:1;
-    background:linear-gradient(135deg, rgba(37,198,255,.42), rgba(0,105,210,.18));
-    transform:skewY(-8deg);opacity:.7;}
-  #mcatpoint::after{content:'';position:absolute;top:11px;right:11px;width:10px;height:10px;border-radius:50%;z-index:4;
+    box-shadow:0 12px 28px rgba(0,88,150,.42),0 0 0 1px rgba(0,180,255,.28),
+      inset 0 1px 0 rgba(255,255,255,.5),inset 0 -8px 14px rgba(0,48,110,.26);}
+  /* iç içerik: yalnız ortalanmış "Go" (grid/dalga kaldırıldı) */
+  .cat-orb-go{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;
+    font-family:Georgia,'Times New Roman',serif;font-size:20px;font-weight:700;
+    letter-spacing:.2px;line-height:1;color:#fff;
+    text-shadow:0 1px 2px rgba(0,46,90,.4),0 0 1px rgba(0,30,70,.3);}
+  #mcatpoint::after{content:'';position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;z-index:4;
     background:radial-gradient(circle at 35% 28%, #ffe082, #ff8a1c 46%, #ff6512 100%);
-    box-shadow:0 0 0 2px rgba(255,255,255,.88),0 0 12px rgba(255,122,24,.48);
+    box-shadow:0 0 0 1.5px rgba(255,255,255,.85),0 0 9px rgba(255,122,24,.45);
     animation:catSignal 1.35s ease-in-out infinite;}   /* sağ üst premium sinyal */
   @keyframes catPulse{0%,100%{box-shadow:0 12px 26px rgba(0,134,196,.32);}
     50%{box-shadow:0 14px 32px rgba(0,134,196,.5);}}
@@ -923,7 +913,7 @@ window.addEventListener('error',function(e){
   <button class="mtop-tune" type="button" tabindex="-1" aria-label="Filtrele"><i class="ph ph-sliders-horizontal" aria-hidden="true"></i></button>
 </div>
 <div id="mcatdock">
-  <button id="mcatpoint" type="button" aria-label="Kategorileri aç" aria-expanded="false"><span class="cat-orb-mark" aria-hidden="true"><span class="cat-orb-grid"><i></i><i></i><i></i><i></i></span><span class="cat-orb-go">Go</span><span class="cat-orb-wave"></span></span></button>
+  <button id="mcatpoint" type="button" aria-label="Kategorileri aç" aria-expanded="false"><span class="cat-orb-go">Go</span></button>
   <div id="mchips" role="group" aria-label="Kategoriler"></div>
 </div>
 <div id="msponsor"></div>
