@@ -27,16 +27,29 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
 </script>
 <style>
   :root{
-    --logo-blue:#0098d8;
-    --navy:#08233d;
-    --navy-soft:#13293d;
-    --orange:#ff7a1a;
+    --logo-blue:#169FE3;
+    /* ===== Light Coastal Discovery — onaylı token seti ===== */
+    --alge-blue:#169FE3;
+    --alge-cyan:#55D5EC;
+    --alge-light-cyan:#DDF8FF;
+    --alge-frost:rgba(224,248,255,.72);
+    --alge-frost-strong:rgba(238,252,255,.86);
+    --alge-border:rgba(255,255,255,.72);
+    --alge-cyan-border:rgba(88,210,235,.36);
+    --alge-orange:#FF7A1A;
+    --alge-text:#12324A;
+    --alge-muted:#5F7890;
+    --alge-frost-grad:linear-gradient(135deg,rgba(244,253,255,.92),rgba(205,242,252,.72));
+    /* legacy alias'lar — coastal'a haritalandı (sheet'ler yumuşar, navy gider) */
+    --orange:#FF7A1A;
     --orange-soft:#fff1e8;
+    --navy:#12324A;
+    --navy-soft:#1b3d57;
     --surface:#ffffff;
-    --surface-soft:rgba(255,255,255,.94);
-    --border-soft:#dfe7ef;
-    --shadow-soft:0 18px 44px rgba(8,35,61,.16);
-    --shadow-card:0 10px 30px rgba(8,35,61,.12);
+    --surface-soft:rgba(244,253,255,.92);
+    --border-soft:rgba(88,210,235,.28);
+    --shadow-soft:0 18px 48px rgba(56,184,220,.20),0 4px 18px rgba(20,80,120,.08);
+    --shadow-card:0 14px 34px rgba(56,184,220,.18);
     --radius-lg:28px;
     --radius-md:18px;
     --radius-pill:999px;
@@ -290,22 +303,23 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   .ss-count{font-size:12px;font-weight:600;color:var(--logo-blue);white-space:nowrap;flex:0 0 auto;}
 
   /* sponsorlu premium kart */
-  .tcard{position:relative;display:grid;grid-template-columns:84px 1fr auto;gap:12px;align-items:center;
-    padding:11px;border-radius:var(--radius-md);background:#fff;border:1px solid var(--border-soft);
-    box-shadow:0 10px 26px rgba(8,35,61,.10);margin-bottom:10px;cursor:pointer;overflow:hidden;
+  /* kompakt — açılışta 4 trend mekanı da görünsün (küçültüldü) */
+  .tcard{position:relative;display:grid;grid-template-columns:60px 1fr auto;gap:11px;align-items:center;
+    padding:9px;border-radius:var(--radius-md);background:#fff;border:1px solid var(--border-soft);
+    box-shadow:0 10px 26px rgba(8,35,61,.10);margin-bottom:8px;cursor:pointer;overflow:hidden;
     transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s cubic-bezier(.22,1,.36,1);}
-  .tcard::before{content:'';position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:0 3px 3px 0;background:var(--orange);}
+  .tcard::before{content:'';position:absolute;left:0;top:11px;bottom:11px;width:4px;border-radius:0 3px 3px 0;background:var(--orange);}
   .tcard:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(8,35,61,.15);}
-  .tcard img{width:84px;height:80px;border-radius:12px;object-fit:cover;}
+  .tcard img{width:60px;height:60px;border-radius:12px;object-fit:cover;}
   .tc-mid{min-width:0;}
-  .tc-spon{margin-bottom:6px;}
-  .tc-name{font-size:16px;font-weight:600;color:var(--navy);line-height:1.15;
+  .tc-spon{margin-bottom:4px;}
+  .tc-name{font-size:14.5px;font-weight:600;color:var(--navy);line-height:1.15;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .tc-sub{font-size:12.5px;font-weight:500;color:var(--logo-blue);margin:3px 0 7px;
+  .tc-sub{font-size:12px;font-weight:500;color:var(--logo-blue);margin:2px 0 0;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .tc-chips{display:flex;gap:6px;flex-wrap:wrap;}
-  .tc-go{display:flex;align-items:center;gap:4px;color:#5a6f82;font-size:13px;font-weight:600;white-space:nowrap;align-self:center;}
-  .tc-go i{font-size:15px;}
+  .tc-go{display:flex;align-items:center;gap:4px;color:#5a6f82;font-size:12.5px;font-weight:600;white-space:nowrap;align-self:center;}
+  .tc-go i{font-size:14px;}
 
   /* normal kompakt kart */
   .rcard{display:grid;grid-template-columns:60px 1fr auto;gap:11px;align-items:center;
@@ -364,24 +378,30 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #ylBody{flex:1;min-height:0;overflow-y:auto;padding:4px 16px 18px;}
   #ylBody::-webkit-scrollbar{width:5px;}
   #ylBody::-webkit-scrollbar-thumb{background:#dfe7ef;border-radius:3px;}
-  .yl-list{display:flex;flex-direction:column;gap:9px;}
+  .yl-list{display:flex;flex-direction:column;gap:8px;}
 
-  .yl-card{display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:center;
-    padding:10px;border-radius:var(--radius-md);background:#fff;border:1px solid var(--border-soft);
+  /* kompakt satır — 5 mekan görünsün (küçültüldü) */
+  .yl-card{display:grid;grid-template-columns:60px 1fr auto;gap:11px;align-items:center;
+    padding:11px;border-radius:var(--radius-md);background:#fff;border:1px solid var(--border-soft);
     box-shadow:0 8px 20px rgba(8,35,61,.08);cursor:pointer;
     transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s cubic-bezier(.22,1,.36,1);}
   .yl-card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(8,35,61,.13);}
-  .yl-card img{width:72px;height:70px;border-radius:12px;object-fit:cover;}
+  .yl-card img{width:60px;height:60px;border-radius:12px;object-fit:cover;}
   .yl-mid{min-width:0;}
-  .yl-name{font-size:15px;font-weight:600;color:var(--navy);line-height:1.15;
+  .yl-name{font-size:14px;font-weight:600;color:var(--navy);line-height:1.15;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .yl-sub{font-size:12px;font-weight:500;color:var(--logo-blue);margin:2px 0 4px;
+  .yl-sub{font-size:11.5px;font-weight:500;color:var(--logo-blue);margin:1px 0 3px;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .yl-desc{font-size:12px;line-height:1.35;color:#64778a;margin-bottom:6px;
-    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-  .yl-chips{display:flex;gap:5px;flex-wrap:wrap;}
-  .yl-go{display:flex;align-items:center;gap:4px;color:#5a6f82;font-size:13px;font-weight:600;white-space:nowrap;align-self:center;}
-  .yl-go i{font-size:15px;}
+  .yl-desc{font-size:11.5px;line-height:1.3;color:#64778a;margin-bottom:5px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .yl-chips{display:flex;gap:5px;flex-wrap:nowrap;overflow:hidden;}
+  /* "Öne Çıkan" rozeti */
+  .yl-feat{display:inline-flex;align-items:center;gap:4px;flex:0 0 auto;
+    background:var(--alge-orange);color:#fff;border-radius:var(--radius-pill);
+    padding:3px 9px;font-size:10.5px;font-weight:700;white-space:nowrap;}
+  .yl-feat i{font-size:12px;}
+  .yl-go{display:flex;align-items:center;gap:4px;color:#5a6f82;font-size:12.5px;font-weight:600;white-space:nowrap;align-self:center;}
+  .yl-go i{font-size:14px;}
 
   body.flying #yldim,body.flying #ylsheet{display:none !important;}
 
@@ -440,6 +460,11 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
     letter-spacing:.02em;box-shadow:0 4px 10px rgba(255,106,18,.35);}
   .of-badge i{font-size:11px;}
   .of-mid{min-width:0;display:flex;flex-direction:column;justify-content:center;gap:3px;}
+  /* "Öne Çıkan" rozeti (yalnız ilk 5) */
+  .of-feat{align-self:flex-start;display:inline-flex;align-items:center;gap:4px;
+    background:var(--alge-orange);color:#fff;border-radius:var(--radius-pill);
+    padding:2px 9px;font-size:10px;font-weight:700;white-space:nowrap;margin-bottom:1px;}
+  .of-feat i{font-size:11px;}
   .of-venue{font-size:14px;font-weight:600;color:var(--navy);line-height:1.15;}   /* marka adı: kesilmez (wrap) */
   .of-title{font-size:12px;font-weight:500;color:#64778a;line-height:1.3;
     display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
@@ -896,6 +921,246 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
       padding:11px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;}
     body.flying #dPanel,body.flying #dFeature{display:none !important;}
   }
+
+  /* ====================================================================== */
+  /* ===== LIGHT COASTAL DISCOVERY — onaylı UI katmanı (override block) ===== */
+  /* ====================================================================== */
+
+  /* logo */
+  #mlogo img{width:120px;filter:drop-shadow(0 8px 20px rgba(56,184,220,.30));}
+
+  /* arama çubuğu: büyük frosted pill (logo'nun hemen altı — durum çipi kaldırıldı) */
+  #mtop{top:calc(66px + env(safe-area-inset-top));width:min(calc(100% - 28px),520px);
+    gap:10px;background:var(--alge-frost-grad);border:1px solid var(--alge-border);
+    padding:12px 12px 12px 20px;
+    box-shadow:0 18px 48px rgba(56,184,220,.22),0 4px 18px rgba(20,80,120,.08),inset 0 1px 0 rgba(255,255,255,.65);
+    backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);}
+  #mtop > i{font-size:21px;color:var(--alge-blue);}
+  #mtop span{font-size:15px;font-weight:500;color:var(--alge-muted);}
+  #mtop .mtop-tune{position:relative;width:40px;height:40px;
+    background:rgba(255,255,255,.55);border:1px solid var(--alge-cyan-border);color:var(--alge-blue);}
+  #mtop .mtop-tune i{font-size:19px;}
+  #mtop .mtop-tune::after{content:'';position:absolute;top:7px;right:7px;width:7px;height:7px;border-radius:50%;
+    background:var(--alge-orange);box-shadow:0 0 0 2px rgba(255,255,255,.85);}
+  #mtop .mtop-tune:hover{background:#fff;border-color:var(--alge-cyan);color:var(--alge-blue);}
+
+  /* kategori rail: accordion -> yatay frosted segmented bar (search altı) */
+  #mcatpoint{display:none!important;}
+  #msponsor{display:none!important;}
+  #mcatdock{position:fixed;left:50%;top:calc(146px + env(safe-area-inset-top));transform:translateX(-50%)!important;
+    z-index:17;width:min(calc(100% - 28px),520px);max-width:none;height:auto;
+    background:var(--alge-frost-grad);border:1px solid var(--alge-border);border-radius:var(--radius-pill);
+    padding:6px;box-shadow:0 16px 40px rgba(56,184,220,.20),inset 0 1px 0 rgba(255,255,255,.6);
+    backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);}
+  #mchips{position:static!important;left:auto!important;top:auto!important;bottom:auto!important;
+    width:100%!important;max-width:none!important;display:flex!important;flex-direction:row!important;
+    align-items:stretch;gap:4px!important;opacity:1!important;visibility:visible!important;
+    pointer-events:auto!important;transform:none!important;}
+  #mchips button{position:relative;flex:1 1 0!important;min-width:0;width:auto!important;height:42px!important;
+    display:flex;align-items:center;justify-content:center;gap:6px;padding:0 6px!important;
+    border:none!important;background:none!important;border-radius:var(--radius-pill);
+    font-size:14px;font-weight:600;color:var(--alge-muted)!important;box-shadow:none!important;
+    opacity:1!important;transform:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    white-space:nowrap;transition:color .2s,background .2s,box-shadow .2s;}
+  #mchips button i{display:none!important;}
+  #mchips button span{color:inherit!important;font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;}
+  #mchips button:hover{color:var(--alge-blue)!important;}
+  #mchips button.on{color:#fff!important;
+    background:linear-gradient(135deg,var(--alge-cyan),var(--alge-blue))!important;
+    box-shadow:0 10px 22px rgba(22,159,227,.34)!important;}
+  #mchips button.on::before{display:none!important;}
+  #mchips button.on::after{content:'';position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);
+    width:34px;height:3px;border-radius:3px;background:var(--alge-orange);}
+
+  /* kart chip'leri */
+  .chip-trend{background:var(--alge-orange);color:#fff;}
+  .chip-menu{background:rgba(255,255,255,.72);color:var(--alge-text);border:1px solid var(--alge-cyan-border);box-shadow:none;}
+  .chip-menu::before{display:none;}
+  .chip-menu i{color:var(--alge-blue);}
+  .chip-campaign{background:rgba(255,255,255,.72);color:var(--alge-text);border:1px solid var(--alge-cyan-border);box-shadow:none;}
+  .chip-campaign::before{display:none;}
+  .chip-campaign i{color:var(--alge-orange);}
+
+  /* ===== VENUE CAROUSEL ===== */
+  /* #mcar = carousel bölgesi (kart satırı + noktalar bir kolonda). Mobilde tam genişlik, alt hizalı. */
+  #mcar{position:fixed;left:0;right:0;z-index:16;bottom:calc(88px + env(safe-area-inset-bottom));
+    display:flex;flex-direction:column;align-items:stretch;pointer-events:none;}
+  .car-row{display:flex;align-items:center;gap:8px;width:100%;pointer-events:none;}
+  #carScroller{flex:1 1 auto;min-width:0;pointer-events:auto;display:flex;gap:12px;overflow-x:auto;overflow-y:visible;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    padding:18px max(14px,calc(50% - 120px)) 12px;scrollbar-width:none;}
+  #carScroller::-webkit-scrollbar{display:none;}
+  .car-nav{display:none;}   /* mobilde ok yok (kaydırma) */
+  .vcard{position:relative;flex:0 0 61vw;max-width:240px;scroll-snap-align:center;
+    border-radius:24px;overflow:hidden;cursor:pointer;background:var(--alge-light-cyan);
+    border:1px solid var(--alge-border);transform:scale(.84);opacity:.62;transform-origin:center bottom;
+    box-shadow:0 18px 40px rgba(56,184,220,.24),inset 0 1px 0 rgba(255,255,255,.6);
+    transition:transform .14s ease-out,opacity .2s ease-out,box-shadow .3s;}
+  .vcard.active{transform:scale(1);opacity:1;
+    box-shadow:0 26px 56px rgba(56,184,220,.34),inset 0 1px 0 rgba(255,255,255,.7);}
+  .vc-img{position:relative;height:158px;overflow:hidden;}
+  .vc-img img{width:100%;height:100%;object-fit:cover;display:block;background:#cfeefb;}
+  .vc-img::after{content:'';position:absolute;inset:0;z-index:1;
+    background:linear-gradient(to top,rgba(220,248,255,.94) 0%,rgba(220,248,255,.70) 46%,rgba(220,248,255,.08) 100%);}
+  .vc-trend{position:absolute;left:12px;top:12px;z-index:2;display:inline-flex;align-items:center;gap:5px;
+    padding:6px 11px;border-radius:var(--radius-pill);background:var(--alge-orange);color:#fff;
+    font-size:12px;font-weight:700;box-shadow:0 8px 18px rgba(255,122,26,.42);}
+  .vc-trend i{font-size:14px;}
+  .vc-head{position:absolute;left:16px;right:16px;bottom:12px;z-index:2;}
+  .vc-name{font-size:19px;font-weight:700;color:var(--alge-text);line-height:1.08;
+    text-shadow:0 1px 10px rgba(255,255,255,.45);}
+  .vc-sub{font-size:12px;font-weight:500;color:var(--alge-muted);margin-top:2px;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .vc-body{background:var(--alge-frost-strong);padding:10px 14px 11px;
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+  .vc-chips{display:flex;gap:7px;margin-bottom:8px;flex-wrap:wrap;}
+  .vc-foot{display:flex;align-items:center;justify-content:space-between;
+    border-top:1px solid var(--alge-cyan-border);padding-top:8px;}
+  .vc-cat{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--alge-text);}
+  .vc-cat i{font-size:15px;color:var(--alge-blue);}
+  .vc-dist{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--alge-orange);}
+  .vc-dist i{font-size:14px;}
+  #carDots{display:none;align-items:center;justify-content:center;gap:7px;margin-top:6px;pointer-events:none;}  /* mobilde gizli (kullanıcı kararı) */
+  #carDots:empty{display:none;}
+  #carDots button{pointer-events:auto;width:7px;height:7px;border-radius:50%;border:none;padding:0;cursor:pointer;
+    background:rgba(95,120,144,.42);transition:width .25s,background .25s;}
+  #carDots button.on{width:22px;border-radius:4px;background:var(--alge-orange);}
+  /* tıklama sonrası UA focus halkalarını kaldır (dots/chips/nav/oklar/tune) */
+  #carDots button:focus,#mchips button:focus,#mbar button:focus,.car-nav:focus,#mtop .mtop-tune:focus,
+  #carDots button:focus-visible,#mchips button:focus-visible,#mbar button:focus-visible,.car-nav:focus-visible{outline:none;}
+
+  /* alt nav: coastal frosted + Harita aktif (turuncu nokta) */
+  #mbar{background:var(--alge-frost-strong);border:1px solid var(--alge-border);border-radius:24px;
+    box-shadow:0 16px 40px rgba(56,184,220,.22),inset 0 1px 0 rgba(255,255,255,.6);
+    backdrop-filter:blur(20px) saturate(1.2);-webkit-backdrop-filter:blur(20px) saturate(1.2);}
+  #mbar button{position:relative;color:var(--alge-muted);font-size:11px;font-weight:600;}
+  #mbar button:hover{color:var(--alge-blue);}
+  #mbar button.on{color:var(--alge-blue);background:rgba(85,213,236,.16);}
+  #mbar button.on::after{content:'';position:absolute;left:50%;bottom:1px;transform:translateX(-50%);
+    width:5px;height:5px;border-radius:50%;background:var(--alge-orange);}
+
+  /* uçuş sırasında coastal katmanları çek */
+  body.flying #mcatdock,body.flying #mcar{display:none !important;}
+
+  /* ===== DESKTOP (≥1024px): TEK AKIŞKAN YERLEŞİM =====
+     Sert 1440 kırılması YOK — tek rejim. Yatay: carousel bölgesi akışkan, sağda
+     sabit panel (kartlar panel altına asla girmez). Dikey: kart boyu & konum
+     100vh'e göre ölçeklenir (kısa pencerede sıkışır, uzunda dengeli kalır).
+     3 kart "coverflow": merkez büyük & önde, yanlar küçük; bölgeye sığacak şekilde akışkan. */
+  @media (min-width:1024px){
+    body{
+      --pad:clamp(28px,4vw,72px);             /* çerçeve yan boşluğu */
+      --navReserve:108px;                     /* nav için altta ayrılan pay */
+      --railTop:clamp(128px,19.5vh,200px);    /* üst yığın — kısa pencerede sıkışır; aramaya nefes payı */
+      --railH:clamp(50px,7.2vh,62px);
+      --railB:calc(var(--railTop) + var(--railH));
+      --cardH:clamp(181px,calc(100vh - 360px),253px);  /* kart yüksekliği — %20 küçültüldü */
+      --lift:clamp(16px,2.7vh,34px);          /* merkez kartın yanlara göre yükselişi */
+      --sideH:calc(var(--cardH) - var(--lift));
+      /* panel kaldırıldı -> carousel tam genişlik; merkez/yan oranı ~1.3; kartlar %20 küçültüldü */
+      --centerW:clamp(232px,20.8vw,323px);
+      --sideW:clamp(173px,16vw,246px);
+      --cgap:clamp(11px,1.1vw,19px);
+      --bandCenter:calc((var(--railB) + 100vh - var(--navReserve)) / 2);
+    }
+
+    /* üst yığın: ortalı (logo -> arama -> kategori), yüksekliğe duyarlı */
+    #mlogo{left:50%;right:auto;top:clamp(12px,2vh,28px);transform:translateX(-50%);}
+    #mlogo img{width:clamp(140px,15vh,176px);}
+    #mtop{left:50%;right:auto;transform:translateX(-50%);top:clamp(58px,9vh,108px);
+      width:min(820px,62vw);height:clamp(54px,7.8vh,68px);border-radius:calc(clamp(54px,7.8vh,68px) / 2);
+      padding:0 12px 0 24px;align-items:center;gap:12px;}
+    #mtop > i{font-size:22px;}
+    #mtop span{font-size:15.5px;}
+    #mtop .mtop-tune{width:44px;height:44px;}
+    #mtop .mtop-tune i{font-size:19px;}
+    #mcatdock{left:50%;right:auto;transform:translateX(-50%)!important;top:var(--railTop);
+      width:min(700px,54vw);height:var(--railH);border-radius:calc(var(--railH) / 2);padding:7px;display:flex;align-items:center;}
+    #mchips{height:calc(var(--railH) - 14px);align-items:center;}
+    /* min-height/flex-direction: eski desktop bloğundan sızan kuralları ez (pill rail'i taşmasın) */
+    #mchips button{height:calc(var(--railH) - 14px)!important;min-height:0!important;flex-direction:row!important;
+      align-items:center;font-size:15px;border-radius:calc((var(--railH) - 14px) / 2);}
+    #mchips button span{font-size:15px;}
+    #mchips button.on::after{bottom:-5px;width:38px;}
+
+    /* carousel BÖLGESİ: tam genişlik (panel kaldırıldı), viewport'a ortalı; dikeyde biraz AŞAĞI alındı */
+    #mcar{left:var(--pad);right:var(--pad);
+      top:calc(var(--bandCenter) + clamp(34px,7vh,84px));bottom:auto;transform:translateY(-50%);
+      width:auto;height:var(--cardH);display:block;pointer-events:none;z-index:16;}
+    .car-row{display:block;position:static;}
+    #carScroller{position:absolute;inset:0;width:auto;height:auto;display:block;
+      padding:0!important;gap:0;overflow:visible;scroll-snap-type:none;pointer-events:none;}
+    .vcard{position:absolute;flex:none!important;max-width:none;opacity:1;transform:none;pointer-events:auto;
+      display:flex;flex-direction:column;border-radius:22px;
+      box-shadow:0 20px 44px rgba(56,184,220,.26),inset 0 1px 0 rgba(255,255,255,.6);
+      transition:left .4s cubic-bezier(.22,1,.36,1),top .4s,width .4s,height .4s,opacity .35s,box-shadow .35s;}
+    .vcard .vc-img{flex:1 1 auto;height:auto;min-height:0;}
+    .vcard .vc-body{flex:0 0 auto;padding:9px 13px 10px;}
+    .vcard .vc-chips{margin-bottom:7px;}
+    .vcard .vc-name{font-size:17px;}
+    .vcard .vc-sub{font-size:12px;}
+    .vcard .vc-foot{padding-top:7px;}
+    /* coverflow slotlar — bölge merkezine (50%) göre akışkan; merkez büyük, yanlar küçük */
+    .vcard.dk-center{left:calc(50% - var(--centerW) / 2);top:0;width:var(--centerW);height:var(--cardH);z-index:3;
+      box-shadow:0 30px 62px rgba(56,184,220,.34),inset 0 1px 0 rgba(255,255,255,.72);}
+    .vcard.dk-center .vc-name{font-size:clamp(18px,1.7vw,22px);}
+    .vcard.dk-left{left:calc(50% - var(--centerW) / 2 - var(--cgap) - var(--sideW));top:var(--lift);
+      width:var(--sideW);height:var(--sideH);z-index:1;opacity:.93;}
+    .vcard.dk-right{left:calc(50% + var(--centerW) / 2 + var(--cgap));top:var(--lift);
+      width:var(--sideW);height:var(--sideH);z-index:1;opacity:.93;}
+    .vcard.dk-hide{display:none!important;}
+    .vcard:not(.dk-center) .vc-trend{display:none;}   /* Trend yalnız odak kartta */
+    /* oklar — bölge kenarlarında, dikey kart ortasında */
+    .car-nav{display:flex;position:absolute;z-index:5;top:calc(var(--cardH) / 2 - 22px);
+      width:44px;height:44px;border-radius:50%;border:1px solid var(--alge-border);align-items:center;justify-content:center;
+      background:var(--alge-frost-strong);color:var(--alge-blue);cursor:pointer;pointer-events:auto;
+      box-shadow:0 10px 24px rgba(56,184,220,.26);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+      transition:background .2s,color .2s;}
+    .car-nav:hover{background:#fff;}
+    .car-nav i{font-size:20px;}
+    /* oklar kart grubunun hemen DIŞINDA (gruba göre, viewport kenarında değil) */
+    .car-prev{left:calc(50% - var(--centerW) / 2 - var(--cgap) - var(--sideW) - 52px);right:auto;}
+    .car-next{left:calc(50% + var(--centerW) / 2 + var(--cgap) + var(--sideW) + 8px);right:auto;}
+    /* dots — merkez kartın altında ortalı (desktop'ta görünür) */
+    #carDots{display:flex;align-items:center;gap:7px;position:absolute;left:0;right:0;width:auto;top:calc(var(--cardH) + 14px);margin:0;justify-content:center;}
+
+    /* büyük feature kart -> gizle */
+    #dFeature{display:none !important;}
+
+    /* SAĞ panel KALDIRILDI (kullanıcı kararı) — carousel tam genişlik & ortalı kalsın */
+    #dPanel{display:none !important;left:auto;right:var(--pad);top:var(--bandCenter);bottom:auto;transform:translateY(-50%);
+      width:320px;max-height:min(520px,calc(100vh - 150px));
+      background:var(--alge-frost-grad)!important;border:1px solid var(--alge-border)!important;
+      box-shadow:0 18px 48px rgba(56,184,220,.22),inset 0 1px 0 rgba(255,255,255,.6)!important;
+      backdrop-filter:blur(20px) saturate(1.2)!important;-webkit-backdrop-filter:blur(20px) saturate(1.2)!important;
+      padding:16px 16px 14px;}
+    .dp-head{margin-bottom:13px;}
+    .dp-head span{display:inline-flex;align-items:center;gap:7px;font-size:16px;font-weight:700;color:var(--alge-text);}
+    .dp-head span i{color:var(--alge-orange);font-size:18px;}
+    #dpList{gap:11px;}
+    #dpList::-webkit-scrollbar-thumb{background:var(--alge-cyan-border);}
+    .dp-card{grid-template-columns:70px 1fr;gap:11px;align-items:stretch;
+      background:rgba(255,255,255,.62)!important;border:1px solid var(--alge-border)!important;border-radius:16px;
+      box-shadow:0 8px 22px rgba(56,184,220,.16)!important;padding:9px;}
+    .dp-card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(56,184,220,.24)!important;}
+    .dp-card img{width:70px;height:auto;min-height:70px;border-radius:12px;}
+    .dp-mid{display:flex;flex-direction:column;gap:3px;}
+    .dp-kicker{align-self:flex-start;color:#fff;background:var(--alge-orange);border-radius:var(--radius-pill);
+      padding:2px 9px;font-size:10px;font-weight:700;letter-spacing:.02em;text-transform:none;}
+    .dp-name{color:var(--alge-text);font-weight:700;font-size:14px;}
+    .dp-sub{color:var(--alge-muted);font-size:11.5px;-webkit-line-clamp:2;}
+    .dp-btn{align-self:flex-start;margin-top:3px;display:inline-flex;align-items:center;gap:5px;
+      color:var(--alge-blue);font-size:12px;font-weight:700;
+      border:1px solid var(--alge-cyan-border);background:rgba(255,255,255,.5);
+      border-radius:var(--radius-pill);padding:5px 12px;}
+    #dpAll{margin-top:13px;flex:0 0 auto;align-self:center;display:inline-flex;align-items:center;gap:6px;
+      border:none;background:none;color:var(--alge-orange);font-size:13.5px;font-weight:700;cursor:pointer;}
+    #dpAll i{font-size:15px;}
+
+    /* alt nav: ortalı, alta sabit */
+    #mbar{left:50%;right:auto;transform:translateX(-50%);bottom:24px;width:min(650px,60vw);min-height:64px;}
+  }
+
 </style>
 </head>
 <body>
@@ -925,6 +1190,16 @@ window.addEventListener('error',function(e){
 </div>
 <div id="msponsor"></div>
 
+<!-- ============ VENUE CAROUSEL (Light Coastal) ============ -->
+<div id="mcar">
+  <div class="car-row">
+    <button class="car-nav car-prev" type="button" aria-label="Önceki"><i class="ph ph-caret-left" aria-hidden="true"></i></button>
+    <div id="carScroller" role="list" aria-label="Mekanlar"></div>
+    <button class="car-nav car-next" type="button" aria-label="Sonraki"><i class="ph ph-caret-right" aria-hidden="true"></i></button>
+  </div>
+  <div id="carDots" role="tablist" aria-label="Mekan göstergesi"></div>
+</div>
+
 <nav id="mbar">
   <button data-v="harita" class="on"><i class="ph ph-map-trifold" aria-hidden="true"></i>Anasayfa</button>
   <button data-v="yerler"><i class="ph ph-map-pin" aria-hidden="true"></i>Yerler</button>
@@ -934,8 +1209,9 @@ window.addEventListener('error',function(e){
 
 <!-- ============ DESKTOP-ONLY (≥1024px): sağ öneri paneli + büyük öne çıkan kart ============ -->
 <aside id="dPanel" aria-hidden="true">
-  <div class="dp-head"><span>Öne Çıkanlar</span><button id="dpAll" type="button">Tümünü Gör</button></div>
+  <div class="dp-head"><span><i class="ph ph-star" aria-hidden="true"></i>Bugün Öne Çıkanlar</span></div>
   <div id="dpList"></div>
+  <button id="dpAll" type="button">Tüm fırsatları keşfet <i class="ph ph-arrow-right" aria-hidden="true"></i></button>
 </aside>
 <div id="dFeature" aria-hidden="true">
   <div class="df-media"><img id="dfImg" alt="" loading="lazy" decoding="async"><span class="df-badge">Öne Çıkan</span></div>
@@ -5093,11 +5369,14 @@ CHIPS.forEach(c=>{
   b.addEventListener('click',()=>{
     chipsEl.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
     b.classList.add('on');
-    catClose();           // accordion kapan
-    openYerlerCat(c.k);   // #6: ilgili kategorideki mekanları Yerler sheet'inde listele
+    catClose();           // accordion durumu kapan (rail her zaman görünür)
+    carCat=c.k;
+    buildCarousel(carCat);   // kategori rail -> carousel filtrele (mevcut veri, harita köprüsü aynı)
   });
   chipsEl.appendChild(b);
 });
+/* açılış: Yeme-İçme aktif görünür (referans) — carousel başlangıçta karışık (sponsorlu+çeşit) */
+if(chipsEl.firstElementChild) chipsEl.firstElementChild.classList.add('on');
 
 /* ===== Kategori point accordion kontrolü (Sprint Visual-6) ===== */
 const catDock=document.getElementById('mcatdock');
@@ -5163,7 +5442,6 @@ function trendCardHTML(v,i){
       <span class="chip-trend tc-spon">Öne Çıkan</span>
       <div class="tc-name">${v.name}</div>
       <div class="tc-sub">${v.cat}</div>
-      <div class="tc-chips">${vChipsHTML(v)}</div>
     </div>
     <span class="tc-go">İncele <i class="ph ph-caret-right" aria-hidden="true"></i></span>
   </article>`;
@@ -5187,14 +5465,19 @@ function renderSearch(){
   const term=(ssInput.value||'').trim().toLocaleLowerCase('tr');
   const hit=v=>!term || [v.name,v.cat,v.desc2,v.desc].some(s=>(s||'').toLocaleLowerCase('tr').includes(term));
   const matches=VENUES.map((v,i)=>({v,i})).filter(x=>hit(x.v));
-  let trends=VENUES.map((v,i)=>({v,i})).filter(x=>x.v.sponsored).slice(0,3);   // Trendler = sponsorlu, query'den bağımsız
-  if(!trends.length) trends=matches.slice(0,3);   // sponsor yoksa (demo fallback) ilk sonuçlar
+  let trends=VENUES.map((v,i)=>({v,i})).filter(x=>x.v.sponsored);   // Trendler = sponsorlu, query'den bağımsız
+  if(trends.length<4){   // 4'e tamamla (sponsorlu az ise diğer mekanlarla doldur)
+    const seen=new Set(trends.map(x=>x.i));
+    VENUES.forEach((v,i)=>{ if(trends.length<4 && !seen.has(i)){ trends.push({v,i}); seen.add(i); } });
+  }
+  trends=trends.slice(0,4);
+  if(!trends.length) trends=matches.slice(0,4);   // sponsor/mekan yoksa (demo fallback) ilk sonuçlar
   let html='';
   if(trends.length){
     html+='<div class="ss-sec"><div class="ss-sec-l"><h3><i class="ph ph-fire-simple" aria-hidden="true"></i>Trendler</h3><p>Öne çıkan mekanlar</p></div></div>';
     html+=trends.map(x=>trendCardHTML(x.v,x.i)).join('');
   }
-  html+='<div class="ss-sec"><div class="ss-sec-l"><h3>Tüm Sonuçlar</h3></div><span class="ss-count">'+matches.length+' sonuç</span></div>';
+  html+='<div class="ss-sec"><div class="ss-sec-l"><h3>Tüm Sonuçlar</h3></div></div>';
   html+= matches.length ? matches.map(x=>resultCardHTML(x.v,x.i)).join('') : '<div class="ss-empty">Sonuç bulunamadı</div>';
   ssBody.innerHTML=html;
   ssBody.querySelectorAll('[data-i]').forEach(el=>{
@@ -5260,14 +5543,15 @@ YL_CATS.forEach(c=>{
   ylCats.appendChild(b);
 });
 function syncYlCats(){ ylCats.querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.ylCat===ylActiveCat)); }
-function ylCardHTML(v,i){
+function ylCardHTML(v,i,feat){
+  const badge = feat ? '<div class="yl-chips"><span class="yl-feat"><i class="ph ph-star" aria-hidden="true"></i>Öne Çıkan</span></div>' : '';
   return `<article class="yl-card" data-i="${i}" role="button" tabindex="0">
     <img src="${vThumb(i)}" alt="" loading="lazy" decoding="async">
     <div class="yl-mid">
       <div class="yl-name">${v.name}</div>
       <div class="yl-sub">${v.cat}</div>
       <p class="yl-desc">${v.desc2||v.desc||''}</p>
-      <div class="yl-chips">${vChipsHTML(v)}</div>
+      ${badge}
     </div>
     <span class="yl-go">İncele <i class="ph ph-caret-right" aria-hidden="true"></i></span>
   </article>`;
@@ -5275,7 +5559,7 @@ function ylCardHTML(v,i){
 function renderYerler(){
   const list=VENUES.map((v,i)=>({v,i})).filter(x=>venueMainCat(x.v)===ylActiveCat);
   ylBody.innerHTML = list.length
-    ? '<div class="yl-list">'+list.map(x=>ylCardHTML(x.v,x.i)).join('')+'</div>'
+    ? '<div class="yl-list">'+list.map((x,pos)=>ylCardHTML(x.v,x.i,pos<5)).join('')+'</div>'
     : '<div class="ss-empty">Bu kategoride henüz mekan yok</div>';
   ylBody.querySelectorAll('.yl-card').forEach(el=>{
     const go=()=>ylInspect(parseInt(el.dataset.i,10));
@@ -5356,10 +5640,12 @@ OF_CATS.forEach(c=>{
   ofCats.appendChild(b);
 });
 function syncOfCats(){ ofCats.querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.ofCat===ofActiveCat)); }
-function offerCardHTML(o){
+function offerCardHTML(o,feat){
+  const badge = feat ? '<span class="of-feat"><i class="ph ph-star" aria-hidden="true"></i>Öne Çıkan</span>' : '';
   return `<article class="of-card" data-i="${o.i}" role="button" tabindex="0">
     <div class="of-thumb"><img src="${vThumb(o.i)}" alt="" loading="lazy" decoding="async"><span class="of-badge"><i class="ph ph-ticket" aria-hidden="true"></i>Kampanya</span></div>
     <div class="of-mid">
+      ${badge}
       <div class="of-venue">${o.venue}</div>
       <div class="of-title">${o.title}</div>
       <div class="of-foot">
@@ -5373,7 +5659,7 @@ function renderOffers(){
   const offers=VENUES.map((v,i)=>venueOffer(v,i))
     .filter(o=>ofActiveCat==='tum' || o.cat===ofActiveCat);
   ofBody.innerHTML = offers.length
-    ? '<div class="of-list">'+offers.map(offerCardHTML).join('')+'</div>'
+    ? '<div class="of-list">'+offers.map((o,pos)=>offerCardHTML(o,pos<5)).join('')+'</div>'
     : '<div class="ss-empty">Bu kategoride fırsat yok</div>';
   ofBody.querySelectorAll('.of-card').forEach(el=>{
     const go=()=>ofInspect(parseInt(el.dataset.i,10));
@@ -5736,6 +6022,147 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape' && svcEl.classList.
 /* ================= GERÇEK VENUE DATASI BAĞLAMA + SPONSOR RAIL =================
    venueModel.js gerçek 47 mekanı window.ALGE_VENUES'e koyar ve 'alge:venues-ready' yayınlar
    (modüller inline'dan sonra çalışır). Tüm VENUES okumaları lazy (sheet açılış/click) olduğundan güvenli. */
+/* ================= VENUE CAROUSEL (Light Coastal Discovery) =================
+   Mevcut VENUES verisinden image-heavy kartlar. Kart tık -> flyAndFocus (mevcut köprü).
+   Kategori rail kartları filtreler. Harita/uçuş/datasource'a DOKUNMAZ. */
+const CAR_AW=0.042, CAR_AE=0.907;   // mapAnchors u ekseni (yaklaşık mesafe için)
+function venueDist(v){
+  let f=0.5;
+  if(v && typeof v.u==='number') f=(v.u-CAR_AW)/(CAR_AE-CAR_AW);   // 0..1 şerit boyunca
+  let qf=0.5; const qr=window.ALGE_ACTIVE_QR;
+  if(qr && qr.mapPosition && typeof qr.mapPosition.x==='number') qf=qr.mapPosition.x;
+  const m=Math.abs(f-qf)*900;   // şerit ~900 m -> kararlı yaklaşık mesafe
+  return Math.max(40, Math.round(m/10)*10);
+}
+let carCat=null, carItems=[], carScroller=null, carDotsEl=null, carActive=0, carAutoTimer=null, carPauseUntil=0;
+const CAR_COUNT=6;   // carousel'de gösterilecek kart sayısı
+function carShuffle(a){ for(let k=a.length-1;k>0;k--){ const j=Math.floor(Math.random()*(k+1)); const t=a[k]; a[k]=a[j]; a[j]=t; } return a; }
+function carouselList(mcat){
+  const idx=VENUES.map((v,i)=>({v,i}));
+  if(mcat){ const f=carShuffle(idx.filter(x=>x.v.mcat===mcat)); if(f.length) return f.slice(0,CAR_COUNT); }
+  return carShuffle(idx.slice()).slice(0,CAR_COUNT);   // 6 rastgele mekan
+}
+function carCardHTML(x){
+  const v=x.v;
+  const trend='<span class="vc-trend"><i class="ph ph-trend-up" aria-hidden="true"></i>Trend</span>';   // tüm kartlarda Trend
+  const chips=vChipsHTML(v)||'<span class="chip-menu"><i class="ph ph-info" aria-hidden="true"></i>Bilgi</span>';
+  return '<article class="vcard" data-i="'+x.i+'" role="listitem" tabindex="0" aria-label="'+v.name+'">'+
+    '<div class="vc-img"><img src="'+vThumb(x.i)+'" alt="" loading="lazy" decoding="async">'+trend+
+    '<div class="vc-head"><div class="vc-name">'+v.name+'</div><div class="vc-sub">'+(v.desc2||v.desc||'')+'</div></div></div>'+
+    '<div class="vc-body"><div class="vc-chips">'+chips+'</div>'+
+    '<div class="vc-foot"><span class="vc-cat"><i class="ph ph-map-pin" aria-hidden="true"></i>'+(v.cat||'')+'</span>'+
+    '<span class="vc-dist">'+venueDist(v)+' m <i class="ph ph-caret-right" aria-hidden="true"></i></span></div></div></article>';
+}
+function carCards(){ return carScroller?Array.prototype.slice.call(carScroller.querySelectorAll('.vcard')):[]; }
+/* ≥1440px = "sahne" modu: 3 kart mutlak konumlu (sol/merkez/sağ), gerisi gizli, oklar/dot ile döner.
+   Altında: mobil/ara genişlik = kaydırmalı scroll-snap. */
+const carIsStage=()=>window.matchMedia('(min-width:1024px)').matches;
+function updateDots(){ if(carDotsEl) Array.prototype.forEach.call(carDotsEl.children,(b,i)=>b.classList.toggle('on',i===carActive)); }
+function applyStage(){
+  const cards=carCards(); const n=cards.length; if(!n) return;
+  if(!carIsStage()){ cards.forEach(c=>c.classList.remove('dk-left','dk-center','dk-right','dk-hide')); return; }
+  const c=carActive, l=((c-1)%n+n)%n, r=(c+1)%n;
+  cards.forEach((el,i)=>{ el.style.transform=''; el.style.opacity=''; el.style.zIndex='';   // mobil scroll stilini temizle
+    el.classList.remove('dk-left','dk-center','dk-right','dk-hide','active');
+    if(i===c) el.classList.add('dk-center');
+    else if(i===l && n>1) el.classList.add('dk-left');
+    else if(i===r && n>2) el.classList.add('dk-right');
+    else el.classList.add('dk-hide'); });
+}
+function setActive(i){ const n=carCards().length; if(!n) return; carActive=((i%n)+n)%n; applyStage(); updateDots(); }
+function scrollToCard(i,instant){
+  if(carIsStage()){ setActive(i); return; }
+  const n=carCards().length; if(!n) return;
+  const idx=Math.max(0,Math.min(n-1,i)); const el=carCards()[idx]; if(!el) return;
+  const left=el.offsetLeft-(carScroller.clientWidth-el.clientWidth)/2;
+  carScroller.scrollTo({left:left,behavior:instant?'auto':'smooth'});
+}
+function updateCarActive(){
+  if(carIsStage() || !carScroller) return;   // sahne modunda scroll yok
+  const vpc=carScroller.scrollLeft+carScroller.clientWidth/2;
+  let best=0,bd=Infinity;
+  const cards=carCards();
+  cards.forEach((el,i)=>{
+    const cc=el.offsetLeft+el.clientWidth/2;
+    const dist=Math.abs(cc-vpc);
+    if(dist<bd){bd=dist;best=i;}
+    /* merkeze yakınlık 0..1 -> smoothstep; kart kayıp ortaya gelince büyür (sürükleyici) */
+    const t=Math.max(0,1-dist/(el.clientWidth*1.5));
+    const e=t*t*(3-2*t);
+    el.style.transform='scale('+(0.84+0.16*e).toFixed(3)+')';
+    el.style.opacity=(0.62+0.38*e).toFixed(3);
+    el.style.zIndex=Math.round(e*10);
+  });
+  carActive=best;
+  cards.forEach((el,i)=>el.classList.toggle('active',i===best));
+  updateDots();
+}
+let carLastStage=null;
+function buildCarousel(mcat){
+  carScroller=document.getElementById('carScroller'); carDotsEl=document.getElementById('carDots');
+  if(!carScroller || !VENUES.length) return;
+  carItems=carouselList(mcat);
+  carLastStage=carIsStage();
+  const oneSet=carItems.map(carCardHTML).join('');
+  /* mobil: SONSUZ DÖNGÜ için 3 set klonla (orta sette başla; uçlara gelince dikişsiz sar) */
+  const loop = !carIsStage() && carItems.length>1;
+  carScroller.dataset.loop = loop ? '1' : '';
+  carScroller.innerHTML = loop ? (oneSet+oneSet+oneSet) : oneSet;
+  if(carDotsEl) carDotsEl.innerHTML=carItems.map((_,i)=>'<button type="button" role="tab" data-i="'+i+'" aria-label="Kart '+(i+1)+'"></button>').join('');
+  carCards().forEach(c=>{
+    const go=()=>flyAndFocus(parseInt(c.dataset.i,10),'Karusel');   // klonlarda da data-i var
+    c.addEventListener('click',go);
+    c.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } });
+  });
+  if(carDotsEl) Array.prototype.forEach.call(carDotsEl.children,b=>{
+    b.addEventListener('click',()=>scrollToCard(parseInt(b.dataset.i,10)));
+  });
+  const n=carItems.length;
+  const start = loop ? n + (n>2?1:0) : (n>2?1:0);   // mobil: orta set, +1 peek; desktop: 1
+  carActive=start;
+  applyStage(); updateDots();
+  if(!carIsStage()) requestAnimationFrame(()=>{ scrollToCard(start,true); requestAnimationFrame(updateCarActive); });
+  startCarAuto();   // 3.5sn'de bir otomatik kaydırma
+}
+/* uçlara gelince orta sete dikişsiz sar (klonlar birebir aynı -> görünmez sıçrama) */
+function carRepositionLoop(){
+  if(carIsStage() || !carScroller || carScroller.dataset.loop!=='1') return;
+  const cards=carCards(); const n=carItems.length; if(cards.length < n*2) return;
+  const setW=cards[n].offsetLeft-cards[0].offsetLeft;
+  if(carActive >= 2*n){ carScroller.scrollLeft -= setW; }       // son set -> orta
+  else if(carActive < n){ carScroller.scrollLeft += setW; }     // ilk set -> orta
+}
+function startCarAuto(){
+  if(carAutoTimer) clearInterval(carAutoTimer);
+  carAutoTimer=setInterval(()=>{
+    if(!carItems.length || document.hidden) return;
+    if(Date.now() < carPauseUntil) return;                  // kullanıcı etkileşiminden sonra bekle
+    if(document.body.classList.contains('flying')) return;  // uçuş sırasında durdur
+    if(typeof cpopAnyOverlayOpen==='function' && cpopAnyOverlayOpen()) return;  // sheet/popup açıkken durdur
+    scrollToCard(carActive+1);   // sıradaki karta yumuşak kay (mobil: klon ile sonsuz, desktop: setActive %n sarar)
+  }, 3500);
+}
+(function carWire(){
+  const sc=document.getElementById('carScroller');
+  if(sc){
+    let tk=false, endT=null;
+    sc.addEventListener('scroll',()=>{
+      if(!tk){ tk=true; requestAnimationFrame(()=>{ updateCarActive(); tk=false; }); }
+      if(sc.dataset.loop==='1'){ clearTimeout(endT); endT=setTimeout(carRepositionLoop, 90); }   // kaydırma bitince dikişsiz sar
+    },{passive:true});
+    ['pointerdown','touchstart','wheel'].forEach(ev=> sc.addEventListener(ev,()=>{ carPauseUntil=Date.now()+5000; },{passive:true}));   // kullanıcı dokununca otomatiği duraklat
+  }
+  const prev=document.querySelector('.car-prev'), next=document.querySelector('.car-next');
+  if(prev) prev.addEventListener('click',()=>{ carPauseUntil=Date.now()+5000; scrollToCard(carActive-1); });   // sahnede wrap, scroll'da clamp/loop
+  if(next) next.addEventListener('click',()=>{ carPauseUntil=Date.now()+5000; scrollToCard(carActive+1); });
+  window.addEventListener('resize',()=>{ if(!carItems.length) return;
+    const st=carIsStage();
+    if(carLastStage!==null && st!==carLastStage){ buildCarousel(carCat); return; }   // mobil<->desktop geçişi: yeniden kur (klon farkı)
+    applyStage();
+    if(st){ updateDots(); } else { requestAnimationFrame(()=>scrollToCard(carActive,true)); }
+  });
+})();
+
 function renderSponsors(){
   const el=document.getElementById('msponsor'); if(!el) return;
   const spons=VENUES.map((v,i)=>({v,i})).filter(x=>x.v.sponsored).slice(0,3);
@@ -5757,6 +6184,7 @@ function renderSponsors(){
 function applyRealVenues(){
   if(window.ALGE_VENUES && window.ALGE_VENUES.length){ VENUES=window.ALGE_VENUES; }
   renderSponsors();
+  buildCarousel(carCat);   // carousel'ı gerçek veriyle (varsa aktif kategoriyle) kur
 }
 window.addEventListener('alge:venues-ready', applyRealVenues);
 applyRealVenues();   // modül zaten çalıştıysa hemen; değilse demo fallback + event ile bağlanır
@@ -5824,7 +6252,8 @@ function dpCardHTML(o){
   return '<div class="dp-card" data-i="'+o.idx+'" data-act="'+(o.act||'')+'" role="button" tabindex="0">'+
     '<img src="'+o.thumb+'" alt="" loading="lazy" decoding="async">'+
     '<div class="dp-mid"><span class="dp-kicker">'+o.kicker+'</span>'+
-    '<div class="dp-name">'+o.name+'</div><div class="dp-sub">'+(o.sub||'')+'</div></div></div>';
+    '<div class="dp-name">'+o.name+'</div><div class="dp-sub">'+(o.sub||'')+'</div>'+
+    '<span class="dp-btn">'+(o.btn||'Detayları Gör')+'</span></div></div>';
 }
 function renderDesktop(){
   const list=document.getElementById('dpList'); const feat=document.getElementById('dFeature');
@@ -5845,11 +6274,11 @@ function renderDesktop(){
   const c1=spons[0]||all[0];
   const c2=spons.find(x=>x.i!==c1.i)||all.find(x=>x.i!==c1.i)||c1;
   const cards=[
-    {idx:c1.i,act:'',kicker:'Öne Çıkan',name:c1.v.name,sub:c1.v.camp||c1.v.desc2||c1.v.cat,thumb:vThumb(c1.i)},
-    {idx:c2.i,act:'',kicker:c2.v.cat||'Mekan',name:c2.v.name,sub:c2.v.desc2||c2.v.cat,thumb:vThumb(c2.i)}
+    {idx:c1.i,act:'',kicker:c1.v.camp?'Kampanya':'Öne Çıkan',name:c1.v.name,sub:c1.v.camp||c1.v.desc2||c1.v.cat,btn:c1.v.camp?'Kampanyayı Gör':'Detayları Gör',thumb:vThumb(c1.i)},
+    {idx:c2.i,act:'',kicker:'Yeni',name:c2.v.name,sub:c2.v.desc2||c2.v.cat,btn:vHasMenu(c2.v)?'Menüyü İncele':'Detayları Gör',thumb:vThumb(c2.i)}
   ];
   const ev=(typeof EV_DATA!=='undefined'&&EV_DATA.length)?EV_DATA[0]:null;
-  if(ev) cards.push({idx:(ev.vi>=0?ev.vi:-1),act:'events',kicker:'Etkinlik',name:ev.name,sub:ev.place+' · '+ev.date,thumb:vThumb(ev.vi>=0?ev.vi:0)});
+  if(ev) cards.push({idx:(ev.vi>=0?ev.vi:-1),act:'events',kicker:'Bu Akşam',name:ev.name,sub:ev.place+' · '+ev.date,btn:'Detayları Gör',thumb:vThumb(ev.vi>=0?ev.vi:0)});
   list.innerHTML=cards.map(dpCardHTML).join('');
   list.querySelectorAll('.dp-card').forEach(c=>{
     const act=c.dataset.act, i=parseInt(c.dataset.i,10);
