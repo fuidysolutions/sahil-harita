@@ -363,10 +363,11 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   #ylClose:hover{color:var(--navy);border-color:#cdd9e6;}
 
   /* kategori pill rail — Blue Active Rail */
-  .yl-cats{display:flex;gap:9px;overflow-x:auto;padding:2px 16px 14px;flex:0 0 auto;}
+  .yl-cats{display:flex;gap:6px;overflow:visible;padding:2px 16px 14px;flex:0 0 auto;}
   .yl-cats::-webkit-scrollbar{display:none;}
-  .yl-cat{position:relative;flex:0 0 auto;border:1px solid var(--border-soft);background:rgba(255,255,255,.96);
-    color:#41566b;border-radius:var(--radius-pill);padding:9px 15px;font-size:12.5px;font-weight:600;font-family:inherit;
+  /* 4 kategori bölgeyi eşit doldurur, tüm etiketler tam görünür (kaydırma/kırpma yok) */
+  .yl-cat{position:relative;flex:1 1 0;min-width:0;text-align:center;border:1px solid var(--border-soft);background:rgba(255,255,255,.96);
+    color:#41566b;border-radius:var(--radius-pill);padding:9px 6px;font-size:11.5px;font-weight:600;font-family:inherit;
     white-space:nowrap;cursor:pointer;box-shadow:0 6px 16px rgba(8,35,61,.07);
     transition:transform .2s cubic-bezier(.22,1,.36,1),background .2s cubic-bezier(.22,1,.36,1),color .2s cubic-bezier(.22,1,.36,1);}
   .yl-cat:hover{transform:translateY(-1px);}
@@ -947,7 +948,9 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
   /* kategori rail: accordion -> yatay frosted segmented bar (search altı) */
   #mcatpoint{display:none!important;}
   #msponsor{display:none!important;}
-  #mcatdock{position:fixed;left:50%;top:calc(146px + env(safe-area-inset-top));transform:translateX(-50%)!important;
+  /* anasayfa kategori rail'i KALDIRILDI (işlevsiz) — aynı kategoriler Yerler sheet'inde */
+  #mcatdock{display:none!important;}
+  #mcatdock.__legacy{position:fixed;left:50%;top:calc(146px + env(safe-area-inset-top));transform:translateX(-50%)!important;
     z-index:17;width:min(calc(100% - 28px),520px);max-width:none;height:auto;
     background:var(--alge-frost-grad);border:1px solid var(--alge-border);border-radius:var(--radius-pill);
     padding:6px;box-shadow:0 16px 40px rgba(56,184,220,.20),inset 0 1px 0 rgba(255,255,255,.6);
@@ -1053,7 +1056,7 @@ addEventListener('alge:qr-ready',()=>__ALGE_PERF.mark('qr-ready'));
       --navReserve:108px;                     /* nav için altta ayrılan pay */
       --railTop:clamp(128px,19.5vh,200px);    /* üst yığın — kısa pencerede sıkışır; aramaya nefes payı */
       --railH:clamp(50px,7.2vh,62px);
-      --railB:calc(var(--railTop) + var(--railH));
+      --railB:calc(clamp(58px,9vh,108px) + clamp(54px,7.8vh,68px) + 22px);   /* rail kaldırıldı -> band arama altından başlar (arama top+yükseklik+gap) */
       --cardH:clamp(181px,calc(100vh - 360px),253px);  /* kart yüksekliği — %20 küçültüldü */
       --lift:clamp(16px,2.7vh,34px);          /* merkez kartın yanlara göre yükselişi */
       --sideH:calc(var(--cardH) - var(--lift));
