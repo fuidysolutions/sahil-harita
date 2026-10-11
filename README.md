@@ -138,3 +138,14 @@ Sprint 8.1: Masaüstü sol paneli gerçek data'ya bağlandı (homePanelRuntime.j
 QR'a göre featured mini kart, panel araması gerçek search sheet'ini açar.
 Placeholder'lar (Mekan 06-10, Sahil Market, Sunset Lounge, Plaj Kulübü) kaldırıldı.
 Opening ad poster değişimi geri alındı (onaysız görsel değişimi yok; data şeridi kalır).
+
+## Ekim 2026 — sunum sürümü
+- **Masaüstü:** geniş ekranda (`min-width:900px`, fare) `index.html` en başta `/frame.html`'e yönlenir; uygulama 393×852 iPhone çerçevesinde
+  iframe içinde (`?frame=1`) birebir mobil çalışır. Adres çubuğu asıl yolu korur. Doğrudan açmak için `?app=1`.
+  Çerçeve içinde `html.in-frame` sahte güvenli alan payları verir (`--sa-top/--sa-bottom`).
+- **Arayüz (S2):** `index.html` stil bloğunun sonundaki "S2" katmanı; akış/UX aynı, yeni renk ve tipografi (Plus Jakarta Sans).
+  İkon ve yazı tipi artık yerel (`public/assets/vendor/`), CDN'e bağımlı değil.
+- **Demo verisi:** `src/app/demoEnrich.js` — 985 menü ürününe örnek fiyat, popüler işareti, çalışma saati, "(demo önerisi)" gibi
+  iç notların temizlenmesi. `venues.js` değişmedi. Etkinlikler `index.html` içinde `EV_DATA` (mekan kimliğiyle bağlı).
+- **Anasayfa karuseli:** harf/düz renk yer tutucu görselli mekanlar (market, mağaza, spor) gösterilmez (`hasPhoto`).
+- QR: `public/assets/brand/qr-site.svg` → https://sahil-harita.vercel.app/

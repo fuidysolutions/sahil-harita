@@ -4,6 +4,10 @@
 import { venues } from "../data/index.js";
 import { xToUV } from "./mapAnchors.js";
 import { getVenueImage } from "./venueImages.js";
+import { cleanText, hoursOf, enrichMenu, featPrice } from "./demoEnrich.js";
+
+// Harf/düz renkli yer tutucu görseller (gerçek fotoğraf değil) — anasayfa karuselinde gösterilmez
+const PLACEHOLDER_IMG = /category-(market|shop|sports)\.webp$/;
 
 // Sponsorlu (reklam alanı) mekanlar — gerçek ID'ler. En az 3.
 export const SPONSORED_IDS = ["mado", "danilos-pizza", "roberts-coffee"];
@@ -23,30 +27,33 @@ function mcatOf(v) {
 function toUI(v) {
   const uv = xToUV((v.mapFocusPoint && v.mapFocusPoint.x) || 0); // flight u,v (Mado↔Shakespeare anchor)
   const card = v.card || {};
-  const camp = card.campaign || "";
+  const camp = cleanText(card.campaign);
   const tags = [["Açık", "ok"]];
   if (camp) tags.push(["Kampanya var", "amber"]);
   const thumb = getVenueImage(v);
+  const menu = enrichMenu(v);                     // demo: fiyat + popüler işareti (demoEnrich.js)
   const feat = card.featuredProduct
-    ? { name: card.featuredProduct, desc: card.promo || card.short || "", img: thumb } // gerçek veride fiyat yok
+    ? { name: cleanText(card.featuredProduct), desc: cleanText(card.promo || card.short),
+        img: thumb, price: featPrice(v, menu, card.featuredProduct) }
     : null;
   return {
     id: v.id,
     name: v.name,
     cat: v.category || "",
     mcat: mcatOf(v),
-    desc: card.detail || card.short || "",
-    desc2: card.short || "",
+    desc: cleanText(card.detail || card.short),
+    desc2: cleanText(card.short),
     u: uv.u,
     v: uv.v,
     tags,
-    hours: "",            // gerçek veride çalışma saati yok -> UI'da fallback (gösterilmez)
+    hours: hoursOf(v),    // demo: kategori bazlı örnek çalışma saati
     camp,
     feat,
     thumb,
+    hasPhoto: !PLACEHOLDER_IMG.test(thumb),
     priceLevel: v.priceLevel || "",
-    features: card.features || [],
-    menu: v.menu || null, // {categories, topItems, sections[{title, items[{name, description}]}]}
+    features: (card.features || []).map(cleanText),
+    menu,                 // {categories, topItems[{name,price}], sections[{title, items[{name, description, price, popular}]}]}
     sponsored: false
   };
 }
